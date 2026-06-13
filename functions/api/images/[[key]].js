@@ -1,12 +1,18 @@
-// functions/api/images/[key].js
+// functions/api/images/[[key]].js
 // GET /api/images/:key — serve images from R2
 // Public (images are displayed on the website)
 // Supports nested paths: /api/images/products/filename.jpg
 import { err } from '../../_utils.js';
 
 export async function onRequest({ params, env, request }) {
-  // params.key captures everything after /api/images/
-  const key = params.key;
+  // params.key captures everything after /api/images/ as an array in a catch-all route
+  const keySegments = params.key;
+  if (!keySegments || (Array.isArray(keySegments) && keySegments.length === 0)) {
+    return err('Image key required', 400);
+  }
+
+  // Join the array segments back into a single string path
+  const key = Array.isArray(keySegments) ? keySegments.join('/') : keySegments;
 
   const object = await env.IMAGES.get(key);
   if (!object) return err('Image not found', 404);
