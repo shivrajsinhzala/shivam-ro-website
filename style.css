@@ -2414,7 +2414,7 @@ body.lang-gu .lang-en {
 }
 
 /* Products grid loading placeholder spans full width */
-.products-grid > div[style] {
+.products-grid > .grid-placeholder {
   grid-column: 1 / -1;
 }
 
