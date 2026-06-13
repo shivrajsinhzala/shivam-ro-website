@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivam Aqua Solution - Water Quality & Health Blog</title>
+  
+  <meta name="description" content="Read expert tips on RO water purifier maintenance, groundwater quality, and health benefits of Alkaline water in Morbi and Rajkot. Serviced by Shivam Aqua Solution.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="lang-en">
+  
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container announcement-content">
+      <div class="contact-info">
+        <a href="tel:+919173096727" class="announce-link">
+          <i data-lucide="phone" class="icon-sm text-turquoise"></i>
+          <span>+91 91730 96727</span>
+        </a>
+        <span class="divider">|</span>
+        <span class="announce-text">
+          <i data-lucide="clock" class="icon-sm text-turquoise"></i>
+          <span class="lang-en">Mon - Sat: 9:00 AM - 8:00 PM</span>
+          <span class="lang-gu">સોમ - શનિ: સવારે ૯:૦૦ થી રાત્રે ૮:૦૦</span>
+        </span>
+      </div>
+      <div class="announce-badge">
+        <span class="lang-en">Emergency Service Available</span>
+        <span class="lang-gu">ઇમરજન્સી સર્વિસ ઉપલબ્ધ</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="main-header">
+    <div class="container header-container">
+      <a href="index.html" class="logo-area">
+        <img src="assets/logo.png" alt="Shivam Aqua Solution Logo" class="header-logo" fetchpriority="high">
+        <div class="brand-text">
+          <span class="brand-name">Shivam Aqua</span>
+          <span class="brand-sub">Solution</span>
+        </div>
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <a href="index.html" class="nav-link">
+          <span class="lang-en">Home</span><span class="lang-gu">હોમ</span>
+        </a>
+        <a href="index.html#services" class="nav-link">
+          <span class="lang-en">Services</span><span class="lang-gu">સેવાઓ</span>
+        </a>
+        <a href="index.html#products" class="nav-link">
+          <span class="lang-en">Products</span><span class="lang-gu">પ્રોડક્ટ્સ</span>
+        </a>
+        <a href="index.html#purity" class="nav-link">
+          <span class="lang-en">Why RO?</span><span class="lang-gu">શા માટે RO?</span>
+        </a>
+        <a href="index.html#about" class="nav-link">
+          <span class="lang-en">Why Us</span><span class="lang-gu">વિશેષતાઓ</span>
+        </a>
+        <a href="index.html#contact" class="nav-link">
+          <span class="lang-en">Contact</span><span class="lang-gu">સંપર્ક</span>
+        </a>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
+          <button class="lang-btn" onclick="setLanguage('gu')">ગુ</button>
+        </div>
+        
+        <a href="tel:+919173096727" class="btn btn-outline btn-sm header-call-btn">
+          <i data-lucide="phone"></i>
+          <span class="lang-en">Call Now</span><span class="lang-gu">કોલ કરો</span>
+        </a>
+        
+        <button class="menu-toggle-btn" aria-label="Toggle Navigation Menu">
+          <i data-lucide="menu" class="menu-icon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Slide-over Menu Drawer -->
+  <div class="mobile-menu-overlay">
+    <div class="mobile-menu-drawer">
+      <div class="mobile-menu-header">
+        <span class="drawer-title"><span class="lang-en">Menu</span><span class="lang-gu">મેનુ</span></span>
+        <button class="close-menu-btn"><i data-lucide="x"></i></button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">
+          <i data-lucide="home"></i>
+          <span class="lang-en">Home</span><span class="lang-gu">હોમ</span>
+        </a>
+        <a href="index.html#services" class="mobile-nav-link">
+          <i data-lucide="wrench"></i>
+          <span class="lang-en">Services</span><span class="lang-gu">સેવાઓ</span>
+        </a>
+        <a href="index.html#products" class="mobile-nav-link">
+          <i data-lucide="droplet"></i>
+          <span class="lang-en">Products</span><span class="lang-gu">પ્રોડક્ટ્સ</span>
+        </a>
+        <a href="index.html#purity" class="mobile-nav-link">
+          <i data-lucide="activity"></i>
+          <span class="lang-en">Why RO?</span><span class="lang-gu">શા માટે RO?</span>
+        </a>
+        <a href="index.html#about" class="mobile-nav-link">
+          <i data-lucide="shield-check"></i>
+          <span class="lang-en">Why Us</span><span class="lang-gu">વિશેષતાઓ</span>
+        </a>
+        <a href="index.html#contact" class="mobile-nav-link">
+          <i data-lucide="mail"></i>
+          <span class="lang-en">Contact</span><span class="lang-gu">સંપર્ક</span>
+        </a>
+      </nav>
+      <div class="mobile-menu-actions">
+        <a href="tel:+919173096727" class="btn btn-primary w-full text-center">
+          <i data-lucide="phone"></i>
+          <span class="lang-en">Call Dilip Bhai</span><span class="lang-gu">કોલ કરો દિલીપભાઈ</span>
+        </a>
+        <a href="https://wa.me/919173096727?text=Hi%20Shivam%20Aqua%20Solution,%20I%20have%20an%20enquiry%20about%20your%20water%20filter%20services." 
+           target="_blank" 
+           class="btn btn-whatsapp w-full text-center mt-3"
+           data-wa-en="Hi Shivam Aqua Solution, I have an enquiry about your water filter services."
+           data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મારે આપની વોટર ફિલ્ટર સર્વિસ વિશે પૂછપરછ કરવી છે.">
+          <i data-lucide="message-square"></i>
+          <span class="lang-en">WhatsApp Enquiry</span><span class="lang-gu">વોટ્સએપ પૂછપરછ</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content Container -->
+  <main class="blog-detail-container mt-6">
+    <div class="container">
+      
+      <!-- Page Hero Header -->
+      <div class="blog-page-header text-center">
+        <h1>
+          <span class="lang-en">Water Quality, RO Maintenance & Health Advice</span>
+          <span class="lang-gu">પાણીની ગુણવત્તા અને તંદુરસ્તી અંગે ખાસ માહિતી</span>
+        </h1>
+        <p class="section-desc">
+          <span class="lang-en">Expert articles to help you keep your family safe with pure, healthy water.</span>
+          <span class="lang-gu">તમારા પરિવારના સ્વાસ્થ્ય માટે શુદ્ધ અને મિનરલયુક્ત પાણી જાળવી રાખવા માટે ઉપયોગી માહિતી.</span>
+        </p>
+      </div>
+
+      <!-- Blog Articles Feed -->
+      <div class="blog-articles-list">
+        
+        <!-- Post 1 -->
+        <article class="blog-article-card glass-card" id="post-1">
+          <div class="article-meta">
+            <span class="meta-tag"><i data-lucide="calendar"></i> June 2026</span>
+            <span class="meta-tag"><i data-lucide="user"></i> By Dilip Bhai</span>
+          </div>
+          
+          <h2 class="article-title">
+            <span class="lang-en">5 Signs Your RO Water Purifier Needs Immediate Servicing</span>
+            <span class="lang-gu">તમારા ઘરનું RO ફિલ્ટર બદલવાનો સમય આવી ગયો છે? આ ૫ બાબતોથી ઓળખો</span>
+          </h2>
+          
+          <div class="article-body">
+            <div class="lang-en">
+              <p>Water purifiers play a critical role in filtering out heavy metals, excess salt, and chemical impurities from our drinking water. However, like any mechanical filtration system, RO membranes and sediment filters wear out over time. Delaying servicing can expose your family to hard water contaminants and bacterial infections.</p>
+              
+              <h3>1. A Distinct Change in Water Taste or Odor</h3>
+              <p>If your drinking water suddenly tastes slightly salty, bitter, or has a metallic taste, it is a primary sign that the activated carbon filter or the RO membrane has stopped absorbing chlorine and organic compounds. The sweet taste of pure water should always remain consistent.</p>
+              
+              <h3>2. Drastically Slower Water Output</h3>
+              <p>Does it take twice as long to fill a water bottle or storage tank? Clogged sediment filters or pre-carbon filters restrict the water flow. If left unresolved, this puts excessive pressure on the booster pump, which can burn out the SMPS power supply.</p>
+              
+              <h3>3. Excessive Wastewater Discharge</h3>
+              <p>When filter cartridges become heavily clogged, the RO system has to push more water through the waste line to filter out impurities, leading to massive water wastage. Replacing clogged cartridges instantly restores efficiency.</p>
+              
+              <h3>4. Constant Vibrations or Loud Noises</h3>
+              <p>If you hear constant humming, vibrating, or clicking sounds from under the cabinet, the booster pump is struggling due to choked filter cartridges or air blocks. Prompt filter replacement prevents costly pump repairs.</p>
+              
+              <h3>5. Rise in Water Hardness (TDS Levels)</h3>
+              <p>Groundwater TDS levels in Morbi are notoriously high (often 1200+). You should check your output water TDS using a digital TDS pen. If it rises above 150, the membrane is exhausted and must be replaced immediately to protect kidney health.</p>
+            </div>
+            
+            <div class="lang-gu">
+              <p>આપણા ઘરમાં વપરાતું RO મશીન પાણીમાંથી નુકસાનકારક કેમિકલ્સ, ક્ષાર અને ધૂળ-કચરો દૂર કરવાનું કામ કરે છે. પરંતુ સમય જતાં તેના ફિલ્ટર અને અંદરના મેમ્બ્રેન ચોક (જામ) થઈ જાય છે. જો સમયસર સર્વિસ ન કરવામાં આવે તો અશુદ્ધ પાણી પીવાને કારણે સ્વાસ્થ્ય પર માઠી અસર પડી શકે છે. તમારા ઘરનું RO ફિલ્ટર બદલવાની જરૂર છે કે નહીં, તે તમે નીચેના ૫ લક્ષણો પરથી જાણી શકો છો:</p>
+              
+              <h3>૧. પાણીના સ્વાદમાં ફેરફાર થવો અથવા દુર્ગંધ આવવી</h3>
+              <p>જો પીવાનું પાણી અચાનક ખારું, મોળું કે ધાતુ જેવો સ્વાદ આપવા લાગે, તો સમજી લેવું કે મશીનની અંદરનું એક્ટિવેટેડ કાર્બન ફિલ્ટર કે મેમ્બ્રેન ખરાબ થઈ ગયા છે અને તે પાણીને શુદ્ધ કરી શકતા નથી. શુદ્ધ પાણીનો સ્વાદ હંમેશા કુદરતી અને મીઠો રહેવો જોઈએ.</p>
+              
+              <h3>૨. નળમાંથી પાણી ખુબ જ ધીમેથી આવવું</h3>
+              <p>જો મશીનની ટાંકી ભરાવવામાં પહેલા કરતાં બમણો સમય લાગે, તો તે પ્રી-કાર્બન કે સેડિમેન્ટ ફિલ્ટરમાં કાદવ-કચરો ભરાવાને લીધે હોઈ શકે છે. જો આ સમયે ફિલ્ટર ન બદલાય તો બૂસ્ટર પંપ પર દબાણ વધે છે અને મોટર બળી જવાનો ખતરો રહે છે.</p>
+              
+              <h3>૩. વેસ્ટ પાણી સતત વહેતું રહેવું</h3>
+              <p>જ્યારે અંદરના ફિલ્ટર્સ જામ થઈ જાય છે, ત્યારે મશીનને પાણી શુદ્ધ કરવા માટે વધુ મહેનત કરવી પડે છે, જેનાથી વેસ્ટ પાઇપમાંથી વહી જતું પાણી ખૂબ જ વધી જાય છે. ફિલ્ટર તાત્કાલિક બદલવાથી પાણીનો બગાડ અટકાવી શકાય છે.</p>
+              
+              <h3>૪. મશીનમાંથી અસાધારણ અવાજ કે ધ્રુજારી આવવી</h3>
+              <p>જો તમારા આરો મશીનમાંથી સતત મોટો અવાજ કે ધણધણાટી થતી સંભળાય, તો તેનો અર્થ એ છે કે બૂસ્ટર પંપ જામ થઈ રહ્યો છે. ફિલ્ટર બ્લોક હોવાથી મોટરને પાણી ખેંચવામાં તકલીફ થાય છે. જો સમયસર ધ્યાન ન આપો તો મોટી મોટર બદલવાનો મોટો ખર્ચ આવી શકે છે.</p>
+              
+              <h3>૫. પાણીમાં ક્ષાર (TDS) નું પ્રમાણ વધી જવું</h3>
+              <p>મોરબીના બોરના પાણીમાં ક્ષાર ખુબ વધુ હોય છે. ડિજિટલ ટીડીએસ પેન વડે પાણી ચેક કરાવતા જો આઉટપુટ પાણીનું TDS ૧૫૦ થી વધુ આવે, તો તેનો અર્થ એ છે કે મેમ્બ્રેન ઘસાઈ ગયું છે. તેને તાત્કાલિક બદલી નાખવું હિતાવહ છે જેથી પથરીની બીમારીથી બચી શકાય.</p>
+            </div>
+          </div>
+          
+          <div class="article-cta mt-4">
+            <a href="https://wa.me/919173096727?text=Hi%20Shivam%20Aqua%20Solution,%20I%20read%20your%20blog%20and%20I%20think%20my%20RO%20filter%20needs%20replacement." 
+               target="_blank" 
+               class="btn btn-whatsapp"
+               data-wa-en="Hi Shivam Aqua Solution, I read your blog and I think my RO filter needs replacement."
+               data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મેં આપનો બ્લોગ વાંચ્યો અને મને લાગે છે કે મારા RO ફિલ્ટરને બદલવાની જરૂર છે. મારે સર્વિસ બુક કરાવવી છે.">
+              <i data-lucide="message-square" class="fill-current"></i>
+              <span class="lang-en">Book Filter Service on WhatsApp</span>
+              <span class="lang-gu">વોટ્સએપ પર સર્વિસ બુક કરો</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-article-card glass-card mt-5" id="post-2">
+          <div class="article-meta">
+            <span class="meta-tag"><i data-lucide="calendar"></i> May 2026</span>
+            <span class="meta-tag"><i data-lucide="user"></i> By Dilip Bhai</span>
+          </div>
+          
+          <h2 class="article-title">
+            <span class="lang-en">The Health Benefits of Alkaline and Copper Charged Drinking Water</span>
+            <span class="lang-gu">કોપર ટેકનોલોજી અને આલ્કલાઇન શુદ્ધ પાણીના આશ્ચર્યજનક સ્વાસ્થ્ય લાભો</span>
+          </h2>
+          
+          <div class="article-body">
+            <div class="lang-en">
+              <p>While traditional RO purifiers are highly effective at removing impurities, they also strip away some essential minerals during filtration, making the water acidic. Modern RO purifiers integrate **Alkaline Cartridges** and **Active Copper Chambers** to restore these essential elements.</p>
+              
+              <h3>1. Maintaining Healthy pH Balance</h3>
+              <p>Normal tap water has a neutral pH of 7.0. Acidic diets, pollution, and carbonated beverages increase acidity inside our body. Alkaline RO purifiers raise the pH of water to a healthy 8.0 to 9.5. Drinking alkaline water helps neutralize excess acid in the stomach, reducing acid reflux and improving digestion.</p>
+              
+              <h3>2. Boost Immunity and Metabolism</h3>
+              <p>Water with active alkaline minerals is highly bio-available, meaning it is absorbed faster by body cells. Enhanced cellular hydration boosts energy levels, speeds up digestion, and flushes out metabolic toxins much faster.</p>
+              
+              <h3>3. Anti-Bacterial Power of Copper (Tambu)</h3>
+              <p>For centuries, Ayurveda has recommended storing water in copper vessels. Modern Active Copper filters run water through a certified copper charge chamber. Copper naturally deactivates viruses, bacteria, and fungi on contact, acting as a secondary natural disinfection barrier. It also helps reduce inflammation and supports joint health.</p>
+              
+              <h3>Recommendation</h3>
+              <p>When buying a new domestic RO system in Morbi, always look for models like the **Aqua 2090 Unique Elegant** or the **Olly Aqua Arise**, which feature built-in Copper + Zinc + Alkaline mineralizers to give you pure, sweet, and healthy water.</p>
+            </div>
+            
+            <div class="lang-gu">
+              <p>પરંપરાગત સાદા RO પ્યુરિફાયર પાણીમાંથી કચરો અને ક્ષાર સાફ કરવામાં ઉત્તમ છે, પરંતુ આ પ્રક્રિયામાં ઘણીવાર પાણી માટે જરૂરી એવા કુદરતી મિનરલ્સ પણ ઘટી જાય છે, જેનાથી પાણી એસિડિક બની શકે છે. આજના આધુનિક આરો ફિલ્ટર્સમાં **આલ્કલાઇન કાર્ટ્રિજ** અને **એક્ટિવ કોપર (તાંબા)** ની પ્લેટ ફીટ કરવામાં આવે છે, જેના અદ્ભુત ફાયદા છે:</p>
+              
+              <h3>૧. શરીરમાં એસિડિટીનું સંતુલન (pH બેલેન્સ) જાળવે છે</h3>
+              <p>આપણી લાઈફસ્ટાઈલ અને ખોરાકને લીધે પેટમાં એસિડિટીની તકલીફ સામાન્ય છે. આલ્કલાઇન RO પાણીના pH લેવલને વધારીને ૮ થી ૯.૫ ની વચ્ચે સેટ કરે છે. આ આલ્કલાઇન યુક્ત પાણી પીવાથી પેટમાં વધારાનું એસિડ શાંત થાય છે, ગેસ-એસિડિટીમાં રાહત મળે છે અને પાચનશક્તિ મજબૂત બને છે.</p>
+              
+              <h3>૨. રોગપ્રતિકારક શક્તિ અને સ્ફૂર્તિ વધારે છે</h3>
+              <p>આલ્કલાઇન મિનરલ્સવાળું પાણી શરીરના કોષોમાં ખુબ જ ઝડપથી શોષાઈ જાય છે. આનાથી શરીર હાઇડ્રેટેડ રહે છે, થાક ઓછો લાગે છે, મેટાબોલિઝમ સુધરે છે અને શરીરમાંથી હાનિકારક ઝેરી તત્વો સહેલાઈથી બહાર નીકળી જાય છે.</p>
+              
+              <h3>૩. સદીઓ જુનું તાંબાનું (કોપર) વિજ્ઞાન</h3>
+              <p>આપણા આયુર્વેદમાં તાંબાના વાસણમાં પાણી ભરી રાખવાનો ખાસ આગ્રહ છે. એક્ટિવ કોપર ફિલ્ટર આ જ પદ્ધતિથી પાણીને તાંબાના ગુણોથી સમૃદ્ધ કરે છે. કોપર પાણીમાં રહેલા વાયરસ અને બેક્ટેરિયાનો કુદરતી રીતે નાશ કરે છે. આ ઉપરાંત, કોપર સાંધાના દુખાવામાં રાહત આપવા અને ત્વચાને તેજસ્વી બનાવવામાં મદદ કરે છે.</p>
+              
+              <h3>અમારી સલાહ</h3>
+              <p>જો તમે મોરબીમાં નવું RO ખરીદવાનું વિચારતા હોવ, તો હંમેશા **એકવા ૨૦૯૦ યુનિક** અથવા **ઓલી એકવા અરાઇઝ** જેવા મોડલ જ પસંદ કરો, જેમાં કોપર અને આલ્કલાઇન ટેક્નોલોજી ઇન-બિલ્ટ હોય, જેથી તમારા પરિવારને શુદ્ધતા સાથે પૂરતું પોષણ પણ મળે.</p>
+            </div>
+          </div>
+          
+          <div class="article-cta mt-4">
+            <a href="https://wa.me/919173096727?text=Hi%20Shivam%20Aqua%20Solution,%20I%20want%20to%20know%20more%20about%20Alkaline%20and%20Copper%20RO%20purifiers." 
+               target="_blank" 
+               class="btn btn-whatsapp"
+               data-wa-en="Hi Shivam Aqua Solution, I want to know more about Alkaline and Copper RO purifiers."
+               data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મારે આલ્કલાઇન અને કોપર ટેકનોલોજીવાળા RO ફિલ્ટર્સ વિશે વધુ માહિતી મેળવવી છે. કૃપા કરીને મને મોડલ્સ અને કિંમત જણાવો.">
+              <i data-lucide="message-square" class="fill-current"></i>
+              <span class="lang-en">Inquire About Alkaline RO on WhatsApp</span>
+              <span class="lang-gu">આલ્કલાઇન RO માટે વોટ્સએપ પર પૂછપરછ કરો</span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-article-card glass-card mt-5" id="post-3">
+          <div class="article-meta">
+            <span class="meta-tag"><i data-lucide="calendar"></i> April 2026</span>
+            <span class="meta-tag"><i data-lucide="user"></i> By Dilip Bhai</span>
+          </div>
+          
+          <h2 class="article-title">
+            <span class="lang-en">Understanding Groundwater Quality and High TDS Levels in Morbi</span>
+            <span class="lang-gu">મોરબીના પાણીમાં ક્ષાર (TDS) ની અસરો અને તેનું યોગ્ય લેવલ કેટલું હોવું જોઈએ?</span>
+          </h2>
+          
+          <div class="article-body">
+            <div class="lang-en">
+              <p>Morbi is globally famous as a ceramic manufacturing hub. However, heavy industrialization and geographic conditions have deeply affected the groundwater table. The groundwater hardness, measured as Total Dissolved Solids (TDS), is extremely high across residential and industrial zones.</p>
+              
+              <h3>What is TDS?</h3>
+              <p>TDS refers to the inorganic salts (principally calcium, magnesium, potassium, sodium, bicarbonates, chlorides, and sulfates) dissolved in water. While body needs trace minerals, drinking water with extremely high TDS causes long-term health concerns.</p>
+              
+              <h3>Groundwater Reality in Morbi Areas</h3>
+              <ul>
+                <li><strong>Ravapar Road & Vavdi Road:</strong> Residential societies here report groundwater TDS between 1000 and 1500. Water feels hard, soap doesn't lather easily, and scaling is common on bathroom tiles.</li>
+                <li><strong>Mahendranagar & Shanala Road:</strong> Rapidly expanding suburbs experience TDS levels ranging from 1200 to 1800. Drinking this water raw can lead to kidney stones, hair fall, and dry skin.</li>
+                <li><strong>Lakhdhirpur Road & Ghuntu Road:</strong> Ceramic industrial belts show groundwater TDS reaching up to 2500+. Factories operating here require heavy-duty multi-stage commercial or industrial RO plants (250 LPH, 500 LPH, or 1000 LPH) to supply safe drinking water to labor quarters.</li>
+              </ul>
+              
+              <h3>What is the Ideal Drinking Water TDS?</h3>
+              <p>According to the World Health Organization (WHO), water below 300 TDS is excellent. Raw groundwater in Morbi is unsafe for direct drinking. A professionally maintained RO purifier uses a <strong>TDS Controller (Modulator)</strong> to stabilize the final drinking water between <strong>80 TDS and 120 TDS</strong>. This ensures that the water remains light, sweet, and retains just the right amount of healthy minerals.</p>
+            </div>
+            
+            <div class="lang-gu">
+              <p>મોરબી સિરામિક ઉદ્યોગ માટે આખા વિશ્વમાં જાણીતું છે. પરંતુ મોટા પાયે ઉદ્યોગો અને જમીનની ભૌગોલિક પરિસ્થિતિને કારણે અહીના ભોંયતળિયાના (બોરના) પાણી ખૂબ જ ક્ષારયુક્ત છે. પાણીમાં રહેલા આ ક્ષારને વૈજ્ઞાનિક ભાષામાં TDS (Total Dissolved Solids) કહેવામાં આવે છે. મોરબીના અલગ-અલગ વિસ્તારોમાં પાણીની સ્થિતિ ચિંતાજનક છે:</p>
+              
+              <h3>TDS શું છે?</h3>
+              <p>TDS એટલે પાણીમાં ઓગળેલા કેલ્શિયમ, મેગ્નેશિયમ, સોડિયમ, ક્લોરાઇડ અને સલ્ફેટ જેવા મિનરલ્સ. સામાન્ય માત્રામાં આ જરૂરી છે, પણ જો તેનું પ્રમાણ હદ બહાર વધી જાય તો તે શરીર માટે ઝેર સમાન બની જાય છે.</p>
+              
+              <h3>મોરબીના જુદા-જુદા વિસ્તારોમાં ક્ષારનું વાસ્તવિક પ્રમાણ</h3>
+              <ul>
+                <li><strong>રવાપર રોડ અને વાવડી રોડ:</strong> આ રહેણાંક વિસ્તારોની સોસાયટીઓમાં બોરના પાણીનું TDS સામાન્ય રીતે ૧૦૦૦ થી ૧૫૦૦ ની વચ્ચે નોંધાય છે. આ પાણી ઘણું ભારે હોય છે, સાબુનું ફીણ વળતું નથી અને નળ પર સફેદ ક્ષાર જામી જાય છે.</li>
+                <li><strong>મહેન્દ્રનગર અને શનાળા રોડ:</strong> આ ઝડપથી વિકસતા વિસ્તારોમાં TDS ૧૨૦૦ થી ૧૮૦૦ સુધી પહોંચે છે. આવું પાણી સીધું પીવાથી પથરીની ગંભીર બીમારી, વાળ ખરવા અને ચામડી સૂકી પડવાની સમસ્યાઓ થાય છે.</li>
+                <li><strong>લખધીરપુર રોડ અને ઘુંટુ રોડ:</strong> આ સિરામિક ફેક્ટરીવાળો બેલ્ટ છે, જ્યાં પાણીનો ક્ષાર ૨૫૦૦+ ટીડીએસ જેટલો અત્યંત વધારે જોવા મળે છે. અહી મજૂર ક્વાર્ટર્સ અને ફેક્ટરીના સ્ટાફ માટે ૨૫૦ LPH કે ૫૦૦ LPH ના હેવી કોમર્શિયલ RO પ્લાન્ટ નાખવા અનિવાર્ય બને છે.</li>
+              </ul>
+              
+              <h3>પીવા માટે યોગ્ય TDS લેવલ કેટલું હોવું જોઈએ?</h3>
+              <p>વર્લ્ડ હેલ્થ ઓર્ગેનાઈઝેશન (WHO) ના નિયમો મુજબ, ૩૦૦ થી ઓછું TDS પીવા માટે ઉત્તમ ગણાય છે. મોરબીનું બોરનું પાણી સીધું પીવાલાયક બિલકુલ નથી. એક યોગ્ય રીતે ટ્યુન કરેલ RO મશીન <strong>TDS કંટ્રોલર (મીટર)</strong> ની મદદથી શુદ્ધ કરેલા પાણીના ક્ષારને <strong>૮૦ થી ૧૨૦ TDS</strong> ની વચ્ચે સંતુલિત કરે છે. આ માપનું પાણી પીવામાં હલકું, સ્વાદમાં મીઠું અને સ્વાસ્થ્ય માટે સૌથી ઉત્તમ રહે છે.</p>
+            </div>
+          </div>
+          
+          <div class="article-cta mt-4">
+            <a href="https://wa.me/919173096727?text=Hi%20Shivam%20Aqua%20Solution,%20please%20tell%20me%20more%20about%20water%20testing%20in%20my%20area." 
+               target="_blank" 
+               class="btn btn-whatsapp"
+               data-wa-en="Hi Shivam Aqua Solution, please tell me more about water testing in my area."
+               data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મારે મારા ઘરે/ફેક્ટરીએ પાણીનું મફત ટીડીએસ (TDS) ચેક કરાવવું છે. કૃપા કરીને વિગતો જણાવો.">
+              <i data-lucide="message-square" class="fill-current"></i>
+              <span class="lang-en">Request Free Water TDS Testing</span>
+              <span class="lang-gu">પાણીના મફત TDS ચેકિંગ માટે અરજી કરો</span>
+            </a>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Back Link -->
+      <div class="text-center mt-6 mb-6">
+        <a href="index.html" class="btn btn-primary">
+          <i data-lucide="arrow-left"></i>
+          <span class="lang-en">Back to Home</span>
+          <span class="lang-gu">હોમ પેજ પર પાછા જાઓ</span>
+        </a>
+      </div>
+      
+    </div>
+  </main>
+
+    <!-- Footer Section & Contact Details -->
+  <footer class="footer-section" id="contact">
+    <div class="container footer-container">
+      <div class="footer-grid">
+        <!-- Brand Info -->
+        <div class="footer-brand">
+          <a href="index.html" class="logo-area">
+            <img src="assets/logo_without_bg.png" class="footer-logo" loading="lazy">
+            <div class="brand-text">
+              <span class="brand-name">Shivam Aqua</span>
+              <span class="brand-sub">Solution</span>
+            </div>
+          </a>
+          <p class="mt-4 brand-desc">
+            <span class="lang-en">Providing pure, sweet, and mineral-balanced drinking water to thousands of homes and ceramic factories in Morbi & Rajkot. Quality and service are our priorities.</span>
+            <span class="lang-gu">મોરબી અને રાજકોટમાં હજારો પરિવારો અને કારખાનાઓને અધતન ટેકનોલોજી દ્વારા શુદ્ધ, મીઠું અને મિનરલયુક્ત પાણી પૂરું પાડવું એ જ અમારો એકમાત્ર લક્ષ્ય છે.</span>
+          </p>
+          <div class="footer-social mt-4">
+            <a href="https://www.instagram.com/shivam_enterprise7691" target="_blank" aria-label="Instagram Account Link" class="social-instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="tel:+919173096727" aria-label="Call Dilip Bhai Directly" class="social-phone">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </a>
+            <a href="https://wa.me/919173096727" target="_blank" aria-label="WhatsApp Chat Link" class="social-whatsapp">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-square"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links">
+          <h3>
+            <span class="lang-en">Quick Links</span>
+            <span class="lang-gu">ક્વિક લિંક્સ</span>
+          </h3>
+          <ul class="footer-links-list">
+            <li>
+              <a href="index.html">
+                <span class="lang-en">Home</span>
+                <span class="lang-gu">મુખ્ય પૃષ્ઠ</span>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#services">
+                <span class="lang-en">Our Services</span>
+                <span class="lang-gu">અમારી સેવાઓ</span>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#products">
+                <span class="lang-en">Products</span>
+                <span class="lang-gu">પ્રોડક્ટ્સ</span>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#why-choose-us">
+                <span class="lang-en">Why Us</span>
+                <span class="lang-gu">શા માટે અમે</span>
+              </a>
+            </li>
+            <li>
+              <a href="index.html#faqs">
+                <span class="lang-en">FAQs</span>
+                <span class="lang-gu">પ્રશ્નોત્તરી</span>
+              </a>
+            </li>
+            <li>
+              <a href="blogs.html">
+                <span class="lang-en">Water Blogs</span>
+                <span class="lang-gu">બ્લોગ્સ</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contact Detail -->
+        <div class="footer-contact-details">
+          <h3>
+            <span class="lang-en">Contact Details</span>
+            <span class="lang-gu">સંપર્ક વિગતો</span>
+          </h3>
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <i data-lucide="user" class="text-turquoise"></i>
+              <div>
+                <p class="detail-title"><span class="lang-en">Proprietor</span><span class="lang-gu">માલિક</span></p>
+                <p class="detail-val"><span class="lang-en">Dilip Bhai</span><span class="lang-gu">દિલીપ ભાઈ</span></p>
+              </div>
+            </div>
+            
+            <div class="contact-detail-item">
+              <i data-lucide="phone-call" class="text-turquoise"></i>
+              <div>
+                <p class="detail-title"><span class="lang-en">Phone & WhatsApp</span><span class="lang-gu">ફોન અને વોટ્સએપ</span></p>
+                <a href="tel:+919173096727" class="detail-val link-val">+91 91730 96727</a>
+              </div>
+            </div>
+            
+            <div class="contact-detail-item">
+              <i data-lucide="map-pin" class="text-turquoise"></i>
+              <div>
+                <p class="detail-title"><span class="lang-en">Shop Address</span><span class="lang-gu">દુકાનનું સરનામું</span></p>
+                <p class="detail-val address-val">
+                  <span class="lang-en">Madhav Shopping, Vavdi Road, Near Kabir Aashram, Morbi - 363641, Gujarat, India.</span>
+                  <span class="lang-gu">વાવડી રોડ, મધવ શોપીંગ, કબીર આશ્રમ પાસે, મોરબી - ૩૬૩૬૪૧, ગુજરાત.</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Working Hours -->
+        <div class="footer-map">
+          <h3>
+            <span class="lang-en">Business Hours</span>
+            <span class="lang-gu">કામ કરવાનો સમય</span>
+          </h3>
+          <div class="contact-details-list">
+            <div class="contact-detail-item">
+              <i data-lucide="clock" class="text-turquoise"></i>
+              <div>
+                <p class="detail-title"><span class="lang-en">Timings</span><span class="lang-gu">સમયગાળો</span></p>
+                <p class="detail-val">
+                  <span class="lang-en">Monday - Saturday: 9:00 AM - 8:00 PM <br>(Sunday Closed)</span>
+                  <span class="lang-gu">સોમવાર થી શનિવાર: સવારે ૯:૦૦ થી રાત્રે ૮:૦૦ <br>(રવિવાર રજા)</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Copyright Area -->
+      <div class="footer-bottom text-center">
+        <p class="copyright-text">
+          &copy; 2026 Shivam Aqua Solution. All Rights Reserved. | Designed by <a href="https://shivrajsinh.in" target="_blank" class="designer-link">Shivrajsinh.in</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Actions for Mobile Pinned Bottom -->
+  <div class="floating-ctas">
+    <a href="tel:+919173096727" class="floating-btn float-call" aria-label="Call Dilip Bhai Now">
+      <i data-lucide="phone"></i>
+      <span class="lang-en">Call Now</span><span class="lang-gu">કોલ કરો</span>
+    </a>
+    <a href="https://wa.me/919173096727?text=Hi%20Shivam%20Aqua%20Solution,%20I%20need%20RO%20servicing%20at%20my%20address." 
+       target="_blank" 
+       class="floating-btn float-whatsapp" 
+       aria-label="WhatsApp Chat Now"
+       data-wa-en="Hi Shivam Aqua Solution, I need RO servicing at my address."
+       data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મને મારા સરનામા પર RO સર્વિસિંગની જરૂર છે.">
+      <i data-lucide="message-square" class="fill-current"></i>
+      <span class="lang-en">WhatsApp</span><span class="lang-gu">વોટ્સએપ</span>
+    </a>
+  </div>
+
+  <!-- Client-side Interactivity Script -->
+  <script src="script.js"></script>
+</body>
+</html>
