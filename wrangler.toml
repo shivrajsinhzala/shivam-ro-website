@@ -7,7 +7,7 @@ pages_build_output_dir = "."
 [[d1_databases]]
 binding = "DB"
 database_name = "shivam-products-db"
-database_id = "REPLACE_AFTER_CREATION"
+database_id = "f74f269b-6333-4970-8ccd-6ba29afb064a"
 
 # R2 Bucket — run: npx wrangler r2 bucket create shivam-product-images
 [[r2_buckets]]
