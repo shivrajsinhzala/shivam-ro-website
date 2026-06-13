@@ -1,0 +1,15 @@
+name = "shivam-ro-website"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "."
+
+# D1 Database — run: npx wrangler d1 create shivam-products-db
+# Then replace the database_id below with the output
+[[d1_databases]]
+binding = "DB"
+database_name = "shivam-products-db"
+database_id = "REPLACE_AFTER_CREATION"
+
+# R2 Bucket — run: npx wrangler r2 bucket create shivam-product-images
+[[r2_buckets]]
+binding = "IMAGES"
+bucket_name = "shivam-product-images"

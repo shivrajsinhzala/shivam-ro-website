@@ -3,711 +3,683 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Panel — Shivam Aqua Solution</title>
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin — Shivam Aqua Solution</title>
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;background:hsl(220,25%,96%);font-family:var(--font-body)}
+
+    /* ── LOGIN ───────────────────────────────────────── */
+    .al-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,hsl(220,60%,97%),hsl(200,50%,94%))}
+    .al-card{background:#fff;border-radius:20px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 24px 64px rgba(8,25,60,.1);border:1px solid rgba(0,150,255,.08);text-align:center}
+    .al-card img{height:60px;margin-bottom:20px}
+    .al-card h1{font-family:var(--font-display);font-size:1.7rem;color:var(--text-light-1);margin:0 0 6px}
+    .al-card p{font-size:.88rem;color:var(--text-light-3);margin:0 0 28px}
+    .al-err{display:none;background:rgba(220,0,0,.06);border:1px solid rgba(220,0,0,.15);border-radius:10px;padding:10px 14px;font-size:.84rem;color:hsl(0,80%,48%);margin-bottom:14px}
+    .al-inp{width:100%;padding:13px 16px;border:1.5px solid rgba(0,150,255,.15);border-radius:12px;font-size:1rem;font-family:var(--font-body);color:var(--text-light-1);background:hsl(220,30%,99%);outline:none;transition:border-color .2s;margin-bottom:14px;display:block;letter-spacing:3px}
+    .al-inp:focus{border-color:var(--color-primary);box-shadow:0 0 0 3px rgba(0,120,255,.08)}
+    .al-btn{width:100%;padding:14px;background:var(--color-primary);color:#fff;border:none;border-radius:12px;font-size:1rem;font-weight:700;font-family:var(--font-display);cursor:pointer;transition:background .2s}
+    .al-btn:hover{background:hsl(220,90%,38%)}
+    .sec-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:hsl(142,60%,35%);font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px}
+
+    /* ── DASHBOARD LAYOUT ─────────────────────────────── */
+    .adm-wrap{display:none;flex-direction:column;min-height:100vh}
+    .adm-topbar{background:#fff;border-bottom:1px solid rgba(0,150,255,.1);height:60px;display:flex;align-items:center;padding:0 20px;gap:14px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(8,25,60,.04)}
+    .adm-brand{display:flex;align-items:center;gap:10px;flex:1}
+    .adm-brand img{height:32px}
+    .adm-brand span{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text-light-1)}
+    .adm-brand small{font-size:.72rem;color:var(--text-light-3);font-weight:400;margin-left:8px}
+    .adm-body{display:flex;flex:1;height:calc(100vh - 60px);overflow:hidden}
+
+    /* ── SIDEBAR ──────────────────────────────────────── */
+    .adm-sidebar{width:280px;min-width:240px;background:#fff;border-right:1px solid rgba(0,150,255,.08);display:flex;flex-direction:column;overflow:hidden}
+    .sidebar-head{padding:14px 16px;border-bottom:1px solid rgba(0,150,255,.08);display:flex;align-items:center;justify-content:space-between}
+    .sidebar-head h3{font-family:var(--font-display);font-size:.88rem;font-weight:700;color:var(--text-light-1);margin:0}
+    .sidebar-list{flex:1;overflow-y:auto;padding:8px}
+    .ap-item{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:11px;cursor:pointer;transition:background .15s;border:2px solid transparent;margin-bottom:2px}
+    .ap-item:hover{background:hsl(220,30%,97%)}
+    .ap-item.active{background:rgba(0,120,255,.06);border-color:rgba(0,120,255,.15)}
+    .ap-thumb{width:42px;height:42px;border-radius:8px;object-fit:contain;background:hsl(200,30%,97%);border:1px solid rgba(0,150,255,.08);padding:3px;flex-shrink:0}
+    .ap-meta{flex:1;min-width:0}
+    .ap-meta h4{font-size:.8rem;font-weight:700;color:var(--text-light-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0 0 2px}
+    .ap-meta p{font-size:.68rem;color:var(--text-light-3);margin:0}
+    .ap-del{opacity:0;background:none;border:none;cursor:pointer;color:hsl(0,70%,55%);font-size:.9rem;padding:4px 6px;border-radius:6px;transition:opacity .15s,background .15s;flex-shrink:0}
+    .ap-item:hover .ap-del{opacity:1}
+    .ap-del:hover{background:rgba(220,0,0,.08)}
+
+    /* ── EDITOR ───────────────────────────────────────── */
+    .adm-editor{flex:1;overflow-y:auto;background:hsl(220,25%,96%);padding:24px;display:flex;flex-direction:column;gap:20px}
+    .editor-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;color:var(--text-light-3);gap:12px;min-height:60vh}
+    .editor-empty p{font-size:1rem;font-weight:600;margin:0}
+    .editor-empty small{font-size:.82rem}
+    .editor-panel{display:none;flex-direction:column;gap:20px}
+
+    /* ── TABS ─────────────────────────────────────────── */
+    .e-card{background:#fff;border-radius:16px;border:1px solid rgba(0,150,255,.08);box-shadow:0 4px 24px rgba(8,25,60,.04);overflow:hidden}
+    .e-tabs{display:flex;border-bottom:1px solid rgba(0,150,255,.08);background:hsl(220,25%,98%)}
+    .etab{padding:13px 18px;font-size:.82rem;font-weight:600;color:var(--text-light-3);cursor:pointer;border:none;background:none;border-bottom:2.5px solid transparent;transition:color .15s,border-color .15s;font-family:var(--font-body)}
+    .etab.active{color:var(--color-primary);border-bottom-color:var(--color-primary)}
+    .tab-pane{display:none;padding:22px}
+    .tab-pane.active{display:block}
+
+    /* ── FORM FIELDS ──────────────────────────────────── */
+    .frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+    .frow.one{grid-template-columns:1fr}
+    .ff{display:flex;flex-direction:column;gap:5px}
+    .fl{font-size:.73rem;font-weight:700;color:var(--text-light-2);text-transform:uppercase;letter-spacing:.5px}
+    .fl em{font-style:normal;font-weight:400;text-transform:none;font-size:.69rem;color:var(--text-light-3);letter-spacing:0;margin-left:4px}
+    .fi{padding:10px 13px;border:1.5px solid rgba(0,150,255,.12);border-radius:10px;font-size:.88rem;font-family:var(--font-body);color:var(--text-light-1);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
+    .fi:focus{border-color:var(--color-primary);box-shadow:0 0 0 3px rgba(0,120,255,.07)}
+    textarea.fi{resize:vertical;min-height:70px;line-height:1.55}
+    select.fi{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer}
+
+    /* ── IMAGE TAB ────────────────────────────────────── */
+    .drop-zone{border:2px dashed rgba(0,150,255,.25);border-radius:14px;padding:32px 20px;text-align:center;cursor:pointer;transition:all .2s;background:rgba(0,150,255,.02);margin-bottom:14px;position:relative}
+    .drop-zone:hover,.drop-zone.over{border-color:var(--color-primary);background:rgba(0,150,255,.05)}
+    .drop-zone input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+    .drop-zone p{font-size:.88rem;font-weight:600;color:var(--text-light-2);margin:8px 0 4px}
+    .drop-zone small{font-size:.75rem;color:var(--text-light-3)}
+    .upload-prog{display:none;background:rgba(0,150,255,.06);border-radius:10px;padding:11px 15px;font-size:.8rem;font-weight:600;color:var(--color-primary);margin-bottom:12px;align-items:center;gap:10px}
+    .upload-prog.show{display:flex}
+    .spin{width:15px;height:15px;border:2px solid rgba(0,150,255,.2);border-top-color:var(--color-primary);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+    .img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:10px;margin-bottom:12px}
+    .img-cell{position:relative;aspect-ratio:1;border-radius:10px;overflow:hidden;border:2px solid rgba(0,150,255,.1);background:hsl(200,30%,97%)}
+    .img-cell.primary{border-color:var(--color-primary)}
+    .img-cell img{width:100%;height:100%;object-fit:contain;padding:5px}
+    .img-cell-ov{position:absolute;inset:0;background:rgba(8,25,60,.45);display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px}
+    .img-cell:hover .img-cell-ov{display:flex}
+    .icb{background:#fff;border:none;border-radius:7px;padding:4px 10px;font-size:.7rem;font-weight:700;cursor:pointer;width:78%;color:var(--text-light-1)}
+    .icb.red{color:hsl(0,70%,50%)}
+    .img-primary-lbl{position:absolute;top:5px;left:5px;background:var(--color-primary);color:#fff;font-size:.58rem;font-weight:800;padding:2px 7px;border-radius:6px;text-transform:uppercase}
+    .url-manual{display:flex;gap:8px;align-items:center;margin-top:8px}
+    .url-manual .fi{flex:1}
+    .url-manual button{padding:10px 13px;background:rgba(0,120,255,.08);border:1.5px solid rgba(0,120,255,.15);border-radius:10px;font-size:.78rem;font-weight:600;color:var(--color-primary);cursor:pointer;white-space:nowrap;font-family:var(--font-body)}
+
+    /* ── DYN ROWS (features/specs) ────────────────────── */
+    .dyn-row{display:grid;gap:8px;align-items:center;margin-bottom:8px}
+    .dyn-row.feat{grid-template-columns:1fr 1fr auto}
+    .dyn-row.spec{grid-template-columns:1fr 1fr auto}
+    .del-btn{background:none;border:1.5px solid rgba(220,0,0,.15);border-radius:8px;color:hsl(0,70%,55%);cursor:pointer;width:32px;height:32px;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .15s}
+    .del-btn:hover{background:rgba(220,0,0,.07)}
+    .add-row-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 13px;background:rgba(0,120,255,.06);border:1.5px dashed rgba(0,120,255,.2);border-radius:9px;font-size:.78rem;font-weight:600;color:var(--color-primary);cursor:pointer;transition:all .15s;margin-top:4px;font-family:var(--font-body)}
+    .add-row-btn:hover{background:rgba(0,120,255,.1);border-style:solid}
+
+    /* ── LIVE PREVIEW ─────────────────────────────────── */
+    .preview-wrap{flex-shrink:0}
+    .preview-wrap h4{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text-light-3);margin:0 0 10px}
+    .prev-card{background:#fff;border:1px solid rgba(0,150,255,.1);border-radius:14px;overflow:hidden;width:200px;box-shadow:0 8px 24px rgba(8,25,60,.06)}
+    .prev-img-wrap{width:100%;aspect-ratio:4/3;background:hsl(200,30%,97%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+    .prev-img-wrap img{height:75%;object-fit:contain}
+    .prev-badge{position:absolute;top:7px;left:7px;background:var(--color-primary);color:#fff;font-size:.58rem;font-weight:800;padding:2px 8px;border-radius:10px;text-transform:uppercase;display:none}
+    .prev-body{padding:12px}
+    .prev-name{font-family:var(--font-display);font-weight:700;font-size:.85rem;color:var(--text-light-1);margin-bottom:3px}
+    .prev-tag{font-size:.7rem;color:var(--text-light-3);margin-bottom:8px}
+    .prev-pills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:10px}
+    .prev-pill{font-size:.62rem;padding:2px 7px;border-radius:20px;background:rgba(0,150,255,.06);border:1px solid rgba(0,150,255,.1);color:var(--color-secondary);font-weight:600}
+    .prev-cta{display:block;text-align:center;padding:7px;background:var(--color-primary);color:#fff;border-radius:7px;font-size:.72rem;font-weight:700}
+
+    /* ── SAVE BAR ─────────────────────────────────────── */
+    .save-bar{background:#fff;border-top:1px solid rgba(0,150,255,.08);padding:12px 22px;display:flex;align-items:center;gap:12px;position:sticky;bottom:0;z-index:50;box-shadow:0 -4px 16px rgba(8,25,60,.04);flex-shrink:0}
+    .sb{padding:10px 22px;border-radius:10px;font-size:.85rem;font-weight:700;font-family:var(--font-body);cursor:pointer;border:none;transition:all .15s;display:inline-flex;align-items:center;gap:7px}
+    .sb-p{background:var(--color-primary);color:#fff}
+    .sb-p:hover{background:hsl(220,90%,38%)}
+    .sb-s{background:hsl(142,65%,40%);color:#fff}
+    .sb-s:hover{background:hsl(142,65%,34%)}
+    .sb-o{background:transparent;color:var(--text-light-1);border:1.5px solid rgba(0,150,255,.18)}
+    .sb-o:hover{border-color:var(--color-primary);color:var(--color-primary)}
+    .sb-d{background:transparent;color:hsl(0,70%,52%);border:1.5px solid rgba(220,0,0,.18)}
+    .sb-d:hover{background:rgba(220,0,0,.05)}
+    .sb-status{margin-left:auto;font-size:.78rem;font-weight:600}
+
+    /* ── TOAST ────────────────────────────────────────── */
+    .toast{position:fixed;bottom:80px;left:50%;z-index:9999;transform:translateX(-50%) translateY(30px);opacity:0;background:hsl(222,30%,18%);color:#fff;padding:11px 22px;border-radius:50px;font-size:.84rem;font-weight:600;display:flex;align-items:center;gap:8px;transition:transform .3s cubic-bezier(.175,.885,.32,1.275),opacity .3s;pointer-events:none;white-space:nowrap}
+    .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+    .toast.ok{background:hsl(142,65%,38%)}
+    .toast.err{background:hsl(0,75%,48%)}
+
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ── EDITOR SPLIT LAYOUT ──────────────────────────── */
+    .editor-main-split{display:flex;gap:20px;align-items:flex-start}
+    .editor-form{flex:1;min-width:0}
+
+    @media(max-width:900px){
+      .adm-body{flex-direction:column;height:auto;overflow:visible}
+      .adm-sidebar{width:100%;min-width:unset;height:auto;border-right:none;border-bottom:1px solid rgba(0,150,255,.08)}
+      .frow{grid-template-columns:1fr}
+      .editor-main-split{flex-direction:column}
+      .prev-card{width:100%}
+    }
+  </style>
 </head>
-<body class="lang-en admin-body">
+<body>
 
-<!-- ============================================================
-     LOGIN SCREEN
-     ============================================================ -->
-<div id="login-screen" class="admin-login-wrap">
-  <div class="admin-login-card">
-    <img src="assets/logo.png" alt="Shivam Aqua Solution" class="admin-logo">
-    <h1>Admin Panel</h1>
-    <p>Enter your password to manage products</p>
-    <p id="login-error" class="admin-error">Wrong password. Please try again.</p>
-    <input type="password" id="login-password" class="admin-input"
-           placeholder="Enter password" autocomplete="current-password"
-           onkeydown="if(event.key==='Enter') doLogin()">
-    <button class="btn btn-primary w-full justify-center" onclick="doLogin()" style="margin-top:4px;">
-      Login →
-    </button>
-    <p style="margin-top:20px;font-size:0.75rem;color:var(--text-light-3);">
-      Shivam Aqua Solution &bull; Admin Access
-    </p>
+<!-- LOGIN -->
+<div id="login-screen" class="al-wrap">
+  <div class="al-card">
+    <img src="assets/logo.png" alt="Logo">
+    <h1>Product Admin</h1>
+    <p>Shivam Aqua Solution — Morbi</p>
+    <div id="al-err" class="al-err"></div>
+    <input type="password" id="al-pw" class="al-inp" placeholder="••••••••••"
+           autocomplete="current-password" onkeydown="if(event.key==='Enter') doLogin()">
+    <button class="al-btn" onclick="doLogin()">Login →</button>
+    <div style="margin-top:18px"><span class="sec-badge">🔒 Server-side Auth</span></div>
   </div>
 </div>
 
-<!-- ============================================================
-     DASHBOARD (hidden until logged in)
-     ============================================================ -->
-<div id="dashboard" style="display:none;">
+<!-- DASHBOARD -->
+<div id="dashboard" class="adm-wrap">
 
-  <!-- Header -->
-  <header class="admin-header">
-    <div class="admin-header-brand">
-      <img src="assets/logo.png" alt="Logo">
-      <span>Product Manager</span>
+  <div class="adm-topbar">
+    <div class="adm-brand">
+      <img src="assets/logo.png" alt="">
+      <span>Product Manager <small>Shivam Aqua Solution</small></span>
     </div>
-    <div class="admin-header-actions">
-      <span id="deploy-status" class="deploy-status" style="display:none;"></span>
-      <a href="index.html" target="_blank" class="admin-btn admin-btn-outline">
-        View Website ↗
-      </a>
-      <button class="admin-btn admin-btn-outline" onclick="doLogout()">Logout</button>
+    <span id="save-indicator" style="font-size:.78rem;font-weight:600;color:hsl(35,90%,42%);display:none">● Unsaved changes</span>
+    <a href="index.html" target="_blank" class="sb sb-o" style="font-size:.78rem;padding:7px 14px">View Website ↗</a>
+    <button class="sb sb-o" onclick="doLogout()" style="font-size:.78rem;padding:7px 14px">Logout</button>
+  </div>
+
+  <div class="adm-body">
+    <!-- Sidebar -->
+    <div class="adm-sidebar">
+      <div class="sidebar-head">
+        <h3>Products (<span id="pcount">0</span>)</h3>
+        <button class="sb sb-p" onclick="newProduct()" style="font-size:.74rem;padding:6px 12px">+ New</button>
+      </div>
+      <div id="sidebar-list" class="sidebar-list"></div>
     </div>
-  </header>
 
-  <main class="admin-main">
+    <!-- Editor -->
+    <div class="adm-editor" id="adm-editor">
+      <div class="editor-empty" id="editor-empty">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".25"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <p>Select a product to edit</p>
+        <small>or click <strong>+ New</strong> to add one</small>
+      </div>
 
-    <!-- GitHub Settings Banner (shown if not configured) -->
-    <div id="gh-banner" class="admin-settings-wrap" style="display:none;margin-bottom:28px;border-left:4px solid var(--color-primary);">
-      <h3>⚙️ One-time Setup Required</h3>
-      <p style="font-size:0.88rem;color:var(--text-light-2);margin-bottom:16px;">
-        To save changes automatically to your website, enter your GitHub details below.
-        This is a one-time setup — it will be saved on this device.
-      </p>
-      <div class="form-row">
-        <div class="form-field">
-          <label class="form-label">GitHub Repo Owner <span>(your GitHub username)</span></label>
-          <input type="text" id="gh-owner" class="admin-input" placeholder="e.g. shivrajsinhzala" style="margin-bottom:0;">
+      <div id="editor-panel" class="editor-panel">
+        <div class="editor-main-split">
+          <div class="editor-form">
+            <div class="e-card">
+              <div class="e-tabs">
+                <button class="etab active" onclick="switchTab('basic',this)">📝 Basic Info</button>
+                <button class="etab" onclick="switchTab('images',this)">🖼 Images</button>
+                <button class="etab" onclick="switchTab('specs',this)">⚙ Features & Specs</button>
+                <button class="etab" onclick="switchTab('seo',this)">🔍 SEO</button>
+              </div>
+
+              <!-- BASIC -->
+              <div id="tab-basic" class="tab-pane active">
+                <div class="frow">
+                  <div class="ff">
+                    <label class="fl">Product ID <em>(URL slug)</em></label>
+                    <input id="f-id" class="fi" placeholder="aqua-era" oninput="markDirty()">
+                  </div>
+                  <div class="ff">
+                    <label class="fl">Category</label>
+                    <select id="f-cat" class="fi" onchange="updatePreview();markDirty()">
+                      <option value="domestic">Domestic RO</option>
+                      <option value="commercial">Commercial RO</option>
+                      <option value="spares">Filters & Spares</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="frow">
+                  <div class="ff"><label class="fl">Name — English</label><input id="f-ne" class="fi" placeholder="Aqua Era Cabinet" oninput="updatePreview();markDirty()"></div>
+                  <div class="ff"><label class="fl">Name — Gujarati</label><input id="f-ng" class="fi" placeholder="એકવા ઇરા" oninput="markDirty()"></div>
+                </div>
+                <div class="frow">
+                  <div class="ff"><label class="fl">Badge <em>(optional)</em></label><input id="f-be" class="fi" placeholder="Best Seller" oninput="updatePreview();markDirty()"></div>
+                  <div class="ff"><label class="fl">Badge — Gujarati</label><input id="f-bg" class="fi" placeholder="બેસ્ટ સેલર" oninput="markDirty()"></div>
+                </div>
+                <div class="frow">
+                  <div class="ff"><label class="fl">Tagline — English</label><input id="f-te" class="fi" placeholder="Pure. Premium. Powerful." oninput="updatePreview();markDirty()"></div>
+                  <div class="ff"><label class="fl">Tagline — Gujarati</label><input id="f-tg" class="fi" placeholder="શુદ્ધ. પ્રીમિયમ." oninput="markDirty()"></div>
+                </div>
+                <div class="frow">
+                  <div class="ff"><label class="fl">Capacity — English</label><input id="f-ce" class="fi" placeholder="9 Ltrs Storage Tank" oninput="updatePreview();markDirty()"></div>
+                  <div class="ff"><label class="fl">Capacity — Gujarati</label><input id="f-cg" class="fi" placeholder="૯ લીટર ટાંકી" oninput="markDirty()"></div>
+                </div>
+                <div class="frow">
+                  <div class="ff"><label class="fl">Warranty — English</label><input id="f-we" class="fi" placeholder="1 Year Warranty" oninput="updatePreview();markDirty()"></div>
+                  <div class="ff"><label class="fl">Warranty — Gujarati</label><input id="f-wg" class="fi" placeholder="૧ વર્ષ વોરંટી" oninput="markDirty()"></div>
+                </div>
+                <div class="frow one"><div class="ff"><label class="fl">Description — English</label><textarea id="f-de" class="fi" placeholder="Describe this product..." oninput="markDirty()"></textarea></div></div>
+                <div class="frow one"><div class="ff"><label class="fl">Description — Gujarati</label><textarea id="f-dg" class="fi" placeholder="ગુજરાતીમાં વર્ણન..." oninput="markDirty()"></textarea></div></div>
+              </div>
+
+              <!-- IMAGES -->
+              <div id="tab-images" class="tab-pane">
+                <p style="font-size:.83rem;color:var(--text-light-3);margin:0 0 14px">
+                  <strong>First image = main photo</strong> on listing card. Add more for a gallery on the product page.
+                </p>
+                <div id="drop-zone" class="drop-zone" ondragover="doDragOver(event)" ondragleave="doDragLeave()" ondrop="doDrop(event)">
+                  <input type="file" accept="image/*" multiple onchange="onFilePick(event)">
+                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".4"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <p>Drag & drop images here, or click to browse</p>
+                  <small>PNG, JPG, WebP — uploaded to Cloudflare R2</small>
+                </div>
+                <div id="upload-prog" class="upload-prog"><div class="spin"></div><span id="upload-msg">Uploading...</span></div>
+                <div id="img-grid" class="img-grid"></div>
+                <details><summary style="font-size:.78rem;font-weight:600;color:var(--text-light-3);cursor:pointer;margin-bottom:8px">Or enter URL manually</summary>
+                  <div class="url-manual">
+                    <input type="text" id="manual-url" class="fi" placeholder="assets/photo.png or https://...">
+                    <button onclick="addManualUrl()">Add</button>
+                  </div>
+                </details>
+              </div>
+
+              <!-- SPECS -->
+              <div id="tab-specs" class="tab-pane">
+                <h4 style="font-family:var(--font-display);font-size:.86rem;color:var(--text-light-1);margin:0 0 10px">Key Features</h4>
+                <div id="feat-list"></div>
+                <button class="add-row-btn" onclick="addFeat()">+ Add Feature</button>
+                <h4 style="font-family:var(--font-display);font-size:.86rem;color:var(--text-light-1);margin:22px 0 10px">Specs — English</h4>
+                <div id="spec-en"></div>
+                <button class="add-row-btn" onclick="addSpec('en')">+ Add Row</button>
+                <h4 style="font-family:var(--font-display);font-size:.86rem;color:var(--text-light-1);margin:22px 0 10px">Specs — Gujarati</h4>
+                <div id="spec-gu"></div>
+                <button class="add-row-btn" onclick="addSpec('gu')">+ Add Row</button>
+              </div>
+
+              <!-- SEO -->
+              <div id="tab-seo" class="tab-pane">
+                <p style="font-size:.82rem;color:var(--text-light-3);margin:0 0 18px">These appear in Google search results. Leave blank to auto-generate.</p>
+                <div class="frow one"><div class="ff"><label class="fl">Page Title <em>(~60 chars)</em></label><input id="f-mt" class="fi" placeholder="Aqua Era Cabinet - Shivam Aqua Solution Morbi" oninput="markDirty()"></div></div>
+                <div class="frow one"><div class="ff"><label class="fl">Meta Description <em>(~155 chars)</em></label><textarea id="f-md" class="fi" style="min-height:72px" placeholder="Buy Aqua Era Cabinet RO water purifier in Morbi..." oninput="markDirty()"></textarea></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- LIVE PREVIEW -->
+          <div class="preview-wrap">
+            <h4>Live Preview</h4>
+            <div class="prev-card">
+              <div class="prev-img-wrap">
+                <img id="pv-img" src="assets/product_domestic.png" alt="">
+                <span id="pv-badge" class="prev-badge"></span>
+              </div>
+              <div class="prev-body">
+                <div id="pv-name" class="prev-name">Product Name</div>
+                <div id="pv-tag"  class="prev-tag">Tagline</div>
+                <div class="prev-pills">
+                  <span id="pv-cap" class="prev-pill">Tank</span>
+                  <span id="pv-war" class="prev-pill">Warranty</span>
+                </div>
+                <span class="prev-cta">View Details →</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="form-field">
-          <label class="form-label">GitHub Repo Name</label>
-          <input type="text" id="gh-repo" class="admin-input" placeholder="e.g. shivam-ro-website" style="margin-bottom:0;">
+
+        <!-- SAVE BAR -->
+        <div class="save-bar">
+          <button class="sb sb-p" onclick="saveProduct()">✓ Save Product</button>
+          <button class="sb sb-d" onclick="discardProduct()">Discard</button>
+          <span id="sb-status" class="sb-status"></span>
         </div>
       </div>
-      <div class="form-field" style="margin-top:14px;">
-        <label class="form-label">GitHub Personal Access Token <span>(needs "repo" permission)</span></label>
-        <input type="password" id="gh-token" class="admin-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="margin-bottom:0;">
-        <p style="font-size:0.75rem;color:var(--text-light-3);margin-top:6px;">
-          Create one at: <a href="https://github.com/settings/tokens/new" target="_blank" style="color:var(--color-primary);">github.com/settings/tokens</a>
-          → select "repo" scope → copy the token here.
-        </p>
-      </div>
-      <button class="admin-btn admin-btn-primary" onclick="saveGHSettings()" style="margin-top:4px;">
-        Save Settings
-      </button>
-    </div>
-
-    <!-- Products Section -->
-    <div class="admin-section-title">
-      <span>📦 Products (<span id="product-count">0</span>)</span>
-      <button class="admin-btn admin-btn-primary" onclick="openDrawer(null)">
-        + Add New Product
-      </button>
-    </div>
-
-    <div id="admin-product-list" class="admin-product-list">
-      <!-- rendered by JS -->
-    </div>
-
-    <!-- Save to GitHub button -->
-    <div style="text-align:center;padding:20px 0 40px;">
-      <button class="admin-btn admin-btn-success" onclick="saveToGitHub()" style="padding:14px 36px;font-size:1rem;">
-        💾 Save All Changes to Website
-      </button>
-      <p style="font-size:0.8rem;color:var(--text-light-3);margin-top:10px;">
-        This will commit products.json to GitHub. Website updates in ~60 seconds.
-      </p>
-    </div>
-
-  </main>
-</div>
-
-<!-- ============================================================
-     PRODUCT EDIT / ADD DRAWER
-     ============================================================ -->
-<div id="drawer-overlay" class="admin-modal-overlay" onclick="if(event.target===this) closeDrawer()">
-  <div class="admin-drawer">
-    <h2 id="drawer-title">Add New Product</h2>
-
-    <div class="form-row">
-      <div class="form-field">
-        <label class="form-label">Product ID <span>(URL slug, no spaces)</span></label>
-        <input type="text" id="f-id" class="admin-input" placeholder="e.g. aqua-era" style="margin-bottom:0;">
-      </div>
-      <div class="form-field">
-        <label class="form-label">Category</label>
-        <select id="f-category" class="admin-input" style="margin-bottom:0;">
-          <option value="domestic">Domestic RO</option>
-          <option value="commercial">Commercial RO</option>
-          <option value="spares">Filters & Spares</option>
-        </select>
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-field">
-        <label class="form-label">Name (English)</label>
-        <input type="text" id="f-name-en" class="admin-input" placeholder="Aqua Era Cabinet" style="margin-bottom:0;">
-      </div>
-      <div class="form-field">
-        <label class="form-label">Name (Gujarati)</label>
-        <input type="text" id="f-name-gu" class="admin-input" placeholder="એકવા ઇરા" style="margin-bottom:0;">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-field">
-        <label class="form-label">Badge (English) <span>(optional)</span></label>
-        <input type="text" id="f-badge-en" class="admin-input" placeholder="Best Seller" style="margin-bottom:0;">
-      </div>
-      <div class="form-field">
-        <label class="form-label">Badge (Gujarati) <span>(optional)</span></label>
-        <input type="text" id="f-badge-gu" class="admin-input" placeholder="બેસ્ટ સેલર" style="margin-bottom:0;">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-field">
-        <label class="form-label">Tagline (English)</label>
-        <input type="text" id="f-tagline-en" class="admin-input" placeholder="Pure. Premium. Powerful." style="margin-bottom:0;">
-      </div>
-      <div class="form-field">
-        <label class="form-label">Tagline (Gujarati)</label>
-        <input type="text" id="f-tagline-gu" class="admin-input" placeholder="શુદ્ધ. પ્રીમિયમ." style="margin-bottom:0;">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-field">
-        <label class="form-label">Capacity (English)</label>
-        <input type="text" id="f-capacity-en" class="admin-input" placeholder="9 Ltrs Storage Tank" style="margin-bottom:0;">
-      </div>
-      <div class="form-field">
-        <label class="form-label">Capacity (Gujarati)</label>
-        <input type="text" id="f-capacity-gu" class="admin-input" placeholder="૯ લીટર ટાંકી" style="margin-bottom:0;">
-      </div>
-    </div>
-
-    <div class="form-row">
-      <div class="form-field">
-        <label class="form-label">Warranty (English)</label>
-        <input type="text" id="f-warranty-en" class="admin-input" placeholder="1 Year Complete Warranty" style="margin-bottom:0;">
-      </div>
-      <div class="form-field">
-        <label class="form-label">Warranty (Gujarati)</label>
-        <input type="text" id="f-warranty-gu" class="admin-input" placeholder="૧ વર્ષ પૂરી વોરંટી" style="margin-bottom:0;">
-      </div>
-    </div>
-
-    <div class="form-field">
-      <label class="form-label">Description (English)</label>
-      <textarea id="f-desc-en" class="admin-input" placeholder="Describe the product in English..." style="margin-bottom:0;"></textarea>
-    </div>
-
-    <div class="form-field">
-      <label class="form-label">Description (Gujarati)</label>
-      <textarea id="f-desc-gu" class="admin-input" placeholder="ગુજરાતીમાં વર્ણન..." style="margin-bottom:0;"></textarea>
-    </div>
-
-    <!-- Product Images -->
-    <div class="form-field">
-      <label class="form-label">
-        Product Images <span>(URLs — add multiple for gallery)</span>
-      </label>
-      <div id="image-url-list" class="image-url-list"></div>
-      <button type="button" class="admin-btn admin-btn-outline" onclick="addImageRow()" style="font-size:0.8rem;padding:6px 12px;">
-        + Add Image URL
-      </button>
-      <p style="font-size:0.75rem;color:var(--text-light-3);margin-top:6px;">
-        Use relative paths like <code>assets/my-product.png</code> or full URLs.
-        First image = main photo shown on product listing.
-      </p>
-    </div>
-
-    <!-- Key Features -->
-    <div class="form-field">
-      <label class="form-label">Key Features <span>(one per row)</span></label>
-      <div id="features-list" class="spec-row-list"></div>
-      <button type="button" class="admin-btn admin-btn-outline" onclick="addFeatureRow()" style="font-size:0.8rem;padding:6px 12px;">
-        + Add Feature
-      </button>
-    </div>
-
-    <!-- Specs EN -->
-    <div class="form-field">
-      <label class="form-label">Specs — English <span>(label : value)</span></label>
-      <div id="specs-en-list" class="spec-row-list"></div>
-      <button type="button" class="admin-btn admin-btn-outline" onclick="addSpecRow('en')" style="font-size:0.8rem;padding:6px 12px;">
-        + Add Spec Row
-      </button>
-    </div>
-
-    <!-- Specs GU -->
-    <div class="form-field">
-      <label class="form-label">Specs — Gujarati <span>(label : value)</span></label>
-      <div id="specs-gu-list" class="spec-row-list"></div>
-      <button type="button" class="admin-btn admin-btn-outline" onclick="addSpecRow('gu')" style="font-size:0.8rem;padding:6px 12px;">
-        + Add Spec Row
-      </button>
-    </div>
-
-    <!-- SEO -->
-    <div class="form-field">
-      <label class="form-label">Meta Title <span>(for search engines)</span></label>
-      <input type="text" id="f-meta-title" class="admin-input" placeholder="Aqua Era Cabinet - Shivam Aqua Solution Morbi" style="margin-bottom:0;">
-    </div>
-    <div class="form-field">
-      <label class="form-label">Meta Description</label>
-      <textarea id="f-meta-desc" class="admin-input" placeholder="Buy Aqua Era Cabinet RO water purifier in Morbi..." style="margin-bottom:0;min-height:60px;"></textarea>
-    </div>
-
-    <div class="drawer-footer">
-      <button class="admin-btn admin-btn-primary" onclick="saveProduct()" style="flex:1;justify-content:center;">
-        ✓ Save Product
-      </button>
-      <button class="admin-btn admin-btn-outline" onclick="closeDrawer()">Cancel</button>
     </div>
   </div>
 </div>
 
-<!-- Toast notification -->
-<div id="toast" class="admin-toast"></div>
+<div id="toast" class="toast"></div>
 
 <script>
-// ============================================================
-// CONFIG & STATE
-// ============================================================
-const ADMIN_PASSWORD = '9173096727'; // Dilip Bhai's number
-let products = [];
-let editingId = null; // null = new product, string = editing existing
+// ── CONFIG ────────────────────────────────────────────────
+const API = '/api';
 
-// ============================================================
-// LOGIN
-// ============================================================
-function doLogin() {
-  const val = document.getElementById('login-password').value.trim();
-  if (val === ADMIN_PASSWORD) {
-    document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('dashboard').style.display = 'block';
-    sessionStorage.setItem('admin-auth', '1');
-    initDashboard();
-  } else {
-    document.getElementById('login-error').style.display = 'block';
-    document.getElementById('login-password').value = '';
-    document.getElementById('login-password').focus();
+// ── AUTH (server-side SHA-256 + JWT) ─────────────────────
+let token = sessionStorage.getItem('adm-token') || '';
+let loginAttempts = parseInt(localStorage.getItem('adm-attempts') || '0');
+let lockoutUntil  = parseInt(localStorage.getItem('adm-lockout-until') || '0');
+
+async function doLogin() {
+  if (Date.now() < lockoutUntil) {
+    const m = Math.ceil((lockoutUntil - Date.now()) / 60000);
+    showErr(`Too many attempts. Try again in ${m} min.`); return;
   }
+  const pw = document.getElementById('al-pw').value;
+  if (!pw) { showErr('Enter password'); return; }
+
+  try {
+    const r = await fetch(`${API}/auth`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pw })
+    });
+    if (r.ok) {
+      const { token: t } = await r.json();
+      token = t;
+      sessionStorage.setItem('adm-token', t);
+      loginAttempts = 0;
+      localStorage.setItem('adm-attempts', '0');
+      localStorage.removeItem('adm-lockout-until');
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('dashboard').style.display = 'flex';
+      initDashboard();
+    } else {
+      loginAttempts++;
+      localStorage.setItem('adm-attempts', loginAttempts);
+      if (loginAttempts >= 5) {
+        lockoutUntil = Date.now() + 30 * 60 * 1000;
+        localStorage.setItem('adm-lockout-until', lockoutUntil);
+        showErr('Account locked for 30 minutes.');
+      } else {
+        showErr(`Wrong password. ${5 - loginAttempts} attempts left.`);
+      }
+      document.getElementById('al-pw').value = '';
+    }
+  } catch { showErr('Could not reach server. Are you online?'); }
+}
+
+function showErr(msg) {
+  const el = document.getElementById('al-err');
+  el.textContent = msg; el.style.display = 'block';
 }
 
 function doLogout() {
-  sessionStorage.removeItem('admin-auth');
+  sessionStorage.removeItem('adm-token'); token = '';
   location.reload();
 }
 
-// Auto-login if session active
-if (sessionStorage.getItem('admin-auth') === '1') {
+// Auto-login if session token exists and seems valid
+if (token) {
   document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('dashboard').style.display = 'block';
+  document.getElementById('dashboard').style.display = 'flex';
   initDashboard();
 }
 
-// ============================================================
-// DASHBOARD INIT
-// ============================================================
-async function initDashboard() {
-  // Check GitHub settings
-  const ghOwner = localStorage.getItem('gh-owner');
-  const ghRepo  = localStorage.getItem('gh-repo');
-  const ghToken = localStorage.getItem('gh-token');
+// ── STATE ─────────────────────────────────────────────────
+let products = [];
+let editingId = null;
+let editImages = [];
+let dirty = false;
 
-  if (!ghOwner || !ghRepo || !ghToken) {
-    document.getElementById('gh-banner').style.display = 'block';
-  } else {
-    document.getElementById('gh-owner').value = ghOwner;
-    document.getElementById('gh-repo').value  = ghRepo;
-  }
-
-  // Load products
-  await loadProducts();
-}
+// ── INIT ──────────────────────────────────────────────────
+async function initDashboard() { await loadProducts(); }
 
 async function loadProducts() {
   try {
-    const resp = await fetch('./products.json?v=' + Date.now());
-    products = await resp.json();
-    renderProductList();
-  } catch (e) {
-    showToast('Failed to load products.json', 'error');
-  }
+    const r = await apiFetch(`${API}/products`);
+    products = await r.json();
+    renderSidebar();
+  } catch { showToast('Failed to load products', 'err'); }
 }
 
-// ============================================================
-// RENDER PRODUCT LIST
-// ============================================================
-function renderProductList() {
-  const list = document.getElementById('admin-product-list');
-  document.getElementById('product-count').textContent = products.length;
-
-  if (!products.length) {
-    list.innerHTML = '<p style="text-align:center;color:var(--text-light-3);padding:40px;">No products yet. Add your first one!</p>';
-    return;
+async function apiFetch(url, opts = {}) {
+  if (token) {
+    opts.headers = opts.headers || {};
+    opts.headers['Authorization'] = `Bearer ${token}`;
   }
+  const r = await fetch(url, opts);
+  if (r.status === 401) { doLogout(); throw new Error('Unauthorized'); }
+  return r;
+}
 
-  list.innerHTML = products.map((p, idx) => {
-    const img = (p.images && p.images[0]) ? p.images[0] : 'assets/product_domestic.png';
-    const catLabel = { domestic:'Domestic', commercial:'Commercial', spares:'Spares' }[p.category] || p.category;
-    return `
-      <div class="admin-product-row" id="prow-${p.id}">
-        <img src="${img}" alt="${p.name_en}" class="admin-product-thumb"
-             onerror="this.src='assets/product_domestic.png'">
-        <div class="admin-product-meta">
-          <h4>${p.name_en}</h4>
-          <p>${p.name_gu} &bull; ${p.tagline_en || ''}</p>
-        </div>
-        <span class="admin-badge-pill">${catLabel}</span>
-        <div class="admin-row-actions">
-          <button class="admin-btn admin-btn-outline" onclick="moveProduct(${idx}, -1)" title="Move Up">↑</button>
-          <button class="admin-btn admin-btn-outline" onclick="moveProduct(${idx}, 1)"  title="Move Down">↓</button>
-          <button class="admin-btn admin-btn-outline" onclick="openDrawer('${p.id}')">Edit</button>
-          <button class="admin-btn admin-btn-danger" onclick="deleteProduct('${p.id}')">Delete</button>
-        </div>
-      </div>
-    `;
+// ── SIDEBAR ───────────────────────────────────────────────
+function renderSidebar() {
+  document.getElementById('pcount').textContent = products.length;
+  document.getElementById('sidebar-list').innerHTML = products.map((p, i) => {
+    const img = p.images?.[0] || 'assets/product_domestic.png';
+    const active = editingId === p.id ? 'active' : '';
+    return `<div class="ap-item ${active}" id="si-${p.id}" onclick="editProduct('${p.id}')">
+      <img class="ap-thumb" src="${img}" onerror="this.src='assets/product_domestic.png'">
+      <div class="ap-meta"><h4>${p.name_en}</h4><p>${p.category} · ${p.images?.length||1} img</p></div>
+      <button class="ap-del" onclick="event.stopPropagation();deleteProduct('${p.id}')" title="Delete">✕</button>
+    </div>`;
   }).join('');
 }
 
-// ============================================================
-// MOVE / DELETE
-// ============================================================
-function moveProduct(idx, dir) {
-  const newIdx = idx + dir;
-  if (newIdx < 0 || newIdx >= products.length) return;
-  [products[idx], products[newIdx]] = [products[newIdx], products[idx]];
-  renderProductList();
-  showToast('Order updated. Click "Save All Changes" to publish.');
+// ── EDITOR ────────────────────────────────────────────────
+function switchTab(name, btn) {
+  document.querySelectorAll('.etab').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
 }
 
-function deleteProduct(id) {
-  if (!confirm(`Delete "${products.find(p=>p.id===id)?.name_en}"? This cannot be undone.`)) return;
-  products = products.filter(p => p.id !== id);
-  renderProductList();
-  showToast('Product deleted. Click "Save All Changes" to publish.');
+function showPanel() {
+  document.getElementById('editor-empty').style.display = 'none';
+  document.getElementById('editor-panel').style.display = 'flex';
 }
 
-// ============================================================
-// DRAWER OPEN / CLOSE
-// ============================================================
-function openDrawer(productId) {
-  editingId = productId;
-  const overlay = document.getElementById('drawer-overlay');
-  overlay.classList.add('open');
+function editProduct(id) {
+  if (dirty && !confirm('You have unsaved changes. Discard them?')) return;
+  editingId = id;
+  const p = products.find(x => x.id === id);
+  if (!p) return;
 
-  if (productId) {
-    // Edit mode
-    const p = products.find(x => x.id === productId);
-    document.getElementById('drawer-title').textContent = `Edit: ${p.name_en}`;
-    document.getElementById('f-id').value         = p.id;
-    document.getElementById('f-id').disabled      = true; // don't change ID
-    document.getElementById('f-category').value   = p.category || 'domestic';
-    document.getElementById('f-name-en').value    = p.name_en || '';
-    document.getElementById('f-name-gu').value    = p.name_gu || '';
-    document.getElementById('f-badge-en').value   = p.badge_en || '';
-    document.getElementById('f-badge-gu').value   = p.badge_gu || '';
-    document.getElementById('f-tagline-en').value = p.tagline_en || '';
-    document.getElementById('f-tagline-gu').value = p.tagline_gu || '';
-    document.getElementById('f-capacity-en').value = p.capacity_en || '';
-    document.getElementById('f-capacity-gu').value  = p.capacity_gu || '';
-    document.getElementById('f-warranty-en').value  = p.warranty_en || '';
-    document.getElementById('f-warranty-gu').value  = p.warranty_gu || '';
-    document.getElementById('f-desc-en').value    = p.description_en || '';
-    document.getElementById('f-desc-gu').value    = p.description_gu || '';
-    document.getElementById('f-meta-title').value = p.meta_title || '';
-    document.getElementById('f-meta-desc').value  = p.meta_desc || '';
+  setVal('f-id', p.id); document.getElementById('f-id').disabled = true;
+  setVal('f-cat', p.category);
+  setVal('f-ne', p.name_en); setVal('f-ng', p.name_gu);
+  setVal('f-be', p.badge_en); setVal('f-bg', p.badge_gu);
+  setVal('f-te', p.tagline_en); setVal('f-tg', p.tagline_gu);
+  setVal('f-ce', p.capacity_en); setVal('f-cg', p.capacity_gu);
+  setVal('f-we', p.warranty_en); setVal('f-wg', p.warranty_gu);
+  setVal('f-de', p.description_en); setVal('f-dg', p.description_gu);
+  setVal('f-mt', p.meta_title); setVal('f-md', p.meta_desc);
 
-    // Images
-    buildImageRows(p.images || []);
-    // Features
-    buildFeatureRows(p.features_en || [], p.features_gu || []);
-    // Specs
-    buildSpecRows('en', p.specs_en || {});
-    buildSpecRows('gu', p.specs_gu || {});
-  } else {
-    // Add mode
-    document.getElementById('drawer-title').textContent = 'Add New Product';
-    document.getElementById('f-id').disabled = false;
-    clearDrawerForm();
-    buildImageRows(['assets/product_domestic.png']);
-    buildFeatureRows([], []);
-    buildSpecRows('en', {});
-    buildSpecRows('gu', {});
-  }
+  editImages = [...(p.images || ['assets/product_domestic.png'])];
+  renderImgGrid();
+  buildFeatRows(p.features_en || [], p.features_gu || []);
+  buildSpecRows('en', p.specs_en || {}); buildSpecRows('gu', p.specs_gu || {});
+
+  showPanel(); updatePreview(); clearDirty();
+  document.querySelectorAll('.ap-item').forEach(el => el.classList.remove('active'));
+  document.getElementById('si-' + id)?.classList.add('active');
+  switchTab('basic', document.querySelector('.etab'));
 }
 
-function closeDrawer() {
-  document.getElementById('drawer-overlay').classList.remove('open');
-  editingId = null;
+function newProduct() {
+  if (dirty && !confirm('You have unsaved changes. Discard them?')) return;
+  editingId = '__new__';
+  document.getElementById('f-id').disabled = false;
+  ['f-id','f-ne','f-ng','f-be','f-bg','f-te','f-tg','f-ce','f-cg',
+   'f-we','f-wg','f-de','f-dg','f-mt','f-md'].forEach(id => setVal(id, ''));
+  document.getElementById('f-cat').value = 'domestic';
+  editImages = []; renderImgGrid();
+  buildFeatRows([], []); buildSpecRows('en', {}); buildSpecRows('gu', {});
+  showPanel(); updatePreview(); clearDirty();
+  document.querySelectorAll('.ap-item').forEach(el => el.classList.remove('active'));
+  switchTab('basic', document.querySelector('.etab'));
 }
 
-function clearDrawerForm() {
-  ['f-id','f-name-en','f-name-gu','f-badge-en','f-badge-gu',
-   'f-tagline-en','f-tagline-gu','f-capacity-en','f-capacity-gu',
-   'f-warranty-en','f-warranty-gu','f-desc-en','f-desc-gu',
-   'f-meta-title','f-meta-desc'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.value = '';
-  });
-  document.getElementById('f-category').value = 'domestic';
-  document.getElementById('image-url-list').innerHTML = '';
-  document.getElementById('features-list').innerHTML  = '';
-  document.getElementById('specs-en-list').innerHTML  = '';
-  document.getElementById('specs-gu-list').innerHTML  = '';
+function discardProduct() {
+  if (dirty && !confirm('Discard unsaved changes?')) return;
+  editingId = null; dirty = false;
+  document.getElementById('editor-empty').style.display = 'flex';
+  document.getElementById('editor-panel').style.display = 'none';
+  renderSidebar();
 }
 
-// ============================================================
-// IMAGE ROWS
-// ============================================================
-function buildImageRows(images) {
-  const container = document.getElementById('image-url-list');
-  container.innerHTML = '';
-  images.forEach(url => addImageRow(url));
-  if (!images.length) addImageRow('');
-}
+function setVal(id, val) { const el = document.getElementById(id); if (el) el.value = val || ''; }
 
-function addImageRow(url = '') {
-  const container = document.getElementById('image-url-list');
-  const row = document.createElement('div');
-  row.className = 'image-url-row';
-  row.innerHTML = `
-    <img class="img-preview" src="${url || 'assets/product_domestic.png'}"
-         alt="preview" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-    <div class="img-preview-err">No Image</div>
-    <input type="text" class="admin-input img-url-input" value="${url}"
-           placeholder="assets/my-product.png or https://..."
-           oninput="updateImgPreview(this)"
-           style="margin-bottom:0;flex:1;">
-    <button type="button" class="admin-btn admin-btn-danger" onclick="this.parentElement.remove()"
-            style="padding:6px 10px;flex-shrink:0;">✕</button>
-  `;
-  container.appendChild(row);
-}
+function markDirty() { dirty = true; document.getElementById('save-indicator').style.display = ''; }
+function clearDirty() { dirty = false; document.getElementById('save-indicator').style.display = 'none'; }
 
-function updateImgPreview(input) {
-  const row = input.closest('.image-url-row');
-  const img = row.querySelector('.img-preview');
-  const err = row.querySelector('.img-preview-err');
-  img.style.display = '';
-  err.style.display = 'none';
-  img.src = input.value || 'assets/product_domestic.png';
-}
-
-// ============================================================
-// FEATURE ROWS
-// ============================================================
-function buildFeatureRows(featEn, featGu) {
-  const container = document.getElementById('features-list');
-  container.innerHTML = '';
-  const maxLen = Math.max(featEn.length, featGu.length);
-  for (let i = 0; i < maxLen; i++) {
-    addFeatureRow(featEn[i] || '', featGu[i] || '');
-  }
-}
-
-function addFeatureRow(en = '', gu = '') {
-  const container = document.getElementById('features-list');
-  const row = document.createElement('div');
-  row.className = 'spec-row';
-  row.innerHTML = `
-    <input type="text" class="admin-input feat-en" value="${en}" placeholder="Feature (English)" style="margin-bottom:0;">
-    <input type="text" class="admin-input feat-gu" value="${gu}" placeholder="Feature (Gujarati)" style="margin-bottom:0;">
-    <button type="button" class="admin-btn admin-btn-danger" onclick="this.parentElement.remove()"
-            style="padding:6px 10px;">✕</button>
-  `;
-  container.appendChild(row);
-}
-
-// ============================================================
-// SPEC ROWS
-// ============================================================
-function buildSpecRows(lang, specs) {
-  const container = document.getElementById(`specs-${lang}-list`);
-  container.innerHTML = '';
-  Object.entries(specs).forEach(([k, v]) => addSpecRow(lang, k, v));
-}
-
-function addSpecRow(lang, key = '', val = '') {
-  const container = document.getElementById(`specs-${lang}-list`);
-  const row = document.createElement('div');
-  row.className = 'spec-row';
-  row.innerHTML = `
-    <input type="text" class="admin-input spec-key" value="${key}" placeholder="Label" style="margin-bottom:0;">
-    <input type="text" class="admin-input spec-val" value="${val}" placeholder="Value" style="margin-bottom:0;">
-    <button type="button" class="admin-btn admin-btn-danger" onclick="this.parentElement.remove()"
-            style="padding:6px 10px;">✕</button>
-  `;
-  container.appendChild(row);
-}
-
-// ============================================================
-// SAVE PRODUCT (from drawer)
-// ============================================================
-function saveProduct() {
+// ── SAVE PRODUCT ──────────────────────────────────────────
+async function saveProduct() {
   const id = document.getElementById('f-id').value.trim();
-  if (!id) { showToast('Product ID is required', 'error'); return; }
-  if (!/^[a-z0-9-]+$/.test(id)) { showToast('ID must be lowercase letters, numbers, hyphens only', 'error'); return; }
-  if (!editingId && products.find(p => p.id === id)) { showToast('A product with this ID already exists', 'error'); return; }
+  if (!id) { showToast('Product ID is required', 'err'); return; }
+  if (!/^[a-z0-9-]+$/.test(id)) { showToast('ID: lowercase, numbers, hyphens only', 'err'); return; }
 
-  // Collect images
-  const images = Array.from(document.querySelectorAll('.img-url-input'))
-    .map(i => i.value.trim()).filter(Boolean);
-
-  // Collect features
-  const featRows  = document.querySelectorAll('#features-list .spec-row');
-  const features_en = [];
-  const features_gu = [];
-  featRows.forEach(r => {
-    const en = r.querySelector('.feat-en').value.trim();
-    const gu = r.querySelector('.feat-gu').value.trim();
-    if (en || gu) { features_en.push(en); features_gu.push(gu); }
+  const featEn = [], featGu = [];
+  document.querySelectorAll('#feat-list .dyn-row').forEach(r => {
+    featEn.push(r.querySelector('.fen')?.value.trim() || '');
+    featGu.push(r.querySelector('.fgu')?.value.trim() || '');
   });
+  function collectSpec(listId) {
+    const obj = {};
+    document.querySelectorAll('#' + listId + ' .dyn-row').forEach(r => {
+      const k = r.querySelector('.sk')?.value.trim();
+      const v = r.querySelector('.sv')?.value.trim();
+      if (k) obj[k] = v || '';
+    });
+    return obj;
+  }
 
-  // Collect specs EN
-  const specsEnRows = document.querySelectorAll('#specs-en-list .spec-row');
-  const specs_en = {};
-  specsEnRows.forEach(r => {
-    const k = r.querySelector('.spec-key').value.trim();
-    const v = r.querySelector('.spec-val').value.trim();
-    if (k) specs_en[k] = v;
-  });
-
-  // Collect specs GU
-  const specsGuRows = document.querySelectorAll('#specs-gu-list .spec-row');
-  const specs_gu = {};
-  specsGuRows.forEach(r => {
-    const k = r.querySelector('.spec-key').value.trim();
-    const v = r.querySelector('.spec-val').value.trim();
-    if (k) specs_gu[k] = v;
-  });
-
-  const productData = {
-    id,
-    name_en:      document.getElementById('f-name-en').value.trim(),
-    name_gu:      document.getElementById('f-name-gu').value.trim(),
-    badge_en:     document.getElementById('f-badge-en').value.trim(),
-    badge_gu:     document.getElementById('f-badge-gu').value.trim(),
-    category:     document.getElementById('f-category').value,
-    images,
-    tagline_en:   document.getElementById('f-tagline-en').value.trim(),
-    tagline_gu:   document.getElementById('f-tagline-gu').value.trim(),
-    capacity_en:  document.getElementById('f-capacity-en').value.trim(),
-    capacity_gu:  document.getElementById('f-capacity-gu').value.trim(),
-    warranty_en:  document.getElementById('f-warranty-en').value.trim(),
-    warranty_gu:  document.getElementById('f-warranty-gu').value.trim(),
-    description_en: document.getElementById('f-desc-en').value.trim(),
-    description_gu: document.getElementById('f-desc-gu').value.trim(),
-    features_en, features_gu,
-    specs_en, specs_gu,
-    meta_title: document.getElementById('f-meta-title').value.trim(),
-    meta_desc:  document.getElementById('f-meta-desc').value.trim(),
+  const body = {
+    id, name_en: gv('f-ne'), name_gu: gv('f-ng'),
+    badge_en: gv('f-be'), badge_gu: gv('f-bg'),
+    category: gv('f-cat'),
+    images: [...editImages],
+    tagline_en: gv('f-te'), tagline_gu: gv('f-tg'),
+    capacity_en: gv('f-ce'), capacity_gu: gv('f-cg'),
+    warranty_en: gv('f-we'), warranty_gu: gv('f-wg'),
+    description_en: gv('f-de'), description_gu: gv('f-dg'),
+    features_en: featEn, features_gu: featGu,
+    specs_en: collectSpec('spec-en'), specs_gu: collectSpec('spec-gu'),
+    meta_title: gv('f-mt'), meta_desc: gv('f-md'),
   };
 
-  if (editingId) {
-    const idx = products.findIndex(p => p.id === editingId);
-    products[idx] = productData;
-    showToast('Product updated! Click "Save All Changes" to publish.', 'success');
-  } else {
-    products.push(productData);
-    showToast('Product added! Click "Save All Changes" to publish.', 'success');
-  }
-
-  renderProductList();
-  closeDrawer();
-}
-
-// ============================================================
-// GITHUB SETTINGS
-// ============================================================
-function saveGHSettings() {
-  const owner = document.getElementById('gh-owner').value.trim();
-  const repo  = document.getElementById('gh-repo').value.trim();
-  const token = document.getElementById('gh-token').value.trim();
-  if (!owner || !repo || !token) { showToast('Please fill all three fields', 'error'); return; }
-  localStorage.setItem('gh-owner', owner);
-  localStorage.setItem('gh-repo',  repo);
-  localStorage.setItem('gh-token', token);
-  document.getElementById('gh-banner').style.display = 'none';
-  showToast('GitHub settings saved!', 'success');
-}
-
-// ============================================================
-// SAVE TO GITHUB
-// ============================================================
-async function saveToGitHub() {
-  const owner = localStorage.getItem('gh-owner');
-  const repo  = localStorage.getItem('gh-repo');
-  const token = localStorage.getItem('gh-token');
-
-  if (!owner || !repo || !token) {
-    document.getElementById('gh-banner').style.display = 'block';
-    document.getElementById('gh-banner').scrollIntoView({ behavior: 'smooth' });
-    showToast('Please configure GitHub settings first', 'error');
-    return;
-  }
-
-  const statusEl = document.getElementById('deploy-status');
-  statusEl.style.display = 'inline-flex';
-  statusEl.className = 'deploy-status deploying';
-  statusEl.textContent = '⏳ Saving to GitHub...';
+  setSbStatus('Saving...', 'hsl(35,90%,42%)');
+  const isNew = editingId === '__new__';
 
   try {
-    // 1. Get current file SHA (needed for update)
-    const getResp = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/products.json`,
-      { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } }
+    const r = await apiFetch(
+      isNew ? `${API}/products` : `${API}/products/${editingId}`,
+      { method: isNew ? 'POST' : 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
     );
-    let sha = null;
-    if (getResp.ok) {
-      const data = await getResp.json();
-      sha = data.sha;
-    }
+    if (!r.ok) { const e = await r.json(); throw new Error(e.error || r.statusText); }
 
-    // 2. Encode products.json content as base64
-    const json    = JSON.stringify(products, null, 2);
-    const encoded = btoa(unescape(encodeURIComponent(json)));
-
-    // 3. Commit to GitHub
-    const body = {
-      message: `Update products.json — ${new Date().toLocaleString('en-IN')}`,
-      content: encoded,
-    };
-    if (sha) body.sha = sha;
-
-    const putResp = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/products.json`,
-      {
-        method: 'PUT',
-        headers: {
-          Authorization: `token ${token}`,
-          Accept: 'application/vnd.github.v3+json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      }
-    );
-
-    if (!putResp.ok) {
-      const err = await putResp.json();
-      throw new Error(err.message || putResp.statusText);
-    }
-
-    statusEl.className = 'deploy-status success';
-    statusEl.textContent = '✅ Saved! Website deploys in ~60s';
-    showToast('Saved to GitHub! Your website will update in ~60 seconds.', 'success');
-    setTimeout(() => { statusEl.style.display = 'none'; }, 8000);
-
-  } catch (err) {
-    statusEl.style.display = 'none';
-    showToast('Error: ' + err.message, 'error');
-    console.error(err);
+    if (isNew) { editingId = id; document.getElementById('f-id').disabled = true; }
+    await loadProducts();
+    document.querySelectorAll('.ap-item').forEach(el => el.classList.remove('active'));
+    document.getElementById('si-' + id)?.classList.add('active');
+    clearDirty();
+    setSbStatus('✅ Saved!', 'hsl(142,65%,38%)');
+    showToast('Product saved! Changes are live instantly.', 'ok');
+    setTimeout(() => setSbStatus('', ''), 4000);
+  } catch(e) {
+    setSbStatus('❌ ' + e.message, 'hsl(0,75%,48%)');
+    showToast('Save failed: ' + e.message, 'err');
   }
 }
 
-// ============================================================
-// TOAST
-// ============================================================
-function showToast(msg, type = '') {
-  const toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.className = `admin-toast ${type} show`;
-  setTimeout(() => { toast.className = `admin-toast ${type}`; }, 3500);
+function setSbStatus(msg, color) {
+  const el = document.getElementById('sb-status');
+  el.textContent = msg; el.style.color = color;
+}
+function gv(id) { return document.getElementById(id)?.value.trim() || ''; }
+
+// ── DELETE ────────────────────────────────────────────────
+async function deleteProduct(id) {
+  const p = products.find(x => x.id === id);
+  if (!confirm(`Delete "${p?.name_en}"? This cannot be undone.`)) return;
+  try {
+    const r = await apiFetch(`${API}/products/${id}`, { method: 'DELETE' });
+    if (!r.ok) throw new Error((await r.json()).error);
+    if (editingId === id) { editingId = null; discardProduct(); }
+    await loadProducts();
+    showToast('Product deleted.', 'ok');
+  } catch(e) { showToast('Delete failed: ' + e.message, 'err'); }
+}
+
+// ── IMAGES ────────────────────────────────────────────────
+function renderImgGrid() {
+  document.getElementById('img-grid').innerHTML = editImages.map((url, i) => `
+    <div class="img-cell ${i===0?'primary':''}">
+      ${i===0 ? '<span class="img-primary-lbl">Main</span>' : ''}
+      <img src="${url}" onerror="this.src='assets/product_domestic.png'">
+      <div class="img-cell-ov">
+        ${i>0 ? `<button class="icb" onclick="setMain(${i})">Set as Main</button>` : ''}
+        <button class="icb red" onclick="removeImg(${i})">Remove</button>
+      </div>
+    </div>`).join('');
+  updatePreview();
+}
+function setMain(i) { const u = editImages.splice(i,1)[0]; editImages.unshift(u); renderImgGrid(); markDirty(); }
+function removeImg(i) { editImages.splice(i,1); renderImgGrid(); markDirty(); }
+function addManualUrl() {
+  const url = document.getElementById('manual-url').value.trim();
+  if (!url) return;
+  editImages.push(url); renderImgGrid(); markDirty();
+  document.getElementById('manual-url').value = '';
+}
+
+function doDragOver(e) { e.preventDefault(); document.getElementById('drop-zone').classList.add('over'); }
+function doDragLeave() { document.getElementById('drop-zone').classList.remove('over'); }
+function doDrop(e) { e.preventDefault(); doDragLeave(); uploadFiles(Array.from(e.dataTransfer.files).filter(f=>f.type.startsWith('image/'))); }
+function onFilePick(e) { uploadFiles(Array.from(e.target.files)); e.target.value=''; }
+
+async function uploadFiles(files) {
+  if (!files.length) return;
+  const prog = document.getElementById('upload-prog');
+  const msg  = document.getElementById('upload-msg');
+  for (const file of files) {
+    prog.classList.add('show');
+    msg.textContent = `Uploading ${file.name}...`;
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      const r = await apiFetch(`${API}/upload`, { method: 'POST', body: fd });
+      if (!r.ok) { const e = await r.json(); throw new Error(e.error); }
+      const { url } = await r.json();
+      editImages.push(url);
+      renderImgGrid(); markDirty();
+      showToast(`${file.name} uploaded ✓`, 'ok');
+    } catch(e) { showToast('Upload failed: ' + e.message, 'err'); }
+  }
+  prog.classList.remove('show');
+}
+
+// ── FEATURES & SPECS ──────────────────────────────────────
+function buildFeatRows(en, gu) {
+  const el = document.getElementById('feat-list'); el.innerHTML = '';
+  for (let i = 0; i < Math.max(en.length, gu.length); i++) addFeat(en[i]||'', gu[i]||'');
+}
+function addFeat(en='', gu='') {
+  const el = document.getElementById('feat-list');
+  const r = document.createElement('div'); r.className = 'dyn-row feat';
+  r.innerHTML = `<input class="fi fen" value="${en}" placeholder="Feature (English)">
+    <input class="fi fgu" value="${gu}" placeholder="Feature (Gujarati)">
+    <button class="del-btn" onclick="this.parentElement.remove();markDirty()">✕</button>`;
+  el.appendChild(r);
+}
+function buildSpecRows(lang, specs) {
+  const el = document.getElementById('spec-'+lang); el.innerHTML = '';
+  Object.entries(specs).forEach(([k,v]) => addSpec(lang,k,v));
+}
+function addSpec(lang, k='', v='') {
+  const el = document.getElementById('spec-'+lang);
+  const ph = lang==='en' ? ['Storage Capacity','9 Litres'] : ['ટાંકી ક્ષમતા','૯ લીટર'];
+  const r = document.createElement('div'); r.className = 'dyn-row spec';
+  r.innerHTML = `<input class="fi sk" value="${k}" placeholder="${ph[0]}">
+    <input class="fi sv" value="${v}" placeholder="${ph[1]}">
+    <button class="del-btn" onclick="this.parentElement.remove();markDirty()">✕</button>`;
+  el.appendChild(r);
+}
+
+// ── LIVE PREVIEW ──────────────────────────────────────────
+function updatePreview() {
+  const set = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  set('pv-name', gv('f-ne') || 'Product Name');
+  set('pv-tag',  gv('f-te') || 'Tagline');
+  set('pv-cap',  gv('f-ce') || 'Tank');
+  set('pv-war',  gv('f-we') || 'Warranty');
+  const badge = gv('f-be');
+  const bEl = document.getElementById('pv-badge');
+  if (bEl) { bEl.textContent = badge; bEl.style.display = badge ? '' : 'none'; }
+  const img = document.getElementById('pv-img');
+  if (img) img.src = editImages[0] || 'assets/product_domestic.png';
+}
+
+// ── TOAST ─────────────────────────────────────────────────
+let toastT;
+function showToast(msg, type='') {
+  const el = document.getElementById('toast');
+  el.textContent = msg; el.className = `toast ${type} show`;
+  clearTimeout(toastT);
+  toastT = setTimeout(() => el.className = `toast ${type}`, 3800);
 }
 </script>
-
 </body>
 </html>

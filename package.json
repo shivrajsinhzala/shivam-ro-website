@@ -1,0 +1,29 @@
+{
+  "name": "shivam-ro-website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "generate-products.js",
+  "scripts": {
+    "dev": "wrangler pages dev . --compatibility-date=2024-09-23",
+    "deploy": "wrangler pages deploy .",
+    "db:create": "wrangler d1 create shivam-products-db",
+    "db:migrate": "wrangler d1 execute shivam-products-db --file=migrations/001_products.sql",
+    "db:seed": "wrangler d1 execute shivam-products-db --file=migrations/002_seed.sql",
+    "r2:create": "wrangler r2 bucket create shivam-product-images"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shivrajsinhzala/shivam-ro-website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/shivrajsinhzala/shivam-ro-website/issues"
+  },
+  "homepage": "https://github.com/shivrajsinhzala/shivam-ro-website#readme",
+  "devDependencies": {
+    "wrangler": "^4.100.0"
+  }
+}

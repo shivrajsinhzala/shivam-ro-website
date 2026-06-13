@@ -191,21 +191,28 @@ function initBeforeAfterSlider() {
 }
 
 // ==========================================
-// 5. Product Grid — Load from products.json
+// 5. Product Grid — Load from API (D1 via Worker)
+//    Falls back to products.json for local file:// dev
 // ==========================================
 function loadProductGrid() {
   const grid = document.getElementById('products-grid');
   if (!grid) return;
 
-  fetch('./products.json')
+  // Try the Worker API first; fall back to static JSON for local dev
+  const url = '/api/products';
+
+  fetch(url)
+    .catch(() => fetch('./products.json')) // fallback for local dev
+    .then(r => {
+      if (!r.ok) return fetch('./products.json');
+      return r;
+    })
     .then(r => r.json())
     .then(products => {
       grid.innerHTML = products.map(p => buildProductCard(p)).join('');
 
-      // Re-init Lucide icons for the new cards
       if (typeof lucide !== 'undefined') lucide.createIcons();
 
-      // Apply saved language to newly rendered WA links
       const lang = localStorage.getItem('shivam-ro-lang') || 'en';
       const waLinks = grid.querySelectorAll('a[data-wa-en]');
       waLinks.forEach(link => {
@@ -213,13 +220,12 @@ function loadProductGrid() {
         if (msg) link.href = `https://wa.me/919173096727?text=${encodeURIComponent(msg)}`;
       });
 
-      // Wire up product filter tabs now that cards exist
       initProductFilters();
     })
     .catch(err => {
-      console.error('Failed to load products.json', err);
-      grid.innerHTML = `<p style="text-align:center;color:var(--color-danger);padding:40px;">
-        Could not load products. Please refresh the page.
+      console.error('Failed to load products', err);
+      grid.innerHTML = `<p style="text-align:center;color:var(--color-danger);padding:40px;grid-column:1/-1">
+        Could not load products. Please refresh.
       </p>`;
     });
 }

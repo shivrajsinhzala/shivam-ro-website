@@ -462,7 +462,9 @@
 
       if (!productId) { renderError(); return; }
 
-      fetch('./products.json')
+      fetch('/api/products')
+        .catch(() => fetch('./products.json'))
+        .then(r => r.ok ? r : fetch('./products.json'))
         .then(r => r.json())
         .then(products => {
           const product = products.find(p => p.id === productId);
