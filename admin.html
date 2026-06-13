@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel — Shivam Aqua Solution</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="lang-en admin-body">
+
+<!-- ============================================================
+     LOGIN SCREEN
+     ============================================================ -->
+<div id="login-screen" class="admin-login-wrap">
+  <div class="admin-login-card">
+    <img src="assets/logo.png" alt="Shivam Aqua Solution" class="admin-logo">
+    <h1>Admin Panel</h1>
+    <p>Enter your password to manage products</p>
+    <p id="login-error" class="admin-error">Wrong password. Please try again.</p>
+    <input type="password" id="login-password" class="admin-input"
+           placeholder="Enter password" autocomplete="current-password"
+           onkeydown="if(event.key==='Enter') doLogin()">
+    <button class="btn btn-primary w-full justify-center" onclick="doLogin()" style="margin-top:4px;">
+      Login →
+    </button>
+    <p style="margin-top:20px;font-size:0.75rem;color:var(--text-light-3);">
+      Shivam Aqua Solution &bull; Admin Access
+    </p>
+  </div>
+</div>
+
+<!-- ============================================================
+     DASHBOARD (hidden until logged in)
+     ============================================================ -->
+<div id="dashboard" style="display:none;">
+
+  <!-- Header -->
+  <header class="admin-header">
+    <div class="admin-header-brand">
+      <img src="assets/logo.png" alt="Logo">
+      <span>Product Manager</span>
+    </div>
+    <div class="admin-header-actions">
+      <span id="deploy-status" class="deploy-status" style="display:none;"></span>
+      <a href="index.html" target="_blank" class="admin-btn admin-btn-outline">
+        View Website ↗
+      </a>
+      <button class="admin-btn admin-btn-outline" onclick="doLogout()">Logout</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+
+    <!-- GitHub Settings Banner (shown if not configured) -->
+    <div id="gh-banner" class="admin-settings-wrap" style="display:none;margin-bottom:28px;border-left:4px solid var(--color-primary);">
+      <h3>⚙️ One-time Setup Required</h3>
+      <p style="font-size:0.88rem;color:var(--text-light-2);margin-bottom:16px;">
+        To save changes automatically to your website, enter your GitHub details below.
+        This is a one-time setup — it will be saved on this device.
+      </p>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">GitHub Repo Owner <span>(your GitHub username)</span></label>
+          <input type="text" id="gh-owner" class="admin-input" placeholder="e.g. shivrajsinhzala" style="margin-bottom:0;">
+        </div>
+        <div class="form-field">
+          <label class="form-label">GitHub Repo Name</label>
+          <input type="text" id="gh-repo" class="admin-input" placeholder="e.g. shivam-ro-website" style="margin-bottom:0;">
+        </div>
+      </div>
+      <div class="form-field" style="margin-top:14px;">
+        <label class="form-label">GitHub Personal Access Token <span>(needs "repo" permission)</span></label>
+        <input type="password" id="gh-token" class="admin-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" style="margin-bottom:0;">
+        <p style="font-size:0.75rem;color:var(--text-light-3);margin-top:6px;">
+          Create one at: <a href="https://github.com/settings/tokens/new" target="_blank" style="color:var(--color-primary);">github.com/settings/tokens</a>
+          → select "repo" scope → copy the token here.
+        </p>
+      </div>
+      <button class="admin-btn admin-btn-primary" onclick="saveGHSettings()" style="margin-top:4px;">
+        Save Settings
+      </button>
+    </div>
+
+    <!-- Products Section -->
+    <div class="admin-section-title">
+      <span>📦 Products (<span id="product-count">0</span>)</span>
+      <button class="admin-btn admin-btn-primary" onclick="openDrawer(null)">
+        + Add New Product
+      </button>
+    </div>
+
+    <div id="admin-product-list" class="admin-product-list">
+      <!-- rendered by JS -->
+    </div>
+
+    <!-- Save to GitHub button -->
+    <div style="text-align:center;padding:20px 0 40px;">
+      <button class="admin-btn admin-btn-success" onclick="saveToGitHub()" style="padding:14px 36px;font-size:1rem;">
+        💾 Save All Changes to Website
+      </button>
+      <p style="font-size:0.8rem;color:var(--text-light-3);margin-top:10px;">
+        This will commit products.json to GitHub. Website updates in ~60 seconds.
+      </p>
+    </div>
+
+  </main>
+</div>
+
+<!-- ============================================================
+     PRODUCT EDIT / ADD DRAWER
+     ============================================================ -->
+<div id="drawer-overlay" class="admin-modal-overlay" onclick="if(event.target===this) closeDrawer()">
+  <div class="admin-drawer">
+    <h2 id="drawer-title">Add New Product</h2>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Product ID <span>(URL slug, no spaces)</span></label>
+        <input type="text" id="f-id" class="admin-input" placeholder="e.g. aqua-era" style="margin-bottom:0;">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Category</label>
+        <select id="f-category" class="admin-input" style="margin-bottom:0;">
+          <option value="domestic">Domestic RO</option>
+          <option value="commercial">Commercial RO</option>
+          <option value="spares">Filters & Spares</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Name (English)</label>
+        <input type="text" id="f-name-en" class="admin-input" placeholder="Aqua Era Cabinet" style="margin-bottom:0;">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Name (Gujarati)</label>
+        <input type="text" id="f-name-gu" class="admin-input" placeholder="એકવા ઇરા" style="margin-bottom:0;">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Badge (English) <span>(optional)</span></label>
+        <input type="text" id="f-badge-en" class="admin-input" placeholder="Best Seller" style="margin-bottom:0;">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Badge (Gujarati) <span>(optional)</span></label>
+        <input type="text" id="f-badge-gu" class="admin-input" placeholder="બેસ્ટ સેલર" style="margin-bottom:0;">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Tagline (English)</label>
+        <input type="text" id="f-tagline-en" class="admin-input" placeholder="Pure. Premium. Powerful." style="margin-bottom:0;">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Tagline (Gujarati)</label>
+        <input type="text" id="f-tagline-gu" class="admin-input" placeholder="શુદ્ધ. પ્રીમિયમ." style="margin-bottom:0;">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Capacity (English)</label>
+        <input type="text" id="f-capacity-en" class="admin-input" placeholder="9 Ltrs Storage Tank" style="margin-bottom:0;">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Capacity (Gujarati)</label>
+        <input type="text" id="f-capacity-gu" class="admin-input" placeholder="૯ લીટર ટાંકી" style="margin-bottom:0;">
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label">Warranty (English)</label>
+        <input type="text" id="f-warranty-en" class="admin-input" placeholder="1 Year Complete Warranty" style="margin-bottom:0;">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Warranty (Gujarati)</label>
+        <input type="text" id="f-warranty-gu" class="admin-input" placeholder="૧ વર્ષ પૂરી વોરંટી" style="margin-bottom:0;">
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">Description (English)</label>
+      <textarea id="f-desc-en" class="admin-input" placeholder="Describe the product in English..." style="margin-bottom:0;"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label">Description (Gujarati)</label>
+      <textarea id="f-desc-gu" class="admin-input" placeholder="ગુજરાતીમાં વર્ણન..." style="margin-bottom:0;"></textarea>
+    </div>
+
+    <!-- Product Images -->
+    <div class="form-field">
+      <label class="form-label">
+        Product Images <span>(URLs — add multiple for gallery)</span>
+      </label>
+      <div id="image-url-list" class="image-url-list"></div>
+      <button type="button" class="admin-btn admin-btn-outline" onclick="addImageRow()" style="font-size:0.8rem;padding:6px 12px;">
+        + Add Image URL
+      </button>
+      <p style="font-size:0.75rem;color:var(--text-light-3);margin-top:6px;">
+        Use relative paths like <code>assets/my-product.png</code> or full URLs.
+        First image = main photo shown on product listing.
+      </p>
+    </div>
+
+    <!-- Key Features -->
+    <div class="form-field">
+      <label class="form-label">Key Features <span>(one per row)</span></label>
+      <div id="features-list" class="spec-row-list"></div>
+      <button type="button" class="admin-btn admin-btn-outline" onclick="addFeatureRow()" style="font-size:0.8rem;padding:6px 12px;">
+        + Add Feature
+      </button>
+    </div>
+
+    <!-- Specs EN -->
+    <div class="form-field">
+      <label class="form-label">Specs — English <span>(label : value)</span></label>
+      <div id="specs-en-list" class="spec-row-list"></div>
+      <button type="button" class="admin-btn admin-btn-outline" onclick="addSpecRow('en')" style="font-size:0.8rem;padding:6px 12px;">
+        + Add Spec Row
+      </button>
+    </div>
+
+    <!-- Specs GU -->
+    <div class="form-field">
+      <label class="form-label">Specs — Gujarati <span>(label : value)</span></label>
+      <div id="specs-gu-list" class="spec-row-list"></div>
+      <button type="button" class="admin-btn admin-btn-outline" onclick="addSpecRow('gu')" style="font-size:0.8rem;padding:6px 12px;">
+        + Add Spec Row
+      </button>
+    </div>
+
+    <!-- SEO -->
+    <div class="form-field">
+      <label class="form-label">Meta Title <span>(for search engines)</span></label>
+      <input type="text" id="f-meta-title" class="admin-input" placeholder="Aqua Era Cabinet - Shivam Aqua Solution Morbi" style="margin-bottom:0;">
+    </div>
+    <div class="form-field">
+      <label class="form-label">Meta Description</label>
+      <textarea id="f-meta-desc" class="admin-input" placeholder="Buy Aqua Era Cabinet RO water purifier in Morbi..." style="margin-bottom:0;min-height:60px;"></textarea>
+    </div>
+
+    <div class="drawer-footer">
+      <button class="admin-btn admin-btn-primary" onclick="saveProduct()" style="flex:1;justify-content:center;">
+        ✓ Save Product
+      </button>
+      <button class="admin-btn admin-btn-outline" onclick="closeDrawer()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div id="toast" class="admin-toast"></div>
+
+<script>
+// ============================================================
+// CONFIG & STATE
+// ============================================================
+const ADMIN_PASSWORD = '9173096727'; // Dilip Bhai's number
+let products = [];
+let editingId = null; // null = new product, string = editing existing
+
+// ============================================================
+// LOGIN
+// ============================================================
+function doLogin() {
+  const val = document.getElementById('login-password').value.trim();
+  if (val === ADMIN_PASSWORD) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    sessionStorage.setItem('admin-auth', '1');
+    initDashboard();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('login-password').value = '';
+    document.getElementById('login-password').focus();
+  }
+}
+
+function doLogout() {
+  sessionStorage.removeItem('admin-auth');
+  location.reload();
+}
+
+// Auto-login if session active
+if (sessionStorage.getItem('admin-auth') === '1') {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  initDashboard();
+}
+
+// ============================================================
+// DASHBOARD INIT
+// ============================================================
+async function initDashboard() {
+  // Check GitHub settings
+  const ghOwner = localStorage.getItem('gh-owner');
+  const ghRepo  = localStorage.getItem('gh-repo');
+  const ghToken = localStorage.getItem('gh-token');
+
+  if (!ghOwner || !ghRepo || !ghToken) {
+    document.getElementById('gh-banner').style.display = 'block';
+  } else {
+    document.getElementById('gh-owner').value = ghOwner;
+    document.getElementById('gh-repo').value  = ghRepo;
+  }
+
+  // Load products
+  await loadProducts();
+}
+
+async function loadProducts() {
+  try {
+    const resp = await fetch('./products.json?v=' + Date.now());
+    products = await resp.json();
+    renderProductList();
+  } catch (e) {
+    showToast('Failed to load products.json', 'error');
+  }
+}
+
+// ============================================================
+// RENDER PRODUCT LIST
+// ============================================================
+function renderProductList() {
+  const list = document.getElementById('admin-product-list');
+  document.getElementById('product-count').textContent = products.length;
+
+  if (!products.length) {
+    list.innerHTML = '<p style="text-align:center;color:var(--text-light-3);padding:40px;">No products yet. Add your first one!</p>';
+    return;
+  }
+
+  list.innerHTML = products.map((p, idx) => {
+    const img = (p.images && p.images[0]) ? p.images[0] : 'assets/product_domestic.png';
+    const catLabel = { domestic:'Domestic', commercial:'Commercial', spares:'Spares' }[p.category] || p.category;
+    return `
+      <div class="admin-product-row" id="prow-${p.id}">
+        <img src="${img}" alt="${p.name_en}" class="admin-product-thumb"
+             onerror="this.src='assets/product_domestic.png'">
+        <div class="admin-product-meta">
+          <h4>${p.name_en}</h4>
+          <p>${p.name_gu} &bull; ${p.tagline_en || ''}</p>
+        </div>
+        <span class="admin-badge-pill">${catLabel}</span>
+        <div class="admin-row-actions">
+          <button class="admin-btn admin-btn-outline" onclick="moveProduct(${idx}, -1)" title="Move Up">↑</button>
+          <button class="admin-btn admin-btn-outline" onclick="moveProduct(${idx}, 1)"  title="Move Down">↓</button>
+          <button class="admin-btn admin-btn-outline" onclick="openDrawer('${p.id}')">Edit</button>
+          <button class="admin-btn admin-btn-danger" onclick="deleteProduct('${p.id}')">Delete</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ============================================================
+// MOVE / DELETE
+// ============================================================
+function moveProduct(idx, dir) {
+  const newIdx = idx + dir;
+  if (newIdx < 0 || newIdx >= products.length) return;
+  [products[idx], products[newIdx]] = [products[newIdx], products[idx]];
+  renderProductList();
+  showToast('Order updated. Click "Save All Changes" to publish.');
+}
+
+function deleteProduct(id) {
+  if (!confirm(`Delete "${products.find(p=>p.id===id)?.name_en}"? This cannot be undone.`)) return;
+  products = products.filter(p => p.id !== id);
+  renderProductList();
+  showToast('Product deleted. Click "Save All Changes" to publish.');
+}
+
+// ============================================================
+// DRAWER OPEN / CLOSE
+// ============================================================
+function openDrawer(productId) {
+  editingId = productId;
+  const overlay = document.getElementById('drawer-overlay');
+  overlay.classList.add('open');
+
+  if (productId) {
+    // Edit mode
+    const p = products.find(x => x.id === productId);
+    document.getElementById('drawer-title').textContent = `Edit: ${p.name_en}`;
+    document.getElementById('f-id').value         = p.id;
+    document.getElementById('f-id').disabled      = true; // don't change ID
+    document.getElementById('f-category').value   = p.category || 'domestic';
+    document.getElementById('f-name-en').value    = p.name_en || '';
+    document.getElementById('f-name-gu').value    = p.name_gu || '';
+    document.getElementById('f-badge-en').value   = p.badge_en || '';
+    document.getElementById('f-badge-gu').value   = p.badge_gu || '';
+    document.getElementById('f-tagline-en').value = p.tagline_en || '';
+    document.getElementById('f-tagline-gu').value = p.tagline_gu || '';
+    document.getElementById('f-capacity-en').value = p.capacity_en || '';
+    document.getElementById('f-capacity-gu').value  = p.capacity_gu || '';
+    document.getElementById('f-warranty-en').value  = p.warranty_en || '';
+    document.getElementById('f-warranty-gu').value  = p.warranty_gu || '';
+    document.getElementById('f-desc-en').value    = p.description_en || '';
+    document.getElementById('f-desc-gu').value    = p.description_gu || '';
+    document.getElementById('f-meta-title').value = p.meta_title || '';
+    document.getElementById('f-meta-desc').value  = p.meta_desc || '';
+
+    // Images
+    buildImageRows(p.images || []);
+    // Features
+    buildFeatureRows(p.features_en || [], p.features_gu || []);
+    // Specs
+    buildSpecRows('en', p.specs_en || {});
+    buildSpecRows('gu', p.specs_gu || {});
+  } else {
+    // Add mode
+    document.getElementById('drawer-title').textContent = 'Add New Product';
+    document.getElementById('f-id').disabled = false;
+    clearDrawerForm();
+    buildImageRows(['assets/product_domestic.png']);
+    buildFeatureRows([], []);
+    buildSpecRows('en', {});
+    buildSpecRows('gu', {});
+  }
+}
+
+function closeDrawer() {
+  document.getElementById('drawer-overlay').classList.remove('open');
+  editingId = null;
+}
+
+function clearDrawerForm() {
+  ['f-id','f-name-en','f-name-gu','f-badge-en','f-badge-gu',
+   'f-tagline-en','f-tagline-gu','f-capacity-en','f-capacity-gu',
+   'f-warranty-en','f-warranty-gu','f-desc-en','f-desc-gu',
+   'f-meta-title','f-meta-desc'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  document.getElementById('f-category').value = 'domestic';
+  document.getElementById('image-url-list').innerHTML = '';
+  document.getElementById('features-list').innerHTML  = '';
+  document.getElementById('specs-en-list').innerHTML  = '';
+  document.getElementById('specs-gu-list').innerHTML  = '';
+}
+
+// ============================================================
+// IMAGE ROWS
+// ============================================================
+function buildImageRows(images) {
+  const container = document.getElementById('image-url-list');
+  container.innerHTML = '';
+  images.forEach(url => addImageRow(url));
+  if (!images.length) addImageRow('');
+}
+
+function addImageRow(url = '') {
+  const container = document.getElementById('image-url-list');
+  const row = document.createElement('div');
+  row.className = 'image-url-row';
+  row.innerHTML = `
+    <img class="img-preview" src="${url || 'assets/product_domestic.png'}"
+         alt="preview" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="img-preview-err">No Image</div>
+    <input type="text" class="admin-input img-url-input" value="${url}"
+           placeholder="assets/my-product.png or https://..."
+           oninput="updateImgPreview(this)"
+           style="margin-bottom:0;flex:1;">
+    <button type="button" class="admin-btn admin-btn-danger" onclick="this.parentElement.remove()"
+            style="padding:6px 10px;flex-shrink:0;">✕</button>
+  `;
+  container.appendChild(row);
+}
+
+function updateImgPreview(input) {
+  const row = input.closest('.image-url-row');
+  const img = row.querySelector('.img-preview');
+  const err = row.querySelector('.img-preview-err');
+  img.style.display = '';
+  err.style.display = 'none';
+  img.src = input.value || 'assets/product_domestic.png';
+}
+
+// ============================================================
+// FEATURE ROWS
+// ============================================================
+function buildFeatureRows(featEn, featGu) {
+  const container = document.getElementById('features-list');
+  container.innerHTML = '';
+  const maxLen = Math.max(featEn.length, featGu.length);
+  for (let i = 0; i < maxLen; i++) {
+    addFeatureRow(featEn[i] || '', featGu[i] || '');
+  }
+}
+
+function addFeatureRow(en = '', gu = '') {
+  const container = document.getElementById('features-list');
+  const row = document.createElement('div');
+  row.className = 'spec-row';
+  row.innerHTML = `
+    <input type="text" class="admin-input feat-en" value="${en}" placeholder="Feature (English)" style="margin-bottom:0;">
+    <input type="text" class="admin-input feat-gu" value="${gu}" placeholder="Feature (Gujarati)" style="margin-bottom:0;">
+    <button type="button" class="admin-btn admin-btn-danger" onclick="this.parentElement.remove()"
+            style="padding:6px 10px;">✕</button>
+  `;
+  container.appendChild(row);
+}
+
+// ============================================================
+// SPEC ROWS
+// ============================================================
+function buildSpecRows(lang, specs) {
+  const container = document.getElementById(`specs-${lang}-list`);
+  container.innerHTML = '';
+  Object.entries(specs).forEach(([k, v]) => addSpecRow(lang, k, v));
+}
+
+function addSpecRow(lang, key = '', val = '') {
+  const container = document.getElementById(`specs-${lang}-list`);
+  const row = document.createElement('div');
+  row.className = 'spec-row';
+  row.innerHTML = `
+    <input type="text" class="admin-input spec-key" value="${key}" placeholder="Label" style="margin-bottom:0;">
+    <input type="text" class="admin-input spec-val" value="${val}" placeholder="Value" style="margin-bottom:0;">
+    <button type="button" class="admin-btn admin-btn-danger" onclick="this.parentElement.remove()"
+            style="padding:6px 10px;">✕</button>
+  `;
+  container.appendChild(row);
+}
+
+// ============================================================
+// SAVE PRODUCT (from drawer)
+// ============================================================
+function saveProduct() {
+  const id = document.getElementById('f-id').value.trim();
+  if (!id) { showToast('Product ID is required', 'error'); return; }
+  if (!/^[a-z0-9-]+$/.test(id)) { showToast('ID must be lowercase letters, numbers, hyphens only', 'error'); return; }
+  if (!editingId && products.find(p => p.id === id)) { showToast('A product with this ID already exists', 'error'); return; }
+
+  // Collect images
+  const images = Array.from(document.querySelectorAll('.img-url-input'))
+    .map(i => i.value.trim()).filter(Boolean);
+
+  // Collect features
+  const featRows  = document.querySelectorAll('#features-list .spec-row');
+  const features_en = [];
+  const features_gu = [];
+  featRows.forEach(r => {
+    const en = r.querySelector('.feat-en').value.trim();
+    const gu = r.querySelector('.feat-gu').value.trim();
+    if (en || gu) { features_en.push(en); features_gu.push(gu); }
+  });
+
+  // Collect specs EN
+  const specsEnRows = document.querySelectorAll('#specs-en-list .spec-row');
+  const specs_en = {};
+  specsEnRows.forEach(r => {
+    const k = r.querySelector('.spec-key').value.trim();
+    const v = r.querySelector('.spec-val').value.trim();
+    if (k) specs_en[k] = v;
+  });
+
+  // Collect specs GU
+  const specsGuRows = document.querySelectorAll('#specs-gu-list .spec-row');
+  const specs_gu = {};
+  specsGuRows.forEach(r => {
+    const k = r.querySelector('.spec-key').value.trim();
+    const v = r.querySelector('.spec-val').value.trim();
+    if (k) specs_gu[k] = v;
+  });
+
+  const productData = {
+    id,
+    name_en:      document.getElementById('f-name-en').value.trim(),
+    name_gu:      document.getElementById('f-name-gu').value.trim(),
+    badge_en:     document.getElementById('f-badge-en').value.trim(),
+    badge_gu:     document.getElementById('f-badge-gu').value.trim(),
+    category:     document.getElementById('f-category').value,
+    images,
+    tagline_en:   document.getElementById('f-tagline-en').value.trim(),
+    tagline_gu:   document.getElementById('f-tagline-gu').value.trim(),
+    capacity_en:  document.getElementById('f-capacity-en').value.trim(),
+    capacity_gu:  document.getElementById('f-capacity-gu').value.trim(),
+    warranty_en:  document.getElementById('f-warranty-en').value.trim(),
+    warranty_gu:  document.getElementById('f-warranty-gu').value.trim(),
+    description_en: document.getElementById('f-desc-en').value.trim(),
+    description_gu: document.getElementById('f-desc-gu').value.trim(),
+    features_en, features_gu,
+    specs_en, specs_gu,
+    meta_title: document.getElementById('f-meta-title').value.trim(),
+    meta_desc:  document.getElementById('f-meta-desc').value.trim(),
+  };
+
+  if (editingId) {
+    const idx = products.findIndex(p => p.id === editingId);
+    products[idx] = productData;
+    showToast('Product updated! Click "Save All Changes" to publish.', 'success');
+  } else {
+    products.push(productData);
+    showToast('Product added! Click "Save All Changes" to publish.', 'success');
+  }
+
+  renderProductList();
+  closeDrawer();
+}
+
+// ============================================================
+// GITHUB SETTINGS
+// ============================================================
+function saveGHSettings() {
+  const owner = document.getElementById('gh-owner').value.trim();
+  const repo  = document.getElementById('gh-repo').value.trim();
+  const token = document.getElementById('gh-token').value.trim();
+  if (!owner || !repo || !token) { showToast('Please fill all three fields', 'error'); return; }
+  localStorage.setItem('gh-owner', owner);
+  localStorage.setItem('gh-repo',  repo);
+  localStorage.setItem('gh-token', token);
+  document.getElementById('gh-banner').style.display = 'none';
+  showToast('GitHub settings saved!', 'success');
+}
+
+// ============================================================
+// SAVE TO GITHUB
+// ============================================================
+async function saveToGitHub() {
+  const owner = localStorage.getItem('gh-owner');
+  const repo  = localStorage.getItem('gh-repo');
+  const token = localStorage.getItem('gh-token');
+
+  if (!owner || !repo || !token) {
+    document.getElementById('gh-banner').style.display = 'block';
+    document.getElementById('gh-banner').scrollIntoView({ behavior: 'smooth' });
+    showToast('Please configure GitHub settings first', 'error');
+    return;
+  }
+
+  const statusEl = document.getElementById('deploy-status');
+  statusEl.style.display = 'inline-flex';
+  statusEl.className = 'deploy-status deploying';
+  statusEl.textContent = '⏳ Saving to GitHub...';
+
+  try {
+    // 1. Get current file SHA (needed for update)
+    const getResp = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/products.json`,
+      { headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' } }
+    );
+    let sha = null;
+    if (getResp.ok) {
+      const data = await getResp.json();
+      sha = data.sha;
+    }
+
+    // 2. Encode products.json content as base64
+    const json    = JSON.stringify(products, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(json)));
+
+    // 3. Commit to GitHub
+    const body = {
+      message: `Update products.json — ${new Date().toLocaleString('en-IN')}`,
+      content: encoded,
+    };
+    if (sha) body.sha = sha;
+
+    const putResp = await fetch(
+      `https://api.github.com/repos/${owner}/${repo}/contents/products.json`,
+      {
+        method: 'PUT',
+        headers: {
+          Authorization: `token ${token}`,
+          Accept: 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(body)
+      }
+    );
+
+    if (!putResp.ok) {
+      const err = await putResp.json();
+      throw new Error(err.message || putResp.statusText);
+    }
+
+    statusEl.className = 'deploy-status success';
+    statusEl.textContent = '✅ Saved! Website deploys in ~60s';
+    showToast('Saved to GitHub! Your website will update in ~60 seconds.', 'success');
+    setTimeout(() => { statusEl.style.display = 'none'; }, 8000);
+
+  } catch (err) {
+    statusEl.style.display = 'none';
+    showToast('Error: ' + err.message, 'error');
+    console.error(err);
+  }
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg, type = '') {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = `admin-toast ${type} show`;
+  setTimeout(() => { toast.className = `admin-toast ${type}`; }, 3500);
+}
+</script>
+
+</body>
+</html>

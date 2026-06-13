@@ -225,16 +225,19 @@ function loadProductGrid() {
 }
 
 function buildProductCard(p) {
+  const imgSrc = (p.images && p.images[0]) ? p.images[0] : 'assets/product_domestic.png';
   const waEnMsg = `Hi Shivam Aqua Solution, I am interested in a quote for the ${p.name_en} water purifier.`;
   const waGuMsg = `નમસ્તે શિવમ એકવા સોલ્યુશન, મને ${p.name_gu} ના ભાવ જાણવા છે.`;
   const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(waEnMsg)}`;
-  const badge = p.badge_en ? `<div class="product-badge"><span class="lang-en">${p.badge_en}</span><span class="lang-gu">${p.badge_gu || p.badge_en}</span></div>` : '';
+  const badge = p.badge_en
+    ? `<div class="product-badge"><span class="lang-en">${p.badge_en}</span><span class="lang-gu">${p.badge_gu || p.badge_en}</span></div>`
+    : '';
 
   return `
     <div class="product-card glass-card" data-category="${p.category}">
-      ${badge}
       <div class="product-img-wrap">
-        <img src="${p.image}" alt="${p.name_en}" loading="lazy">
+        ${badge}
+        <img src="${imgSrc}" alt="${p.name_en}" loading="lazy">
       </div>
       <div class="product-info">
         <h3 class="product-title">
