@@ -7,15 +7,16 @@
   <meta name="description" id="meta-desc" content="Buy RO water purifier in Morbi & Rajkot. Sales, installation, and repair services by Shivam Aqua Solution.">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 
   <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <!-- Shared Stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -48,7 +49,7 @@
   <header class="main-header">
     <div class="container header-container">
       <a href="index.html" class="logo-area">
-        <img src="assets/logo.png" alt="Shivam Aqua Solution Logo" class="header-logo" fetchpriority="high">
+        <img src="assets/logo.webp" alt="Shivam Aqua Solution Logo" class="header-logo" fetchpriority="high" width="63" height="63">
         <div class="brand-text">
           <span class="brand-name">Shivam Aqua</span>
           <span class="brand-sub">Solution</span>
@@ -87,7 +88,7 @@
         <!-- Language Switcher -->
         <div class="lang-switcher">
           <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
-          <button class="lang-btn" onclick="setLanguage('gu')">ગુ</button>
+          <button class="lang-btn" onclick="setLanguage('gu')">ગુજરાતી</button>
         </div>
         <a href="tel:+919173096727" class="btn btn-outline btn-sm header-call-btn">
           <i data-lucide="phone"></i>
@@ -104,8 +105,14 @@
   <div class="mobile-menu-overlay">
     <div class="mobile-menu">
       <div class="mobile-menu-header">
-        <span class="brand-name">Shivam Aqua</span>
-        <button class="close-menu-btn"><i data-lucide="x"></i></button>
+        <div class="logo-area">
+          <img src="assets/logo.webp" alt="Shivam Aqua Solution Logo" class="header-logo" width="32" height="32" style="height: 32px;">
+          <div class="brand-text">
+            <span class="brand-name" style="font-size: 0.95rem; font-weight: 800; font-family: var(--font-display); line-height: 1.1;">Shivam Aqua</span>
+            <span class="brand-sub" style="font-size: 0.65rem; color: var(--text-light-3); letter-spacing: 0.5px;">Solution</span>
+          </div>
+        </div>
+        <button class="close-menu-btn" aria-label="Close Menu"><i data-lucide="x"></i></button>
       </div>
       <nav class="mobile-nav-links">
         <a href="index.html" class="mobile-nav-link">
@@ -138,6 +145,14 @@
           <i data-lucide="phone"></i>
           <span class="lang-en">Call Dilip Bhai</span><span class="lang-gu">કોલ કરો દિલીપભાઈ</span>
         </a>
+        <a href="https://wa.me/919173096727?text=Hi%20Shivam%20Aqua%20Solution,%20I%20have%20an%20enquiry%20about%20your%20water%20filter%20services." 
+           target="_blank" 
+           class="btn btn-whatsapp w-full text-center mt-3"
+           data-wa-en="Hi Shivam Aqua Solution, I have an enquiry about your water filter services."
+           data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મારે આપની વોટર ફિલ્ટર સર્વિસ વિશે પૂછપરછ કરવી છે.">
+          <svg class="icon-whatsapp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span class="lang-en">WhatsApp Enquiry</span><span class="lang-gu">વોટ્સએપ પૂછપરછ</span>
+        </a>
       </div>
     </div>
   </div>
@@ -162,7 +177,7 @@
         <!-- Brand Info -->
         <div class="footer-brand">
           <a href="index.html" class="logo-area">
-            <img src="assets/logo_without_bg.png" class="footer-logo" loading="lazy">
+            <img src="assets/logo_without_bg.webp" alt="Shivam Aqua Solution Logo" class="footer-logo" loading="lazy" width="48" height="48">
             <div class="brand-text">
               <span class="brand-name">Shivam Aqua</span>
               <span class="brand-sub">Solution</span>
@@ -173,14 +188,14 @@
             <span class="lang-gu">મોરબી-રાજકોટ ઘર-ઘરે અને ફેક્ટરીઓ સુધી, અમે પહોંચાડીએ સ્વચ્છ, ગળ્યું અને ઉત્તમ પાણી.</span>
           </p>
           <div class="footer-social mt-4">
-            <a href="https://www.instagram.com/shivam_enterprise7691" target="_blank" aria-label="Instagram" class="social-instagram">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            <a href="https://www.instagram.com/shivam_enterprise7691" target="_blank" aria-label="Instagram Account Link" class="social-instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
             </a>
-            <a href="tel:+919173096727" aria-label="Call" class="social-phone">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <a href="tel:+919173096727" aria-label="Call Dilip Bhai Directly" class="social-phone">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </a>
-            <a href="https://wa.me/919173096727" target="_blank" aria-label="WhatsApp" class="social-whatsapp">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <a href="https://wa.me/919173096727" target="_blank" aria-label="WhatsApp Chat Link" class="social-whatsapp">
+              <svg class="icon-whatsapp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             </a>
           </div>
         </div>
@@ -278,7 +293,7 @@
        id="floating-wa-btn"
        data-wa-en="Hi Shivam Aqua Solution, I need RO servicing at my address."
        data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મને RO સર્વિસ જોઈએ છે.">
-      <i data-lucide="message-square" class="fill-current"></i>
+      <svg class="icon-whatsapp-svg fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       <span class="lang-en">WhatsApp</span><span class="lang-gu">વોટ્સએપ</span>
     </a>
   </div>
@@ -309,7 +324,7 @@
       }
 
       function buildGallery(images, badge) {
-        const imgs = Array.isArray(images) && images.length ? images : ['assets/product_domestic.png'];
+        const imgs = Array.isArray(images) && images.length ? images : ['assets/product_domestic.webp'];
         const mainImg = imgs[0];
 
         const badgeHtml = badge
@@ -334,7 +349,7 @@
 
       function renderProduct(p) {
         const catLabel = getCategoryLabel(p.category);
-        const images = Array.isArray(p.images) && p.images.length ? p.images : ['assets/product_domestic.png'];
+        const images = Array.isArray(p.images) && p.images.length ? p.images : ['assets/product_domestic.webp'];
         const badgeText = p.badge_en || '';
 
         const waEnMsg = `Hi Shivam Aqua Solution, I am interested in a price quote for the ${p.name_en} water purifier model.`;
@@ -409,13 +424,13 @@
               <ul class="features-list-detail">${featureItems}</ul>
 
               <div class="action-buttons-detail">
-                <a href="${waUrl}" target="_blank"
-                   class="btn btn-whatsapp btn-lg w-full justify-center"
-                   data-wa-en="${waEnMsg}" data-wa-gu="${waGuMsg}">
-                  <i data-lucide="message-square" class="fill-current"></i>
-                  <span class="lang-en">Get Price Quote on WhatsApp</span>
-                  <span class="lang-gu">વોટ્સએપ પર ભાવ મેળવો</span>
-                </a>
+                 <a href="${waUrl}" target="_blank"
+                    class="btn btn-whatsapp btn-lg w-full justify-center"
+                    data-wa-en="${waEnMsg}" data-wa-gu="${waGuMsg}">
+                   <svg class="icon-whatsapp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                   <span class="lang-en">Get Price Quote on WhatsApp</span>
+                   <span class="lang-gu">વોટ્સએપ પર ભાવ મેળવો</span>
+                 </a>
                 <a href="tel:+919173096727" class="btn btn-outline btn-lg w-full justify-center mt-3">
                   <i data-lucide="phone"></i>
                   <span class="lang-en">Call Dilip Bhai Now</span>

@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/shivrajsinhzala/shivam-ro-website#readme",
   "devDependencies": {
+    "sharp": "^0.35.1",
     "wrangler": "^4.100.0"
   }
 }

@@ -10,7 +10,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png", // We can use product_domestic.png as base
+    image: "assets/product_domestic.webp", // We can use product_domestic.webp as base
     tagline: "RO + Copper + Alkaline Technology",
     taglineGu: "RO + કોપર + આલ્કલાઇન ટેકનોલોજી",
     capacity: "10 Ltrs Detachable Tank",
@@ -43,7 +43,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Trendy & Classic Design with Invisible Screw",
     taglineGu: "અદ્રશ્ય સ્ક્રૂ સાથે ટ્રેન્ડી અને ક્લાસિક ડિઝાઇન",
     capacity: "10 Ltrs Storage",
@@ -76,7 +76,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Health, Delicacy & Beauty Redefined",
     taglineGu: "સ્વાસ્થ્ય, સ્વાદ અને સુંદરતાનો ત્રિવેણી સંગમ",
     capacity: "10 Ltrs Storage",
@@ -109,7 +109,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "100% Food Grade ABS Plastic with Unbreakable Tank",
     taglineGu: "૧૦૦% ફૂડ ગ્રેડ ABS પ્લાસ્ટિક અને મજબૂત ટાંકી",
     capacity: "12 Ltrs Storage",
@@ -142,7 +142,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Zinc + Copper + Alkaline Technology",
     taglineGu: "ઝિંક + કોપર + આલ્કલાઇન ટેકનોલોજી",
     capacity: "10 Ltrs Storage",
@@ -175,7 +175,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "High Pressure Pump with 13-Layer Membrane",
     taglineGu: "૧૩-લેયર મેમ્બ્રેન અને હેવી પ્રેશર બૂસ્ટર પંપ",
     capacity: "10 Ltrs Storage",
@@ -208,7 +208,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "13 Ltr Detachable Storage in Vibrant Colors",
     taglineGu: "૧૩ લીટર ડીટેચેબલ ટાંકી અને આકર્ષક કલર્સ",
     capacity: "13 Ltrs Detachable Tank",
@@ -241,7 +241,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Safe & Healthy Water with LED Indicator",
     taglineGu: "LED ઇન્ડિકેટર સાથે સુરક્ષિત અને સ્વસ્થ પાણી",
     capacity: "10 Ltrs Storage",
@@ -274,7 +274,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Modern Cabinet Design with 9 Ltr Detachable Tank",
     taglineGu: "૯ લીટર ડીટેચેબલ ટાંકી સાથે આધુનિક કેબિનેટ ડિઝાઇન",
     capacity: "9 Ltrs Detachable Tank",
@@ -307,7 +307,7 @@ const products = [
     category: "commercial",
     categoryEn: "Commercial & UTC",
     categoryGu: "કોમર્શિયલ અને સિંક-મશીન",
-    image: "assets/product_under_sink.png",
+    image: "assets/product_under_sink.webp",
     tagline: "Sleek, Out-of-Sight Design with Separate Faucet",
     taglineGu: "કિચન પ્લેટફોર્મ નીચે અદ્રશ્ય ફિટિંગ અને આધુનિક લુક",
     capacity: "12 to 25 Ltr/Hr Purification",
@@ -340,7 +340,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Elegant Cabinet Design with LED Indicators",
     taglineGu: "LED ઇન્ડિકેટર્સ અને આકર્ષક કેબિનેટ ડિઝાઇન",
     capacity: "9 Ltrs Storage",
@@ -373,7 +373,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Enjoy the Taste of Purity with Dolphin Cabinets",
     taglineGu: "ડોલ્ફીન કેબિનેટ સાથે શુદ્ધતાના મીઠા સ્વાદનો આનંદ",
     capacity: "9 Ltrs Storage",
@@ -406,7 +406,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Sleek Charcoal Metallic Premium Look",
     taglineGu: "આકર્ષક ચારકોલ મેટાલિક પ્રીમિયમ લુક",
     capacity: "10 Ltrs Storage",
@@ -439,7 +439,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Pure. Premium. Powerful. Silk Color Editions",
     taglineGu: "શુદ્ધ. પ્રીમિયમ. શક્તિશાળી. સિલ્ક કલર એડિશન્સ",
     capacity: "9 Ltrs Storage Tank",
@@ -472,7 +472,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "LED Indicator with Multiple Metallic Options",
     taglineGu: "LED ઇન્ડિકેટર અને આકર્ષક મેટાલિક કલર ઓપ્શન્સ",
     capacity: "10 Ltrs Storage",
@@ -505,7 +505,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Luxurious Significance with Zinc + Copper + Alkaline",
     taglineGu: "કોપર + ઝિંક + આલ્કલાઇન સાથે વૈભવી ડિઝાઇન",
     capacity: "10 Ltrs Storage",
@@ -538,7 +538,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Experience Purity at its Finest with Smart LED",
     taglineGu: "સ્માર્ટ LED અને ગોલ્ડન માર્બલ લુક સાથે શુદ્ધતા",
     capacity: "10 Ltrs Storage",
@@ -571,7 +571,7 @@ const products = [
     category: "domestic",
     categoryEn: "Domestic RO",
     categoryGu: "ઘરગથ્થુ RO",
-    image: "assets/product_domestic.png",
+    image: "assets/product_domestic.webp",
     tagline: "Timeless Luxury in Gun Metal & Alpine Gold",
     taglineGu: "ગન મેટલ અને આલ્પીન ગોલ્ડમાં કાયમી વૈભવ",
     capacity: "9 Ltrs Storage Tank",
@@ -610,15 +610,16 @@ function getProductHTML(product) {
   <meta name="description" content="Buy ${product.name} RO water purifier in Morbi & Rajkot. Features ${product.tagline}. Sales, installation, and repair services by Shivam Aqua Solution.">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
   
   <!-- Lucide Icons CDN -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://unpkg.com/lucide@latest" defer></script>
 
   <!-- External Stylesheet (Shared) -->
   <link rel="stylesheet" href="style.css">
@@ -651,7 +652,7 @@ function getProductHTML(product) {
   <header class="main-header">
     <div class="container header-container">
       <a href="index.html" class="logo-area">
-        <img src="assets/logo.png" alt="Shivam Aqua Solution Logo" class="header-logo" fetchpriority="high">
+        <img src="assets/logo.webp" alt="Shivam Aqua Solution Logo" class="header-logo" fetchpriority="high" width="63" height="63">
         <div class="brand-text">
           <span class="brand-name">Shivam Aqua</span>
           <span class="brand-sub">Solution</span>
@@ -684,16 +685,76 @@ function getProductHTML(product) {
         <!-- Language Switcher Segmented Control -->
         <div class="lang-switcher">
           <button class="lang-btn active" onclick="setLanguage('en')">EN</button>
-          <button class="lang-btn" onclick="setLanguage('gu')">ગુ</button>
+          <button class="lang-btn" onclick="setLanguage('gu')">ગુજરાતી</button>
         </div>
         
         <a href="tel:+919173096727" class="btn btn-outline btn-sm header-call-btn">
           <i data-lucide="phone"></i>
           <span class="lang-en">Call Now</span><span class="lang-gu">કોલ કરો</span>
         </a>
+        
+        <button class="menu-toggle-btn" aria-label="Toggle Navigation Menu">
+          <i data-lucide="menu" class="menu-icon"></i>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Menu Dropdown -->
+  <div class="mobile-menu-overlay">
+    <div class="mobile-menu">
+      <div class="mobile-menu-header">
+        <div class="logo-area">
+          <img src="assets/logo.webp" alt="Shivam Aqua Solution Logo" class="header-logo" width="32" height="32" style="height: 32px;">
+          <div class="brand-text">
+            <span class="brand-name" style="font-size: 0.95rem; font-weight: 800; font-family: var(--font-display); line-height: 1.1;">Shivam Aqua</span>
+            <span class="brand-sub" style="font-size: 0.65rem; color: var(--text-light-3); letter-spacing: 0.5px;">Solution</span>
+          </div>
+        </div>
+        <button class="close-menu-btn" aria-label="Close Menu"><i data-lucide="x"></i></button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="index.html" class="mobile-nav-link">
+          <i data-lucide="home"></i>
+          <span class="lang-en">Home</span><span class="lang-gu">હોમ</span>
+        </a>
+        <a href="index.html#services" class="mobile-nav-link">
+          <i data-lucide="wrench"></i>
+          <span class="lang-en">Services</span><span class="lang-gu">સેવાઓ</span>
+        </a>
+        <a href="index.html#products" class="mobile-nav-link">
+          <i data-lucide="droplet"></i>
+          <span class="lang-en">Products</span><span class="lang-gu">પ્રોડક્ટ્સ</span>
+        </a>
+        <a href="index.html#about" class="mobile-nav-link">
+          <i data-lucide="shield-check"></i>
+          <span class="lang-en">Why Us</span><span class="lang-gu">વિશેષતાઓ</span>
+        </a>
+        <a href="blogs.html" class="mobile-nav-link">
+          <i data-lucide="book-open"></i>
+          <span class="lang-en">Blogs</span><span class="lang-gu">બ્લોગ્સ</span>
+        </a>
+        <a href="index.html#contact" class="mobile-nav-link">
+          <i data-lucide="mail"></i>
+          <span class="lang-en">Contact</span><span class="lang-gu">સંપર્ક</span>
+        </a>
+      </nav>
+      <div class="mobile-menu-actions">
+        <a href="tel:+919173096727" class="btn btn-primary w-full text-center">
+          <i data-lucide="phone"></i>
+          <span class="lang-en">Call Dilip Bhai</span><span class="lang-gu">કોલ કરો દિલીપભાઈ</span>
+        </a>
+        <a href="https://wa.me/919173096727?text=Hi%20Shivam%20Aqua%20Solution,%20I%20have%20an%20enquiry%20about%20your%20water%20filter%20services." 
+           target="_blank" 
+           class="btn btn-whatsapp w-full text-center mt-3"
+           data-wa-en="Hi Shivam Aqua Solution, I have an enquiry about your water filter services."
+           data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મારે આપની વોટર ફિલ્ટર સર્વિસ વિશે પૂછપરછ કરવી છે.">
+          <svg class="icon-whatsapp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span class="lang-en">WhatsApp Enquiry</span><span class="lang-gu">વોટ્સએપ પૂછપરછ</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
   <!-- Product Detail Section -->
   <main class="product-detail-page">
@@ -709,7 +770,7 @@ function getProductHTML(product) {
       <div class="product-detail-grid">
         <!-- Left: Product Image -->
         <div class="product-image-section glass-card">
-          <img src="${product.image}" alt="${product.name}" class="main-detail-img">
+          <img src="${product.image}" alt="${product.name}" class="main-detail-img" width="400" height="400">
         </div>
 
         <!-- Right: Product Description -->
@@ -771,7 +832,7 @@ function getProductHTML(product) {
                class="btn btn-whatsapp btn-lg w-full justify-center"
                data-wa-en="Hi Shivam Aqua Solution, I am interested in a price quote for the ${product.name} water purifier model."
                data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, હું ${product.nameGu} વોટર પ્યુરિફાયર મોડલના ભાવપત્રક (કોટેશન) માટે પૂછપરછ કરવા માંગું છું.">
-              <i data-lucide="message-square" class="fill-current"></i>
+              <svg class="icon-whatsapp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
               <span class="lang-en">Get Price Quote on WhatsApp</span>
               <span class="lang-gu">વોટ્સએપ પર ભાવ મેળવો</span>
             </a>
@@ -824,7 +885,7 @@ function getProductHTML(product) {
         <!-- Brand Info -->
         <div class="footer-brand">
           <a href="index.html" class="logo-area">
-            <img src="assets/logo.png" alt="Shivam Aqua Solution Logo" class="footer-logo" loading="lazy">
+            <img src="assets/logo_without_bg.webp" alt="Shivam Aqua Solution Logo" class="footer-logo" loading="lazy" width="48" height="48">
             <div class="brand-text">
               <span class="brand-name">Shivam Aqua</span>
               <span class="brand-sub">Solution</span>
@@ -835,9 +896,15 @@ function getProductHTML(product) {
             <span class="lang-gu">મોરબી અને રાજકોટમાં હજારો પરિવારો અને કારખાનાઓને અધતન ટેકનોલોજી દ્વારા શુદ્ધ, મીઠું અને મિનરલયુક્ત પાણી પૂરું પાડવું એ જ અમારો એકમાત્ર લક્ષ્ય છે.</span>
           </p>
           <div class="footer-social mt-4">
-            <a href="https://www.instagram.com/shivam_enterprise7691" target="_blank" aria-label="Instagram Account Link"><i data-lucide="instagram"></i></a>
-            <a href="tel:+919173096727" aria-label="Call Dilip Bhai Directly"><i data-lucide="phone"></i></a>
-            <a href="https://wa.me/919173096727" target="_blank" aria-label="WhatsApp Chat Link"><i data-lucide="message-square"></i></a>
+            <a href="https://www.instagram.com/shivam_enterprise7691" target="_blank" aria-label="Instagram Account Link" class="social-instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-instagram"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+            </a>
+            <a href="tel:+919173096727" aria-label="Call Dilip Bhai Directly" class="social-phone">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </a>
+            <a href="https://wa.me/919173096727" target="_blank" aria-label="WhatsApp Chat Link" class="social-whatsapp">
+              <svg class="icon-whatsapp-svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
           </div>
         </div>
 
@@ -919,7 +986,7 @@ function getProductHTML(product) {
        aria-label="WhatsApp Chat Now"
        data-wa-en="Hi Shivam Aqua Solution, I need RO servicing at my address."
        data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મને મારા સરનામા પર RO સર્વિસિંગની જરૂર છે.">
-      <i data-lucide="message-square" class="fill-current"></i>
+      <svg class="icon-whatsapp-svg fill-current" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       <span class="lang-en">WhatsApp</span><span class="lang-gu">વોટ્સએપ</span>
     </a>
   </div>
@@ -958,7 +1025,7 @@ const badgesMap = {
 };
 
 function generateProductsGrid(products) {
-  let html = '      <div class="products-grid">\n';
+  let html = '      <div class="products-grid" id="products-grid">\n';
   products.forEach((product, index) => {
     const badge = badgesMap[product.id];
     const badgeHTML = badge ? `          <div class="product-badge"><span class="lang-en">${badge.en}</span><span class="lang-gu">${badge.gu}</span></div>\n` : '';
@@ -966,7 +1033,7 @@ function generateProductsGrid(products) {
     html += `        <!-- ${index + 1}. ${product.name} -->
         <div class="product-card glass-card" data-category="${product.category}">
 ${badgeHTML}          <div class="product-img-wrap">
-            <img src="${product.image}" alt="${product.name}" loading="lazy">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" width="400" height="400">
           </div>
           <div class="product-info">
             <h3 class="product-title">
@@ -1002,7 +1069,7 @@ ${badgeHTML}          <div class="product-img-wrap">
                  class="btn btn-whatsapp btn-sm" 
                  data-wa-en="Hi Shivam Aqua Solution, I am interested in a quote for the ${product.name} water purifier." 
                  data-wa-gu="નમસ્તે શિવમ એકવા સોલ્યુશન, મને ${product.nameGu} ના ભાવપત્રક (કોટેશન) માં રસ છે.">
-                <i data-lucide="message-square" class="icon-xs fill-current"></i>
+                <svg class="icon-whatsapp-svg icon-xs" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                 <span class="lang-en">WhatsApp</span>
                 <span class="lang-gu">વોટ્સએપ</span>
               </a>
