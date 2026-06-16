@@ -3143,3 +3143,242 @@ textarea.admin-input {
     padding: 2px 8px;
   }
 }
+
+/* ==========================================
+   Homepage Split-Hero & Booking Form Layout
+   ========================================== */
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 40px;
+  align-items: center;
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+.booking-form-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  text-align: left;
+  animation: fadeInRight 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.booking-form-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-light-1);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.booking-form-card p {
+  font-size: 0.85rem;
+  color: var(--text-light-3);
+  margin-bottom: 18px;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-light-3);
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-light-1);
+  transition: all var(--transition-fast);
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: hsl(220, 10%, 65%);
+}
+
+.booking-form-card .btn-whatsapp {
+  width: 100%;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 30px;
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 991px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+  }
+  .hero-badge {
+    justify-content: center;
+  }
+  .hero-trust-grid {
+    justify-content: center;
+  }
+  .hero-actions {
+    justify-content: center;
+  }
+  .booking-form-card {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+/* ==========================================
+   Dedicated Products Page Styling
+   ========================================== */
+.products-search-section {
+  padding: 40px 0 20px;
+  text-align: center;
+}
+
+.search-container {
+  max-width: 550px;
+  margin: 0 auto 30px;
+  position: relative;
+}
+
+.search-bar-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 20px 14px 44px;
+  border-radius: 40px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  box-shadow: 0 4px 15px var(--glass-shadow);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-light-1);
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 20px rgba(0, 150, 255, 0.15);
+}
+
+.search-icon-wrap {
+  position: absolute;
+  left: 18px;
+  color: var(--text-light-3);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+}
+
+.autocomplete-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 10px 30px rgba(8, 25, 60, 0.15);
+  z-index: 100;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-top: 8px;
+  display: none;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.autocomplete-suggestion {
+  padding: 10px 18px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-light-2);
+  transition: background var(--transition-fast);
+  text-align: left;
+}
+
+.autocomplete-suggestion:hover {
+  background: rgba(0, 180, 255, 0.08);
+  color: var(--color-primary);
+}
+
+.autocomplete-suggestion:not(:last-child) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-light-3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.no-results svg {
+  margin-bottom: 16px;
+  color: var(--color-primary);
+  opacity: 0.6;
+}
+
+.no-results h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--text-light-1);
+  margin-bottom: 8px;
+}
+
+.explore-products-btn {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+

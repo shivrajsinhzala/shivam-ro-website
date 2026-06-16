@@ -667,7 +667,7 @@ function getProductHTML(product) {
         <a href="index.html#services" class="nav-link">
           <span class="lang-en">Services</span><span class="lang-gu">સેવાઓ</span>
         </a>
-        <a href="index.html#products" class="nav-link">
+        <a href="products.html" class="nav-link">
           <span class="lang-en">Products</span><span class="lang-gu">પ્રોડક્ટ્સ</span>
         </a>
         <a href="index.html#purity" class="nav-link">
@@ -722,7 +722,7 @@ function getProductHTML(product) {
           <i data-lucide="wrench"></i>
           <span class="lang-en">Services</span><span class="lang-gu">સેવાઓ</span>
         </a>
-        <a href="index.html#products" class="mobile-nav-link">
+        <a href="products.html" class="mobile-nav-link">
           <i data-lucide="droplet"></i>
           <span class="lang-en">Products</span><span class="lang-gu">પ્રોડક્ટ્સ</span>
         </a>
@@ -763,7 +763,7 @@ function getProductHTML(product) {
       <!-- Breadcrumbs -->
       <div class="breadcrumbs">
         <a href="index.html"><span class="lang-en">Home</span><span class="lang-gu">હોમ</span></a> / 
-        <a href="index.html#products"><span class="lang-en">Products</span><span class="lang-gu">પ્રોડક્ટ્સ</span></a> / 
+        <a href="products.html"><span class="lang-en">Products</span><span class="lang-gu">પ્રોડક્ટ્સ</span></a> / 
         <span class="active-crumb">${product.name}</span>
       </div>
 
@@ -908,6 +908,22 @@ function getProductHTML(product) {
           </div>
         </div>
 
+        <!-- Quick Links -->
+        <div class="footer-links">
+          <h3>
+            <span class="lang-en">Quick Links</span>
+            <span class="lang-gu">ઝડપી લિંક</span>
+          </h3>
+          <ul class="footer-links-list">
+            <li><a href="index.html"><span class="lang-en">Home</span><span class="lang-gu">હોમ</span></a></li>
+            <li><a href="index.html#services"><span class="lang-en">Our Services</span><span class="lang-gu">સર્વિસ</span></a></li>
+            <li><a href="products.html"><span class="lang-en">Products</span><span class="lang-gu">પ્રોડક્ટ</span></a></li>
+            <li><a href="index.html#about"><span class="lang-en">Why Us</span><span class="lang-gu">કેમ અમે?</span></a></li>
+            <li><a href="index.html#faq"><span class="lang-en">FAQs</span><span class="lang-gu">FAQ</span></a></li>
+            <li><a href="blogs.html"><span class="lang-en">Water Blogs</span><span class="lang-gu">બ્લોગ્સ</span></a></li>
+          </ul>
+        </div>
+
         <!-- Contact Detail -->
         <div class="footer-contact-details">
           <h3>
@@ -1025,8 +1041,10 @@ const badgesMap = {
 };
 
 function generateProductsGrid(products) {
+  const featuredIds = ["aqua-2090", "alica-pure", "aqua-touch", "olly-arise", "aqua-c3", "hi-flo"];
+  const featuredProducts = products.filter(p => featuredIds.includes(p.id));
   let html = '      <div class="products-grid" id="products-grid">\n';
-  products.forEach((product, index) => {
+  featuredProducts.forEach((product, index) => {
     const badge = badgesMap[product.id];
     const badgeHTML = badge ? `          <div class="product-badge"><span class="lang-en">${badge.en}</span><span class="lang-gu">${badge.gu}</span></div>\n` : '';
     

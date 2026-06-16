@@ -21,14 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProductGrid();
   }
 
-  // 6. Product Category Filters (re-applied after grid loads)
-  // initProductFilters is called from loadProductGrid after render
-
-  // 7. FAQ Accordion
+  // 6. FAQ Accordion
   initFaqAccordion();
 
-  // 8. Testimonials Carousel
+  // 7. Testimonials Carousel
   initTestimonialsCarousel();
+
+  // 8. Hero Booking Form Handler
+  if (document.getElementById('hero-booking-form')) {
+    initBookingForm();
+  }
 });
 
 // ==========================================
@@ -209,7 +211,16 @@ function loadProductGrid() {
     })
     .then(r => r.json())
     .then(products => {
-      grid.innerHTML = products.map(p => buildProductCard(p)).join('');
+      let displayProducts = products;
+      const isSearchPage = !!document.getElementById('product-search-input');
+      
+      if (!isSearchPage) {
+        // Homepage: limit to 6 featured models
+        const featuredIds = ["aqua-2090", "alica-pure", "aqua-touch", "olly-arise", "aqua-c3", "hi-flo"];
+        displayProducts = products.filter(p => featuredIds.includes(p.id));
+      }
+
+      grid.innerHTML = displayProducts.map(p => buildProductCard(p)).join('');
 
       if (typeof lucide !== 'undefined') lucide.createIcons();
 
@@ -220,7 +231,11 @@ function loadProductGrid() {
         if (msg) link.href = `https://wa.me/919173096727?text=${encodeURIComponent(msg)}`;
       });
 
-      initProductFilters();
+      if (isSearchPage) {
+        initProductSearch(products);
+      } else {
+        initProductFilters();
+      }
     })
     .catch(err => {
       console.error('Failed to load products', err);
@@ -407,4 +422,194 @@ function initTestimonialsCarousel() {
   });
 
   resetAutoplay();
+}
+
+// ==========================================
+// 9. Autocomplete Search Logic
+// ==========================================
+function initProductSearch(products) {
+  const searchInput = document.getElementById('product-search-input');
+  const suggestionsBox = document.getElementById('autocomplete-suggestions');
+  const tabs = document.querySelectorAll('.products-tabs .tab-btn');
+  const grid = document.getElementById('products-grid') || document.querySelector('.products-grid');
+
+  if (!searchInput || !grid) return;
+
+  let activeCategory = 'all';
+  let searchQuery = '';
+
+  // Function to filter and render grid
+  const filterAndRender = () => {
+    const query = searchQuery.toLowerCase().trim();
+    
+    const filtered = products.filter(p => {
+      // Category filter
+      const matchesCategory = (activeCategory === 'all' || p.category === activeCategory);
+      
+      // Text search filter
+      const matchesSearch = !query || 
+        p.name_en.toLowerCase().includes(query) || 
+        (p.name_gu && p.name_gu.toLowerCase().includes(query)) ||
+        (p.tagline_en && p.tagline_en.toLowerCase().includes(query)) ||
+        (p.tagline_gu && p.tagline_gu.toLowerCase().includes(query)) ||
+        p.category.toLowerCase().includes(query) ||
+        (p.capacity_en && p.capacity_en.toLowerCase().includes(query)) ||
+        (p.features_en && p.features_en.some(f => f.toLowerCase().includes(query))) ||
+        (p.features_gu && p.features_gu.some(f => f.toLowerCase().includes(query)));
+        
+      return matchesCategory && matchesSearch;
+    });
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+          <svg style="width:48px;height:48px;margin-bottom:16px;color:var(--color-primary);opacity:0.6;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <h3>No Purifiers Found</h3>
+          <p style="color:var(--text-light-3);margin-top:8px;">We couldn't find any models matching your search. Try searching for "Alkaline", "Under Sink", or select another category tab.</p>
+        </div>
+      `;
+    } else {
+      grid.innerHTML = filtered.map(p => buildProductCard(p)).join('');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      // Apply translation to WA links
+      const lang = localStorage.getItem('shivam-ro-lang') || 'en';
+      const waLinks = grid.querySelectorAll('a[data-wa-en]');
+      waLinks.forEach(link => {
+        const msg = lang === 'gu' ? link.getAttribute('data-wa-gu') : link.getAttribute('data-wa-en');
+        if (msg) link.href = `https://wa.me/919173096727?text=${encodeURIComponent(msg)}`;
+      });
+    }
+  };
+
+  // Autocomplete Suggestions logic
+  const updateSuggestions = () => {
+    const query = searchInput.value.toLowerCase().trim();
+    if (!query) {
+      suggestionsBox.style.display = 'none';
+      return;
+    }
+
+    // Filter names of products matching query and active category
+    const matches = products.filter(p => {
+      const matchesCat = (activeCategory === 'all' || p.category === activeCategory);
+      const nameMatch = p.name_en.toLowerCase().includes(query) || (p.name_gu && p.name_gu.toLowerCase().includes(query));
+      return matchesCat && nameMatch;
+    }).slice(0, 5); // limit to 5 suggestions
+
+    if (matches.length === 0) {
+      suggestionsBox.style.display = 'none';
+      return;
+    }
+
+    const currentLang = localStorage.getItem('shivam-ro-lang') || 'en';
+    suggestionsBox.innerHTML = matches.map(p => {
+      const name = currentLang === 'gu' && p.name_gu ? p.name_gu : p.name_en;
+      return `<div class="autocomplete-suggestion" data-name="${p.name_en}">${name}</div>`;
+    }).join('');
+
+    suggestionsBox.style.display = 'block';
+
+    // Click on suggestion
+    suggestionsBox.querySelectorAll('.autocomplete-suggestion').forEach(item => {
+      item.addEventListener('click', () => {
+        searchInput.value = item.textContent;
+        searchQuery = item.getAttribute('data-name');
+        suggestionsBox.style.display = 'none';
+        filterAndRender();
+      });
+    });
+  };
+
+  // Event Listeners
+  searchInput.addEventListener('input', () => {
+    searchQuery = searchInput.value;
+    filterAndRender();
+    updateSuggestions();
+  });
+
+  // Hide suggestions when clicking outside
+  document.addEventListener('click', (e) => {
+    if (e.target !== searchInput && e.target !== suggestionsBox) {
+      suggestionsBox.style.display = 'none';
+    }
+  });
+
+  // Category Tabs click binding
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      activeCategory = tab.getAttribute('data-filter');
+      filterAndRender();
+      updateSuggestions();
+    });
+  });
+}
+
+// ==========================================
+// 10. Hero Booking Form Handler
+// ==========================================
+function initBookingForm() {
+  const form = document.getElementById('hero-booking-form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('booking-name');
+    const phoneInput = document.getElementById('booking-phone');
+    const serviceInput = document.getElementById('booking-service');
+
+    if (!nameInput || !phoneInput || !serviceInput) return;
+
+    // Reset styles
+    [nameInput, phoneInput, serviceInput].forEach(el => {
+      el.style.borderColor = '';
+      el.style.boxShadow = '';
+    });
+
+    let isValid = true;
+
+    // Validate Name
+    if (!nameInput.value.trim()) {
+      nameInput.style.borderColor = 'var(--color-danger)';
+      nameInput.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+      isValid = false;
+    }
+
+    // Validate Phone (Indian mobile number 10 digits starting with 6-9)
+    const phoneVal = phoneInput.value.trim();
+    const phoneRegex = /^[6-9]\d{9}$/;
+    if (!phoneRegex.test(phoneVal)) {
+      phoneInput.style.borderColor = 'var(--color-danger)';
+      phoneInput.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+      isValid = false;
+    }
+
+    // Validate Service
+    if (!serviceInput.value) {
+      serviceInput.style.borderColor = 'var(--color-danger)';
+      serviceInput.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+      isValid = false;
+    }
+
+    if (!isValid) return;
+
+    // Build pre-filled message based on selected language
+    const currentLang = localStorage.getItem('shivam-ro-lang') || 'en';
+    let message = '';
+
+    if (currentLang === 'gu') {
+      message = `નમસ્તે શિવમ એકવા સોલ્યુશન,\nહું એક સર્વિસ બુક કરવા માંગું છું:\n- નામ: ${nameInput.value.trim()}\n- મોબાઈલ: ${phoneInput.value.trim()}\n- સેવાનો પ્રકાર: ${serviceInput.value}`;
+    } else {
+      message = `Hi Shivam Aqua Solution,\nI would like to book a service:\n- Name: ${nameInput.value.trim()}\n- Mobile: ${phoneInput.value.trim()}\n- Service Type: ${serviceInput.value}`;
+    }
+
+    // Redirect to WhatsApp
+    const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+    
+    // Reset form
+    form.reset();
+  });
 }
