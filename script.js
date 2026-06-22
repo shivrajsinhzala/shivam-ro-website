@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
   
-  // 1. Language Toggle Setup
+  // 1. Language Setup (Force English)
   initLanguage();
 
   // 2. Mobile Menu Toggle
@@ -34,48 +34,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// 1. Language Toggle Logic
+// 1. Language Setup Logic (Forced English)
 // ==========================================
 function initLanguage() {
-  const savedLang = localStorage.getItem('shivam-ro-lang') || 'en';
-  setLanguage(savedLang);
+  document.documentElement.setAttribute('lang', 'en');
+  localStorage.setItem('shivam-ro-lang', 'en');
+  
+  document.body.classList.add('lang-en');
+  document.body.classList.remove('lang-gu');
+  
+  // Hide language switcher segments if still in DOM
+  const switcher = document.querySelector('.lang-switcher');
+  if (switcher) {
+    switcher.style.display = 'none';
+  }
 }
 
 function setLanguage(lang) {
-  // Update HTML attribute
-  document.documentElement.setAttribute('lang', lang);
-  
-  // Update localStorage
-  localStorage.setItem('shivam-ro-lang', lang);
-  
-  // Update Body class
-  if (lang === 'gu') {
-    document.body.classList.add('lang-gu');
-    document.body.classList.remove('lang-en');
-  } else {
-    document.body.classList.add('lang-en');
-    document.body.classList.remove('lang-gu');
-  }
-
-  // Update switcher buttons active state
-  const langBtns = document.querySelectorAll('.lang-switcher button');
-  langBtns.forEach(btn => {
-    const onclickText = btn.getAttribute('onclick') || '';
-    if (onclickText.includes(`'${lang}'`) || onclickText.includes(`"${lang}"`)) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  });
-
-  // Update WhatsApp links based on selected language
-  const waLinks = document.querySelectorAll('a[data-wa-en]');
-  waLinks.forEach(link => {
-    const msg = lang === 'gu' ? link.getAttribute('data-wa-gu') : link.getAttribute('data-wa-en');
-    if (msg) {
-      link.href = `https://wa.me/919173096727?text=${encodeURIComponent(msg)}`;
-    }
-  });
+  // Safe stub fallback in case legacy files invoke it
+  initLanguage();
 }
 
 // ==========================================
@@ -200,7 +177,6 @@ function loadProductGrid() {
   const grid = document.getElementById('products-grid') || document.querySelector('.products-grid');
   if (!grid) return;
 
-  // Try the Worker API first; fall back to static JSON for local dev
   const url = '/api/products';
 
   fetch(url)
@@ -224,10 +200,9 @@ function loadProductGrid() {
 
       if (typeof lucide !== 'undefined') lucide.createIcons();
 
-      const lang = localStorage.getItem('shivam-ro-lang') || 'en';
       const waLinks = grid.querySelectorAll('a[data-wa-en]');
       waLinks.forEach(link => {
-        const msg = lang === 'gu' ? link.getAttribute('data-wa-gu') : link.getAttribute('data-wa-en');
+        const msg = link.getAttribute('data-wa-en');
         if (msg) link.href = `https://wa.me/919173096727?text=${encodeURIComponent(msg)}`;
       });
 
@@ -247,53 +222,45 @@ function loadProductGrid() {
 
 function buildProductCard(p) {
   const imgSrc = (p.images && p.images[0]) ? p.images[0] : 'assets/product_domestic.webp';
-  const waEnMsg = `Hi Shivam Aqua Solution, I am interested in a quote for the ${p.name_en} water purifier.`;
-  const waGuMsg = `નમસ્તે શિવમ એકવા સોલ્યુશન, મને ${p.name_gu} ના ભાવ જાણવા છે.`;
+  const waEnMsg = `Hi Shivam Water Solution, I am interested in a quote for the ${p.name} water purifier.`;
   const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(waEnMsg)}`;
-  const badge = p.badge_en
-    ? `<div class="product-badge"><span class="lang-en">${p.badge_en}</span><span class="lang-gu">${p.badge_gu || p.badge_en}</span></div>`
+  const badge = p.badge
+    ? `<div class="product-badge"><span>${p.badge}</span></div>`
     : '';
 
   return `
     <div class="product-card glass-card" data-category="${p.category}">
       <div class="product-img-wrap">
         ${badge}
-        <img src="${imgSrc}" alt="${p.name_en}" loading="lazy">
+        <img src="${imgSrc}" alt="${p.name}" loading="lazy">
       </div>
       <div class="product-info">
         <h3 class="product-title">
-          <span class="lang-en">${p.name_en}</span>
-          <span class="lang-gu">${p.name_gu}</span>
+          <span>${p.name}</span>
         </h3>
         <p class="product-desc">
-          <span class="lang-en">${p.tagline_en || ''}</span>
-          <span class="lang-gu">${p.tagline_gu || ''}</span>
+          <span>${p.tagline || ''}</span>
         </p>
         <div class="product-card-specs">
           <div class="spec-pill">
             <i data-lucide="droplet"></i>
-            <span class="lang-en">${p.capacity_en}</span>
-            <span class="lang-gu">${p.capacity_gu}</span>
+            <span>${p.capacity}</span>
           </div>
           <div class="spec-pill">
             <i data-lucide="shield"></i>
-            <span class="lang-en">${p.warranty_en}</span>
-            <span class="lang-gu">${p.warranty_gu}</span>
+            <span>${p.warranty}</span>
           </div>
         </div>
         <div class="card-action-row">
-          <a href="product.html?id=${p.id}" class="btn btn-outline btn-sm">
-            <span class="lang-en">View Details</span>
-            <span class="lang-gu">વિગતો જુઓ</span>
+          <a href="product-${p.id}.html" class="btn btn-outline btn-sm">
+            <span>View Details</span>
           </a>
           <a href="${waUrl}"
              target="_blank"
              class="btn btn-whatsapp btn-sm"
-             data-wa-en="${waEnMsg}"
-             data-wa-gu="${waGuMsg}">
+             data-wa-en="${waEnMsg}">
             <svg class="icon-whatsapp-svg icon-xs" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.703 1.456h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z\"/></svg>
-            <span class="lang-en">WhatsApp</span>
-            <span class="lang-gu">વોટ્સએપ</span>
+            <span>WhatsApp</span>
           </a>
         </div>
       </div>
@@ -438,24 +405,18 @@ function initProductSearch(products) {
   let activeCategory = 'all';
   let searchQuery = '';
 
-  // Function to filter and render grid
   const filterAndRender = () => {
     const query = searchQuery.toLowerCase().trim();
     
     const filtered = products.filter(p => {
-      // Category filter
       const matchesCategory = (activeCategory === 'all' || p.category === activeCategory);
       
-      // Text search filter
       const matchesSearch = !query || 
-        p.name_en.toLowerCase().includes(query) || 
-        (p.name_gu && p.name_gu.toLowerCase().includes(query)) ||
-        (p.tagline_en && p.tagline_en.toLowerCase().includes(query)) ||
-        (p.tagline_gu && p.tagline_gu.toLowerCase().includes(query)) ||
+        p.name.toLowerCase().includes(query) || 
+        (p.tagline && p.tagline.toLowerCase().includes(query)) ||
         p.category.toLowerCase().includes(query) ||
-        (p.capacity_en && p.capacity_en.toLowerCase().includes(query)) ||
-        (p.features_en && p.features_en.some(f => f.toLowerCase().includes(query))) ||
-        (p.features_gu && p.features_gu.some(f => f.toLowerCase().includes(query)));
+        (p.capacity && p.capacity.toLowerCase().includes(query)) ||
+        (p.features && p.features.some(f => f.toLowerCase().includes(query)));
         
       return matchesCategory && matchesSearch;
     });
@@ -471,17 +432,15 @@ function initProductSearch(products) {
     } else {
       grid.innerHTML = filtered.map(p => buildProductCard(p)).join('');
       if (typeof lucide !== 'undefined') lucide.createIcons();
-      // Apply translation to WA links
-      const lang = localStorage.getItem('shivam-ro-lang') || 'en';
+      
       const waLinks = grid.querySelectorAll('a[data-wa-en]');
       waLinks.forEach(link => {
-        const msg = lang === 'gu' ? link.getAttribute('data-wa-gu') : link.getAttribute('data-wa-en');
+        const msg = link.getAttribute('data-wa-en');
         if (msg) link.href = `https://wa.me/919173096727?text=${encodeURIComponent(msg)}`;
       });
     }
   };
 
-  // Autocomplete Suggestions logic
   const updateSuggestions = () => {
     const query = searchInput.value.toLowerCase().trim();
     if (!query) {
@@ -489,27 +448,23 @@ function initProductSearch(products) {
       return;
     }
 
-    // Filter names of products matching query and active category
     const matches = products.filter(p => {
       const matchesCat = (activeCategory === 'all' || p.category === activeCategory);
-      const nameMatch = p.name_en.toLowerCase().includes(query) || (p.name_gu && p.name_gu.toLowerCase().includes(query));
+      const nameMatch = p.name.toLowerCase().includes(query);
       return matchesCat && nameMatch;
-    }).slice(0, 5); // limit to 5 suggestions
+    }).slice(0, 5);
 
     if (matches.length === 0) {
       suggestionsBox.style.display = 'none';
       return;
     }
 
-    const currentLang = localStorage.getItem('shivam-ro-lang') || 'en';
     suggestionsBox.innerHTML = matches.map(p => {
-      const name = currentLang === 'gu' && p.name_gu ? p.name_gu : p.name_en;
-      return `<div class="autocomplete-suggestion" data-name="${p.name_en}">${name}</div>`;
+      return `<div class="autocomplete-suggestion" data-name="${p.name}">${p.name}</div>`;
     }).join('');
 
     suggestionsBox.style.display = 'block';
 
-    // Click on suggestion
     suggestionsBox.querySelectorAll('.autocomplete-suggestion').forEach(item => {
       item.addEventListener('click', () => {
         searchInput.value = item.textContent;
@@ -520,21 +475,18 @@ function initProductSearch(products) {
     });
   };
 
-  // Event Listeners
   searchInput.addEventListener('input', () => {
     searchQuery = searchInput.value;
     filterAndRender();
     updateSuggestions();
   });
 
-  // Hide suggestions when clicking outside
   document.addEventListener('click', (e) => {
     if (e.target !== searchInput && e.target !== suggestionsBox) {
       suggestionsBox.style.display = 'none';
     }
   });
 
-  // Category Tabs click binding
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
       tabs.forEach(t => t.classList.remove('active'));
@@ -562,7 +514,6 @@ function initBookingForm() {
 
     if (!nameInput || !phoneInput || !serviceInput) return;
 
-    // Reset styles
     [nameInput, phoneInput, serviceInput].forEach(el => {
       el.style.borderColor = '';
       el.style.boxShadow = '';
@@ -570,14 +521,12 @@ function initBookingForm() {
 
     let isValid = true;
 
-    // Validate Name
     if (!nameInput.value.trim()) {
       nameInput.style.borderColor = 'var(--color-danger)';
       nameInput.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
       isValid = false;
     }
 
-    // Validate Phone (Indian mobile number 10 digits starting with 6-9)
     const phoneVal = phoneInput.value.trim();
     const phoneRegex = /^[6-9]\d{9}$/;
     if (!phoneRegex.test(phoneVal)) {
@@ -586,7 +535,6 @@ function initBookingForm() {
       isValid = false;
     }
 
-    // Validate Service
     if (!serviceInput.value) {
       serviceInput.style.borderColor = 'var(--color-danger)';
       serviceInput.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
@@ -595,21 +543,11 @@ function initBookingForm() {
 
     if (!isValid) return;
 
-    // Build pre-filled message based on selected language
-    const currentLang = localStorage.getItem('shivam-ro-lang') || 'en';
-    let message = '';
+    const message = `Hi Shivam Water Solution,\nI would like to book a service:\n- Name: ${nameInput.value.trim()}\n- Mobile: ${phoneInput.value.trim()}\n- Service Type: ${serviceInput.value}`;
 
-    if (currentLang === 'gu') {
-      message = `નમસ્તે શિવમ એકવા સોલ્યુશન,\nહું એક સર્વિસ બુક કરવા માંગું છું:\n- નામ: ${nameInput.value.trim()}\n- મોબાઈલ: ${phoneInput.value.trim()}\n- સેવાનો પ્રકાર: ${serviceInput.value}`;
-    } else {
-      message = `Hi Shivam Aqua Solution,\nI would like to book a service:\n- Name: ${nameInput.value.trim()}\n- Mobile: ${phoneInput.value.trim()}\n- Service Type: ${serviceInput.value}`;
-    }
-
-    // Redirect to WhatsApp
     const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(message)}`;
     window.open(waUrl, '_blank');
     
-    // Reset form
     form.reset();
   });
 }
