@@ -52,8 +52,8 @@ function getProductHTML(product) {
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:title" content="${product.name} - Shivam Water Solution Morbi">
   <meta property="og:description" content="Buy ${product.name} RO water purifier in Morbi & Rajkot. Features ${product.tagline}. Sales, installation, and repair services by Shivam Water Solution.">
-  <meta property="og:image" content="https://shivam-ro-website.pages.dev/assets/logo_with_bg.png">
-  <meta property="og:url" content="https://shivam-ro-website.pages.dev/product-${product.id}.html">
+  <meta property="og:image" content="https://shivamwatersolution.in/assets/logo_with_bg.png">
+  <meta property="og:url" content="https://shivamwatersolution.in/product-${product.id}.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Shivam Water Solution">
 
