@@ -10,13 +10,11 @@ export async function onRequestPost({ request, env }) {
   const { password } = body;
   if (!password) return err('Password required', 400);
 
-  // Compare SHA-256 hash of submitted password with stored hashes
-  // Supports two passwords: ADMIN_PASSWORD_HASH and ADMIN_PASSWORD_HASH_2
+  // Compare SHA-256 hash of submitted password with stored hash
+  // ADMIN_PASSWORD_HASH is set via: npx wrangler pages secret put ADMIN_PASSWORD_HASH
   const submitted = await sha256(password);
-  const isValid = submitted === env.ADMIN_PASSWORD_HASH || 
-                  (env.ADMIN_PASSWORD_HASH_2 && submitted === env.ADMIN_PASSWORD_HASH_2);
-  
-  if (!isValid) {
+  if (submitted !== env.ADMIN_PASSWORD_HASH) {
+    // Small artificial delay to slow brute force
     await new Promise(r => setTimeout(r, 500));
     return err('Invalid password', 401);
   }

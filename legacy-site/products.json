@@ -1,0 +1,524 @@
+[
+  {
+    "id": "aqua-2090",
+    "name": "Aqua 2090 Unique Elegant",
+    "badge": "Premium",
+    "category": "domestic",
+    "tagline": "RO + Copper + Alkaline Technology",
+    "capacity": "10 Ltrs Detachable Tank",
+    "warranty": "1 Year Full Warranty",
+    "description": "Featuring a detachable storage tank for easy cleaning, the Aqua 2090 integrates state-of-the-art Alkaline and Copper purification to ensure sweet, mineral-rich drinking water.",
+    "features": [
+      "10-Stage Filtration",
+      "pH Balancer",
+      "Premium Grey Finish",
+      "Dust Proof Cabinet"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + Copper + Alkaline + TDS Control",
+      "Cabinet Material": "Food Grade ABS Plastic",
+      "Installation Type": "Wall Mounted / Counter Top",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua 2090 Unique Elegant water purifier model.",
+    "meta_title": "Aqua 2090 Unique Elegant - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua 2090 Unique Elegant RO water purifier in Morbi & Rajkot. Features RO + Copper + Alkaline Technology. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-9090",
+    "name": "Aqua 9090 Smart LED",
+    "badge": "",
+    "category": "domestic",
+    "tagline": "Trendy & Classic Design with Invisible Screw",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Full Warranty",
+    "description": "Designed with an invisible screw structure and unbreakable food-grade cabinet, the Aqua 9090 has built-in smart LED indicators that reflect live power and tank states.",
+    "features": [
+      "Smart LED Indicators",
+      "Heavy Food Grade ABS Cabinet",
+      "Invisible Screw Design",
+      "Easy Service Structure"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Carbon + Sediment",
+      "Cabinet Material": "Unbreakable Food-Grade ABS",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua 9090 Smart LED water purifier model.",
+    "meta_title": "Aqua 9090 Smart LED - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua 9090 Smart LED RO water purifier in Morbi & Rajkot. Trendy & Classic Design with Invisible Screw. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "alica-pure",
+    "name": "Alica Pure Premium",
+    "badge": "Popular",
+    "category": "domestic",
+    "tagline": "Health, Delicacy & Beauty Redefined",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "The Alica Pure RO combines elegant black and white aesthetics with 7 stages of deep filtration to remove hard water salts (TDS) and chemicals efficiently.",
+    "features": [
+      "Elegant Dual Tone Design",
+      "High-Flow Rate Output",
+      "Advanced Carbon Polishers",
+      "Wall Mounted Fitting"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + Carbon + Pre-Filter",
+      "Cabinet Material": "Food-Grade Plastic",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Alica Pure Premium water purifier model.",
+    "meta_title": "Alica Pure Premium - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Alica Pure Premium RO water purifier in Morbi & Rajkot. Health, Delicacy & Beauty Redefined. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-touch",
+    "name": "Aqua Touch Metallic",
+    "badge": "Best Seller",
+    "category": "domestic",
+    "tagline": "100% Food Grade ABS Plastic with Unbreakable Tank",
+    "capacity": "12 Ltrs Storage",
+    "warranty": "1 Year Full Warranty",
+    "description": "Available in Metallic Black, Metallic Grey, and Blue, the Aqua Touch Series features a heavy-duty unbreakable storage tank and multi-stage mineralizers.",
+    "features": [
+      "Metallic Black / Grey / Blue Options",
+      "Unbreakable Storage Tank",
+      "100% Food Grade Plastic",
+      "TDS Adjuster Valve"
+    ],
+    "specs": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + UV + Alkaline + Minerals",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua Touch Metallic water purifier model.",
+    "meta_title": "Aqua Touch Metallic - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Touch Metallic RO water purifier in Morbi & Rajkot. 100% Food Grade ABS Plastic with Unbreakable Tank. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "olly-arise",
+    "name": "Olly Aqua Arise Series",
+    "badge": "New Launch",
+    "category": "domestic",
+    "tagline": "Zinc + Copper + Alkaline Technology",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Complete Warranty",
+    "description": "The Arise Midnight Black features a patent design, 7 stages of advanced filter purification, smart LED indicators, and combines Copper with Zinc to enrich water properties.",
+    "features": [
+      "Patent Design No. 408714-001",
+      "7-Stage Active Purity",
+      "Smart LED indicators",
+      "Zinc & Copper Mineral Cartridge"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Zinc + Copper + Alkaline",
+      "Cabinet Material": "Heavy ABS Cabinet",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Olly Aqua Arise Series water purifier model.",
+    "meta_title": "Olly Aqua Arise Series - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Olly Aqua Arise Series RO water purifier in Morbi & Rajkot. Zinc + Copper + Alkaline Technology. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "brio-ro",
+    "name": "Brio RO Purifier",
+    "badge": "",
+    "category": "domestic",
+    "tagline": "High Pressure Pump with 13-Layer Membrane",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Equipped with a Grand Forest pump, Bodeer fittings, and a 13-layer imported membrane. Features a heavy UV barrel of 190g to kill all bacteria instantly.",
+    "features": [
+      "Grand Forest Pump",
+      "13-Layer Imported Membrane",
+      "Heavy 190g UV Barrel",
+      "Axiom/Lucent SMPS Power Protection"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + TDS Controller",
+      "Cabinet Material": "Premium ABS",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Brio RO Purifier water purifier model.",
+    "meta_title": "Brio RO Purifier - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Brio RO Purifier water purifier in Morbi & Rajkot. High Pressure Pump with 13-Layer Membrane. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-flip",
+    "name": "Aqua Flip (Raga Series)",
+    "badge": "Eco-Save",
+    "category": "domestic",
+    "tagline": "13 Ltr Detachable Storage in Vibrant Colors",
+    "capacity": "13 Ltrs Detachable Tank",
+    "warranty": "1 Year Complete Warranty",
+    "description": "The Aqua Flip is the largest cabinet model featuring a 13 Ltr detachable tank. Available in Aqua Green, Blue, Purple, Metallic Black, Ruby Pink, Daytona Silver, and Rolex Green.",
+    "features": [
+      "Large 13L Capacity",
+      "Multiple Pastel & Metallic Colors",
+      "Detachable Easy Clean Tank",
+      "Copper charge technology"
+    ],
+    "specs": {
+      "Storage Capacity": "13 Litres",
+      "Purification Type": "RO + UV + Alkaline + Copper",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Counter Top",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua Flip (Raga Series) water purifier model.",
+    "meta_title": "Aqua Flip Raga Series - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Flip Raga Series RO water purifier in Morbi & Rajkot. 13 Ltr Detachable Storage in Vibrant Colors. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-jade",
+    "name": "Aqua Jade Purifier",
+    "badge": "",
+    "category": "domestic",
+    "tagline": "Safe & Healthy Water with LED Indicator",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Aqua Jade offers elegant contours, insect-proof cabinet housing, wall-mount design, and 12-15 Ltr/Hr purification flow rate. Available in Aqua Green, Black, Comrade Blue, and Grey.",
+    "features": [
+      "Insect Proof Cabinet",
+      "LED Status Indicator",
+      "Wall Mount Space Saving",
+      "12-15 Ltr/Hr Flow Rate"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + Carbon + UV + Alkaline",
+      "Cabinet Material": "Food Grade ABS",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua Jade Purifier water purifier model.",
+    "meta_title": "Aqua Jade Purifier - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Jade Purifier RO water purifier in Morbi & Rajkot. Safe & Healthy Water with LED Indicator. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-mars",
+    "name": "Aqua Mars Detachable",
+    "badge": "",
+    "category": "domestic",
+    "tagline": "Modern Cabinet Design with 9 Ltr Detachable Tank",
+    "capacity": "9 Ltrs Detachable Tank",
+    "warranty": "1 Year Warranty",
+    "description": "Designed by Nile, Aqua Mars features a modern design, unbreakable structural cabinet, and detachable tank. Available in Aqua Green, Stone Badge, Black, Premium Grey, and Blue.",
+    "features": [
+      "9L Detachable Tank",
+      "Unbreakable Structural Cabinet",
+      "LED Status Lights",
+      "Modern Counter Top / Wall mount"
+    ],
+    "specs": {
+      "Storage Capacity": "9 Litres",
+      "Purification Type": "RO + UV + Alkaline + Minerals",
+      "Cabinet Material": "Unbreakable Food-grade ABS",
+      "Installation Type": "Wall Mounted / Counter Top",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua Mars Detachable water purifier model.",
+    "meta_title": "Aqua Mars Detachable - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Mars Detachable RO water purifier in Morbi & Rajkot. Modern Cabinet Design with 9 Ltr Detachable Tank. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-klick",
+    "name": "Aqua Klick Pro",
+    "badge": "Elegant",
+    "category": "domestic",
+    "tagline": "Elegant Cabinet Design with LED Indicators",
+    "capacity": "9 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Designed by Keshav Industries, Aqua Klick Pro features a food-grade material body, LED indicators, and supports both wall-mounting and table-top layouts.",
+    "features": [
+      "Food Grade ABS Body",
+      "Elegant Compact Cabinet",
+      "LED Power/Status Indicators",
+      "Wall Mount or Table top"
+    ],
+    "specs": {
+      "Storage Capacity": "9 Litres",
+      "Purification Type": "RO + Carbon + Sediment + UV",
+      "Cabinet Material": "Food Grade ABS Plastic",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua Klick Pro water purifier model.",
+    "meta_title": "Aqua Klick Pro - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Klick Pro RO water purifier in Morbi & Rajkot. Elegant Cabinet Design with LED Indicators. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "dolphine-kool",
+    "name": "Dolphine Kool",
+    "badge": "Compact",
+    "category": "domestic",
+    "tagline": "Enjoy the Taste of Purity with Dolphin Cabinets",
+    "capacity": "9 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "A classic and highly durable domestic RO cabinet system, Dolphine Kool provides 100% pure drinking water with multi-stage mineralizers.",
+    "features": [
+      "Classic Dolphin Design",
+      "9L Food Grade Storage Tank",
+      "Multi-stage Alkaline Filtration",
+      "Compact and Leakproof"
+    ],
+    "specs": {
+      "Storage Capacity": "9 Litres",
+      "Purification Type": "RO + Carbon + Alkaline + Minerals",
+      "Cabinet Material": "ABS Plastic",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Dolphine Kool water purifier model.",
+    "meta_title": "Dolphine Kool - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Dolphine Kool RO water purifier in Morbi & Rajkot. Classic and highly durable domestic RO cabinet. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "neptune-metallic",
+    "name": "Neptune Metallic",
+    "badge": "",
+    "category": "domestic",
+    "tagline": "Sleek Charcoal Metallic Premium Look",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "The Neptune Metallic offers a sleek, dark charcoal-grey transparent design that seamlessly matches modern kitchen layouts while delivering high rejection rates.",
+    "features": [
+      "Sleek Charcoal Design",
+      "Transparent Tank Cover",
+      "High Flow Booster Pump",
+      "Advanced Sediment Filter"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Carbon + TDS Adjuster",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Neptune Metallic water purifier model.",
+    "meta_title": "Neptune Metallic - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Neptune Metallic RO water purifier in Morbi & Rajkot. Sleek Charcoal Metallic Premium Look. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-era",
+    "name": "Aqua Era Cabinet",
+    "badge": "Value Choice",
+    "category": "domestic",
+    "tagline": "Pure. Premium. Powerful. Silk Color Editions",
+    "capacity": "9 Ltrs Storage Tank",
+    "warranty": "1 Year Complete Warranty",
+    "description": "Aqua Era is a luxurious front-ribbed premium model. Available in Silk Beige, Silk Blue, Forest Blue, Urban Grey, and Charcoal Black. Fits beautifully in modern homes.",
+    "features": [
+      "Silk Beige / Blue / Forest Blue Options",
+      "Modern Front-Ribbed Design",
+      "LED Status Bar Indicator",
+      "9L Detachable Tank"
+    ],
+    "specs": {
+      "Storage Capacity": "9 Litres",
+      "Purification Type": "RO + UV + UF + Copper + Alkaline",
+      "Cabinet Material": "ABS Premium Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua Era Cabinet water purifier model.",
+    "meta_title": "Aqua Era Cabinet - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Era Cabinet RO water purifier in Morbi & Rajkot. Features Pure. Premium. Powerful. Silk Color Editions. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "hi-flo",
+    "name": "Hi-Flo Water Purifier",
+    "badge": "Heavy Duty",
+    "category": "domestic",
+    "tagline": "LED Indicator with Multiple Metallic Options",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Full Warranty",
+    "description": "The Hi-Flo system provides high-output water purification with built-in LED indicators. Color options include Metallic Cherry, Metallic Black, Sky Blue, and Standard Blue.",
+    "features": [
+      "LED Indicators",
+      "Metallic Cherry / Black / Blue Options",
+      "High Flow Output Membrane",
+      "Food Grade ABS plastic"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Alkaline + TDS Control",
+      "Cabinet Material": "ABS Plastic",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Hi-Flo Water Purifier water purifier model.",
+    "meta_title": "Hi-Flo Water Purifier - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Hi-Flo Water Purifier RO water purifier in Morbi & Rajkot. LED Indicator with Multiple Metallic Options. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-innovica",
+    "name": "Aqua Innovica Lavish",
+    "badge": "",
+    "category": "domestic",
+    "tagline": "Luxurious Significance with Zinc + Copper + Alkaline",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "The Aqua Innovica features a lavish flat cabinet design. Color variants include Candy White Blue, Mirror Black, Candy White Aqua Green, Metallic Energy Blue, and Metallic Steel Grey.",
+    "features": [
+      "Zinc + Copper + Alkaline 3-in-1",
+      "Mirror Black & Steel Grey Options",
+      "Lavish Flat Front Panel",
+      "3-Year Filter Life Support"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + Copper + Zinc + Alkaline",
+      "Cabinet Material": "Premium Finished ABS",
+      "Installation Type": "Wall Mounted / Counter Top",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua Innovica Lavish water purifier model.",
+    "meta_title": "Aqua Innovica Lavish - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Innovica Lavish RO water purifier in Morbi & Rajkot. Zinc + Copper + Alkaline Technology with lavish design. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-kainet",
+    "name": "Aqua Kainet Marble",
+    "badge": "",
+    "category": "domestic",
+    "tagline": "Experience Purity at its Finest with Smart LED",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Designed with a premium golden-black marble pattern texture. Also available in Marbella Earth, Golden White, and Silver Pearl. Features smart LED status panel.",
+    "features": [
+      "Golden Black Marble Finish",
+      "Marbella Earth / Silver Pearl variants",
+      "Smart LED Indicators",
+      "High Flow Rate Membrane"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Carbon + Copper",
+      "Cabinet Material": "High Finish ABS",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua Kainet Marble water purifier model.",
+    "meta_title": "Aqua Kainet Marble - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Kainet Marble RO water purifier in Morbi & Rajkot. Golden marble finish with Smart LED. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  },
+  {
+    "id": "aqua-c3",
+    "name": "Aqua C3 UTC Under-Counter",
+    "badge": "Under Sink",
+    "category": "commercial",
+    "tagline": "Sleek, Out-of-Sight Design with Separate Faucet",
+    "capacity": "12 to 25 Ltr/Hr Purification",
+    "warranty": "1 Year Complete Warranty",
+    "description": "The Aqua C3 UTC is designed for premium modular kitchens. Hidden under the sink, it saves valuable counter space and connects directly to a high-finish sink faucet.",
+    "features": [
+      "Out of Sight Under-Counter Design",
+      "High Capacity 12-25 L/Hr",
+      "7-Stage Deep Purification",
+      "Frees up Kitchen Counter Space"
+    ],
+    "specs": {
+      "Storage Capacity": "8 to 12 Litres External Tank",
+      "Purification Type": "RO + UV + Carbon + Alkaline (Optional)",
+      "Cabinet Material": "Under-Sink Compact Frame",
+      "Installation Type": "Under the Counter (UTC)",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the Aqua C3 UTC Under-Counter water purifier model.",
+    "meta_title": "Aqua C3 UTC Under-Counter - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua C3 UTC Under-Counter RO water purifier in Morbi & Rajkot. Premium modular kitchen solution with separate faucet. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_under_sink.webp"
+    ]
+  },
+  {
+    "id": "lx-series",
+    "name": "LX Series Titanium",
+    "badge": "Luxury",
+    "category": "domestic",
+    "tagline": "Timeless Luxury in Gun Metal & Alpine Gold",
+    "capacity": "9 Ltrs Storage Tank",
+    "warranty": "1 Year Full Warranty",
+    "description": "The LX One and LX Two series represent the ultimate luxury in kitchen water systems. Available in Gun Metal, Charcoal Black, Alpine Gold, and White Gold editions.",
+    "features": [
+      "LX One & LX Two Glam Editions",
+      "Titanium Gun Metal & White Gold",
+      "Digital Power Indicators",
+      "Super Compact Premium Cabinet"
+    ],
+    "specs": {
+      "Storage Capacity": "9 Litres",
+      "Purification Type": "RO + UV + UF + Alkaline + Minerals",
+      "Cabinet Material": "Luxurious Brushed Finish ABS",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in a price quote for the LX Series Titanium water purifier model.",
+    "meta_title": "LX Series Titanium - Shivam Water Solution Morbi",
+    "meta_desc": "Buy LX Series Titanium RO water purifier in Morbi & Rajkot. Timeless Luxury in Gun Metal & Alpine Gold. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "assets/product_domestic.webp"
+    ]
+  }
+]

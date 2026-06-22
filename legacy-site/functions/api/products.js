@@ -1,4 +1,6 @@
 // functions/api/products.js
+// GET  /api/products  — list all products (public)
+// POST /api/products  — create product (admin only)
 import { json, err, options, requireAuth, parseProduct } from '../_utils.js';
 
 export async function onRequestGet({ env }) {
@@ -16,12 +18,14 @@ export async function onRequestPost({ request, env }) {
   try { p = await request.json(); }
   catch { return err('Invalid JSON', 400); }
 
-  if (!p.id || !/^[a-z0-9-]+$/.test(p.id)) return err('Valid product ID required', 400);
+  if (!p.id || !/^[a-z0-9-]+$/.test(p.id)) return err('Valid product ID required (lowercase, numbers, hyphens)', 400);
   if (!p.name_en) return err('name_en required', 400);
 
+  // Check duplicate
   const existing = await env.DB.prepare('SELECT id FROM products WHERE id = ?').bind(p.id).first();
   if (existing) return err(`Product "${p.id}" already exists`, 409);
 
+  // Get max sort_order
   const maxRow = await env.DB.prepare('SELECT MAX(sort_order) as m FROM products').first();
   const sortOrder = (maxRow?.m ?? -1) + 1;
 
@@ -53,11 +57,15 @@ export async function onRequestPost({ request, env }) {
   return json({ success: true, id: p.id }, 201);
 }
 
+// Reorder all products (admin only)
+// PATCH /api/products — body: { order: ['id1','id2',...] }
 export async function onRequestPatch({ request, env }) {
   const auth = await requireAuth(request, env);
   if (!auth) return err('Unauthorized', 401);
+
   const { order } = await request.json();
   if (!Array.isArray(order)) return err('order array required', 400);
+
   const stmts = order.map((id, idx) =>
     env.DB.prepare('UPDATE products SET sort_order = ? WHERE id = ?').bind(idx, id)
   );

@@ -1,7 +1,7 @@
 // functions/_utils.js
 // Shared utilities: JWT, CORS, response helpers
 
-// CORS headers
+// ── CORS headers (allow admin panel on same origin) ──────────────────────
 export const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
@@ -23,7 +23,7 @@ export function options() {
   return new Response(null, { status: 204, headers: CORS });
 }
 
-// JWT (HS256 using Web Crypto)
+// ── JWT (HS256 using Web Crypto — no external library needed) ─────────────
 function b64url(str) {
   return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=/g, '');
 }
@@ -72,6 +72,7 @@ export async function verifyJWT(token, secret) {
   } catch { return null; }
 }
 
+// ── Extract + verify auth token from request ─────────────────────────────
 export async function requireAuth(request, env) {
   const auth = request.headers.get('Authorization') || '';
   const token = auth.replace(/^Bearer\s+/i, '');
@@ -91,6 +92,8 @@ export function parseProduct(row) {
     features_gu,
     specs_en,
     specs_gu,
+    
+    // Normalized aliases for English-only client rendering
     name:        row.name_en,
     badge:       row.badge_en,
     tagline:     row.tagline_en,
@@ -106,6 +109,7 @@ function safeJSON(str, fallback) {
   try { return JSON.parse(str); } catch { return fallback; }
 }
 
+// ── SHA-256 hash (for password comparison) ───────────────────────────────
 export async function sha256(str) {
   const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
