@@ -79,15 +79,29 @@ export async function requireAuth(request, env) {
   return verifyJWT(token, env.JWT_SECRET);
 }
 
-// ── Parse product row from D1 (JSON fields stored as strings) ────────────
 export function parseProduct(row) {
+  const images = safeJSON(row.images, []);
+  const features_en = safeJSON(row.features_en, []);
+  const features_gu = safeJSON(row.features_gu, []);
+  const specs_en = safeJSON(row.specs_en, {});
+  const specs_gu = safeJSON(row.specs_gu, {});
   return {
     ...row,
-    images:      safeJSON(row.images, []),
-    features_en: safeJSON(row.features_en, []),
-    features_gu: safeJSON(row.features_gu, []),
-    specs_en:    safeJSON(row.specs_en, {}),
-    specs_gu:    safeJSON(row.specs_gu, {}),
+    images,
+    features_en,
+    features_gu,
+    specs_en,
+    specs_gu,
+    
+    // Normalized aliases for English-only client rendering
+    name:        row.name_en,
+    badge:       row.badge_en,
+    tagline:     row.tagline_en,
+    capacity:    row.capacity_en,
+    warranty:    row.warranty_en,
+    description: row.description_en,
+    features:    features_en,
+    specs:       specs_en
   };
 }
 
