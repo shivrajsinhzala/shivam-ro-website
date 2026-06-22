@@ -1,4 +1,4 @@
--- Shivam Aqua Solution — D1 Products Table
+-- Shivam Water Solution — D1 Products Table
 CREATE TABLE IF NOT EXISTS products (
   id            TEXT PRIMARY KEY,
   name_en       TEXT NOT NULL,
