@@ -35,7 +35,10 @@ function getProductHTML(product) {
   <meta name="description" content="Buy ${product.name} RO water purifier in Morbi & Rajkot. Features ${product.tagline}. Sales, installation, and repair services by Shivam Water Solution.">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -45,6 +48,14 @@ function getProductHTML(product) {
   
   <!-- Lucide Icons CDN -->
   <script src="https://unpkg.com/lucide@latest" defer></script>
+
+  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta property="og:title" content="${product.name} - Shivam Water Solution Morbi">
+  <meta property="og:description" content="Buy ${product.name} RO water purifier in Morbi & Rajkot. Features ${product.tagline}. Sales, installation, and repair services by Shivam Water Solution.">
+  <meta property="og:image" content="https://shivam-ro-website.pages.dev/assets/logo_with_bg.png">
+  <meta property="og:url" content="https://shivam-ro-website.pages.dev/product-${product.id}.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Shivam Water Solution">
 
   <!-- External Stylesheet (Shared) -->
   <link rel="stylesheet" href="style.css">
