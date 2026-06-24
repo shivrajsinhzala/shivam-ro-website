@@ -79,7 +79,13 @@ export async function requireAuth(request, env) {
 }
 
 export function parseProduct(row) {
-  const images = safeJSON(row.images, []);
+  const rawImages = safeJSON(row.images, []);
+  const images = rawImages.map(img => {
+    if (img && !img.startsWith('/') && !img.startsWith('http://') && !img.startsWith('https://')) {
+      return '/' + img;
+    }
+    return img;
+  });
   const features_en = safeJSON(row.features_en, []);
   const features_gu = safeJSON(row.features_gu, []);
   const specs_en = safeJSON(row.specs_en, {});

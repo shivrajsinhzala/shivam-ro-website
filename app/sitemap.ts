@@ -1,4 +1,7 @@
 import type { MetadataRoute } from "next";
+
+export const dynamic = "force-static";
+
 import productsData from "@/data/products.json";
 import { getAllBlogSlugs } from "@/data/blogs";
 

@@ -110,14 +110,14 @@ export default function Footer() {
         <div className="map-section-wrap mt-5">
           <div className="map-wrapper glass-card">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14710.024227181161!2d70.82200388484196!3d22.820790310237775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc0c2262d08a5%3A0xe5c25732bb69d7a!2sVavdi%20Rd%2C%20Morbi%2C%20Gujarat!5e0!3m2!1sen!2sin!4v1718300000000!5m2!1sen!2sin" 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3677.821463678999!2d70.83242697530754!3d22.809078479324032!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39598d5f9d856441%3A0x317caa3f96024cbc!2sShivam%20RO%20Purifier!5e0!3m2!1sen!2sin!4v1782314579450!5m2!1sen!2sin"
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
               allowFullScreen={true} 
               loading="lazy" 
               referrerPolicy="no-referrer-when-downgrade"
-              title="Shivam Water Solution Google Maps location in Morbi">
+              title="Shivam RO Purifier - Google Maps location in Morbi">
             </iframe>
           </div>
         </div>

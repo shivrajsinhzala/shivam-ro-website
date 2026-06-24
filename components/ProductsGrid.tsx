@@ -5,11 +5,55 @@ import Link from "next/link";
 import { Search, Droplet, Shield } from "lucide-react";
 import productsData from "@/data/products.json";
 
+interface Product {
+  id: string;
+  name: string;
+  badge?: string;
+  category: string;
+  tagline?: string;
+  capacity?: string;
+  warranty?: string;
+  description?: string;
+  features?: string[];
+  images?: string[];
+  wa?: string;
+}
+
 export default function ProductsGrid() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [products, setProducts] = useState<Product[]>(productsData);
+
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => {
+        if (!res.ok) throw new Error("API failed");
+        return res.json();
+      })
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          const mapped = data.map((p: any) => ({
+            id: p.id,
+            name: p.name || p.name_en || "",
+            badge: p.badge || p.badge_en || "",
+            category: p.category || "domestic",
+            tagline: p.tagline || p.tagline_en || "",
+            capacity: p.capacity || p.capacity_en || "",
+            warranty: p.warranty || p.warranty_en || "",
+            description: p.description || p.description_en || "",
+            features: p.features || p.features_en || [],
+            images: p.images || [],
+            wa: p.wa || `Hi Shivam Water Solution, I am interested in a price quote for the ${p.name_en || p.name} water purifier model.`,
+          }));
+          setProducts(mapped);
+        }
+      })
+      .catch((err) => {
+        console.warn("Using offline fallback products data:", err);
+      });
+  }, []);
   
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
@@ -32,7 +76,7 @@ export default function ProductsGrid() {
       return;
     }
 
-    const matches = productsData
+    const matches = products
       .filter(p => {
         const matchesCat = activeCategory === "all" || p.category === activeCategory;
         const nameMatch = p.name.toLowerCase().includes(query.toLowerCase());
@@ -50,7 +94,7 @@ export default function ProductsGrid() {
     setShowSuggestions(false);
   };
 
-  const filteredProducts = productsData.filter(p => {
+  const filteredProducts = products.filter(p => {
     const matchesCategory = activeCategory === "all" || p.category === activeCategory;
     const query = searchQuery.toLowerCase().trim();
     

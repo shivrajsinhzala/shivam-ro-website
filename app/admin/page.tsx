@@ -394,6 +394,8 @@ export default function AdminPage() {
                   className="ap-thumb"
                   src={p.images?.[0] || "/assets/product_domestic.webp"}
                   alt={p.name_en}
+                  width="40"
+                  height="40"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = "/assets/product_domestic.webp";
                   }}
@@ -562,7 +564,7 @@ export default function AdminPage() {
                           {editImages.map((url, i) => (
                             <div key={`${url}-${i}`} className={`img-cell ${i === 0 ? "primary" : ""}`}>
                               {i === 0 && <span className="img-primary-lbl">Main</span>}
-                              <img src={url} alt={`Product ${i + 1}`} onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }} />
+                              <img src={url} alt={`Product ${i + 1}`} width="120" height="120" onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }} />
                               <div className="img-cell-ov">
                                 {i > 0 && (
                                   <button className="icb" onClick={() => {
@@ -655,7 +657,7 @@ export default function AdminPage() {
                   <div className="product-card glass-card" style={{ width: "100%", margin: "0 auto", minWidth: "250px" }}>
                     {formBadge && <div className="product-badge">{formBadge}</div>}
                     <div className="product-img-wrap">
-                      <img src={editImages[0] || "/assets/product_domestic.webp"} alt="Preview" onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }} />
+                      <img src={editImages[0] || "/assets/product_domestic.webp"} alt="Preview" width="400" height="400" onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }} />
                     </div>
                     <div className="product-info">
                       <h3 className="product-title">{formName || "Product Name"}</h3>

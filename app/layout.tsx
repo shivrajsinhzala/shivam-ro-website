@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
-import AnnouncementBar from "@/components/AnnouncementBar";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import FloatingCTAs from "@/components/FloatingCTAs";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,13 +20,19 @@ export const metadata: Metadata = {
   keywords: [
     "RO Service in Morbi",
     "Best RO Service in Morbi",
+    "RO Repair Morbi",
     "Water Purifier Repair Morbi",
     "RO Installation Morbi",
     "RO Water Filter Shop Morbi",
     "RO AMC Morbi",
+    "RO Technician Morbi",
     "Commercial RO Plant Morbi",
     "RO Service Rajkot",
-    "Water Purifier Service Rajkot"
+    "RO Repair Rajkot",
+    "Best RO Repair in Rajkot",
+    "Water Purifier Service Rajkot",
+    "Water Purifier Repair Rajkot",
+    "Doorstep RO Service Rajkot"
   ],
   metadataBase: new URL("https://shivamwatersolution.in"),
   alternates: {
@@ -71,13 +73,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <body>
-        <AnnouncementBar />
-        <Header />
-        <main id="main-content">
-          {children}
-        </main>
-        <Footer />
-        <FloatingCTAs />
+        {children}
       </body>
     </html>
   );

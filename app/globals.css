@@ -1872,7 +1872,7 @@ body {
 
 .copyright-text {
   font-size: 0.8rem;
-  color: var(--text-light-3);
+  color: var(--text-light-2);
 }
 
 /* 19. Floating Actions for Mobile Pinned Bottom */
@@ -2516,11 +2516,12 @@ body {
 }
 
 .footer-section .designer-link {
-  color: hsl(192, 85%, 31%);
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
 .footer-section .designer-link:hover {
-  color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 /* Loading spinner animation */
@@ -3127,7 +3128,7 @@ textarea.admin-input {
   animation: fadeInRight 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.booking-form-card h3 {
+.booking-form-card h2 {
   font-family: var(--font-display);
   font-size: 1.4rem;
   font-weight: 800;
@@ -3340,4 +3341,76 @@ textarea.admin-input {
   display: flex;
   justify-content: center;
 }
+
+/* ==========================================
+   Local Service Areas Section
+   ========================================== */
+.service-areas-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.area-card {
+  padding: 30px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 8px 32px 0 var(--glass-shadow);
+}
+
+.area-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--glass-border);
+  padding-bottom: 10px;
+}
+
+.area-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px 20px;
+}
+
+.area-list li {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-light-2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.area-list li::before {
+  content: '•';
+  color: var(--color-accent);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.area-list li span {
+  font-size: 0.8rem;
+  color: var(--text-light-3);
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+  .area-list {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
 

@@ -253,10 +253,10 @@ export default function HomePage() {
       <section className="services-section" id="services">
         <div className="container">
           <div className="section-header text-center">
-            <h2 className="section-title">Our Professional Services</h2>
+            <h2 className="section-title">Professional RO Service & Repair in Morbi & Rajkot</h2>
             <div className="heading-underline"></div>
             <p className="section-desc">
-              From quick repairs to complete brand-new installations, we provide guaranteed solution for all types and brands of water purifiers.
+              Whether you need doorstep RO repair in Morbi, quick filter cartridge replacement in Rajkot, or commercial RO AMC plans, our certified RO technicians provide guaranteed solutions.
             </p>
           </div>
 
@@ -304,9 +304,9 @@ export default function HomePage() {
               <div className="service-icon">
                 <Wrench size={24} />
               </div>
-              <h3>RO Repair & Servicing</h3>
+              <h3>RO Repair & Water Purifier Service</h3>
               <p>
-                Solving leakage, electrical issues, low flow rate, and bad water taste problems for all major RO brands with quick doorstep visits.
+                Get same-day doorstep RO repair service in Morbi and Rajkot. Our expert RO mechanics solve leakages, low flow, taste issues, and pump failures for Kent, Aquaguard, and all major brands.
               </p>
               <a 
                 href="https://wa.me/919173096727?text=Hi%20Shivam%20Water%20Solution,%20my%20RO%20needs%20repair%20service." 
@@ -440,6 +440,49 @@ export default function HomePage() {
               <div className="timeline-number">4</div>
               <h3>Worry-Free Purity</h3>
               <p>Check TDS levels post-service, receive a warranty card, and enjoy healthy drinking water.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Local Service Areas Section */}
+      <section className="service-areas-section" id="service-areas">
+        <div className="container">
+          <div className="section-header text-center">
+            <h2 className="section-title">RO Service Areas in Morbi & Rajkot</h2>
+            <div className="heading-underline"></div>
+            <p className="section-desc">
+              We provide prompt, same-day doorstep RO repair and maintenance services across all major neighborhoods in Morbi and Rajkot.
+            </p>
+          </div>
+
+          <div className="areas-grid">
+            <div className="area-card glass-card">
+              <h3 className="area-title text-turquoise">Morbi Service Locations</h3>
+              <ul className="area-list">
+                <li>Vavdi Road <span>(Main Shop)</span></li>
+                <li>Ravapar Road</li>
+                <li>Mahendranagar</li>
+                <li>Lakhdhirpur Road <span>(Ceramic Factories)</span></li>
+                <li>Shanala Road</li>
+                <li>Pipali Road <span>(Industrial Area)</span></li>
+                <li>Wankaner Highway</li>
+                <li>Lalpar & Shakta Sanala</li>
+              </ul>
+            </div>
+
+            <div className="area-card glass-card">
+              <h3 className="area-title text-turquoise">Rajkot Service Locations</h3>
+              <ul className="area-list">
+                <li>Kalawad Road</li>
+                <li>Yagnik Road</li>
+                <li>University Road</li>
+                <li>Mavdi & Nana Mava</li>
+                <li>Kuvadva Road <span>(Industrial GIDC)</span></li>
+                <li>Amin Marg & Palace Road</li>
+                <li>Bhaktinagar & Gondal Road</li>
+                <li>150 Feet Ring Road</li>
+              </ul>
             </div>
           </div>
         </div>

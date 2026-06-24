@@ -2,7 +2,8 @@ import { onRequestDelete as __api_products__id__js_onRequestDelete } from "/User
 import { onRequestGet as __api_products__id__js_onRequestGet } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/products/[id].js"
 import { onRequestOptions as __api_products__id__js_onRequestOptions } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/products/[id].js"
 import { onRequestPut as __api_products__id__js_onRequestPut } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/products/[id].js"
-import { onRequest as __api_images___key___js_onRequest } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/images/[[key]].js"
+import { onRequestGet as __api_images___path___js_onRequestGet } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/images/[[path]].js"
+import { onRequestOptions as __api_images___path___js_onRequestOptions } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/images/[[path]].js"
 import { onRequestOptions as __api_auth_js_onRequestOptions } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/auth.js"
 import { onRequestPost as __api_auth_js_onRequestPost } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/auth.js"
 import { onRequestGet as __api_products_js_onRequestGet } from "/Users/shivrajsinhzala/Documents/Shivam RO website/functions/api/products.js"
@@ -42,11 +43,18 @@ export const routes = [
       modules: [__api_products__id__js_onRequestPut],
     },
   {
-      routePath: "/api/images/:key*",
+      routePath: "/api/images/:path*",
       mountPath: "/api/images",
-      method: "",
+      method: "GET",
       middlewares: [],
-      modules: [__api_images___key___js_onRequest],
+      modules: [__api_images___path___js_onRequestGet],
+    },
+  {
+      routePath: "/api/images/:path*",
+      mountPath: "/api/images",
+      method: "OPTIONS",
+      middlewares: [],
+      modules: [__api_images___path___js_onRequestOptions],
     },
   {
       routePath: "/api/auth",

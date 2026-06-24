@@ -34,7 +34,7 @@ export default function BookingForm() {
 
   return (
     <div className="booking-form-card">
-      <h3>Book a Service</h3>
+      <h2>Book a Service</h2>
       <p>Schedule a technician visit or installation in 60 seconds.</p>
       <form onSubmit={handleSubmit} noValidate>
         <div className="form-group">

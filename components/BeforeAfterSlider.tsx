@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from "react";
-import { ArrowLeftRight, Wrench } from "lucide-react";
+import { Wrench } from "lucide-react";
 
 export default function BeforeAfterSlider() {
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -13,8 +13,11 @@ export default function BeforeAfterSlider() {
     const rect = containerRef.current.getBoundingClientRect();
     const x = clientX - rect.left;
     let percentage = (x / rect.width) * 100;
-    if (percentage < 3) percentage = 3;
-    if (percentage > 97) percentage = 97;
+    const circleHalf = 22; // (36px circle + 2px border + 2px buffer) / 2
+    const minPct = (circleHalf / rect.width) * 100;
+    const maxPct = 100 - minPct;
+    if (percentage < minPct) percentage = minPct;
+    if (percentage > maxPct) percentage = maxPct;
     setSliderPosition(percentage);
   };
 
@@ -126,7 +129,19 @@ export default function BeforeAfterSlider() {
             >
               <div className="handle-line"></div>
               <div className="handle-circle" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <ArrowLeftRight size={14} className="icon-sm" />
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  viewBox="0 0 24 24" 
+                  fill="none" 
+                  stroke="var(--color-primary)" 
+                  strokeWidth="3" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  style={{ width: "16px", height: "16px", display: "block" }}
+                >
+                  <polyline points="8 4 2 12 8 20" />
+                  <polyline points="16 4 22 12 16 20" />
+                </svg>
               </div>
               <div className="handle-line"></div>
             </div>

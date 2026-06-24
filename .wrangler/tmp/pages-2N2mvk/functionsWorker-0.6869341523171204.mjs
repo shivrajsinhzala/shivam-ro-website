@@ -1,9 +1,7 @@
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
 
-// .wrangler/tmp/pages-RKNRPU/functionsWorker-0.7864817053693135.mjs
-var __defProp2 = Object.defineProperty;
-var __name2 = /* @__PURE__ */ __name((target, value) => __defProp2(target, "name", { value, configurable: true }), "__name");
+// _utils.js
 var CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
@@ -16,33 +14,27 @@ function json(data, status = 200) {
   });
 }
 __name(json, "json");
-__name2(json, "json");
 function err(msg, status = 400) {
   return json({ error: msg }, status);
 }
 __name(err, "err");
-__name2(err, "err");
 function options() {
   return new Response(null, { status: 204, headers: CORS });
 }
 __name(options, "options");
-__name2(options, "options");
 function b64url(str) {
   return btoa(str).replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "");
 }
 __name(b64url, "b64url");
-__name2(b64url, "b64url");
 function b64urlBuf(buf) {
   return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "");
 }
 __name(b64urlBuf, "b64urlBuf");
-__name2(b64urlBuf, "b64urlBuf");
 function b64urlDecode(str) {
   const s = str.replace(/-/g, "+").replace(/_/g, "/");
   return Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
 }
 __name(b64urlDecode, "b64urlDecode");
-__name2(b64urlDecode, "b64urlDecode");
 async function hmacKey(secret, usage) {
   return crypto.subtle.importKey(
     "raw",
@@ -53,7 +45,6 @@ async function hmacKey(secret, usage) {
   );
 }
 __name(hmacKey, "hmacKey");
-__name2(hmacKey, "hmacKey");
 async function signJWT(payload, secret) {
   const header = b64url(JSON.stringify({ alg: "HS256", typ: "JWT" }));
   const body = b64url(JSON.stringify(payload));
@@ -63,7 +54,6 @@ async function signJWT(payload, secret) {
   return `${data}.${b64urlBuf(sig)}`;
 }
 __name(signJWT, "signJWT");
-__name2(signJWT, "signJWT");
 async function verifyJWT(token, secret) {
   if (!token || typeof token !== "string") return null;
   const parts = token.split(".");
@@ -86,26 +76,42 @@ async function verifyJWT(token, secret) {
   }
 }
 __name(verifyJWT, "verifyJWT");
-__name2(verifyJWT, "verifyJWT");
 async function requireAuth(request, env) {
   const auth = request.headers.get("Authorization") || "";
   const token = auth.replace(/^Bearer\s+/i, "");
   return verifyJWT(token, env.JWT_SECRET);
 }
 __name(requireAuth, "requireAuth");
-__name2(requireAuth, "requireAuth");
 function parseProduct(row) {
+  const rawImages = safeJSON(row.images, []);
+  const images = rawImages.map((img) => {
+    if (img && !img.startsWith("/") && !img.startsWith("http://") && !img.startsWith("https://")) {
+      return "/" + img;
+    }
+    return img;
+  });
+  const features_en = safeJSON(row.features_en, []);
+  const features_gu = safeJSON(row.features_gu, []);
+  const specs_en = safeJSON(row.specs_en, {});
+  const specs_gu = safeJSON(row.specs_gu, {});
   return {
     ...row,
-    images: safeJSON(row.images, []),
-    features_en: safeJSON(row.features_en, []),
-    features_gu: safeJSON(row.features_gu, []),
-    specs_en: safeJSON(row.specs_en, {}),
-    specs_gu: safeJSON(row.specs_gu, {})
+    images,
+    features_en,
+    features_gu,
+    specs_en,
+    specs_gu,
+    name: row.name_en,
+    badge: row.badge_en,
+    tagline: row.tagline_en,
+    capacity: row.capacity_en,
+    warranty: row.warranty_en,
+    description: row.description_en,
+    features: features_en,
+    specs: specs_en
   };
 }
 __name(parseProduct, "parseProduct");
-__name2(parseProduct, "parseProduct");
 function safeJSON(str, fallback) {
   try {
     return JSON.parse(str);
@@ -114,20 +120,19 @@ function safeJSON(str, fallback) {
   }
 }
 __name(safeJSON, "safeJSON");
-__name2(safeJSON, "safeJSON");
 async function sha256(str) {
   const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
   return Array.from(new Uint8Array(buf)).map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 __name(sha256, "sha256");
-__name2(sha256, "sha256");
+
+// api/products/[id].js
 async function onRequestGet({ params, env }) {
   const row = await env.DB.prepare("SELECT * FROM products WHERE id = ?").bind(params.id).first();
   if (!row) return err("Product not found", 404);
   return json(parseProduct(row));
 }
 __name(onRequestGet, "onRequestGet");
-__name2(onRequestGet, "onRequestGet");
 async function onRequestPut({ params, request, env }) {
   const auth = await requireAuth(request, env);
   if (!auth) return err("Unauthorized", 401);
@@ -137,17 +142,17 @@ async function onRequestPut({ params, request, env }) {
   } catch {
     return err("Invalid JSON", 400);
   }
+  if (!p.name_en) return err("name_en required", 400);
   const existing = await env.DB.prepare("SELECT id FROM products WHERE id = ?").bind(params.id).first();
   if (!existing) return err("Product not found", 404);
   await env.DB.prepare(`
     UPDATE products SET
-      name_en = ?, name_gu = ?, badge_en = ?, badge_gu = ?,
-      category = ?, images = ?, tagline_en = ?, tagline_gu = ?,
-      capacity_en = ?, capacity_gu = ?, warranty_en = ?, warranty_gu = ?,
-      description_en = ?, description_gu = ?,
-      features_en = ?, features_gu = ?, specs_en = ?, specs_gu = ?,
-      meta_title = ?, meta_desc = ?
-    WHERE id = ?
+      name_en=?, name_gu=?, badge_en=?, badge_gu=?, category=?,
+      images=?, tagline_en=?, tagline_gu=?, capacity_en=?, capacity_gu=?,
+      warranty_en=?, warranty_gu=?, description_en=?, description_gu=?,
+      features_en=?, features_gu=?, specs_en=?, specs_gu=?,
+      meta_title=?, meta_desc=?
+    WHERE id=?
   `).bind(
     p.name_en,
     p.name_gu || "",
@@ -171,45 +176,38 @@ async function onRequestPut({ params, request, env }) {
     p.meta_desc || "",
     params.id
   ).run();
-  return json({ success: true });
+  return json({ success: true, id: params.id });
 }
 __name(onRequestPut, "onRequestPut");
-__name2(onRequestPut, "onRequestPut");
-async function onRequestDelete({ params, request, env }) {
+async function onRequestDelete({ params, env, request }) {
   const auth = await requireAuth(request, env);
   if (!auth) return err("Unauthorized", 401);
-  const existing = await env.DB.prepare("SELECT id FROM products WHERE id = ?").bind(params.id).first();
-  if (!existing) return err("Product not found", 404);
   await env.DB.prepare("DELETE FROM products WHERE id = ?").bind(params.id).run();
   return json({ success: true });
 }
 __name(onRequestDelete, "onRequestDelete");
-__name2(onRequestDelete, "onRequestDelete");
 async function onRequestOptions() {
   return options();
 }
 __name(onRequestOptions, "onRequestOptions");
-__name2(onRequestOptions, "onRequestOptions");
-async function onRequest({ params, env, request }) {
-  const keySegments = params.key;
-  if (!keySegments || Array.isArray(keySegments) && keySegments.length === 0) {
-    return err("Image key required", 400);
-  }
-  const key = Array.isArray(keySegments) ? keySegments.join("/") : keySegments;
+
+// api/images/[[path]].js
+async function onRequestGet2({ params, env }) {
+  const key = params.path.join("/");
   const object = await env.IMAGES.get(key);
   if (!object) return err("Image not found", 404);
   const headers = new Headers();
   object.writeHttpMetadata(headers);
-  headers.set("cache-control", "public, max-age=31536000, immutable");
-  headers.set("etag", object.httpEtag);
-  const ifNoneMatch = request.headers.get("if-none-match");
-  if (ifNoneMatch === object.httpEtag) {
-    return new Response(null, { status: 304, headers });
-  }
-  return new Response(object.body, { status: 200, headers });
+  headers.set("Cache-Control", "public, max-age=31536000, immutable");
+  return new Response(object.body, { headers });
 }
-__name(onRequest, "onRequest");
-__name2(onRequest, "onRequest");
+__name(onRequestGet2, "onRequestGet");
+async function onRequestOptions2() {
+  return options();
+}
+__name(onRequestOptions2, "onRequestOptions");
+
+// api/auth.js
 async function onRequestPost({ request, env }) {
   let body;
   try {
@@ -220,7 +218,8 @@ async function onRequestPost({ request, env }) {
   const { password } = body;
   if (!password) return err("Password required", 400);
   const submitted = await sha256(password);
-  if (submitted !== env.ADMIN_PASSWORD_HASH) {
+  const isValid = submitted === env.ADMIN_PASSWORD_HASH || env.ADMIN_PASSWORD_HASH_2 && submitted === env.ADMIN_PASSWORD_HASH_2;
+  if (!isValid) {
     await new Promise((r) => setTimeout(r, 500));
     return err("Invalid password", 401);
   }
@@ -231,20 +230,19 @@ async function onRequestPost({ request, env }) {
   return json({ token, expires_in: 86400 });
 }
 __name(onRequestPost, "onRequestPost");
-__name2(onRequestPost, "onRequestPost");
-async function onRequestOptions2() {
+async function onRequestOptions3() {
   return options();
 }
-__name(onRequestOptions2, "onRequestOptions2");
-__name2(onRequestOptions2, "onRequestOptions");
-async function onRequestGet2({ env }) {
+__name(onRequestOptions3, "onRequestOptions");
+
+// api/products.js
+async function onRequestGet3({ env }) {
   const { results } = await env.DB.prepare(
     "SELECT * FROM products ORDER BY sort_order ASC, created_at ASC"
   ).all();
   return json(results.map(parseProduct));
 }
-__name(onRequestGet2, "onRequestGet2");
-__name2(onRequestGet2, "onRequestGet");
+__name(onRequestGet3, "onRequestGet");
 async function onRequestPost2({ request, env }) {
   const auth = await requireAuth(request, env);
   if (!auth) return err("Unauthorized", 401);
@@ -254,7 +252,7 @@ async function onRequestPost2({ request, env }) {
   } catch {
     return err("Invalid JSON", 400);
   }
-  if (!p.id || !/^[a-z0-9-]+$/.test(p.id)) return err("Valid product ID required (lowercase, numbers, hyphens)", 400);
+  if (!p.id || !/^[a-z0-9-]+$/.test(p.id)) return err("Valid product ID required", 400);
   if (!p.name_en) return err("name_en required", 400);
   const existing = await env.DB.prepare("SELECT id FROM products WHERE id = ?").bind(p.id).first();
   if (existing) return err(`Product "${p.id}" already exists`, 409);
@@ -294,8 +292,7 @@ async function onRequestPost2({ request, env }) {
   ).run();
   return json({ success: true, id: p.id }, 201);
 }
-__name(onRequestPost2, "onRequestPost2");
-__name2(onRequestPost2, "onRequestPost");
+__name(onRequestPost2, "onRequestPost");
 async function onRequestPatch({ request, env }) {
   const auth = await requireAuth(request, env);
   if (!auth) return err("Unauthorized", 401);
@@ -308,12 +305,12 @@ async function onRequestPatch({ request, env }) {
   return json({ success: true });
 }
 __name(onRequestPatch, "onRequestPatch");
-__name2(onRequestPatch, "onRequestPatch");
-async function onRequestOptions3() {
+async function onRequestOptions4() {
   return options();
 }
-__name(onRequestOptions3, "onRequestOptions3");
-__name2(onRequestOptions3, "onRequestOptions");
+__name(onRequestOptions4, "onRequestOptions");
+
+// api/upload.js
 var ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 var MAX_SIZE = 5 * 1024 * 1024;
 async function onRequestPost3({ request, env }) {
@@ -334,13 +331,13 @@ async function onRequestPost3({ request, env }) {
   const url = `/api/images/${key}`;
   return json({ url, key });
 }
-__name(onRequestPost3, "onRequestPost3");
-__name2(onRequestPost3, "onRequestPost");
-async function onRequestOptions4() {
+__name(onRequestPost3, "onRequestPost");
+async function onRequestOptions5() {
   return options();
 }
-__name(onRequestOptions4, "onRequestOptions4");
-__name2(onRequestOptions4, "onRequestOptions");
+__name(onRequestOptions5, "onRequestOptions");
+
+// ../.wrangler/tmp/pages-2N2mvk/functionsRoutes-0.7003221246758765.mjs
 var routes = [
   {
     routePath: "/api/products/:id",
@@ -371,18 +368,25 @@ var routes = [
     modules: [onRequestPut]
   },
   {
-    routePath: "/api/images/:key*",
+    routePath: "/api/images/:path*",
     mountPath: "/api/images",
-    method: "",
+    method: "GET",
     middlewares: [],
-    modules: [onRequest]
+    modules: [onRequestGet2]
+  },
+  {
+    routePath: "/api/images/:path*",
+    mountPath: "/api/images",
+    method: "OPTIONS",
+    middlewares: [],
+    modules: [onRequestOptions2]
   },
   {
     routePath: "/api/auth",
     mountPath: "/api",
     method: "OPTIONS",
     middlewares: [],
-    modules: [onRequestOptions2]
+    modules: [onRequestOptions3]
   },
   {
     routePath: "/api/auth",
@@ -396,14 +400,14 @@ var routes = [
     mountPath: "/api",
     method: "GET",
     middlewares: [],
-    modules: [onRequestGet2]
+    modules: [onRequestGet3]
   },
   {
     routePath: "/api/products",
     mountPath: "/api",
     method: "OPTIONS",
     middlewares: [],
-    modules: [onRequestOptions3]
+    modules: [onRequestOptions4]
   },
   {
     routePath: "/api/products",
@@ -424,7 +428,7 @@ var routes = [
     mountPath: "/api",
     method: "OPTIONS",
     middlewares: [],
-    modules: [onRequestOptions4]
+    modules: [onRequestOptions5]
   },
   {
     routePath: "/api/upload",
@@ -434,6 +438,8 @@ var routes = [
     modules: [onRequestPost3]
   }
 ];
+
+// ../../../.npm/_npx/32026684e21afda6/node_modules/path-to-regexp/dist.es2015/index.js
 function lexer(str) {
   var tokens = [];
   var i = 0;
@@ -518,7 +524,6 @@ function lexer(str) {
   return tokens;
 }
 __name(lexer, "lexer");
-__name2(lexer, "lexer");
 function parse(str, options2) {
   if (options2 === void 0) {
     options2 = {};
@@ -529,18 +534,18 @@ function parse(str, options2) {
   var key = 0;
   var i = 0;
   var path = "";
-  var tryConsume = /* @__PURE__ */ __name2(function(type) {
+  var tryConsume = /* @__PURE__ */ __name(function(type) {
     if (i < tokens.length && tokens[i].type === type)
       return tokens[i++].value;
   }, "tryConsume");
-  var mustConsume = /* @__PURE__ */ __name2(function(type) {
+  var mustConsume = /* @__PURE__ */ __name(function(type) {
     var value2 = tryConsume(type);
     if (value2 !== void 0)
       return value2;
     var _a2 = tokens[i], nextType = _a2.type, index = _a2.index;
     throw new TypeError("Unexpected ".concat(nextType, " at ").concat(index, ", expected ").concat(type));
   }, "mustConsume");
-  var consumeText = /* @__PURE__ */ __name2(function() {
+  var consumeText = /* @__PURE__ */ __name(function() {
     var result2 = "";
     var value2;
     while (value2 = tryConsume("CHAR") || tryConsume("ESCAPED_CHAR")) {
@@ -548,7 +553,7 @@ function parse(str, options2) {
     }
     return result2;
   }, "consumeText");
-  var isSafe = /* @__PURE__ */ __name2(function(value2) {
+  var isSafe = /* @__PURE__ */ __name(function(value2) {
     for (var _i = 0, delimiter_1 = delimiter; _i < delimiter_1.length; _i++) {
       var char2 = delimiter_1[_i];
       if (value2.indexOf(char2) > -1)
@@ -556,7 +561,7 @@ function parse(str, options2) {
     }
     return false;
   }, "isSafe");
-  var safePattern = /* @__PURE__ */ __name2(function(prefix2) {
+  var safePattern = /* @__PURE__ */ __name(function(prefix2) {
     var prev = result[result.length - 1];
     var prevText = prefix2 || (prev && typeof prev === "string" ? prev : "");
     if (prev && !prevText) {
@@ -619,14 +624,12 @@ function parse(str, options2) {
   return result;
 }
 __name(parse, "parse");
-__name2(parse, "parse");
 function match(str, options2) {
   var keys = [];
   var re = pathToRegexp(str, keys, options2);
   return regexpToFunction(re, keys, options2);
 }
 __name(match, "match");
-__name2(match, "match");
 function regexpToFunction(re, keys, options2) {
   if (options2 === void 0) {
     options2 = {};
@@ -640,7 +643,7 @@ function regexpToFunction(re, keys, options2) {
       return false;
     var path = m[0], index = m.index;
     var params = /* @__PURE__ */ Object.create(null);
-    var _loop_1 = /* @__PURE__ */ __name2(function(i2) {
+    var _loop_1 = /* @__PURE__ */ __name(function(i2) {
       if (m[i2] === void 0)
         return "continue";
       var key = keys[i2 - 1];
@@ -659,17 +662,14 @@ function regexpToFunction(re, keys, options2) {
   };
 }
 __name(regexpToFunction, "regexpToFunction");
-__name2(regexpToFunction, "regexpToFunction");
 function escapeString(str) {
   return str.replace(/([.+*?=^!:${}()[\]|/\\])/g, "\\$1");
 }
 __name(escapeString, "escapeString");
-__name2(escapeString, "escapeString");
 function flags(options2) {
   return options2 && options2.sensitive ? "" : "i";
 }
 __name(flags, "flags");
-__name2(flags, "flags");
 function regexpToRegexp(path, keys) {
   if (!keys)
     return path;
@@ -690,7 +690,6 @@ function regexpToRegexp(path, keys) {
   return path;
 }
 __name(regexpToRegexp, "regexpToRegexp");
-__name2(regexpToRegexp, "regexpToRegexp");
 function arrayToRegexp(paths, keys, options2) {
   var parts = paths.map(function(path) {
     return pathToRegexp(path, keys, options2).source;
@@ -698,12 +697,10 @@ function arrayToRegexp(paths, keys, options2) {
   return new RegExp("(?:".concat(parts.join("|"), ")"), flags(options2));
 }
 __name(arrayToRegexp, "arrayToRegexp");
-__name2(arrayToRegexp, "arrayToRegexp");
 function stringToRegexp(path, keys, options2) {
   return tokensToRegexp(parse(path, options2), keys, options2);
 }
 __name(stringToRegexp, "stringToRegexp");
-__name2(stringToRegexp, "stringToRegexp");
 function tokensToRegexp(tokens, keys, options2) {
   if (options2 === void 0) {
     options2 = {};
@@ -759,7 +756,6 @@ function tokensToRegexp(tokens, keys, options2) {
   return new RegExp(route, flags(options2));
 }
 __name(tokensToRegexp, "tokensToRegexp");
-__name2(tokensToRegexp, "tokensToRegexp");
 function pathToRegexp(path, keys, options2) {
   if (path instanceof RegExp)
     return regexpToRegexp(path, keys);
@@ -768,7 +764,8 @@ function pathToRegexp(path, keys, options2) {
   return stringToRegexp(path, keys, options2);
 }
 __name(pathToRegexp, "pathToRegexp");
-__name2(pathToRegexp, "pathToRegexp");
+
+// ../../../.npm/_npx/32026684e21afda6/node_modules/wrangler/templates/pages-template-worker.ts
 var escapeRegex = /[.+?^${}()|[\]\\]/g;
 function* executeRequest(request) {
   const requestPath = new URL(request.url).pathname;
@@ -819,14 +816,13 @@ function* executeRequest(request) {
   }
 }
 __name(executeRequest, "executeRequest");
-__name2(executeRequest, "executeRequest");
 var pages_template_worker_default = {
   async fetch(originalRequest, env, workerContext) {
     let request = originalRequest;
     const handlerIterator = executeRequest(request);
     let data = {};
     let isFailOpen = false;
-    const next = /* @__PURE__ */ __name2(async (input, init) => {
+    const next = /* @__PURE__ */ __name(async (input, init) => {
       if (input !== void 0) {
         let url = input;
         if (typeof input === "string") {
@@ -853,7 +849,7 @@ var pages_template_worker_default = {
           },
           env,
           waitUntil: workerContext.waitUntil.bind(workerContext),
-          passThroughOnException: /* @__PURE__ */ __name2(() => {
+          passThroughOnException: /* @__PURE__ */ __name(() => {
             isFailOpen = true;
           }, "passThroughOnException")
         };
@@ -881,14 +877,16 @@ var pages_template_worker_default = {
     }
   }
 };
-var cloneResponse = /* @__PURE__ */ __name2((response) => (
+var cloneResponse = /* @__PURE__ */ __name((response) => (
   // https://fetch.spec.whatwg.org/#null-body-status
   new Response(
     [101, 204, 205, 304].includes(response.status) ? null : response.body,
     response
   )
 ), "cloneResponse");
-var drainBody = /* @__PURE__ */ __name2(async (request, env, _ctx, middlewareCtx) => {
+
+// ../../../.npm/_npx/32026684e21afda6/node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts
+var drainBody = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
   try {
     return await middlewareCtx.next(request, env);
   } finally {
@@ -904,6 +902,8 @@ var drainBody = /* @__PURE__ */ __name2(async (request, env, _ctx, middlewareCtx
   }
 }, "drainBody");
 var middleware_ensure_req_body_drained_default = drainBody;
+
+// ../../../.npm/_npx/32026684e21afda6/node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts
 function reduceError(e) {
   return {
     name: e?.name,
@@ -913,8 +913,7 @@ function reduceError(e) {
   };
 }
 __name(reduceError, "reduceError");
-__name2(reduceError, "reduceError");
-var jsonError = /* @__PURE__ */ __name2(async (request, env, _ctx, middlewareCtx) => {
+var jsonError = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
   try {
     return await middlewareCtx.next(request, env);
   } catch (e) {
@@ -926,17 +925,20 @@ var jsonError = /* @__PURE__ */ __name2(async (request, env, _ctx, middlewareCtx
   }
 }, "jsonError");
 var middleware_miniflare3_json_error_default = jsonError;
+
+// ../.wrangler/tmp/bundle-ONBLAt/middleware-insertion-facade.js
 var __INTERNAL_WRANGLER_MIDDLEWARE__ = [
   middleware_ensure_req_body_drained_default,
   middleware_miniflare3_json_error_default
 ];
 var middleware_insertion_facade_default = pages_template_worker_default;
+
+// ../../../.npm/_npx/32026684e21afda6/node_modules/wrangler/templates/middleware/common.ts
 var __facade_middleware__ = [];
 function __facade_register__(...args) {
   __facade_middleware__.push(...args.flat());
 }
 __name(__facade_register__, "__facade_register__");
-__name2(__facade_register__, "__facade_register__");
 function __facade_invokeChain__(request, env, ctx, dispatch, middlewareChain) {
   const [head, ...tail] = middlewareChain;
   const middlewareCtx = {
@@ -948,7 +950,6 @@ function __facade_invokeChain__(request, env, ctx, dispatch, middlewareChain) {
   return head(request, env, ctx, middlewareCtx);
 }
 __name(__facade_invokeChain__, "__facade_invokeChain__");
-__name2(__facade_invokeChain__, "__facade_invokeChain__");
 function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
   return __facade_invokeChain__(request, env, ctx, dispatch, [
     ...__facade_middleware__,
@@ -956,18 +957,16 @@ function __facade_invoke__(request, env, ctx, dispatch, finalMiddleware) {
   ]);
 }
 __name(__facade_invoke__, "__facade_invoke__");
-__name2(__facade_invoke__, "__facade_invoke__");
+
+// ../.wrangler/tmp/bundle-ONBLAt/middleware-loader.entry.ts
 var __Facade_ScheduledController__ = class ___Facade_ScheduledController__ {
-  static {
-    __name(this, "___Facade_ScheduledController__");
-  }
   constructor(scheduledTime, cron, noRetry) {
     this.scheduledTime = scheduledTime;
     this.cron = cron;
     this.#noRetry = noRetry;
   }
   static {
-    __name2(this, "__Facade_ScheduledController__");
+    __name(this, "__Facade_ScheduledController__");
   }
   #noRetry;
   noRetry() {
@@ -984,7 +983,7 @@ function wrapExportedHandler(worker) {
   for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__) {
     __facade_register__(middleware);
   }
-  const fetchDispatcher = /* @__PURE__ */ __name2(function(request, env, ctx) {
+  const fetchDispatcher = /* @__PURE__ */ __name(function(request, env, ctx) {
     if (worker.fetch === void 0) {
       throw new Error("Handler does not export a fetch() function.");
     }
@@ -993,7 +992,7 @@ function wrapExportedHandler(worker) {
   return {
     ...worker,
     fetch(request, env, ctx) {
-      const dispatcher = /* @__PURE__ */ __name2(function(type, init) {
+      const dispatcher = /* @__PURE__ */ __name(function(type, init) {
         if (type === "scheduled" && worker.scheduled !== void 0) {
           const controller = new __Facade_ScheduledController__(
             Date.now(),
@@ -1009,7 +1008,6 @@ function wrapExportedHandler(worker) {
   };
 }
 __name(wrapExportedHandler, "wrapExportedHandler");
-__name2(wrapExportedHandler, "wrapExportedHandler");
 function wrapWorkerEntrypoint(klass) {
   if (__INTERNAL_WRANGLER_MIDDLEWARE__ === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__.length === 0) {
     return klass;
@@ -1018,7 +1016,7 @@ function wrapWorkerEntrypoint(klass) {
     __facade_register__(middleware);
   }
   return class extends klass {
-    #fetchDispatcher = /* @__PURE__ */ __name2((request, env, ctx) => {
+    #fetchDispatcher = /* @__PURE__ */ __name((request, env, ctx) => {
       this.env = env;
       this.ctx = ctx;
       if (super.fetch === void 0) {
@@ -1026,7 +1024,7 @@ function wrapWorkerEntrypoint(klass) {
       }
       return super.fetch(request);
     }, "#fetchDispatcher");
-    #dispatcher = /* @__PURE__ */ __name2((type, init) => {
+    #dispatcher = /* @__PURE__ */ __name((type, init) => {
       if (type === "scheduled" && super.scheduled !== void 0) {
         const controller = new __Facade_ScheduledController__(
           Date.now(),
@@ -1049,7 +1047,6 @@ function wrapWorkerEntrypoint(klass) {
   };
 }
 __name(wrapWorkerEntrypoint, "wrapWorkerEntrypoint");
-__name2(wrapWorkerEntrypoint, "wrapWorkerEntrypoint");
 var WRAPPED_ENTRY;
 if (typeof middleware_insertion_facade_default === "object") {
   WRAPPED_ENTRY = wrapExportedHandler(middleware_insertion_facade_default);
@@ -1057,178 +1054,8 @@ if (typeof middleware_insertion_facade_default === "object") {
   WRAPPED_ENTRY = wrapWorkerEntrypoint(middleware_insertion_facade_default);
 }
 var middleware_loader_entry_default = WRAPPED_ENTRY;
-
-// node_modules/wrangler/templates/middleware/middleware-ensure-req-body-drained.ts
-var drainBody2 = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
-  try {
-    return await middlewareCtx.next(request, env);
-  } finally {
-    try {
-      if (request.body !== null && !request.bodyUsed) {
-        const reader = request.body.getReader();
-        while (!(await reader.read()).done) {
-        }
-      }
-    } catch (e) {
-      console.error("Failed to drain the unused request body.", e);
-    }
-  }
-}, "drainBody");
-var middleware_ensure_req_body_drained_default2 = drainBody2;
-
-// node_modules/wrangler/templates/middleware/middleware-miniflare3-json-error.ts
-function reduceError2(e) {
-  return {
-    name: e?.name,
-    message: e?.message ?? String(e),
-    stack: e?.stack,
-    cause: e?.cause === void 0 ? void 0 : reduceError2(e.cause)
-  };
-}
-__name(reduceError2, "reduceError");
-var jsonError2 = /* @__PURE__ */ __name(async (request, env, _ctx, middlewareCtx) => {
-  try {
-    return await middlewareCtx.next(request, env);
-  } catch (e) {
-    const error = reduceError2(e);
-    return Response.json(error, {
-      status: 500,
-      headers: { "MF-Experimental-Error-Stack": "true" }
-    });
-  }
-}, "jsonError");
-var middleware_miniflare3_json_error_default2 = jsonError2;
-
-// .wrangler/tmp/bundle-GISgyA/middleware-insertion-facade.js
-var __INTERNAL_WRANGLER_MIDDLEWARE__2 = [
-  middleware_ensure_req_body_drained_default2,
-  middleware_miniflare3_json_error_default2
-];
-var middleware_insertion_facade_default2 = middleware_loader_entry_default;
-
-// node_modules/wrangler/templates/middleware/common.ts
-var __facade_middleware__2 = [];
-function __facade_register__2(...args) {
-  __facade_middleware__2.push(...args.flat());
-}
-__name(__facade_register__2, "__facade_register__");
-function __facade_invokeChain__2(request, env, ctx, dispatch, middlewareChain) {
-  const [head, ...tail] = middlewareChain;
-  const middlewareCtx = {
-    dispatch,
-    next(newRequest, newEnv) {
-      return __facade_invokeChain__2(newRequest, newEnv, ctx, dispatch, tail);
-    }
-  };
-  return head(request, env, ctx, middlewareCtx);
-}
-__name(__facade_invokeChain__2, "__facade_invokeChain__");
-function __facade_invoke__2(request, env, ctx, dispatch, finalMiddleware) {
-  return __facade_invokeChain__2(request, env, ctx, dispatch, [
-    ...__facade_middleware__2,
-    finalMiddleware
-  ]);
-}
-__name(__facade_invoke__2, "__facade_invoke__");
-
-// .wrangler/tmp/bundle-GISgyA/middleware-loader.entry.ts
-var __Facade_ScheduledController__2 = class ___Facade_ScheduledController__2 {
-  constructor(scheduledTime, cron, noRetry) {
-    this.scheduledTime = scheduledTime;
-    this.cron = cron;
-    this.#noRetry = noRetry;
-  }
-  static {
-    __name(this, "__Facade_ScheduledController__");
-  }
-  #noRetry;
-  noRetry() {
-    if (!(this instanceof ___Facade_ScheduledController__2)) {
-      throw new TypeError("Illegal invocation");
-    }
-    this.#noRetry();
-  }
-};
-function wrapExportedHandler2(worker) {
-  if (__INTERNAL_WRANGLER_MIDDLEWARE__2 === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__2.length === 0) {
-    return worker;
-  }
-  for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__2) {
-    __facade_register__2(middleware);
-  }
-  const fetchDispatcher = /* @__PURE__ */ __name(function(request, env, ctx) {
-    if (worker.fetch === void 0) {
-      throw new Error("Handler does not export a fetch() function.");
-    }
-    return worker.fetch(request, env, ctx);
-  }, "fetchDispatcher");
-  return {
-    ...worker,
-    fetch(request, env, ctx) {
-      const dispatcher = /* @__PURE__ */ __name(function(type, init) {
-        if (type === "scheduled" && worker.scheduled !== void 0) {
-          const controller = new __Facade_ScheduledController__2(
-            Date.now(),
-            init.cron ?? "",
-            () => {
-            }
-          );
-          return worker.scheduled(controller, env, ctx);
-        }
-      }, "dispatcher");
-      return __facade_invoke__2(request, env, ctx, dispatcher, fetchDispatcher);
-    }
-  };
-}
-__name(wrapExportedHandler2, "wrapExportedHandler");
-function wrapWorkerEntrypoint2(klass) {
-  if (__INTERNAL_WRANGLER_MIDDLEWARE__2 === void 0 || __INTERNAL_WRANGLER_MIDDLEWARE__2.length === 0) {
-    return klass;
-  }
-  for (const middleware of __INTERNAL_WRANGLER_MIDDLEWARE__2) {
-    __facade_register__2(middleware);
-  }
-  return class extends klass {
-    #fetchDispatcher = /* @__PURE__ */ __name((request, env, ctx) => {
-      this.env = env;
-      this.ctx = ctx;
-      if (super.fetch === void 0) {
-        throw new Error("Entrypoint class does not define a fetch() function.");
-      }
-      return super.fetch(request);
-    }, "#fetchDispatcher");
-    #dispatcher = /* @__PURE__ */ __name((type, init) => {
-      if (type === "scheduled" && super.scheduled !== void 0) {
-        const controller = new __Facade_ScheduledController__2(
-          Date.now(),
-          init.cron ?? "",
-          () => {
-          }
-        );
-        return super.scheduled(controller);
-      }
-    }, "#dispatcher");
-    fetch(request) {
-      return __facade_invoke__2(
-        request,
-        this.env,
-        this.ctx,
-        this.#dispatcher,
-        this.#fetchDispatcher
-      );
-    }
-  };
-}
-__name(wrapWorkerEntrypoint2, "wrapWorkerEntrypoint");
-var WRAPPED_ENTRY2;
-if (typeof middleware_insertion_facade_default2 === "object") {
-  WRAPPED_ENTRY2 = wrapExportedHandler2(middleware_insertion_facade_default2);
-} else if (typeof middleware_insertion_facade_default2 === "function") {
-  WRAPPED_ENTRY2 = wrapWorkerEntrypoint2(middleware_insertion_facade_default2);
-}
-var middleware_loader_entry_default2 = WRAPPED_ENTRY2;
 export {
-  __INTERNAL_WRANGLER_MIDDLEWARE__2 as __INTERNAL_WRANGLER_MIDDLEWARE__,
-  middleware_loader_entry_default2 as default
+  __INTERNAL_WRANGLER_MIDDLEWARE__,
+  middleware_loader_entry_default as default
 };
-//# sourceMappingURL=functionsWorker-0.7864817053693135.js.map
+//# sourceMappingURL=functionsWorker-0.6869341523171204.mjs.map

@@ -1,55 +1,61 @@
-import React from "react";
-import type { Metadata } from "next";
+'use client';
+
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { Check, Phone, Package, Shield, ArrowLeft } from "lucide-react";
-import productsData from "@/data/products.json";
 
-// Next.js static params generation
-export async function generateStaticParams() {
-  return productsData.map((p) => ({
-    id: p.id,
-  }));
+interface Product {
+  id: string;
+  name: string;
+  badge?: string;
+  category: string;
+  tagline?: string;
+  capacity?: string;
+  warranty?: string;
+  description?: string;
+  features?: string[];
+  specs?: Record<string, string>;
+  images?: string[];
+  wa?: string;
 }
 
-// Generate dynamic metadata
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
-  const { id } = await params;
-  const product = productsData.find((p) => p.id === id);
-  if (!product) return {};
+export default function ProductDetailsClient({ initialProduct }: { initialProduct: Product }) {
+  const [product, setProduct] = useState<Product>(initialProduct);
 
-  return {
-    title: product.meta_title || `${product.name} - Shivam Water Solution Morbi`,
-    description: product.meta_desc || product.description,
-    alternates: {
-      canonical: `/products/${id}`,
-    },
-    openGraph: {
-      title: product.meta_title || `${product.name} - Shivam Water Solution Morbi`,
-      description: product.meta_desc || product.description,
-      url: `https://shivamwatersolution.in/products/${id}`,
-      images: [
-        {
-          url: product.images?.[0] || "/assets/product_domestic.webp",
-          width: 400,
-          height: 400,
-          alt: product.name,
-        },
-      ],
-    },
-  };
-}
-
-export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const product = productsData.find((p) => p.id === id);
-
-  if (!product) {
-    notFound();
-  }
+  useEffect(() => {
+    // Fetch latest live data from database at runtime
+    fetch(`/api/products/${initialProduct.id}`)
+      .then((res) => {
+        if (!res.ok) throw new Error("Product fetch failed");
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.id) {
+          // Normalize the data format to match client expectations
+          const mapped: Product = {
+            id: data.id,
+            name: data.name || data.name_en || "",
+            badge: data.badge || data.badge_en || "",
+            category: data.category || "domestic",
+            tagline: data.tagline || data.tagline_en || "",
+            capacity: data.capacity || data.capacity_en || "",
+            warranty: data.warranty || data.warranty_en || "",
+            description: data.description || data.description_en || "",
+            features: data.features || data.features_en || [],
+            images: data.images || [],
+            wa: data.wa || `Hi Shivam Water Solution, I am interested in a price quote for the ${data.name_en || data.name} water purifier model.`,
+            specs: data.specs || data.specs_en || {},
+          };
+          setProduct(mapped);
+        }
+      })
+      .catch((err) => {
+        console.warn("Using offline fallback data for product details:", err);
+      });
+  }, [initialProduct.id]);
 
   const imgSrc = product.images?.[0] || "/assets/product_domestic.webp";
-  const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(product.wa)}`;
+  const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(product.wa || "")}`;
 
   const displayCategory = product.category === "domestic" 
     ? "Domestic RO" 
