@@ -54,7 +54,15 @@ export default function ProductDetailsClient({ initialProduct }: { initialProduc
       });
   }, [initialProduct.id]);
 
-  const imgSrc = product.images?.[0] || "/assets/product_domestic.webp";
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
+
+  useEffect(() => {
+    setActiveImageIndex(0);
+  }, [product.id, product.images]);
+
+  const images = product.images && product.images.length > 0 ? product.images : ["/assets/product_domestic.webp"];
+  const safeIndex = activeImageIndex >= 0 && activeImageIndex < images.length ? activeImageIndex : 0;
+  const imgSrc = images[safeIndex];
   const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(product.wa || "")}`;
 
   const displayCategory = product.category === "domestic" 
@@ -75,16 +83,41 @@ export default function ProductDetailsClient({ initialProduct }: { initialProduc
         </div>
 
         <div className="product-detail-grid">
-          {/* Left: Product Image */}
-          <div className="product-image-section glass-card">
-            <img 
-              src={imgSrc} 
-              alt={product.name} 
-              className="main-detail-img" 
-              width="400" 
-              height="400" 
-              style={{ objectFit: "contain", display: "block", margin: "0 auto" }}
-            />
+          {/* Left: Product Image & Gallery */}
+          <div className="product-gallery-container">
+            <div className="product-image-section glass-card">
+              <img 
+                src={imgSrc} 
+                alt={product.name} 
+                className="main-detail-img" 
+                width="400" 
+                height="400" 
+                style={{ objectFit: "contain", display: "block", margin: "0 auto" }}
+                fetchPriority="high"
+              />
+            </div>
+            {images.length > 1 && (
+              <div className="product-thumbnails-grid">
+                {images.map((img, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => setActiveImageIndex(idx)}
+                    className={`product-thumbnail-btn glass-card ${idx === safeIndex ? 'active' : ''}`}
+                    aria-label={`View product image ${idx + 1}`}
+                  >
+                    <img 
+                      src={img} 
+                      alt={`${product.name} thumbnail ${idx + 1}`} 
+                      className="product-thumbnail-img"
+                      width="80"
+                      height="80"
+                      onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }}
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Right: Product Details */}
