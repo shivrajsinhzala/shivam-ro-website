@@ -4,6 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { Search, Droplet, Shield } from "lucide-react";
 import productsData from "@/data/products.json";
+import { useSearchParams } from "next/navigation";
+import ProductDetailsClient from "@/components/ProductDetailsClient";
 
 interface Product {
   id: string;
@@ -20,11 +22,16 @@ interface Product {
 }
 
 export default function ProductsGrid() {
+  const searchParams = useSearchParams();
+  const productId = searchParams.get("id");
+
   const [activeCategory, setActiveCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [products, setProducts] = useState<Product[]>(productsData);
+
+  const selectedProduct = products.find(p => p.id === productId) || productsData.find(p => p.id === productId);
 
   useEffect(() => {
     fetch("/api/products")
@@ -107,6 +114,31 @@ export default function ProductsGrid() {
 
     return matchesCategory && matchesSearch;
   });
+
+  if (productId) {
+    if (selectedProduct) {
+      return <ProductDetailsClient initialProduct={selectedProduct} />;
+    }
+    
+    const isLoading = products.length === 0;
+    return (
+      <div className="container" style={{ padding: "80px 20px", textAlign: "center" }}>
+        {isLoading ? (
+          <h3 style={{ fontFamily: "var(--font-display)", color: "var(--text-light-1)" }}>Loading Product Details...</h3>
+        ) : (
+          <>
+            <h3 style={{ fontFamily: "var(--font-display)", color: "var(--text-light-1)", fontSize: "2rem", marginBottom: "16px" }}>Product Not Found</h3>
+            <p style={{ color: "var(--text-light-3)", marginBottom: "24px" }}>
+              The product you are looking for does not exist or has been removed.
+            </p>
+            <Link href="/products" className="btn btn-primary">
+              Back to Products Catalog
+            </Link>
+          </>
+        )}
+      </div>
+    );
+  }
 
   return (
     <>
@@ -240,7 +272,7 @@ export default function ProductsGrid() {
                     </div>
 
                     <div className="card-action-row">
-                      <Link href={`/products/${p.id}`} className="btn btn-outline btn-sm">
+                      <Link href={`/products?id=${p.id}`} className="btn btn-outline btn-sm">
                         <span>View Details</span>
                       </Link>
                       <a 

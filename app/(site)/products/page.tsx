@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import ProductsGrid from "@/components/ProductsGrid";
 
@@ -26,7 +26,9 @@ export const metadata: Metadata = {
 export default function ProductsPage() {
   return (
     <div className="products-detail-page">
-      <ProductsGrid />
+      <Suspense fallback={<div className="container" style={{ padding: "80px 20px", textAlign: "center" }}>Loading catalog...</div>}>
+        <ProductsGrid />
+      </Suspense>
     </div>
   );
 }

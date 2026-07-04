@@ -52,13 +52,8 @@ export default function FeaturedProducts() {
       });
   }, []);
 
-  const featuredIds = ["aqua-2090", "alica-pure", "aqua-touch", "olly-arise", "aqua-c3", "hi-flo"];
-  
-  // Filter products that are in our featuredIds list
-  const featuredProducts = products.filter(p => featuredIds.includes(p.id));
-
   // Filter based on active tab
-  const filteredProducts = featuredProducts.filter(p => {
+  const filteredProducts = products.filter(p => {
     if (filter === "all") return true;
     return p.category === filter;
   });
@@ -139,7 +134,7 @@ export default function FeaturedProducts() {
                   </div>
 
                   <div className="card-action-row">
-                    <Link href={`/products/${p.id}`} className="btn btn-outline btn-sm">
+                    <Link href={`/products?id=${p.id}`} className="btn btn-outline btn-sm">
                       <span>View Details</span>
                     </Link>
                     <a 
