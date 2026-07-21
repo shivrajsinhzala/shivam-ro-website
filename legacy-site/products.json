@@ -29,5 +29,37 @@
     "images": [
       "/api/images/products/dolphine_kool.png"
     ]
+  },
+  {
+    "id": "dolphine-gold",
+    "name": "Dolphine Gold",
+    "badge": "Premium",
+    "category": "domestic",
+    "tagline": "A Quality Reverse Osmosis Pure Water System",
+    "capacity": "9 Ltrs Storage",
+    "warranty": "1 Year Pump Warranty",
+    "description": "Experience premium purity with Dolphine Gold. Featuring a high-efficiency Reverse Osmosis (RO) system with a 9-litre transparent storage tank, compact ergonomic cabinet design, and multi-stage purification. Comes with a 1-year warranty on the pump, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "Compact Reverse Osmosis System",
+      "9L Transparent Storage Tank",
+      "Multi-stage RO Purification",
+      "1 Year Warranty (Pump)",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "9 Litres",
+      "Weight": "10 Kg (Approx)",
+      "Purification Type": "RO + UV + Alkaline",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year (Pump)"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Dolphine Gold water purifier model.",
+    "meta_title": "Dolphine Gold - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Dolphine Gold RO water purifier in Morbi & Rajkot. Premium compact Reverse Osmosis pure water system. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/dolphine_gold.png"
+    ]
   }
 ]
