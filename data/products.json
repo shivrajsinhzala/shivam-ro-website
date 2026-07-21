@@ -154,5 +154,36 @@
     "images": [
       "/api/images/products/aqua_klick_pro.png"
     ]
+  },
+  {
+    "id": "aqua-grand",
+    "name": "Aqua Grand",
+    "badge": "TDS Controller",
+    "category": "domestic",
+    "tagline": "Innovative Technology RO + UV + TDS Controller",
+    "capacity": "12 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Aqua Grand RO Water Purifier System features innovative RO + UV + TDS Controller technology for fresh and hygienic drinking water. Designed with a transparent upper chamber showing active carbon and UV filters, filter change alarm system, and food-grade 12-litre storage tank. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "Innovative RO + UV + TDS Controller",
+      "Transparent Chamber with Activated Carbon",
+      "Automatic Filter Change Alarm",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + UV + TDS Controller",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Grand water purifier model.",
+    "meta_title": "Aqua Grand - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Grand RO water purifier in Morbi & Rajkot. Innovative technology RO + UV + TDS controller with filter change alarm. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/aqua_grand.png"
+    ]
   }
 ]
