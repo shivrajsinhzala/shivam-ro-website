@@ -63,6 +63,37 @@
     ]
   },
   {
+    "id": "aqua-queen",
+    "name": "Aqua Queen",
+    "badge": "5-Stage RO",
+    "category": "domestic",
+    "tagline": "It's for health. It's for life.",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Pump Warranty",
+    "description": "Aqua Queen Water Purification System brings ultimate purity for health and life. Featuring a 5-stage Reverse Osmosis (RO) system with superior quality filters, wall-mounted ergonomic cabinet, and transparent blue storage tank. Comes with a 1-year warranty on the pump, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "5-Stage RO System",
+      "Superior Quality Filters",
+      "Wall Mounted Ergonomic Cabinet",
+      "1 Year Warranty (Pump)",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "5-Stage RO + UV",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year (Pump)"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Queen water purifier model.",
+    "meta_title": "Aqua Queen - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Queen 5-Stage RO water purifier in Morbi & Rajkot. Superior quality filters for health & life. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/aqua_queen_v2.png"
+    ]
+  },
+  {
     "id": "a-star",
     "name": "A-Star",
     "badge": "Star Performer",
