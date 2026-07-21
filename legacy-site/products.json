@@ -63,50 +63,19 @@
     ]
   },
   {
-    "id": "aqua-queen",
-    "name": "Aqua Queen",
-    "badge": "5-Stage RO",
-    "category": "domestic",
-    "tagline": "It's for health. It's for life.",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Pump Warranty",
-    "description": "Aqua Queen Water Purification System brings ultimate purity for health and life. Featuring a 5-stage Reverse Osmosis (RO) system with superior quality filters, wall-mounted ergonomic cabinet, and transparent blue storage tank. Comes with a 1-year warranty on the pump, free installation, and free home delivery across Morbi & Rajkot.",
-    "features": [
-      "5-Stage RO System",
-      "Superior Quality Filters",
-      "Wall Mounted Ergonomic Cabinet",
-      "1 Year Warranty (Pump)",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "5-Stage RO + UV",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year (Pump)"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Queen water purifier model.",
-    "meta_title": "Aqua Queen - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Queen 5-Stage RO water purifier in Morbi & Rajkot. Superior quality filters for health & life. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_queen.png"
-    ]
-  },
-  {
     "id": "a-star",
     "name": "A-Star",
     "badge": "Star Performer",
     "category": "domestic",
     "tagline": "RO Water Purifier System with Premium Storage Tank",
     "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Experience superior filtration with A-Star RO Water Purifier System. Featuring a high-grade 10-litre transparent blue storage tank, multi-stage purification technology, and sleek modern aesthetic. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "warranty": "1 Year Warranty (Pump)",
+    "description": "Experience superior filtration with A-Star RO Water Purifier System. Featuring a high-grade 10-litre transparent blue storage tank, multi-stage purification technology, and sleek modern aesthetic. Comes with a 1-year warranty on the pump, free installation, and free home delivery across Morbi & Rajkot.",
     "features": [
       "High-Capacity Storage Tank",
       "Multi-stage RO Purification",
       "Sleek Water-Splash Aesthetics",
-      "1 Year Warranty",
+      "1 Year Warranty (Pump)",
       "Free Installation",
       "Free Home Delivery"
     ],
@@ -115,13 +84,13 @@
       "Purification Type": "RO + UV + Mineral Filter",
       "Cabinet Material": "ABS Food Grade",
       "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
+      "Warranty": "1 Year (Pump)"
     },
     "wa": "Hi Shivam Water Solution, I am interested in ordering the A-Star water purifier model.",
     "meta_title": "A-Star - Shivam Water Solution Morbi",
     "meta_desc": "Buy A-Star RO water purifier in Morbi & Rajkot. High-capacity domestic RO water purifier system. Sales, installation, and repair services by Shivam Water Solution.",
     "images": [
-      "/api/images/products/a_star.jpg"
+      "/api/images/products/a_star.png"
     ]
   },
   {
@@ -152,7 +121,7 @@
     "meta_title": "Aqua Klick Pro - Shivam Water Solution Morbi",
     "meta_desc": "Buy Aqua Klick Pro RO water purifier in Morbi & Rajkot. Compact stylish look with unbreakable tank. Sales, installation, and repair services by Shivam Water Solution.",
     "images": [
-      "/api/images/products/aqua_klick_pro.png"
+      "/api/images/products/aqua_klick_pro_v2.png"
     ]
   },
   {
@@ -187,37 +156,6 @@
     ]
   },
   {
-    "id": "aqua-prima",
-    "name": "Aqua Prima",
-    "badge": "8 Stage RO",
-    "category": "domestic",
-    "tagline": "Advance Technology 100% Pure Water System",
-    "capacity": "12 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Prima Reverse Osmosis System offers 8-stage advance technology for 100% pure drinking water. Built with a high-capacity 12-litre storage tank, transparent upper compartment, and heavy-duty booster pump. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
-    "features": [
-      "8-Stage Advance Technology RO",
-      "100% Pure Water Guarantee",
-      "Transparent Upper Compartment",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "12 Litres",
-      "Purification Type": "8-Stage RO + UV + Minerals",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Prima water purifier model.",
-    "meta_title": "Aqua Prima - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Prima 8-Stage RO water purifier in Morbi & Rajkot. Advance technology 100% pure water system. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_prima.png"
-    ]
-  },
-  {
     "id": "mr-aqua-mars",
     "name": "Mr Aqua Mars",
     "badge": "Unbreakable Cabinet",
@@ -246,7 +184,38 @@
     "meta_title": "Mr Aqua Mars - Shivam Water Solution Morbi",
     "meta_desc": "Buy Mr Aqua Mars RO water purifier in Morbi & Rajkot. Heavy-duty unbreakable cabinet RO water system by Nile. Sales, installation, and repair services by Shivam Water Solution.",
     "images": [
-      "/api/images/products/mr_aqua_mars.png"
+      "/api/images/products/mr_aqua_mars.jpg"
+    ]
+  },
+  {
+    "id": "aqua-prima",
+    "name": "Aqua Prima",
+    "badge": "8 Stage RO",
+    "category": "domestic",
+    "tagline": "Advance Technology 100% Pure Water System",
+    "capacity": "12 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Aqua Prima Reverse Osmosis System offers 8-stage advance technology for 100% pure drinking water. Built with a high-capacity 12-litre storage tank, transparent upper compartment, and heavy-duty booster pump. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "8-Stage Advance Technology RO",
+      "100% Pure Water Guarantee",
+      "Transparent Upper Compartment",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "8-Stage RO + UV + Minerals",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Prima water purifier model.",
+    "meta_title": "Aqua Prima - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Prima 8-Stage RO water purifier in Morbi & Rajkot. Advance technology 100% pure water system. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/aqua_prima.png"
     ]
   }
 ]
