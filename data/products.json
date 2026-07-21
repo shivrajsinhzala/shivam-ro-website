@@ -125,6 +125,37 @@
     ]
   },
   {
+    "id": "neptune-metallic",
+    "name": "Neptune Metallic",
+    "badge": "Metallic Series",
+    "category": "domestic",
+    "tagline": "Multi-Stage Water Purification System with Metallic Cabinet",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Neptune Metallic Water Purifier features a sleek dark gunmetal cabinet with transparent smoke storage tank and multi-stage RO filtration system. Built for contemporary homes seeking high durability and pure drinking water. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "Sleek Metallic Dark Gunmetal Finish",
+      "Transparent Smoke Food-Grade Tank",
+      "Multi-stage RO Water Purification",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Minerals",
+      "Cabinet Material": "ABS Metallic Finish",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Neptune Metallic water purifier model.",
+    "meta_title": "Neptune Metallic - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Neptune Metallic RO water purifier in Morbi & Rajkot. Sleek metallic dark gunmetal cabinet water system. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/neptune_metallic.png"
+    ]
+  },
+  {
     "id": "aqua-klick-pro",
     "name": "Aqua Klick Pro",
     "badge": "Unbreakable Tank",
