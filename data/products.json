@@ -156,6 +156,37 @@
     ]
   },
   {
+    "id": "aqua-xzora",
+    "name": "Aqua Xzora",
+    "badge": "Digital Display",
+    "category": "domestic",
+    "tagline": "Exotic Modern Design - The Elegance of Your Kitchen",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Aqua Xzora RO Water Purifier System features an exotic modern black and copper design with digital display options. Built with a 10-litre storage capacity, multi-stage advanced copper filtration technology, and high-elegance finish. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "Exotic Modern Black & Copper Trim",
+      "Digital Display Options",
+      "Multi-stage Advanced Copper Technology",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Active Copper",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Xzora water purifier model.",
+    "meta_title": "Aqua Xzora - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Xzora RO water purifier in Morbi & Rajkot. Exotic modern black and copper design with digital display options. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/aqua_xzora.png"
+    ]
+  },
+  {
     "id": "aqua-klick-pro",
     "name": "Aqua Klick Pro",
     "badge": "Unbreakable Tank",
