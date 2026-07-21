@@ -92,5 +92,36 @@
     "images": [
       "/api/images/products/aqua_queen.png"
     ]
+  },
+  {
+    "id": "a-star",
+    "name": "A-Star",
+    "badge": "Star Performer",
+    "category": "domestic",
+    "tagline": "RO Water Purifier System with Premium Storage Tank",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Experience superior filtration with A-Star RO Water Purifier System. Featuring a high-grade 10-litre transparent blue storage tank, multi-stage purification technology, and sleek modern aesthetic. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "High-Capacity Storage Tank",
+      "Multi-stage RO Purification",
+      "Sleek Water-Splash Aesthetics",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Mineral Filter",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the A-Star water purifier model.",
+    "meta_title": "A-Star - Shivam Water Solution Morbi",
+    "meta_desc": "Buy A-Star RO water purifier in Morbi & Rajkot. High-capacity domestic RO water purifier system. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/a_star.jpg"
+    ]
   }
 ]
