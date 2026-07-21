@@ -216,5 +216,37 @@
     "images": [
       "/api/images/products/aqua_prima.png"
     ]
+  },
+  {
+    "id": "mr-aqua-mars",
+    "name": "Mr Aqua Mars",
+    "badge": "Unbreakable Cabinet",
+    "category": "domestic",
+    "tagline": "Unbreakable Heavy-Duty Reverse Osmosis System",
+    "capacity": "12 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Mr Aqua Mars Reverse Osmosis System by Nile features a premium unbreakable cabinet in sleek dark finish, high-grade RO filtration, and LED operational indicators. Built for durability, quality, and high performance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "Quality Assured Unbreakable Cabinet",
+      "Sleek Dark Matte Finish",
+      "Multi-stage RO Water Purification",
+      "LED Operational Status Indicators",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + UV + Minerals",
+      "Cabinet Material": "Unbreakable ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Mr Aqua Mars water purifier model.",
+    "meta_title": "Mr Aqua Mars - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Mr Aqua Mars RO water purifier in Morbi & Rajkot. Heavy-duty unbreakable cabinet RO water system by Nile. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/mr_aqua_mars.png"
+    ]
   }
 ]
