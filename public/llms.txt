@@ -10,7 +10,7 @@
 
 ## Main Pages
 - [Home Page](https://shivamwatersolution.in/) - Core services, customer reviews, local service areas, and doorstep technician booking form.
-- [Products Catalog](https://shivamwatersolution.in/products) - Online showcase of 18+ domestic, commercial, and industrial RO systems.
+- [Products Catalog](https://shivamwatersolution.in/products) - Online showcase of our range of domestic, commercial, and industrial RO systems.
 - [Educational Blogs](https://shivamwatersolution.in/blogs) - Maintenance tips, safe TDS ranges, and water purification guides.
 
 ## Core Services

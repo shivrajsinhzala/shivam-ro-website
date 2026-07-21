@@ -4,13 +4,13 @@ import ProductsGrid from "@/components/ProductsGrid";
 
 export const metadata: Metadata = {
   title: "Our RO Purifier Catalog - Shivam Water Solution Morbi",
-  description: "Browse and search through 18+ premium domestic, commercial, and under-sink RO water purifiers by Shivam Water Solution. Find the perfect filter for your home or factory in Morbi & Rajkot.",
+  description: "Browse and search through our premium domestic, commercial, and under-sink RO water purifiers by Shivam Water Solution. Find the perfect filter for your home or factory in Morbi & Rajkot.",
   alternates: {
     canonical: "/products",
   },
   openGraph: {
     title: "Our RO Purifier Catalog - Shivam Water Solution Morbi",
-    description: "Browse and search through 18+ premium domestic, commercial, and under-sink RO water purifiers by Shivam Water Solution. Find the perfect filter for your home or factory in Morbi & Rajkot.",
+    description: "Browse and search through our premium domestic, commercial, and under-sink RO water purifiers by Shivam Water Solution. Find the perfect filter for your home or factory in Morbi & Rajkot.",
     url: "https://shivamwatersolution.in/products",
     images: [
       {
