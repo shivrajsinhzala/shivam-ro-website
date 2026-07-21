@@ -123,5 +123,36 @@
     "images": [
       "/api/images/products/a_star.jpg"
     ]
+  },
+  {
+    "id": "aqua-klick-pro",
+    "name": "Aqua Klick Pro",
+    "badge": "Unbreakable Tank",
+    "category": "domestic",
+    "tagline": "Purity in Every Drop with Compact Stylish Look",
+    "capacity": "10 Ltrs Storage",
+    "warranty": "1 Year Warranty",
+    "description": "Aqua Klick Pro delivers purity in every drop with an exclusive design featuring an unbreakable storage tank, compact stylish matte finish cabinet, and advanced multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "features": [
+      "Exclusive Design with Unbreakable Tank",
+      "Compact Stylish Black Finish",
+      "Multi-stage RO Filtration",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + UV + Alkaline",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Klick Pro water purifier model.",
+    "meta_title": "Aqua Klick Pro - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Klick Pro RO water purifier in Morbi & Rajkot. Compact stylish look with unbreakable tank. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/aqua_klick_pro.png"
+    ]
   }
 ]
