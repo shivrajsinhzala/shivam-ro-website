@@ -35,8 +35,8 @@ export default function ProductDetailsClient({ initialProduct }: { initialProduc
   const imgSrc = images[safeIndex];
 
   const productUrl = `https://shivamwatersolution.in/products/${product.id}`;
-  const defaultWaText = `Hello Shivam Water Solution (Dilipbhai)! 👋\n\nI am interested in inquiring about the *${product.name}* ${product.category === 'commercial' ? 'Commercial RO Plant' : 'RO Water Purifier'}.\n\n📦 *Specs:* ${product.capacity || 'Standard Capacity'} | ${product.warranty || '1 Year Warranty'}\n🚚 *Services:* Free Delivery & Free Installation in Morbi/Rajkot\n\n🔗 *Product Details & Photo:* ${productUrl}`;
-  const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(product.wa ? `${product.wa}\n\n🔗 Product Link: ${productUrl}` : defaultWaText)}`;
+  const defaultWaText = `Hello Shivam Water Solution (Dilipbhai),\n\nI am interested in inquiring about the *${product.name}* ${product.category === 'commercial' ? 'Commercial RO Plant' : product.category === 'spares' ? 'Filter Spare Part' : 'RO Water Purifier'}.\n\n*Model Specs:* ${product.capacity || 'Standard Capacity'} | ${product.warranty || '1 Year Warranty'}\n*Services:* Free Delivery & Free Installation in Morbi / Rajkot\n\n*Product Details & Photo Link:* ${productUrl}`;
+  const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(product.wa ? `${product.wa}\n\nProduct Details & Photo Link: ${productUrl}` : defaultWaText)}`;
 
   const handleShare = async () => {
     if (navigator.share) {

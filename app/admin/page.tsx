@@ -683,7 +683,7 @@ export default function AdminPage() {
                   <div className="wa-preview-card" style={{ background: "#efeae2", padding: "12px", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)" }}>
                     <div style={{ background: "#dcf8c6", padding: "10px 12px", borderRadius: "8px 8px 0 8px", maxWidth: "280px", marginLeft: "auto", boxShadow: "0 1px 2px rgba(0,0,0,0.15)", fontSize: "0.82rem" }}>
                       <div style={{ color: "#111b21", marginBottom: "6px" }}>
-                        Hello Dilipbhai! 👋 I want to inquire about *{formName || "this model"}*.
+                        Hello Dilipbhai, I want to inquire about *{formName || "this model"}*.
                       </div>
                       {/* Rich OG Card inside WhatsApp */}
                       <div style={{ background: "#ffffff", borderRadius: "8px", overflow: "hidden", border: "1px solid rgba(0,0,0,0.08)", marginTop: "4px" }}>

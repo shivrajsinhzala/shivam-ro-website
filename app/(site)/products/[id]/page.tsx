@@ -19,7 +19,13 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   const baseUrl = "https://shivamwatersolution.in";
   let rawImg = product.images?.[0] || "/assets/product_domestic.webp";
-  let absoluteImg = rawImg.startsWith("http") ? rawImg : `${baseUrl}${rawImg.startsWith("/") ? "" : "/"}${rawImg}`;
+  let cleanAssetImg = rawImg.replace("/api/images/products/", "/assets/");
+  let absoluteImg = cleanAssetImg.startsWith("http") 
+    ? cleanAssetImg 
+    : `${baseUrl}${cleanAssetImg.startsWith("/") ? "" : "/"}${cleanAssetImg}`;
+
+  const isJpg = absoluteImg.endsWith(".jpg") || absoluteImg.endsWith(".jpeg");
+  const imgMimeType = isJpg ? "image/jpeg" : absoluteImg.endsWith(".webp") ? "image/webp" : "image/png";
 
   const title = product.meta_title || `${product.name} RO Water Purifier | Shivam Water Solution Morbi`;
   const description = product.meta_desc || `${product.tagline || product.description || ''} • ${product.capacity || '10L Storage'} • ${product.warranty || '1 Year Warranty'}. Free installation & home delivery across Morbi & Rajkot.`;
@@ -40,6 +46,8 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
       images: [
         {
           url: absoluteImg,
+          secureUrl: absoluteImg,
+          type: imgMimeType,
           width: 800,
           height: 800,
           alt: `${product.name} RO Water Purifier photo`,
