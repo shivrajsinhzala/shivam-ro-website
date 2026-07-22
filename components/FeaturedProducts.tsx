@@ -111,7 +111,7 @@ export default function FeaturedProducts() {
 
         {/* Products Grid */}
         <div className="products-grid">
-          {filteredProducts.map((p) => {
+          {filteredProducts.slice(0, 6).map((p) => {
             const prodUrl = `https://shivamwatersolution.in/products/${p.id}`;
             const defaultWaMsg = `Hello Shivam Water Solution (Dilipbhai),\n\nI am interested in inquiring about the *${p.name}* ${p.category === 'commercial' ? 'Commercial RO Plant' : p.category === 'spares' ? 'Filter Spare Part' : 'RO Water Purifier'}.\n\n*Model Specs:* ${p.capacity || 'Standard Capacity'} | ${p.warranty || '1 Year Warranty'}\n*Services:* Free Delivery & Free Installation in Morbi / Rajkot\n\n*Product Details & Photo Link:* ${prodUrl}`;
             const waEnMsg = p.wa ? `${p.wa}\n\nProduct Details & Photo Link: ${prodUrl}` : defaultWaMsg;
