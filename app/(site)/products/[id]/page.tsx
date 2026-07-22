@@ -86,5 +86,84 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     wa: product.wa,
   };
 
-  return <ProductDetailsClient initialProduct={mappedProduct} />;
+  const baseUrl = "https://shivamwatersolution.in";
+  let rawImg = product.images?.[0] || "/assets/product_domestic.webp";
+  let cleanAssetImg = rawImg.replace("/api/images/products/", "/assets/");
+  let absoluteImg = cleanAssetImg.startsWith("http") 
+    ? cleanAssetImg 
+    : `${baseUrl}${cleanAssetImg.startsWith("/") ? "" : "/"}${cleanAssetImg}`;
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${product.name} RO Water Purifier`,
+    "image": [absoluteImg],
+    "description": product.description || product.tagline,
+    "sku": product.id,
+    "mpn": product.id,
+    "brand": {
+      "@type": "Brand",
+      "name": "Shivam Water Solution"
+    },
+    "offers": {
+      "@type": "Offer",
+      "url": `${baseUrl}/products/${product.id}/`,
+      "priceCurrency": "INR",
+      "priceValidUntil": "2027-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "LocalBusiness",
+        "name": "Shivam Water Solution",
+        "telephone": "+919173096727",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Vajepar Main Road",
+          "addressLocality": "Morbi",
+          "addressRegion": "Gujarat",
+          "postalCode": "363641",
+          "addressCountry": "IN"
+        }
+      }
+    }
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": baseUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": `${baseUrl}/products/`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": product.name,
+        "item": `${baseUrl}/products/${product.id}/`
+      }
+    ]
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ProductDetailsClient initialProduct={mappedProduct} />
+    </>
+  );
 }
