@@ -53,7 +53,7 @@ async function generateBlog() {
   console.log(`🚀 Contacting Gemini API for daily RO blog generation...`);
   console.log(`📌 Topic: ${selectedPrompt}`);
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
 
   const payload = {
     contents: [

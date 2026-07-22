@@ -221,10 +221,35 @@ export const blogs: BlogPost[] = [
   },
 ];
 
+import generatedBlogsData from "./blogs_generated.json";
+
+export function getCombinedBlogs(): BlogPost[] {
+  const generatedBlogs: BlogPost[] = (generatedBlogsData as any[]).map((gb) => ({
+    slug: gb.slug,
+    title: gb.title,
+    metaTitle: gb.metaTitle || gb.title,
+    metaDesc: gb.metaDesc || gb.excerpt,
+    date: gb.date || "Recent",
+    readTime: gb.readTime || "4 Min Read",
+    author: gb.author || "Dilipbhai (Proprietor, Shivam Water Solution)",
+    summary: gb.excerpt || gb.title,
+    content: gb.content ? gb.content.replace(/\n/g, '<br/>').replace(/## (.*?)\n/g, '<h3>$1</h3>').replace(/# (.*?)\n/g, '<h2>$1</h2>') : "",
+    ctaText: "Inquire / Book Service on WhatsApp",
+    ctaWhatsAppMessage: `Hi Shivam Water Solution, I read your article "${gb.title}" and would like to inquire.`,
+    prevSlug: null,
+    nextSlug: null,
+  }));
+
+  const all = [...generatedBlogs, ...blogs];
+  return all;
+}
+
 export function getBlogBySlug(slug: string): BlogPost | undefined {
-  return blogs.find((b) => b.slug === slug);
+  const combined = getCombinedBlogs();
+  return combined.find((b) => b.slug === slug);
 }
 
 export function getAllBlogSlugs(): string[] {
-  return blogs.map((b) => b.slug);
+  const combined = getCombinedBlogs();
+  return combined.map((b) => b.slug);
 }
