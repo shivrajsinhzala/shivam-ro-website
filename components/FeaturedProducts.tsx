@@ -112,9 +112,11 @@ export default function FeaturedProducts() {
         {/* Products Grid */}
         <div className="products-grid">
           {filteredProducts.map((p) => {
-            const imgSrc = (p.images && p.images[0]) ? p.images[0] : "/assets/product_domestic.webp";
-            const waEnMsg = p.wa || `Hi Shivam Water Solution, I am interested in a quote for the ${p.name} water purifier.`;
+            const prodUrl = `https://shivamwatersolution.in/products/${p.id}`;
+            const defaultWaMsg = `Hello Shivam Water Solution (Dilipbhai)! 👋\n\nI am interested in inquiring about the *${p.name}* ${p.category === 'commercial' ? 'Commercial RO Plant' : 'RO Water Purifier'}.\n\n📦 *Specs:* ${p.capacity || 'Standard Capacity'} | ${p.warranty || '1 Year Warranty'}\n🚚 *Services:* Free Delivery & Free Installation in Morbi/Rajkot\n\n🔗 *Product Details & Photo:* ${prodUrl}`;
+            const waEnMsg = p.wa ? `${p.wa}\n\n🔗 Product Link: ${prodUrl}` : defaultWaMsg;
             const waUrl = `https://wa.me/919173096727?text=${encodeURIComponent(waEnMsg)}`;
+            const imgSrc = (p.images && p.images[0]) ? p.images[0] : "/assets/product_domestic.webp";
             
             return (
               <div key={p.id} className="product-card glass-card" style={{ display: "flex" }}>

@@ -11,30 +11,46 @@ export async function generateStaticParams() {
   }));
 }
 
-// Generate dynamic metadata
+// Generate dynamic metadata for Open Graph & WhatsApp Link Previews
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const { id } = await params;
   const product = productsData.find((p) => p.id === id);
   if (!product) return {};
 
+  const baseUrl = "https://shivamwatersolution.in";
+  let rawImg = product.images?.[0] || "/assets/product_domestic.webp";
+  let absoluteImg = rawImg.startsWith("http") ? rawImg : `${baseUrl}${rawImg.startsWith("/") ? "" : "/"}${rawImg}`;
+
+  const title = product.meta_title || `${product.name} RO Water Purifier | Shivam Water Solution Morbi`;
+  const description = product.meta_desc || `${product.tagline || product.description || ''} • ${product.capacity || '10L Storage'} • ${product.warranty || '1 Year Warranty'}. Free installation & home delivery across Morbi & Rajkot.`;
+
   return {
-    title: product.meta_title || `${product.name} - Shivam Water Solution Morbi`,
-    description: product.meta_desc || product.description,
+    title: title,
+    description: description,
     alternates: {
-      canonical: `/products/${id}`,
+      canonical: `${baseUrl}/products/${id}`,
     },
     openGraph: {
-      title: product.meta_title || `${product.name} - Shivam Water Solution Morbi`,
-      description: product.meta_desc || product.description,
-      url: `https://shivamwatersolution.in/products/${id}`,
+      title: `${product.name} | Shivam Water Solution Morbi`,
+      description: description,
+      url: `${baseUrl}/products/${id}`,
+      siteName: "Shivam Water Solution - Morbi & Rajkot",
+      locale: "en_IN",
+      type: "website",
       images: [
         {
-          url: product.images?.[0] || "/assets/product_domestic.webp",
-          width: 400,
-          height: 400,
-          alt: product.name,
+          url: absoluteImg,
+          width: 800,
+          height: 800,
+          alt: `${product.name} RO Water Purifier photo`,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | Shivam Water Solution`,
+      description: description,
+      images: [absoluteImg],
     },
   };
 }

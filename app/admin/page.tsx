@@ -651,9 +651,9 @@ export default function AdminPage() {
                   </div>
                 </div>
 
-                {/* Live Preview */}
+                {/* Live Preview & WhatsApp Link Preview Simulator */}
                 <div className="preview-wrap">
-                  <h4>Live Preview</h4>
+                  <h4>Live Website Card</h4>
                   <div className="product-card glass-card" style={{ width: "100%", margin: "0 auto", minWidth: "250px" }}>
                     {formBadge && <div className="product-badge">{formBadge}</div>}
                     <div className="product-img-wrap">
@@ -676,6 +676,60 @@ export default function AdminPage() {
                         </span>
                       </div>
                     </div>
+                  </div>
+
+                  {/* WhatsApp OG Link Preview Simulator */}
+                  <h4 style={{ marginTop: "24px" }}>WhatsApp Chat Preview</h4>
+                  <div className="wa-preview-card" style={{ background: "#efeae2", padding: "12px", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)" }}>
+                    <div style={{ background: "#dcf8c6", padding: "10px 12px", borderRadius: "8px 8px 0 8px", maxWidth: "280px", marginLeft: "auto", boxShadow: "0 1px 2px rgba(0,0,0,0.15)", fontSize: "0.82rem" }}>
+                      <div style={{ color: "#111b21", marginBottom: "6px" }}>
+                        Hello Dilipbhai! 👋 I want to inquire about *{formName || "this model"}*.
+                      </div>
+                      {/* Rich OG Card inside WhatsApp */}
+                      <div style={{ background: "#ffffff", borderRadius: "8px", overflow: "hidden", border: "1px solid rgba(0,0,0,0.08)", marginTop: "4px" }}>
+                        <img 
+                          src={editImages[0] || "/assets/product_domestic.webp"} 
+                          alt="OG Preview" 
+                          style={{ width: "100%", height: "140px", objectFit: "contain", background: "#f8fafc", padding: "6px" }}
+                          onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }} 
+                        />
+                        <div style={{ padding: "8px 10px" }}>
+                          <div style={{ fontWeight: 700, fontSize: "0.82rem", color: "#111b21", lineHeight: 1.2 }}>
+                            {formName || "Product Title"} RO Water Purifier
+                          </div>
+                          <div style={{ fontSize: "0.74rem", color: "#667781", marginTop: "3px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                            {formCapacity || "10L"} • {formWarranty || "1 Year"} • Free Delivery & Installation
+                          </div>
+                          <div style={{ fontSize: "0.7rem", color: "#00a884", marginTop: "4px", fontWeight: 600 }}>
+                            shivamwatersolution.in
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {formId && (
+                      <div style={{ marginTop: "12px", display: "flex", gap: "8px" }}>
+                        <a
+                          href={`https://wa.me/?text=${encodeURIComponent(`Hi, check out the ${formName} RO Water Purifier from Shivam Water Solution: https://shivamwatersolution.in/products/${formId}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="adm-sb adm-sb-p"
+                          style={{ flex: 1, textDecoration: "none", textAlign: "center", fontSize: "0.75rem", padding: "6px 8px", background: "#25d366", borderColor: "#25d366" }}
+                        >
+                          📲 Send on WhatsApp
+                        </a>
+                        <button
+                          type="button"
+                          className="adm-sb adm-sb-o"
+                          style={{ fontSize: "0.75rem", padding: "6px 8px" }}
+                          onClick={() => {
+                            navigator.clipboard.writeText(`https://shivamwatersolution.in/products/${formId}`);
+                            toast("Product link copied!", "ok");
+                          }}
+                        >
+                          📋 Copy Link
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
