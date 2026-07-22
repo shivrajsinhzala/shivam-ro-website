@@ -57,7 +57,7 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     warranty: product.warranty,
     description: product.description,
     features: product.features,
-    specs: product.specs as Record<string, string>,
+    specs: (product.specs || {}) as unknown as Record<string, string>,
     images: product.images,
     wa: product.wa,
   };
