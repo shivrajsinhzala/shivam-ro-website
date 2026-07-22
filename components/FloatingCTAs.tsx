@@ -1,15 +1,60 @@
-import React from "react";
+'use client';
+
+import React, { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
+import productsData from "@/data/products.json";
 
 export default function FloatingCTAs() {
+  const pathname = usePathname();
+  const [waUrl, setWaUrl] = useState("https://wa.me/919173096727?text=Hello%20Shivam%20Water%20Solution%20(Dilipbhai),%20I%20would%20like%20to%20inquire%20about%20RO%20purifier%20sales,%20doorstep%20servicing,%20or%20repair.");
+
+  useEffect(() => {
+    if (!pathname) return;
+
+    // Check if on a specific product detail page: /products/[id]
+    const match = pathname.match(/\/products\/([^\/]+)/);
+    if (match && match[1]) {
+      const prodId = match[1];
+      const product = productsData.find((p) => p.id === prodId);
+      const prodUrl = `https://shivamwatersolution.in/products/${prodId}`;
+      
+      if (product) {
+        const msg = `Hello Shivam Water Solution (Dilipbhai),\n\nI am interested in inquiring about the *${product.name}* ${product.category === 'commercial' ? 'Commercial RO Plant' : product.category === 'spares' ? 'Filter Spare Part' : 'RO Water Purifier'}.\n\n*Model Specs:* ${product.capacity || 'Standard Capacity'} | ${product.warranty || '1 Year Warranty'}\n*Services:* Free Delivery & Free Installation in Morbi / Rajkot\n\n*Product Details & Photo Link:* ${prodUrl}`;
+        setWaUrl(`https://wa.me/919173096727?text=${encodeURIComponent(msg)}`);
+        return;
+      } else {
+        const msg = `Hello Shivam Water Solution (Dilipbhai),\n\nI am viewing this product model on your website and would like to inquire:\n\n*Product Details & Photo Link:* ${prodUrl}`;
+        setWaUrl(`https://wa.me/919173096727?text=${encodeURIComponent(msg)}`);
+        return;
+      }
+    }
+
+    // Check if on the main products catalog listing page: /products
+    if (pathname.startsWith("/products")) {
+      const msg = `Hello Shivam Water Solution (Dilipbhai),\n\nI am browsing your RO Water Purifiers & Commercial Plants catalog on your website (https://shivamwatersolution.in/products) and would like to inquire about pricing and models.`;
+      setWaUrl(`https://wa.me/919173096727?text=${encodeURIComponent(msg)}`);
+      return;
+    }
+
+    // Default Home / General page message
+    const defaultMsg = `Hello Shivam Water Solution (Dilipbhai),\n\nI would like to inquire about RO purifier sales, doorstep servicing, or repair in Morbi / Rajkot.`;
+    setWaUrl(`https://wa.me/919173096727?text=${encodeURIComponent(defaultMsg)}`);
+  }, [pathname]);
+
   return (
     <div className="floating-ctas">
-      <a href="tel:+919173096727" className="floating-btn float-call" aria-label="Call Dilip Bhai Now" style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}>
+      <a 
+        href="tel:+919173096727" 
+        className="floating-btn float-call" 
+        aria-label="Call Dilip Bhai Now" 
+        style={{ display: "inline-flex", alignItems: "center", justifyContent: "center", gap: "6px" }}
+      >
         <Phone size={18} />
         <span>Call Now</span>
       </a>
       <a 
-        href="https://wa.me/919173096727?text=Hi%20Shivam%20Water%20Solution,%20I%20need%20RO%20servicing%20at%20my%20address." 
+        href={waUrl} 
         target="_blank" 
         rel="noopener noreferrer"
         className="floating-btn float-whatsapp" 
