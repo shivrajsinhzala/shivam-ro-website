@@ -966,5 +966,222 @@
     "images": [
       "/api/images/products/flonix_100lph.jpg"
     ]
+  },
+  {
+    "id": "remino-25lph",
+    "name": "Remino 25 LPH Commercial RO Plant (Double Membrane)",
+    "badge": "Double Membrane",
+    "category": "commercial",
+    "tagline": "25 LPH Stainless Steel Frame Double Membrane Commercial RO Plant",
+    "capacity": "25 LPH Flow Rate",
+    "warranty": "1 Year Warranty",
+    "description": "Remino 25 LPH Commercial RO Plant features a premium stainless steel open frame design with 3 heavy-duty 10\" blue filter housings, double high-rejection RO membranes, top-mounted booster pump, and ISO certified filtration components. Designed for offices, factories, restaurants, and schools across Morbi & Rajkot.",
+    "features": [
+      "25 Litres Per Hour High Production",
+      "Double High-Rejection RO Membranes",
+      "Heavy Duty Stainless Steel Open Frame",
+      "3x 10 Inch Blue Jumbo Filter Housings",
+      "1 Year Warranty",
+      "Free Commercial Installation & Home Delivery"
+    ],
+    "specs": {
+      "Purification Capacity": "25 LPH",
+      "Frame Material": "Stainless Steel Open Frame",
+      "Membranes": "Double RO Membrane Elements",
+      "Pre-Filter Housings": "3x 10 Blue Jumbo Housings",
+      "Booster Pump": "Heavy Duty Commercial Pump",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Remino 25 LPH Commercial RO Plant (Double Membrane).",
+    "meta_title": "Remino 25 LPH Commercial RO Plant - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Remino 25 LPH Double Membrane Commercial RO Plant in Morbi & Rajkot. Heavy duty stainless steel frame commercial purifier for offices & factories.",
+    "images": [
+      "/api/images/products/remino_25lph.png"
+    ]
+  },
+  {
+    "id": "spares-sediment-carbon",
+    "name": "RO Inline Sediment & Carbon Filter Set",
+    "badge": "Filter Replacement",
+    "category": "spares",
+    "tagline": "High-Efficiency 5 Micron Sediment & Activated Carbon Filter Combo",
+    "capacity": "Complete Filter Kit",
+    "warranty": "Genuine Spare Part",
+    "description": "Genuine RO filter replacement set featuring 5-micron PP sediment filter and premium activated carbon block filter cartridge. Removes dust, silt, rust, chlorine, bad odor, and organic impurities to restore 100% pure taste to your domestic RO purifier. Doorstep replacement service available in Morbi & Rajkot.",
+    "features": [
+      "5-Micron High Density Spun Polypropylene Sediment Filter",
+      "High Iodine Premium Activated Carbon Block",
+      "Universal Push-Fit 1/4 Inch Connectors",
+      "Restores Water Taste & Odor Free Quality",
+      "Extends RO Membrane Lifespan",
+      "Doorstep Technician Installation in Morbi & Rajkot"
+    ],
+    "specs": {
+      "Filter Type": "Sediment + Activated Carbon Set",
+      "Micron Rating": "5 Micron",
+      "Compatibility": "Universal Domestic RO Cabinets",
+      "Service Life": "6 to 12 Months",
+      "Service": "Doorstep Filter Replacement"
+    },
+    "wa": "Hi Shivam Water Solution, I need an RO filter replacement set (Sediment & Carbon filter kit) for my water purifier.",
+    "meta_title": "RO Sediment & Carbon Filter Replacement Set - Shivam Water Solution Morbi",
+    "meta_desc": "Buy genuine RO sediment and carbon filter replacement cartridges in Morbi & Rajkot. Doorstep RO filter replacement service by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/spares_sediment_carbon.jpg"
+    ]
+  },
+  {
+    "id": "spares-ro-membrane",
+    "name": "High-Flow 80 GPD / 100 GPD RO Membrane Element",
+    "badge": "TDS Reduction",
+    "category": "spares",
+    "tagline": "High Rejection TFC Reverse Osmosis Membrane Filter",
+    "capacity": "80 / 100 GPD Capacity",
+    "warranty": "Genuine Spare Part",
+    "description": "High-rejection Thin-Film Composite (TFC) RO Membrane Element suitable for high TDS water up to 2500 PPM in Morbi & Rajkot. Eliminates 95%+ of dissolved salts, heavy metals, fluoride, and microorganisms. Doorstep membrane replacement and TDS calibration by Shivam Water Solution.",
+    "features": [
+      "High TDS Salt Rejection Rate (Up to 98%)",
+      "Handles High Hardness Water up to 2500 PPM",
+      "Long-Lasting TFC Spiral Wound Sheet",
+      "Universal 1812 Standard Size Fitting",
+      "Improves Water Clarity & Softness",
+      "Includes Doorstep TDS Testing & Installation"
+    ],
+    "specs": {
+      "Membrane Type": "Thin-Film Composite (TFC)",
+      "Flow Capacity": "80 GPD / 100 GPD",
+      "TDS Tolerance": "Up to 2500 PPM",
+      "Rejection Rate": "95% - 98%",
+      "Service": "Doorstep Technician Fitting"
+    },
+    "wa": "Hi Shivam Water Solution, I want to replace my RO membrane (80 GPD / 100 GPD) for high TDS water.",
+    "meta_title": "RO Membrane 80 GPD / 100 GPD Replacement - Shivam Water Solution Morbi",
+    "meta_desc": "Buy high TDS RO membrane element 80 GPD in Morbi & Rajkot. 95%+ salt rejection. Doorstep technician fitting by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/spares_ro_membrane.jpg"
+    ]
+  },
+  {
+    "id": "spares-alkaline-copper",
+    "name": "3-in-1 Active Copper & Bio-Alkaline Cartridge",
+    "badge": "Immunity Booster",
+    "category": "spares",
+    "tagline": "Enriches Water with Active Copper & Essential Alkaline Minerals",
+    "capacity": "Universal Fit",
+    "warranty": "Genuine Spare Part",
+    "description": "Upgrade your existing RO purifier with our 3-in-1 Active Copper & Bio-Alkaline mineral cartridge. Infuses drinking water with essential Copper (Cu+) ions, Zinc, Calcium, and Magnesium while balancing pH to healthy alkaline 8.5+. Doorstep installation available across Morbi & Rajkot.",
+    "features": [
+      "Active Copper Infusion for Immunity & Digestion",
+      "Balances pH to Healthy Alkaline 8.5+",
+      "Adds Essential Minerals (Calcium, Magnesium, Zinc)",
+      "Enhances Water Taste & Smoothness",
+      "Easy Push-Fit Inline Installation",
+      "Doorstep Upgrade Service in Morbi & Rajkot"
+    ],
+    "specs": {
+      "Cartridge Type": "3-in-1 Bio-Alkaline + Active Copper",
+      "pH Range": "8.0 - 9.5 Alkaline",
+      "Mineral Additions": "Copper, Zinc, Calcium, Magnesium",
+      "Lifespan": "3000 Litres / 1 Year",
+      "Service": "Doorstep Technician Upgrade"
+    },
+    "wa": "Hi Shivam Water Solution, I want to add an Active Copper & Bio-Alkaline mineral cartridge to my RO purifier.",
+    "meta_title": "Active Copper & Bio Alkaline Cartridge - Shivam Water Solution Morbi",
+    "meta_desc": "Upgrade your RO purifier with 3-in-1 Active Copper & Alkaline mineral filter cartridge in Morbi & Rajkot. Sales & doorstep installation by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/spares_alkaline_copper.jpg"
+    ]
+  },
+  {
+    "id": "spares-booster-pump",
+    "name": "Heavy Duty 100 GPD RO Booster Motor Pump",
+    "badge": "Heavy Duty Pump",
+    "category": "spares",
+    "tagline": "100% Copper Winding High Pressure RO Booster Pump",
+    "capacity": "100 GPD Heavy Motor",
+    "warranty": "1 Year Pump Warranty",
+    "description": "High-performance 100 GPD RO Booster Pump motor with 100% pure copper winding and shock-proof diaphragm. Provides consistent high pressure (110+ PSI) to drive maximum water recovery through RO membranes. Comes with a 1-year pump warranty and doorstep replacement in Morbi & Rajkot.",
+    "features": [
+      "100% Heavy Duty Copper Motor Winding",
+      "Provides High Pressure (110 - 130 PSI)",
+      "Silent Low Vibration Diaphragm Design",
+      "Energy Efficient 24V DC Operation",
+      "1 Year Pump Warranty",
+      "Doorstep Pump Replacement Service"
+    ],
+    "specs": {
+      "Voltage": "24V DC",
+      "Pressure Output": "110 - 130 PSI",
+      "Winding Material": "100% Pure Copper",
+      "Capacity": "100 GPD",
+      "Warranty": "1 Year"
+    },
+    "wa": "Hi Shivam Water Solution, my RO booster pump is not working. I need a new 100 GPD booster motor pump with 1 year warranty.",
+    "meta_title": "RO Booster Pump Motor 100 GPD Replacement - Shivam Water Solution Morbi",
+    "meta_desc": "Buy 100 GPD RO booster pump motor with 100% copper winding in Morbi & Rajkot. 1 year pump warranty. Repair & replacement by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/spares_booster_pump.jpg"
+    ]
+  },
+  {
+    "id": "spares-prefilter-kit",
+    "name": "10\" Pre-Filter Outer Housing Bowl & Spun Candle Kit",
+    "badge": "Pre-Filter Kit",
+    "category": "spares",
+    "tagline": "Heavy Duty Transparent Outer Pre-Filter Assembly with Spanner",
+    "capacity": "Complete Pre-Filter Kit",
+    "warranty": "Genuine Spare Part",
+    "description": "Heavy-duty transparent 10-inch outer pre-filter housing bowl complete with 5-micron PP spun filter cartridge, Teflon tape, elbow connectors, wall bracket, and spanner wrench. Installed outside your RO unit to trap mud, sand, and heavy dust particles before water enters the purifier.",
+    "features": [
+      "Heavy Duty Unbreakable Transparent Housing Bowl",
+      "Includes 10 Inch High Density 5 Micron Spun Candle",
+      "Includes Wall Mounting Bracket & Housing Wrench",
+      "Protects Main RO Filters & Pump from Mud/Sand",
+      "Clear Bowl for Easy Inspection of Filter Dirt",
+      "Doorstep Installation in Morbi & Rajkot"
+    ],
+    "specs": {
+      "Bowl Type": "10 Inch Transparent Food Grade Housing",
+      "Included Accessories": "Spun Candle, Wrench, Wall Bracket, Elbow Fittings",
+      "Micron Rating": "5 Micron Spun",
+      "Service": "Doorstep Pre-Filter Installation"
+    },
+    "wa": "Hi Shivam Water Solution, I want to buy/install an outer Pre-Filter Bowl housing kit for my RO purifier.",
+    "meta_title": "RO Pre-Filter Outer Housing Bowl Kit - Shivam Water Solution Morbi",
+    "meta_desc": "Buy 10-inch transparent outer pre-filter housing bowl kit with spun candle in Morbi & Rajkot. Sales & doorstep service by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/spares_prefilter_kit.jpg"
+    ]
+  },
+  {
+    "id": "spares-uv-barrel",
+    "name": "Stainless Steel UV Sterilizer Chamber & Lamp Set",
+    "badge": "UV Sterilizer",
+    "category": "spares",
+    "tagline": "Grade 304 Stainless Steel UV Barrel with Philips UV-C Lamp",
+    "capacity": "Universal RO Fit",
+    "warranty": "Genuine Spare Part",
+    "description": "Grade 304 Stainless Steel UV Sterilizer Barrel complete with genuine Philips 11W UV-C germicidal lamp tube and electronic ballast SMPS. Kills 99.99% of bacteria, viruses, and waterborne pathogens instantly without chemicals. Doorstep installation available across Morbi & Rajkot.",
+    "features": [
+      "Grade 304 Corrosion-Resistant Stainless Steel Barrel",
+      "Original Philips 11W UV-C Germicidal Lamp Tube",
+      "Destroys 99.99% Bacteria & Viruses",
+      "High Output Electronic SMPS Ballast Driver",
+      "Maintains Pure Chemical-Free Water Sterilization",
+      "Doorstep Fitting Service in Morbi & Rajkot"
+    ],
+    "specs": {
+      "Chamber Material": "Grade 304 Stainless Steel",
+      "Lamp Brand": "Philips UV-C 11W",
+      "Ballast Voltage": "230V AC / SMPS Driver",
+      "Efficacy": "99.99% Microbial Disinfection",
+      "Service": "Doorstep Technician Fitting"
+    },
+    "wa": "Hi Shivam Water Solution, I need a UV Sterilizer stainless steel barrel & lamp set for my RO water purifier.",
+    "meta_title": "Stainless Steel UV Barrel & Philips Lamp Set - Shivam Water Solution Morbi",
+    "meta_desc": "Buy stainless steel UV barrel with Philips UV-C lamp set for RO purifiers in Morbi & Rajkot. Sales & repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/spares_uv_barrel.jpg"
+    ]
   }
 ]
