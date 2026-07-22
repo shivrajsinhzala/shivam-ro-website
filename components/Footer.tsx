@@ -82,7 +82,7 @@ export default function Footer() {
                 <div>
                   <p className="detail-title">Shop Address</p>
                   <p className="detail-val address-val">
-                    Madhav Shopping, Vavdi Road, Near Kabir Aashram, Morbi - 363641, Gujarat, India.
+                    Vajepar Main Road, Morbi - 363641, Gujarat, India.
                   </p>
                 </div>
               </div>

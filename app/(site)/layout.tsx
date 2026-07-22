@@ -24,7 +24,7 @@ export default function SiteLayout({
             "telephone": "+919925645826",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Vavdi Road",
+              "streetAddress": "Vajepar Main Road",
               "addressLocality": "Morbi",
               "addressRegion": "Gujarat",
               "postalCode": "363641",
