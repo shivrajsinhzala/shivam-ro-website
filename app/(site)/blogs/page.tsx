@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, User, Clock, ArrowRight, ArrowLeft } from "lucide-react";
-import { blogs } from "@/data/blogs";
+import { getCombinedBlogs } from "@/data/blogs";
 
 export const metadata: Metadata = {
   title: "Water Quality, RO Maintenance & Health Advice - Shivam Water Solution",
@@ -42,7 +42,7 @@ export default function BlogsPage() {
 
         {/* Blog Articles Feed */}
         <div className="blog-articles-list" style={{ display: "flex", flexDirection: "column", gap: "32px", maxWidth: "800px", margin: "0 auto" }}>
-          {blogs.map((blog) => (
+          {getCombinedBlogs().map((blog) => (
             <article key={blog.slug} className="blog-article-card glass-card" style={{ padding: "30px" }}>
               <div className="article-meta" style={{ display: "flex", flexWrap: "wrap", gap: "16px", marginBottom: "16px" }}>
                 <span className="meta-tag" style={{ display: "inline-flex", alignItems: "center", gap: "6px", fontSize: "0.85rem", color: "var(--text-light-3)" }}>
