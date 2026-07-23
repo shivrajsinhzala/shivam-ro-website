@@ -1201,5 +1201,36 @@
     "images": [
       "/api/images/products/spares_uv_barrel.jpg"
     ]
+  },
+  {
+    "id": "spares-biogreen-110gpd",
+    "name": "Biogreen 110 GPD 4G High TDS RO Membrane (Up to 4000 TDS)",
+    "badge": "4000 TDS Max",
+    "category": "spares",
+    "tagline": "Extreme High TDS 4000 PPM Reverse Osmosis Membrane Element",
+    "capacity": "110 GPD 4G High Flow",
+    "warranty": "Genuine Spare Part",
+    "description": "Biogreen 110 GPD 4G High TDS RO Membrane element specially engineered for extreme hard water and high TDS conditions up to 4000 PPM in Morbi & Rajkot. Features 110 GPD high flow rate, 4G technology, and 98%+ salt rejection. Ideal for high TDS borewell water. Doorstep installation and TDS calibration available across Morbi & Rajkot.",
+    "features": [
+      "Works in Extreme High TDS Water Up to 4000 PPM",
+      "110 GPD 4G High Flow Rate Capacity",
+      "High Salt Rejection Rate (Up to 98%)",
+      "Standard 2012 Industrial & Domestic Fit",
+      "Top Quality Guaranteed Membrane Sheet",
+      "Doorstep Technician Installation in Morbi & Rajkot"
+    ],
+    "specs": {
+      "Membrane Model": "Biogreen 4G 2012-110 GPD",
+      "TDS Tolerance": "Up to 4000 PPM",
+      "Flow Capacity": "110 GPD",
+      "Technology": "4G High-Rejection TFC",
+      "Service": "Doorstep Filter Fitting"
+    },
+    "wa": "Hi Shivam Water Solution, I am interested in buying/replacing my RO membrane with the Biogreen 110 GPD 4G High TDS (4000 TDS) membrane.",
+    "meta_title": "Biogreen 110 GPD 4G High TDS RO Membrane (4000 TDS) - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Biogreen 110 GPD 4G High TDS RO membrane (4000 TDS max) in Morbi & Rajkot. 98%+ salt rejection. Doorstep technician fitting by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/spares_biogreen_110gpd.png"
+    ]
   }
 ]

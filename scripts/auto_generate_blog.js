@@ -81,10 +81,17 @@ async function generateBlog() {
     }
 
     const data = await res.json();
-    const rawJsonText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+    let rawJsonText = data.candidates?.[0]?.content?.parts?.[0]?.text;
     if (!rawJsonText) throw new Error("No text response received from Gemini API");
 
-    const blogData = JSON.parse(rawJsonText);
+    // Clean any markdown code blocks (```json ... ```)
+    let cleanedJson = rawJsonText
+      .replace(/^```json\s*/i, "")
+      .replace(/^```\s*/i, "")
+      .replace(/\s*```$/i, "")
+      .trim();
+
+    const blogData = JSON.parse(cleanedJson);
     blogData.date = new Date().toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
     blogData.author = "Dilipbhai (Proprietor, Shivam Water Solution)";
     blogData.coverImage = "/assets/blog_default.jpg";
