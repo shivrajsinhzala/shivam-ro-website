@@ -359,9 +359,8 @@ body {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 12px;
 }
-
 
 .menu-toggle-btn {
   background: transparent;
@@ -369,6 +368,19 @@ body {
   color: var(--text-light-1);
   cursor: pointer;
   display: none;
+}
+
+@media (max-width: 992px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .menu-toggle-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    color: var(--text-light-1);
+  }
 }
 
 /* Mobile Menu Dropdown Overlay */
