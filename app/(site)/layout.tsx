@@ -2,6 +2,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingCTAs from "@/components/FloatingCTAs";
+import Preloader from "@/components/Preloader";
 
 export default function SiteLayout({
   children,
@@ -10,6 +11,7 @@ export default function SiteLayout({
 }) {
   return (
     <>
+      <Preloader />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

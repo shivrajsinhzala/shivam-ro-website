@@ -281,9 +281,23 @@ body {
 }
 
 .header-logo {
-  height: 44px;
+  height: 48px;
   width: auto;
   object-fit: contain;
+  display: block;
+  transition: height 0.3s ease;
+}
+
+@media (max-width: 992px) {
+  .header-logo {
+    height: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header-logo {
+    height: 34px;
+  }
 }
 
 .brand-text {
