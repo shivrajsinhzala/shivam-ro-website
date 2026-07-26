@@ -355,9 +355,9 @@ export default function AdminPage() {
       {/* Topbar */}
       <div className="adm-topbar">
         <div className="adm-brand">
-          <img src="/assets/logo.webp" alt="Logo" width="32" height="32" />
+          <img src="/assets/logo_horizontal_transparent.png" alt="Logo" width="160" height="36" style={{ height: "32px", width: "auto", objectFit: "contain" }} />
           <span>
-            Product Manager <small>Shivam Water Solution</small>
+            Product Manager
           </span>
         </div>
         {dirty && (

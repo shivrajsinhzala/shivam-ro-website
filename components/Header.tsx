@@ -35,11 +35,7 @@ export default function Header() {
       <header className="main-header">
         <div className="container header-container">
           <Link href="/" className="logo-area" onClick={closeMenu}>
-            <img src="/assets/logo.webp" alt="Shivam Water Solution Logo" className="header-logo" width="63" height="63" style={{ objectFit: "contain" }} />
-            <div className="brand-text">
-              <span className="brand-name">Shivam Water</span>
-              <span className="brand-sub">Solution</span>
-            </div>
+            <img src="/assets/logo_horizontal_transparent.png" alt="Shivam Water Solution Logo" className="header-logo" width="220" height="50" style={{ height: "46px", width: "auto", objectFit: "contain" }} />
           </Link>
           
           {/* Desktop Navigation */}
@@ -71,11 +67,7 @@ export default function Header() {
         <div className="mobile-menu">
           <div className="mobile-menu-header">
             <div className="logo-area">
-              <img src="/assets/logo.webp" alt="Shivam Water Solution Logo" className="header-logo" width="32" height="32" style={{ height: "32px", objectFit: "contain" }} />
-              <div className="brand-text">
-                <span className="brand-name" style={{ fontSize: "0.95rem", fontWeight: 800, fontFamily: "var(--font-display)", lineHeight: 1.1 }}>Shivam Water</span>
-                <span className="brand-sub" style={{ fontSize: "0.65rem", color: "var(--text-light-3)", letterSpacing: "0.5px" }}>Solution</span>
-              </div>
+              <img src="/assets/logo_horizontal_transparent.png" alt="Shivam Water Solution Logo" className="header-logo" width="160" height="36" style={{ height: "36px", width: "auto", objectFit: "contain" }} />
             </div>
             <button className="close-menu-btn" aria-label="Close Menu" onClick={closeMenu}>
               <X size={20} />

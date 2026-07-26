@@ -10,11 +10,7 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="footer-brand">
             <Link href="/" className="logo-area">
-              <img src="/assets/logo_without_bg.webp" alt="Shivam Water Solution Logo" className="footer-logo" loading="lazy" width="48" height="48" style={{ objectFit: "contain" }} />
-              <div className="brand-text">
-                <span className="brand-name">Shivam Water</span>
-                <span className="brand-sub">Solution</span>
-              </div>
+              <img src="/assets/logo_horizontal_transparent.png" alt="Shivam Water Solution Logo" className="footer-logo" loading="lazy" width="220" height="50" style={{ height: "46px", width: "auto", objectFit: "contain" }} />
             </Link>
             <p className="mt-4 brand-desc">
               Providing pure, sweet, and mineral-balanced drinking water to thousands of homes and ceramic factories in Morbi & Rajkot. Quality and service are our priorities.
