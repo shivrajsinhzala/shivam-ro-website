@@ -227,12 +227,14 @@ export default function ProductsGrid() {
                       <span>{p.badge}</span>
                     </div>
                   )}
-                  <div className="product-img-wrap">
+                  <Link href={`/products/${p.id}`} className="product-img-wrap" style={{ cursor: "pointer", display: "block" }}>
                     <img src={imgSrc} alt={p.name} loading="lazy" width="400" height="400" style={{ objectFit: "contain" }} />
-                  </div>
+                  </Link>
                   <div className="product-info">
                     <h3 className="product-title">
-                      <span>{p.name}</span>
+                      <Link href={`/products/${p.id}`} style={{ textDecoration: "none", color: "inherit" }}>
+                        {p.name}
+                      </Link>
                     </h3>
                     <p className="product-desc">
                       <span>{p.tagline}</span>
