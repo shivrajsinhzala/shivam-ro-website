@@ -125,8 +125,8 @@ export default function FeaturedProducts() {
                     <span>{p.badge}</span>
                   </div>
                 )}
-                <Link href={`/products/${p.id}`} className="product-img-wrap" style={{ cursor: "pointer", display: "block" }}>
-                  <img src={imgSrc} alt={p.name} loading="lazy" width="400" height="400" style={{ objectFit: "contain" }} />
+                <Link href={`/products/${p.id}`} className="product-img-wrap" style={{ cursor: "pointer", display: "flex" }}>
+                  <img src={imgSrc} alt={p.name} loading="lazy" width="400" height="400" />
                 </Link>
                 <div className="product-info">
                   <h3 className="product-title">
