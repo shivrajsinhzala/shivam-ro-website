@@ -281,7 +281,8 @@ body {
 }
 
 .header-logo {
-  height: 48px;
+  height: 42px;
+  max-width: 100%;
   width: auto;
   object-fit: contain;
   display: block;
@@ -290,13 +291,30 @@ body {
 
 @media (max-width: 992px) {
   .header-logo {
-    height: 40px;
+    height: 34px;
   }
 }
 
 @media (max-width: 576px) {
+  .main-header {
+    padding: 10px 0;
+  }
   .header-logo {
-    height: 34px;
+    height: 28px;
+  }
+  .header-call-btn {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-logo {
+    height: 24px;
+  }
+  .header-call-btn {
+    padding: 5px 10px;
+    font-size: 0.72rem;
   }
 }
 

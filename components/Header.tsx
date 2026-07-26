@@ -35,7 +35,7 @@ export default function Header() {
       <header className="main-header">
         <div className="container header-container">
           <Link href="/" className="logo-area" onClick={closeMenu}>
-            <img src="/assets/logo_horizontal_transparent.png" alt="Shivam Water Solution Logo" className="header-logo" width="220" height="50" style={{ height: "46px", width: "auto", objectFit: "contain" }} />
+            <img src="/assets/logo_horizontal_transparent.png" alt="Shivam Water Solution Logo" className="header-logo" width="220" height="50" style={{ width: "auto", objectFit: "contain" }} />
           </Link>
           
           {/* Desktop Navigation */}
