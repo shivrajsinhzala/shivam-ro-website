@@ -821,17 +821,21 @@ const loginStyles = `
 `;
 
 const adminStyles = `
-  .adm-dashboard{display:flex;flex-direction:column;min-height:100vh;background:hsl(220,25%,96%);font-family:var(--font-body)}
+  .adm-dashboard{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;background:hsl(220,25%,96%);font-family:var(--font-body)}
   .adm-topbar{background:#fff;border-bottom:1px solid rgba(0,150,255,.1);height:60px;display:flex;align-items:center;padding:0 20px;gap:14px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(8,25,60,.04)}
   .adm-brand{display:flex;align-items:center;gap:10px;flex:1}
   .adm-brand img{height:32px}
   .adm-brand span{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text-light-1)}
   .adm-brand small{font-size:.72rem;color:var(--text-light-3);font-weight:400;margin-left:8px}
-  .adm-body{display:flex;flex:1;height:calc(100vh - 60px);overflow:hidden}
-  .adm-sidebar{width:280px;min-width:240px;background:#fff;border-right:1px solid rgba(0,150,255,.08);display:flex;flex-direction:column;overflow:hidden}
-  .sidebar-head{padding:14px 16px;border-bottom:1px solid rgba(0,150,255,.08);display:flex;align-items:center;justify-content:space-between}
+  .adm-body{display:flex;flex:1;min-height:0;height:calc(100vh - 60px);height:calc(100dvh - 60px);overflow:hidden}
+  .adm-sidebar{width:280px;min-width:240px;background:#fff;border-right:1px solid rgba(0,150,255,.08);display:flex;flex-direction:column;min-height:0;overflow:hidden}
+  .sidebar-head{padding:14px 16px;border-bottom:1px solid rgba(0,150,255,.08);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
   .sidebar-head h3{font-family:var(--font-display);font-size:.88rem;font-weight:700;color:var(--text-light-1);margin:0}
-  .sidebar-list{flex:1;overflow-y:auto;padding:8px}
+  .sidebar-list{flex:1;min-height:0;max-height:calc(100vh - 60px - 57px);max-height:calc(100dvh - 60px - 57px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:8px;scrollbar-width:thin;scrollbar-color:rgba(0,120,255,.25) transparent}
+  .sidebar-list::-webkit-scrollbar{width:7px}
+  .sidebar-list::-webkit-scrollbar-track{background:transparent}
+  .sidebar-list::-webkit-scrollbar-thumb{background:rgba(0,120,255,.2);border-radius:20px}
+  .sidebar-list::-webkit-scrollbar-thumb:hover{background:rgba(0,120,255,.35)}
   .ap-item{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:11px;cursor:pointer;transition:all .2s;border:2px solid transparent;margin-bottom:3px}
   .ap-item:hover{background:hsl(220,30%,97%)}
   .ap-item.active{background:rgba(0,120,255,.06);border-color:rgba(0,120,255,.15);box-shadow:0 4px 12px rgba(8,25,60,0.03)}
@@ -909,7 +913,7 @@ const adminStyles = `
   @keyframes pulse{0%{opacity:.3}50%{opacity:1}100%{opacity:.3}}
   @media(max-width:1150px){.editor-main-split{flex-direction:column;align-items:stretch;gap:24px}.preview-wrap{width:100%;max-width:280px;margin:0 auto;position:static;order:2}}
   @media(max-width:768px){
-    .adm-body{display:flex;flex-direction:row;height:calc(100vh - 60px);position:relative;overflow:hidden}
+    .adm-body{display:flex;flex-direction:row;height:calc(100vh - 60px);height:calc(100dvh - 60px);position:relative;overflow:hidden}
     .adm-sidebar{width:100%;min-width:unset;height:100%;border-right:none;transition:transform .3s cubic-bezier(.4,0,.2,1);flex-shrink:0}
     .adm-editor{position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding:16px;flex-shrink:0;box-sizing:border-box}
     .editor-empty{display:none!important}
