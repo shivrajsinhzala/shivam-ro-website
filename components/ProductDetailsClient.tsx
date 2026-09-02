@@ -28,6 +28,35 @@ export default function ProductDetailsClient({ initialProduct }: { initialProduc
   useEffect(() => {
     setProduct(initialProduct);
     setActiveImageIndex(0);
+
+    // Live revalidation from D1 so updates from admin panel show immediately
+    if (initialProduct?.id) {
+      fetch(`/api/products/${initialProduct.id}?t=${Date.now()}`, { cache: "no-store" })
+        .then((res) => {
+          if (!res.ok) return null;
+          return res.json();
+        })
+        .then((data) => {
+          if (data && data.id) {
+            setProduct((prev) => ({
+              ...prev,
+              id: data.id,
+              name: data.name_en || data.name || prev.name,
+              badge: data.badge_en || data.badge || "",
+              category: data.category || prev.category,
+              tagline: data.tagline_en || data.tagline || "",
+              capacity: data.capacity_en || data.capacity || "",
+              warranty: data.warranty_en || data.warranty || "",
+              description: data.description_en || data.description || "",
+              features: data.features_en || data.features || [],
+              specs: (data.specs_en || data.specs || {}) as Record<string, string>,
+              images: (data.images && data.images.length > 0) ? data.images : prev.images,
+              wa: data.wa || prev.wa,
+            }));
+          }
+        })
+        .catch(() => {});
+    }
   }, [initialProduct]);
 
   const images = product.images && product.images.length > 0 ? product.images : ["/assets/product_domestic.webp"];

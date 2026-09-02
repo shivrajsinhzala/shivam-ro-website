@@ -1,9 +1,11 @@
 // functions/api/products/[id].js
 import { json, err, options, requireAuth, parseProduct } from '../../_utils.js';
 
-export async function onRequestGet({ params, env }) {
+export async function onRequestGet({ params, env, request }) {
+  const auth = await requireAuth(request, env);
   const row = await env.DB.prepare('SELECT * FROM products WHERE id = ?').bind(params.id).first();
   if (!row) return err('Product not found', 404);
+  if (row.is_active === 0 && !auth) return err('Product not found', 404);
   return json(parseProduct(row));
 }
 
@@ -18,13 +20,15 @@ export async function onRequestPut({ params, request, env }) {
   const existing = await env.DB.prepare('SELECT id FROM products WHERE id = ?').bind(params.id).first();
   if (!existing) return err('Product not found', 404);
 
+  const isActive = (p.is_active === 0 || p.is_active === false || p.is_active === '0') ? 0 : 1;
+
   await env.DB.prepare(`
     UPDATE products SET
       name_en=?, name_gu=?, badge_en=?, badge_gu=?, category=?,
       images=?, tagline_en=?, tagline_gu=?, capacity_en=?, capacity_gu=?,
       warranty_en=?, warranty_gu=?, description_en=?, description_gu=?,
       features_en=?, features_gu=?, specs_en=?, specs_gu=?,
-      meta_title=?, meta_desc=?
+      meta_title=?, meta_desc=?, is_active=?
     WHERE id=?
   `).bind(
     p.name_en, p.name_gu || '',
@@ -40,6 +44,7 @@ export async function onRequestPut({ params, request, env }) {
     JSON.stringify(p.specs_en || {}),
     JSON.stringify(p.specs_gu || {}),
     p.meta_title || '', p.meta_desc || '',
+    isActive,
     params.id
   ).run();
 

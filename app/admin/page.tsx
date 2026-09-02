@@ -1,6 +1,38 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import {
+  Search,
+  Plus,
+  Trash2,
+  Copy,
+  Eye,
+  EyeOff,
+  ArrowUp,
+  ArrowDown,
+  Check,
+  AlertCircle,
+  LogOut,
+  ExternalLink,
+  Save,
+  Image as ImageIcon,
+  FileText,
+  Sliders,
+  Globe,
+  ChevronLeft,
+  Sparkles,
+  RefreshCw,
+  X,
+  Layers,
+  Wand2,
+  CheckCircle2,
+  HelpCircle,
+  GripVertical,
+  Share2,
+  ArrowUpDown,
+  Smartphone,
+  ShieldCheck,
+} from "lucide-react";
 
 // ─── Types ──────────────────────────────────────────────
 interface Product {
@@ -26,10 +58,66 @@ interface Product {
   meta_title?: string;
   meta_desc?: string;
   wa?: string;
+  sort_order?: number;
+  is_active?: number | boolean;
   [key: string]: unknown;
 }
 
 const API = "/api";
+
+// ─── Standard Specification Presets ─────────────────────
+const PRESETS = {
+  domestic: {
+    features: [
+      "Multi-stage RO + UV + TDS Controller + Active Copper Filtration",
+      "Food-Grade High-Capacity Storage Tank (10-12L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot",
+    ],
+    specs: [
+      { key: "Purification Technology", val: "RO + UV + Alkaline + TDS Controller" },
+      { key: "Storage Capacity", val: "10 - 12 Litres" },
+      { key: "Purification Capacity", val: "Up to 15-20 Litres/Hour" },
+      { key: "Body Material", val: "Food-Grade ABS Engineered Cabinet" },
+      { key: "Installation Type", val: "Wall Mounted / Table Top" },
+      { key: "Suitable Water TDS", val: "Up to 2000 ppm" },
+      { key: "Warranty", val: "1 Year Comprehensive Warranty" },
+    ],
+  },
+  commercial: {
+    features: [
+      "High-Flow Industrial RO Membrane (25 - 500 LPH)",
+      "Heavy-Duty Stainless Steel SS304 Skid & Frame",
+      "High-Pressure Booster Pump with Dry-Run Protection",
+      "Dual Pressure Gauges & Online Flow Meter",
+      "On-site Installation, Pipeline Commissioning & AMC Support",
+    ],
+    specs: [
+      { key: "Plant Capacity", val: "50 - 250 LPH (Litres Per Hour)" },
+      { key: "Membrane Type", val: "High Rejection TFC Industrial Membrane" },
+      { key: "Pump Specification", val: "Heavy Duty High-Pressure Booster Pump" },
+      { key: "Structure Frame", val: "Stainless Steel SS-304 Sturdy Skid" },
+      { key: "Filtration Stages", val: "Sand Filter + Carbon Filter + Micron + RO" },
+      { key: "Applications", val: "Ceramic Factories, Schools, Hospitals, Offices" },
+      { key: "Warranty & Service", val: "1 Year Warranty + Rapid AMC Service" },
+    ],
+  },
+  spares: {
+    features: [
+      "100% Genuine Certified Replacement Part",
+      "Compatible with All Leading Domestic & Commercial RO Models",
+      "High Chemical Resistance & Long Filter Lifespan",
+      "Same-Day Doorstep Replacement Service across Morbi",
+    ],
+    specs: [
+      { key: "Part Type", val: "RO Filter Cartridge / Membrane / Pump" },
+      { key: "Material Grade", val: "Certified Food Grade Virgin Polypropylene" },
+      { key: "Lifespan", val: "6 to 12 Months (Based on water quality)" },
+      { key: "Compatibility", val: "Universal Fit for Domestic ROs" },
+    ],
+  },
+};
 
 // ─── Main Admin Component ───────────────────────────────
 export default function AdminPage() {
@@ -38,15 +126,26 @@ export default function AdminPage() {
   const [loginError, setLoginError] = useState("");
   const [loginAttempts, setLoginAttempts] = useState(0);
   const [lockoutUntil, setLockoutUntil] = useState(0);
+  
+  // Data state
   const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [dirty, setDirty] = useState(false);
-  const [activeTab, setActiveTab] = useState("basic");
+  const [activeTab, setActiveTab] = useState<"basic" | "images" | "specs" | "seo">("basic");
+  
+  // Filter & Search state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [catFilter, setCatFilter] = useState("all");
+  const [statusFilter, setStatusFilter] = useState("all"); // 'all' | 'active' | 'hidden'
+  const [sortBy, setSortBy] = useState<"order" | "name" | "category">("order");
+  
+  // Feedback state
   const [toastMsg, setToastMsg] = useState("");
-  const [toastType, setToastType] = useState("");
+  const [toastType, setToastType] = useState<"ok" | "err" | "">("");
   const [showToast, setShowToastState] = useState(false);
   const [saveStatus, setSaveStatus] = useState({ msg: "", color: "" });
-  const [mobileEditing, setMobileEditing] = useState(false);
+  const [isReordering, setIsReordering] = useState(false);
 
   // Form state
   const [formId, setFormId] = useState("");
@@ -57,6 +156,7 @@ export default function AdminPage() {
   const [formCapacity, setFormCapacity] = useState("");
   const [formWarranty, setFormWarranty] = useState("");
   const [formDesc, setFormDesc] = useState("");
+  const [formIsActive, setFormIsActive] = useState(true);
   const [formMetaTitle, setFormMetaTitle] = useState("");
   const [formMetaDesc, setFormMetaDesc] = useState("");
   const [editImages, setEditImages] = useState<string[]>([]);
@@ -64,14 +164,33 @@ export default function AdminPage() {
   const [specs, setSpecs] = useState<{ key: string; val: string }[]>([]);
   const [uploadMsg, setUploadMsg] = useState("");
   const [isUploading, setIsUploading] = useState(false);
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const toastTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Check for existing session
+  // Keyboard shortcuts (Cmd+S / Ctrl+S to save, Esc to exit editor)
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if ((e.metaKey || e.ctrlKey) && e.key === "s") {
+        e.preventDefault();
+        if (editingId) {
+          saveProduct();
+        }
+      }
+      if (e.key === "Escape" && editingId) {
+        e.preventDefault();
+        exitEditor();
+      }
+    }
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [editingId, formId, formName, formCat, formBadge, formTagline, formCapacity, formWarranty, formDesc, formIsActive, formMetaTitle, formMetaDesc, editImages, features, specs]);
+
+  // Check existing session
   useEffect(() => {
     const t = sessionStorage.getItem("adm-token");
-    const attempts = parseInt(localStorage.getItem("adm-attempts") || "0");
-    const lockout = parseInt(localStorage.getItem("adm-lockout-until") || "0");
+    const attempts = parseInt(localStorage.getItem("adm-attempts") || "0", 10);
+    const lockout = parseInt(localStorage.getItem("adm-lockout-until") || "0", 10);
     setLoginAttempts(attempts);
     setLockoutUntil(lockout);
     if (t) {
@@ -88,8 +207,8 @@ export default function AdminPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen, token]);
 
-  // ─── Toast ──────────────────────────────────────────
-  const toast = useCallback((msg: string, type = "") => {
+  // Toast
+  const toast = useCallback((msg: string, type: "ok" | "err" | "" = "") => {
     setToastMsg(msg);
     setToastType(type);
     setShowToastState(true);
@@ -97,7 +216,7 @@ export default function AdminPage() {
     toastTimeout.current = setTimeout(() => setShowToastState(false), 3800);
   }, []);
 
-  // ─── Auth ───────────────────────────────────────────
+  // Auth fetch helper
   async function apiFetch(url: string, opts: RequestInit = {}) {
     const headers = new Headers(opts.headers || {});
     if (token) headers.set("Authorization", `Bearer ${token}`);
@@ -105,7 +224,7 @@ export default function AdminPage() {
     const r = await fetch(url, opts);
     if (r.status === 401) {
       doLogout();
-      throw new Error("Unauthorized");
+      throw new Error("Session expired. Please log in again.");
     }
     return r;
   }
@@ -117,7 +236,7 @@ export default function AdminPage() {
       return;
     }
     if (!pw) {
-      setLoginError("Enter password");
+      setLoginError("Please enter your password.");
       return;
     }
     try {
@@ -145,11 +264,11 @@ export default function AdminPage() {
           localStorage.setItem("adm-lockout-until", String(lockTime));
           setLoginError("Account locked for 30 minutes.");
         } else {
-          setLoginError(`Wrong password. ${5 - newAttempts} attempts left.`);
+          setLoginError(`Incorrect password. ${5 - newAttempts} attempts remaining.`);
         }
       }
     } catch {
-      setLoginError("Could not reach server. Are you online?");
+      setLoginError("Unable to connect to server. Check your connection.");
     }
   }
 
@@ -161,32 +280,38 @@ export default function AdminPage() {
     setEditingId(null);
   }
 
-  // ─── Products CRUD ──────────────────────────────────
+  // ─── Products CRUD & Reordering ─────────────────────
   async function loadProducts() {
+    setLoading(true);
     try {
-      const r = await apiFetch(`${API}/products`);
+      const r = await apiFetch(`${API}/products?all=true`);
       const data = await r.json();
-      setProducts(data);
-    } catch {
-      toast("Failed to load products", "err");
+      if (Array.isArray(data)) {
+        setProducts(data);
+      }
+    } catch (e: any) {
+      toast(e.message || "Failed to load products", "err");
+    } finally {
+      setLoading(false);
     }
   }
 
   function populateForm(p: Product) {
     setFormId(p.id);
     setFormCat(p.category || "domestic");
-    setFormName(p.name_en || "");
-    setFormBadge(p.badge_en || "");
-    setFormTagline(p.tagline_en || "");
-    setFormCapacity(p.capacity_en || "");
-    setFormWarranty(p.warranty_en || "");
-    setFormDesc(p.description_en || "");
+    setFormName(p.name_en || (p as any).name || "");
+    setFormBadge(p.badge_en || (p as any).badge || "");
+    setFormTagline(p.tagline_en || (p as any).tagline || "");
+    setFormCapacity(p.capacity_en || (p as any).capacity || "");
+    setFormWarranty(p.warranty_en || (p as any).warranty || "");
+    setFormDesc(p.description_en || (p as any).description || "");
+    setFormIsActive(p.is_active !== 0 && p.is_active !== false && (p as any).is_active !== "0");
     setFormMetaTitle(p.meta_title || "");
     setFormMetaDesc(p.meta_desc || "");
     setEditImages([...(p.images || [])]);
-    setFeatures([...(p.features_en || [])]);
+    setFeatures([...(p.features_en || (p as any).features || [])]);
     setSpecs(
-      Object.entries(p.specs_en || {}).map(([key, val]) => ({ key, val }))
+      Object.entries(p.specs_en || (p as any).specs || {}).map(([key, val]) => ({ key, val: String(val) }))
     );
     setActiveTab("basic");
     setDirty(false);
@@ -198,7 +323,6 @@ export default function AdminPage() {
     if (!p) return;
     setEditingId(id);
     populateForm(p);
-    setMobileEditing(true);
   }
 
   function newProduct() {
@@ -209,66 +333,182 @@ export default function AdminPage() {
     setFormName("");
     setFormBadge("");
     setFormTagline("");
-    setFormCapacity("");
-    setFormWarranty("");
+    setFormCapacity("10 - 12 Litres Storage");
+    setFormWarranty("1 Year Comprehensive Warranty");
     setFormDesc("");
+    setFormIsActive(true);
     setFormMetaTitle("");
     setFormMetaDesc("");
     setEditImages([]);
-    setFeatures([]);
-    setSpecs([]);
+    setFeatures([...PRESETS.domestic.features]);
+    setSpecs([...PRESETS.domestic.specs]);
     setActiveTab("basic");
     setDirty(false);
-    setMobileEditing(true);
+  }
+
+  // Duplicate a product
+  function duplicateProduct(id: string, e?: React.MouseEvent) {
+    if (e) e.stopPropagation();
+    if (dirty && !confirm("You have unsaved changes. Discard them to duplicate?")) return;
+    const p = products.find((x) => x.id === id);
+    if (!p) return;
+
+    const newSlug = `${p.id}-copy-${Math.floor(100 + Math.random() * 900)}`;
+    setEditingId("__new__");
+    setFormId(newSlug);
+    setFormCat(p.category || "domestic");
+    setFormName(`${p.name_en || (p as any).name || "Product"} (Copy)`);
+    setFormBadge(p.badge_en || (p as any).badge || "");
+    setFormTagline(p.tagline_en || (p as any).tagline || "");
+    setFormCapacity(p.capacity_en || (p as any).capacity || "");
+    setFormWarranty(p.warranty_en || (p as any).warranty || "");
+    setFormDesc(p.description_en || (p as any).description || "");
+    setFormIsActive(true);
+    setFormMetaTitle(p.meta_title ? `${p.meta_title} (Copy)` : "");
+    setFormMetaDesc(p.meta_desc || "");
+    setEditImages([...(p.images || [])]);
+    setFeatures([...(p.features_en || (p as any).features || [])]);
+    setSpecs(
+      Object.entries(p.specs_en || (p as any).specs || {}).map(([key, val]) => ({ key, val: String(val) }))
+    );
+    setActiveTab("basic");
+    setDirty(true);
+    toast(`Duplicated "${p.name_en}"! Review and save.`, "ok");
+  }
+
+  // Toggle Visibility (Publish / Hide)
+  async function toggleVisibility(p: Product, e?: React.MouseEvent) {
+    if (e) e.stopPropagation();
+    const currentlyActive = p.is_active !== 0 && p.is_active !== false && (p as any).is_active !== "0";
+    const nextActive = !currentlyActive;
+    const nextVal = nextActive ? 1 : 0;
+
+    // Optimistic UI update
+    setProducts((prev) =>
+      prev.map((item) => (item.id === p.id ? { ...item, is_active: nextVal } : item))
+    );
+    if (editingId === p.id) {
+      setFormIsActive(nextActive);
+    }
+
+    try {
+      const r = await apiFetch(`${API}/products`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: p.id, is_active: nextVal }),
+      });
+      if (!r.ok) throw new Error("Could not update visibility");
+      toast(nextActive ? `"${p.name_en}" is now LIVE on website 👁️` : `"${p.name_en}" is now HIDDEN from website 🔒`, "ok");
+    } catch (err: any) {
+      toast("Visibility update failed: " + err.message, "err");
+      loadProducts();
+    }
+  }
+
+  // Move product up/down for reordering
+  async function moveProduct(index: number, direction: "up" | "down", e?: React.MouseEvent) {
+    if (e) e.stopPropagation();
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= products.length) return;
+
+    const newOrder = [...products];
+    const [moved] = newOrder.splice(index, 1);
+    newOrder.splice(targetIndex, 0, moved);
+
+    setProducts(newOrder);
+    setIsReordering(true);
+
+    try {
+      const orderIds = newOrder.map((item) => item.id);
+      const r = await apiFetch(`${API}/products`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ order: orderIds }),
+      });
+      if (!r.ok) throw new Error("Failed to save order");
+      toast(`Moved "${moved.name_en}" ${direction} ✓`, "ok");
+    } catch (err: any) {
+      toast("Order save failed: " + err.message, "err");
+      loadProducts();
+    } finally {
+      setIsReordering(false);
+    }
+  }
+
+  // Apply Industry Standard Spec Presets
+  function applyPreset(type: "domestic" | "commercial" | "spares") {
+    const preset = PRESETS[type];
+    setFeatures([...preset.features]);
+    setSpecs([...preset.specs]);
+    if (type === "domestic") {
+      setFormCapacity("10 - 12 Litres Storage");
+      setFormWarranty("1 Year Comprehensive Warranty");
+    } else if (type === "commercial") {
+      setFormCapacity("50 - 250 LPH Plant");
+      setFormWarranty("1 Year AMC Warranty Support");
+    } else {
+      setFormCapacity("Standard Universal Fit");
+      setFormWarranty("Standard Manufacturer Warranty");
+    }
+    setDirty(true);
+    toast(`Applied standard ${type.toUpperCase()} specifications template!`, "ok");
   }
 
   function exitEditor() {
     if (dirty && !confirm("You have unsaved changes. Discard them?")) return;
     setEditingId(null);
     setDirty(false);
-    setMobileEditing(false);
   }
 
   async function saveProduct() {
-    if (!formId) {
-      toast("Product ID is required", "err");
+    const cleanId = formId.trim().toLowerCase();
+    if (!cleanId) {
+      toast("Product ID (slug) is required", "err");
+      setActiveTab("basic");
       return;
     }
-    if (!/^[a-z0-9-]+$/.test(formId)) {
-      toast("ID: lowercase, numbers, hyphens only", "err");
+    if (!/^[a-z0-9-]+$/.test(cleanId)) {
+      toast("ID must contain only lowercase letters, numbers, and hyphens", "err");
+      setActiveTab("basic");
+      return;
+    }
+    if (!formName.trim()) {
+      toast("Product Name is required", "err");
+      setActiveTab("basic");
       return;
     }
 
     const specsObj: Record<string, string> = {};
     specs.forEach(({ key, val }) => {
-      if (key) specsObj[key] = val;
+      if (key.trim()) specsObj[key.trim()] = val.trim();
     });
 
     const body = {
-      id: formId,
-      name_en: formName,
+      id: cleanId,
+      name_en: formName.trim(),
       name_gu: "",
-      badge_en: formBadge,
+      badge_en: formBadge.trim(),
       badge_gu: "",
       category: formCat,
       images: editImages,
-      tagline_en: formTagline,
+      tagline_en: formTagline.trim(),
       tagline_gu: "",
-      capacity_en: formCapacity,
+      capacity_en: formCapacity.trim(),
       capacity_gu: "",
-      warranty_en: formWarranty,
+      warranty_en: formWarranty.trim(),
       warranty_gu: "",
-      description_en: formDesc,
+      description_en: formDesc.trim(),
       description_gu: "",
-      features_en: features,
+      features_en: features.map((f) => f.trim()).filter(Boolean),
       features_gu: [],
       specs_en: specsObj,
       specs_gu: {},
-      meta_title: formMetaTitle,
-      meta_desc: formMetaDesc,
+      meta_title: formMetaTitle.trim(),
+      meta_desc: formMetaDesc.trim(),
+      is_active: formIsActive ? 1 : 0,
     };
 
-    setSaveStatus({ msg: "Saving...", color: "hsl(35,90%,42%)" });
+    setSaveStatus({ msg: "Saving...", color: "var(--adm-primary)" });
     const isNew = editingId === "__new__";
 
     try {
@@ -284,34 +524,34 @@ export default function AdminPage() {
         const e = await r.json();
         throw new Error(e.error || r.statusText);
       }
-      if (isNew) setEditingId(formId);
+      if (isNew) setEditingId(cleanId);
       await loadProducts();
       setDirty(false);
-      setSaveStatus({ msg: "✅ Saved!", color: "hsl(142,65%,38%)" });
-      toast("Product saved! Changes are live instantly.", "ok");
+      setSaveStatus({ msg: "✅ Saved!", color: "#22c55e" });
+      toast(`Product "${formName}" saved successfully!`, "ok");
       setTimeout(() => setSaveStatus({ msg: "", color: "" }), 4000);
-    } catch (e: unknown) {
-      const msg = e instanceof Error ? e.message : "Unknown error";
-      setSaveStatus({ msg: "❌ " + msg, color: "hsl(0,75%,48%)" });
+    } catch (e: any) {
+      const msg = e.message || "Unknown error";
+      setSaveStatus({ msg: "❌ " + msg, color: "#ef4444" });
       toast("Save failed: " + msg, "err");
     }
   }
 
-  async function deleteProduct(id: string) {
-    const p = products.find((x) => x.id === id);
-    if (!confirm(`Delete "${p?.name_en}"? This cannot be undone.`)) return;
+  async function deleteProduct(id: string, name: string, e?: React.MouseEvent) {
+    if (e) e.stopPropagation();
+    if (!confirm(`Are you sure you want to permanently delete "${name}"?\n(Tip: You can use "Hide" instead if you just want to remove it from the website temporarily.)`)) {
+      return;
+    }
     try {
       const r = await apiFetch(`${API}/products/${id}`, { method: "DELETE" });
       if (!r.ok) throw new Error((await r.json()).error);
       if (editingId === id) {
         setEditingId(null);
-        setMobileEditing(false);
       }
       await loadProducts();
-      toast("Product deleted.", "ok");
-    } catch (e: unknown) {
-      const msg = e instanceof Error ? e.message : "Unknown error";
-      toast("Delete failed: " + msg, "err");
+      toast(`Deleted "${name}".`, "ok");
+    } catch (e: any) {
+      toast("Delete failed: " + e.message, "err");
     }
   }
 
@@ -333,14 +573,52 @@ export default function AdminPage() {
         setEditImages((prev) => [...prev, url]);
         setDirty(true);
         toast(`${file.name} uploaded ✓`, "ok");
-      } catch (e: unknown) {
-        const msg = e instanceof Error ? e.message : "Unknown error";
-        toast("Upload failed: " + msg, "err");
+      } catch (e: any) {
+        toast("Upload failed: " + (e.message || "Unknown"), "err");
       }
     }
     setIsUploading(false);
     setUploadMsg("");
   }
+
+  // Metrics calculation
+  const metrics = useMemo(() => {
+    const total = products.length;
+    const active = products.filter((p) => p.is_active !== 0 && p.is_active !== false && (p as any).is_active !== "0").length;
+    const hidden = total - active;
+    const domestic = products.filter((p) => p.category === "domestic").length;
+    const commercial = products.filter((p) => p.category === "commercial").length;
+    const spares = products.filter((p) => p.category === "spares").length;
+    return { total, active, hidden, domestic, commercial, spares };
+  }, [products]);
+
+  // Filtered & Sorted products list
+  const filteredProducts = useMemo(() => {
+    let list = products.filter((p) => {
+      const q = searchQuery.toLowerCase().trim();
+      const name = (p.name_en || (p as any).name || "").toLowerCase();
+      const id = (p.id || "").toLowerCase();
+      const matchesSearch = !q || name.includes(q) || id.includes(q);
+
+      const matchesCat = catFilter === "all" || p.category === catFilter;
+
+      const isActive = p.is_active !== 0 && p.is_active !== false && (p as any).is_active !== "0";
+      const matchesStatus =
+        statusFilter === "all" ||
+        (statusFilter === "active" && isActive) ||
+        (statusFilter === "hidden" && !isActive);
+
+      return matchesSearch && matchesCat && matchesStatus;
+    });
+
+    if (sortBy === "name") {
+      list = [...list].sort((a, b) => (a.name_en || "").localeCompare(b.name_en || ""));
+    } else if (sortBy === "category") {
+      list = [...list].sort((a, b) => (a.category || "").localeCompare(b.category || ""));
+    }
+
+    return list;
+  }, [products, searchQuery, catFilter, statusFilter, sortBy]);
 
   // ─── LOGIN SCREEN ───────────────────────────────────
   if (screen === "login") {
@@ -352,405 +630,929 @@ export default function AdminPage() {
     <div className="adm-dashboard">
       <style>{adminStyles}</style>
 
-      {/* Topbar */}
-      <div className="adm-topbar">
-        <div className="adm-brand">
-          <img src="/assets/logo_horizontal_transparent.png" alt="Logo" width="160" height="36" style={{ height: "32px", width: "auto", objectFit: "contain" }} />
-          <span>
-            Product Manager
-          </span>
+      {/* Top App Bar (Google Cloud Console Pattern) */}
+      <header className="adm-topbar">
+        <div className="adm-topbar-left">
+          <img
+            src="/assets/logo_horizontal_transparent.png"
+            alt="Shivam Water Solution"
+            height="28"
+            className="adm-top-logo"
+            onError={(e) => { (e.target as HTMLElement).style.display = "none"; }}
+          />
+          <div className="adm-top-title">
+            <span className="adm-brand-name hide-360">Console</span>
+            <span className="adm-top-breadcrumb">/ Products</span>
+          </div>
         </div>
-        {dirty && (
-          <span style={{ fontSize: ".78rem", fontWeight: 600, color: "hsl(35,90%,42%)" }}>
-            ● Unsaved changes
-          </span>
-        )}
-        <a href="/" target="_blank" className="adm-sb adm-sb-o" style={{ fontSize: ".78rem", padding: "7px 14px" }}>
-          View Website ↗
-        </a>
-        <button className="adm-sb adm-sb-o" onClick={doLogout} style={{ fontSize: ".78rem", padding: "7px 14px" }}>
-          Logout
-        </button>
-      </div>
 
-      {/* Body */}
-      <div className={`adm-body ${mobileEditing ? "editing" : ""}`}>
-        {/* Sidebar */}
-        <div className="adm-sidebar">
-          <div className="sidebar-head">
-            <h3>Products ({products.length})</h3>
-            <button className="adm-sb adm-sb-p" onClick={newProduct} style={{ fontSize: ".74rem", padding: "6px 12px" }}>
-              + New
+        <div className="adm-topbar-right">
+          {dirty && (
+            <span className="adm-unsaved-pill hide-360">
+              ● Unsaved Changes
+            </span>
+          )}
+          <a href="/" target="_blank" rel="noopener noreferrer" className="adm-btn adm-btn-outline-sm" title="View Live Website">
+            <ExternalLink size={14} />
+            <span className="hide-mobile">Website</span>
+          </a>
+          <button className="adm-btn adm-btn-outline-sm" onClick={doLogout} title="Logout">
+            <LogOut size={14} />
+            <span className="hide-mobile">Logout</span>
+          </button>
+        </div>
+      </header>
+
+      {/* Body Area */}
+      <main className="adm-body-container">
+        {/* ========================================================= */}
+        {/* PRODUCT LIST VIEW (Master Panel) */}
+        {/* ========================================================= */}
+        <section className={`adm-sidebar-panel ${editingId ? "hide-on-mobile-when-editing" : ""}`}>
+          {/* Top Metric Scorecards (Material Design 3 Dashboard Pattern) */}
+          <div className="adm-metrics-row">
+            <button
+              type="button"
+              className={`adm-metric-card ${statusFilter === "all" && catFilter === "all" ? "active" : ""}`}
+              onClick={() => { setStatusFilter("all"); setCatFilter("all"); }}
+              title="Show all products"
+            >
+              <div className="adm-metric-num">{metrics.total}</div>
+              <div className="adm-metric-label">Total</div>
+            </button>
+            <button
+              type="button"
+              className={`adm-metric-card green ${statusFilter === "active" ? "active" : ""}`}
+              onClick={() => { setStatusFilter("active"); }}
+              title="Show live products only"
+            >
+              <div className="adm-metric-num text-success">{metrics.active}</div>
+              <div className="adm-metric-label">Live 👁️</div>
+            </button>
+            <button
+              type="button"
+              className={`adm-metric-card amber ${statusFilter === "hidden" ? "active" : ""}`}
+              onClick={() => { setStatusFilter("hidden"); }}
+              title="Show hidden/draft products only"
+            >
+              <div className="adm-metric-num text-warning">{metrics.hidden}</div>
+              <div className="adm-metric-label">Hidden 🔒</div>
+            </button>
+            <button
+              type="button"
+              className={`adm-metric-card ${catFilter === "domestic" ? "active" : ""}`}
+              onClick={() => { setCatFilter(catFilter === "domestic" ? "all" : "domestic"); }}
+              title="Show domestic models only"
+            >
+              <div className="adm-metric-num text-cyan">{metrics.domestic}</div>
+              <div className="adm-metric-label">Domestic</div>
             </button>
           </div>
-          <div className="sidebar-list">
-            {products.map((p) => (
-              <div
-                key={p.id}
-                className={`ap-item ${editingId === p.id ? "active" : ""}`}
-                onClick={() => editProduct(p.id)}
-              >
-                <img
-                  className="ap-thumb"
-                  src={p.images?.[0] || "/assets/product_domestic.webp"}
-                  alt={p.name_en}
-                  width="40"
-                  height="40"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = "/assets/product_domestic.webp";
-                  }}
-                />
-                <div className="ap-meta">
-                  <h4>{p.name_en}</h4>
-                  <p>
-                    {p.category} · {p.images?.length || 1} img
-                  </p>
-                </div>
-                <button
-                  className="ap-del"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    deleteProduct(p.id);
-                  }}
-                  title="Delete"
-                >
-                  ✕
+
+          {/* Controls Bar */}
+          <div className="adm-panel-head">
+            <div className="adm-panel-head-top">
+              <div className="adm-head-title-row">
+                <Layers size={17} className="text-primary" />
+                <h2>Catalog Inventory</h2>
+              </div>
+              <button className="adm-btn adm-btn-primary" onClick={newProduct}>
+                <Plus size={15} />
+                <span>Add product</span>
+              </button>
+            </div>
+
+            {/* Search Bar with Instant Clear */}
+            <div className="adm-search-wrap">
+              <Search size={15} className="adm-search-icon" />
+              <input
+                type="text"
+                className="adm-search-input"
+                placeholder="Search products by name or slug..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+              {searchQuery && (
+                <button className="adm-search-clear" onClick={() => setSearchQuery("")} title="Clear search">
+                  <X size={14} />
+                </button>
+              )}
+            </div>
+
+            {/* Google M3 Filter Chips */}
+            <div className="adm-filters-row">
+              <div className="adm-filter-group">
+                <button className={`adm-pill ${catFilter === "all" ? "active" : ""}`} onClick={() => setCatFilter("all")}>
+                  All ({metrics.total})
+                </button>
+                <button className={`adm-pill ${catFilter === "domestic" ? "active" : ""}`} onClick={() => setCatFilter("domestic")}>
+                  Domestic ({metrics.domestic})
+                </button>
+                <button className={`adm-pill ${catFilter === "commercial" ? "active" : ""}`} onClick={() => setCatFilter("commercial")}>
+                  Commercial ({metrics.commercial})
+                </button>
+                <button className={`adm-pill ${catFilter === "spares" ? "active" : ""}`} onClick={() => setCatFilter("spares")}>
+                  Spares ({metrics.spares})
                 </button>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Editor */}
-        <div className="adm-editor">
-          {!editingId ? (
-            <div className="editor-empty">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" opacity=".25">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <path d="M8 21h8M12 17v4" />
-              </svg>
-              <p>Select a product to edit</p>
-              <small>
-                or click <strong>+ New</strong> to add one
-              </small>
+              <div className="adm-filter-group status-group">
+                <button className={`adm-pill ${statusFilter === "all" ? "active" : ""}`} onClick={() => setStatusFilter("all")}>
+                  All status
+                </button>
+                <button className={`adm-pill green ${statusFilter === "active" ? "active" : ""}`} onClick={() => setStatusFilter("active")}>
+                  🟢 Live ({metrics.active})
+                </button>
+                <button className={`adm-pill gray ${statusFilter === "hidden" ? "active" : ""}`} onClick={() => setStatusFilter("hidden")}>
+                  🔒 Hidden ({metrics.hidden})
+                </button>
+              </div>
             </div>
-          ) : (
-            <div className="editor-panel">
-              <button className="mobile-back-btn" onClick={exitEditor}>
-                ← Back to Product List
-              </button>
-              <div className="editor-main-split">
-                <div className="editor-form">
-                  <div className="e-card">
-                    {/* Tabs */}
-                    <div className="e-tabs">
-                      {["basic", "images", "specs", "seo"].map((tab) => (
-                        <button
-                          key={tab}
-                          className={`etab ${activeTab === tab ? "active" : ""}`}
-                          onClick={() => setActiveTab(tab)}
-                        >
-                          {tab === "basic" && "📝 Basic Info"}
-                          {tab === "images" && "🖼 Images"}
-                          {tab === "specs" && "⚙ Features & Specs"}
-                          {tab === "seo" && "🔍 SEO"}
-                        </button>
-                      ))}
+          </div>
+
+          {/* List of Products (Material Card Stack) */}
+          <div className="adm-product-list">
+            {loading && (
+              <div className="adm-empty-state">
+                <RefreshCw size={24} className="spin text-primary" />
+                <p>Loading inventory from Cloudflare...</p>
+              </div>
+            )}
+
+            {!loading && filteredProducts.length === 0 && (
+              <div className="adm-empty-state">
+                <AlertCircle size={28} opacity={0.4} />
+                <p>No products match your filters</p>
+                <button className="adm-btn adm-btn-outline-sm" onClick={() => { setSearchQuery(""); setCatFilter("all"); setStatusFilter("all"); }}>
+                  Reset filters
+                </button>
+              </div>
+            )}
+
+            {filteredProducts.map((p) => {
+              const isActive = p.is_active !== 0 && p.is_active !== false && (p as any).is_active !== "0";
+              const isSelected = editingId === p.id;
+              const globalIndex = products.findIndex((item) => item.id === p.id);
+
+              return (
+                <div
+                  key={p.id}
+                  className={`adm-product-card ${isSelected ? "selected" : ""} ${!isActive ? "is-hidden" : ""}`}
+                  onClick={() => editProduct(p.id)}
+                >
+                  {/* Top Row: Rank + Thumb + Title & Meta */}
+                  <div className="adm-card-main-row">
+                    <div className="adm-rank-badge" title={`Catalog Position #${globalIndex + 1}`}>
+                      #{globalIndex + 1}
                     </div>
 
-                    {/* Basic Tab */}
-                    {activeTab === "basic" && (
-                      <div className="tab-pane active">
-                        <div className="frow">
-                          <div className="ff">
-                            <label className="fl">Product ID <em>(URL slug)</em></label>
-                            <input
-                              className="fi"
-                              value={formId}
-                              onChange={(e) => { setFormId(e.target.value); setDirty(true); }}
-                              disabled={editingId !== "__new__"}
-                              placeholder="aqua-era"
-                            />
-                          </div>
-                          <div className="ff">
-                            <label className="fl">Category</label>
-                            <select className="fi" value={formCat} onChange={(e) => { setFormCat(e.target.value); setDirty(true); }}>
-                              <option value="domestic">Domestic RO</option>
-                              <option value="commercial">Commercial RO</option>
-                              <option value="spares">Filters & Spares</option>
-                            </select>
-                          </div>
-                        </div>
-                        <div className="frow">
-                          <div className="ff">
-                            <label className="fl">Name</label>
-                            <input className="fi" value={formName} onChange={(e) => { setFormName(e.target.value); setDirty(true); }} placeholder="Aqua Era Cabinet" />
-                          </div>
-                          <div className="ff">
-                            <label className="fl">Badge <em>(optional)</em></label>
-                            <input className="fi" value={formBadge} onChange={(e) => { setFormBadge(e.target.value); setDirty(true); }} placeholder="Best Seller" />
-                          </div>
-                        </div>
-                        <div className="frow">
-                          <div className="ff">
-                            <label className="fl">Tagline</label>
-                            <input className="fi" value={formTagline} onChange={(e) => { setFormTagline(e.target.value); setDirty(true); }} placeholder="Pure. Premium. Powerful." />
-                          </div>
-                        </div>
-                        <div className="frow">
-                          <div className="ff">
-                            <label className="fl">Capacity</label>
-                            <input className="fi" value={formCapacity} onChange={(e) => { setFormCapacity(e.target.value); setDirty(true); }} placeholder="9 Ltrs Storage Tank" />
-                          </div>
-                          <div className="ff">
-                            <label className="fl">Warranty</label>
-                            <input className="fi" value={formWarranty} onChange={(e) => { setFormWarranty(e.target.value); setDirty(true); }} placeholder="1 Year Warranty" />
-                          </div>
-                        </div>
-                        <div className="frow one">
-                          <div className="ff">
-                            <label className="fl">Description</label>
-                            <textarea className="fi" value={formDesc} onChange={(e) => { setFormDesc(e.target.value); setDirty(true); }} placeholder="Describe this product..." />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {/* Images Tab */}
-                    {activeTab === "images" && (
-                      <div className="tab-pane active">
-                        <p style={{ fontSize: ".83rem", color: "var(--text-light-3, #888)", margin: "0 0 14px" }}>
-                          <strong>First image = main photo</strong> on listing card.
-                        </p>
-                        <div
-                          className="drop-zone"
-                          onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("over"); }}
-                          onDragLeave={(e) => e.currentTarget.classList.remove("over")}
-                          onDrop={(e) => {
-                            e.preventDefault();
-                            e.currentTarget.classList.remove("over");
-                            const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith("image/"));
-                            uploadFiles(files);
-                          }}
-                          onClick={() => fileInputRef.current?.click()}
-                        >
-                          <input
-                            ref={fileInputRef}
-                            type="file"
-                            accept="image/*"
-                            multiple
-                            style={{ display: "none" }}
-                            onChange={(e) => {
-                              const files = Array.from(e.target.files || []);
-                              uploadFiles(files);
-                              e.target.value = "";
-                            }}
-                          />
-                          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" opacity=".4">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                            <polyline points="17 8 12 3 7 8" />
-                            <line x1="12" y1="3" x2="12" y2="15" />
-                          </svg>
-                          <p>Drag & drop images here, or click to browse</p>
-                          <small>PNG, JPG, WebP — uploaded to Cloudflare R2</small>
-                        </div>
-                        {isUploading && (
-                          <div className="upload-prog show">
-                            <div className="spin" />
-                            <span>{uploadMsg}</span>
-                          </div>
-                        )}
-                        <div className="img-grid">
-                          {editImages.map((url, i) => (
-                            <div key={`${url}-${i}`} className={`img-cell ${i === 0 ? "primary" : ""}`}>
-                              {i === 0 && <span className="img-primary-lbl">Main</span>}
-                              <img src={url} alt={`Product ${i + 1}`} width="120" height="120" onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }} />
-                              <div className="img-cell-ov">
-                                {i > 0 && (
-                                  <button className="icb" onClick={() => {
-                                    const imgs = [...editImages];
-                                    const [item] = imgs.splice(i, 1);
-                                    imgs.unshift(item);
-                                    setEditImages(imgs);
-                                    setDirty(true);
-                                  }}>Set as Main</button>
-                                )}
-                                <button className="icb red" onClick={() => {
-                                  setEditImages((prev) => prev.filter((_, idx) => idx !== i));
-                                  setDirty(true);
-                                }}>Remove</button>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                        <ManualUrlAdder onAdd={(url) => { setEditImages((prev) => [...prev, url]); setDirty(true); }} />
-                      </div>
-                    )}
-
-                    {/* Specs Tab */}
-                    {activeTab === "specs" && (
-                      <div className="tab-pane active">
-                        <h4 style={{ fontFamily: "var(--font-display)", fontSize: ".86rem", margin: "0 0 10px" }}>Key Features</h4>
-                        {features.map((f, i) => (
-                          <div key={i} className="dyn-row feat">
-                            <input className="fi" value={f} onChange={(e) => {
-                              const arr = [...features]; arr[i] = e.target.value;
-                              setFeatures(arr); setDirty(true);
-                            }} placeholder="Feature" />
-                            <button className="del-btn" onClick={() => {
-                              setFeatures((prev) => prev.filter((_, idx) => idx !== i)); setDirty(true);
-                            }}>✕</button>
-                          </div>
-                        ))}
-                        <button className="add-row-btn" onClick={() => setFeatures((prev) => [...prev, ""])}>
-                          + Add Feature
-                        </button>
-
-                        <h4 style={{ fontFamily: "var(--font-display)", fontSize: ".86rem", margin: "22px 0 10px" }}>Technical Specifications</h4>
-                        {specs.map((s, i) => (
-                          <div key={i} className="dyn-row spec">
-                            <input className="fi sk" value={s.key} onChange={(e) => {
-                              const arr = [...specs]; arr[i] = { ...arr[i], key: e.target.value };
-                              setSpecs(arr); setDirty(true);
-                            }} placeholder="Storage Capacity" />
-                            <input className="fi sv" value={s.val} onChange={(e) => {
-                              const arr = [...specs]; arr[i] = { ...arr[i], val: e.target.value };
-                              setSpecs(arr); setDirty(true);
-                            }} placeholder="9 Litres" />
-                            <button className="del-btn" onClick={() => {
-                              setSpecs((prev) => prev.filter((_, idx) => idx !== i)); setDirty(true);
-                            }}>✕</button>
-                          </div>
-                        ))}
-                        <button className="add-row-btn" onClick={() => setSpecs((prev) => [...prev, { key: "", val: "" }])}>
-                          + Add Spec Row
-                        </button>
-                      </div>
-                    )}
-
-                    {/* SEO Tab */}
-                    {activeTab === "seo" && (
-                      <div className="tab-pane active">
-                        <p style={{ fontSize: ".82rem", color: "var(--text-light-3, #888)", margin: "0 0 18px" }}>
-                          These appear in Google search results. Leave blank to auto-generate.
-                        </p>
-                        <div className="frow one">
-                          <div className="ff">
-                            <label className="fl">Page Title <em>(~60 chars)</em></label>
-                            <input className="fi" value={formMetaTitle} onChange={(e) => { setFormMetaTitle(e.target.value); setDirty(true); }} placeholder="Aqua Era - Shivam Water Solution Morbi" />
-                          </div>
-                        </div>
-                        <div className="frow one">
-                          <div className="ff">
-                            <label className="fl">Meta Description <em>(~155 chars)</em></label>
-                            <textarea className="fi" value={formMetaDesc} onChange={(e) => { setFormMetaDesc(e.target.value); setDirty(true); }} placeholder="Buy Aqua Era RO purifier in Morbi..." style={{ minHeight: "72px" }} />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                </div>
-
-                {/* Live Preview & WhatsApp Link Preview Simulator */}
-                <div className="preview-wrap">
-                  <h4>Live Website Card</h4>
-                  <div className="product-card glass-card" style={{ width: "100%", margin: "0 auto", minWidth: "250px" }}>
-                    {formBadge && <div className="product-badge">{formBadge}</div>}
-                    <div className="product-img-wrap">
-                      <img src={editImages[0] || "/assets/product_domestic.webp"} alt="Preview" width="400" height="400" onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }} />
+                    <div className="adm-thumb-wrapper">
+                      <img
+                        src={p.images?.[0] || "/assets/product_domestic.webp"}
+                        alt={p.name_en}
+                        className="adm-thumb-img"
+                        loading="lazy"
+                        onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }}
+                      />
+                      {!isActive && (
+                        <span className="adm-hidden-overlay" title="Hidden from public catalog">
+                          <EyeOff size={12} />
+                        </span>
+                      )}
                     </div>
-                    <div className="product-info">
-                      <h3 className="product-title">{formName || "Product Name"}</h3>
-                      <p className="product-desc">{formTagline || "Tagline"}</p>
-                      <div className="product-card-specs">
-                        <div className="spec-pill">
-                          <span>{formCapacity || "Tank"}</span>
-                        </div>
-                        <div className="spec-pill">
-                          <span>{formWarranty || "Warranty"}</span>
-                        </div>
+
+                    <div className="adm-card-info">
+                      <div className="adm-card-title-row">
+                        <h4 className="adm-card-title">{p.name_en || (p as any).name}</h4>
+                        {p.badge_en && <span className="adm-card-badge">{p.badge_en}</span>}
                       </div>
-                      <div className="card-action-row" style={{ marginTop: "auto" }}>
-                        <span className="btn btn-outline btn-sm" style={{ width: "100%", textAlign: "center", justifyContent: "center", pointerEvents: "none" }}>
-                          View Details
+                      <div className="adm-card-sub">
+                        <span className="adm-card-cat">{p.category}</span>
+                        <span className="adm-card-dot">•</span>
+                        <span className="adm-card-cap">{p.capacity_en || (p as any).capacity || "10L"}</span>
+                        <span className="adm-card-dot">•</span>
+                        <span className={`adm-status-tag ${isActive ? "active" : "hidden"}`}>
+                          {isActive ? "Live" : "Hidden"}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  {/* WhatsApp OG Link Preview Simulator */}
-                  <h4 style={{ marginTop: "24px" }}>WhatsApp Chat Preview</h4>
-                  <div className="wa-preview-card" style={{ background: "#efeae2", padding: "12px", borderRadius: "12px", border: "1px solid rgba(0,0,0,0.08)" }}>
-                    <div style={{ background: "#dcf8c6", padding: "10px 12px", borderRadius: "8px 8px 0 8px", maxWidth: "280px", marginLeft: "auto", boxShadow: "0 1px 2px rgba(0,0,0,0.15)", fontSize: "0.82rem" }}>
-                      <div style={{ color: "#111b21", marginBottom: "6px" }}>
-                        Hello Dilipbhai, I want to inquire about *{formName || "this model"}*.
+                  {/* Bottom Row: Standardized M3 Touch Toolbar */}
+                  <div className="adm-card-actions" onClick={(e) => e.stopPropagation()}>
+                    <button
+                      type="button"
+                      className="adm-icon-action"
+                      title="Move up in catalog order"
+                      disabled={globalIndex === 0 || isReordering}
+                      onClick={(e) => moveProduct(globalIndex, "up", e)}
+                    >
+                      <ArrowUp size={15} />
+                      <span className="adm-action-lbl">Up</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="adm-icon-action"
+                      title="Move down in catalog order"
+                      disabled={globalIndex === products.length - 1 || isReordering}
+                      onClick={(e) => moveProduct(globalIndex, "down", e)}
+                    >
+                      <ArrowDown size={15} />
+                      <span className="adm-action-lbl">Down</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className={`adm-icon-action ${isActive ? "active-eye" : "hidden-eye"}`}
+                      title={isActive ? "Hide from website" : "Publish on website"}
+                      onClick={(e) => toggleVisibility(p, e)}
+                    >
+                      {isActive ? <Eye size={15} /> : <EyeOff size={15} />}
+                      <span className="adm-action-lbl">{isActive ? "Live" : "Hide"}</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="adm-icon-action"
+                      title="Duplicate product"
+                      onClick={(e) => duplicateProduct(p.id, e)}
+                    >
+                      <Copy size={14} />
+                      <span className="adm-action-lbl">Copy</span>
+                    </button>
+
+                    <button
+                      type="button"
+                      className="adm-icon-action danger"
+                      title="Delete product"
+                      onClick={(e) => deleteProduct(p.id, p.name_en || p.id, e)}
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* ========================================================= */}
+        {/* PRODUCT EDITOR PANEL (Master-Detail View) */}
+        {/* ========================================================= */}
+        <section className={`adm-editor-panel ${!editingId ? "hide-on-mobile-when-empty" : ""}`}>
+          {!editingId ? (
+            <div className="adm-editor-empty-state">
+              <div className="adm-empty-circle">
+                <Sliders size={32} className="text-primary" />
+              </div>
+              <h3>Select a product to edit</h3>
+              <p>Choose an item from the list on the left to edit details, upload high-res images, apply specifications, or duplicate.</p>
+              <button className="adm-btn adm-btn-primary" onClick={newProduct}>
+                <Plus size={16} />
+                <span>Create new product</span>
+              </button>
+            </div>
+          ) : (
+            <div className="adm-editor-form-wrapper">
+              {/* Header Bar */}
+              <div className="adm-editor-header">
+                <button type="button" className="adm-back-btn" onClick={exitEditor}>
+                  <ChevronLeft size={18} />
+                  <span>Products</span>
+                </button>
+
+                <div className="adm-editor-header-title">
+                  <h3>{editingId === "__new__" ? "New product" : formName || "Edit product"}</h3>
+                  <span className="adm-editor-slug">{formId ? `/products/${formId}` : "Draft slug"}</span>
+                </div>
+
+                <div className="adm-editor-header-actions hide-mobile">
+                  <span className="adm-shortcut-pill" title="Press ⌘S / Ctrl+S to save anytime">
+                    ⌘S to save
+                  </span>
+                  <button type="button" className="adm-btn adm-btn-primary" onClick={saveProduct}>
+                    <Save size={15} />
+                    <span>Save changes</span>
+                  </button>
+                  <button type="button" className="adm-btn adm-btn-outline-sm" onClick={exitEditor}>
+                    Close
+                  </button>
+                </div>
+              </div>
+
+              {/* M3 Segmented Tabs */}
+              <div className="adm-editor-tabs-bar">
+                <button
+                  type="button"
+                  className={`adm-tab-btn ${activeTab === "basic" ? "active" : ""}`}
+                  onClick={() => setActiveTab("basic")}
+                >
+                  <FileText size={15} />
+                  <span>General</span>
+                </button>
+                <button
+                  type="button"
+                  className={`adm-tab-btn ${activeTab === "images" ? "active" : ""}`}
+                  onClick={() => setActiveTab("images")}
+                >
+                  <ImageIcon size={15} />
+                  <span>Gallery ({editImages.length})</span>
+                </button>
+                <button
+                  type="button"
+                  className={`adm-tab-btn ${activeTab === "specs" ? "active" : ""}`}
+                  onClick={() => setActiveTab("specs")}
+                >
+                  <Sliders size={15} />
+                  <span>Features & specs</span>
+                </button>
+                <button
+                  type="button"
+                  className={`adm-tab-btn ${activeTab === "seo" ? "active" : ""}`}
+                  onClick={() => setActiveTab("seo")}
+                >
+                  <Globe size={15} />
+                  <span>SEO & WhatsApp</span>
+                </button>
+              </div>
+
+              {/* Main Form + Live Preview Split */}
+              <div className="adm-editor-body-split">
+                {/* Form Content Area */}
+                <div className="adm-form-content">
+                  {/* TAB 1: BASIC INFO */}
+                  {activeTab === "basic" && (
+                    <div className="adm-form-card">
+                      <div className="adm-card-header">
+                        <h4>General information</h4>
+                        <p>Core product identification, naming, category, and online visibility.</p>
                       </div>
-                      {/* Rich OG Card inside WhatsApp */}
-                      <div style={{ background: "#ffffff", borderRadius: "8px", overflow: "hidden", border: "1px solid rgba(0,0,0,0.08)", marginTop: "4px" }}>
-                        <img 
-                          src={editImages[0] || "/assets/product_domestic.webp"} 
-                          alt="OG Preview" 
-                          style={{ width: "100%", height: "140px", objectFit: "contain", background: "#f8fafc", padding: "6px" }}
-                          onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }} 
-                        />
-                        <div style={{ padding: "8px 10px" }}>
-                          <div style={{ fontWeight: 700, fontSize: "0.82rem", color: "#111b21", lineHeight: 1.2 }}>
-                            {formName || "Product Title"} RO Water Purifier
-                          </div>
-                          <div style={{ fontSize: "0.74rem", color: "#667781", marginTop: "3px", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                            {formCapacity || "10L"} • {formWarranty || "1 Year"} • Free Delivery & Installation
-                          </div>
-                          <div style={{ fontSize: "0.7rem", color: "#00a884", marginTop: "4px", fontWeight: 600 }}>
-                            shivamwatersolution.in
-                          </div>
+
+                      {/* Visibility Switch Box */}
+                      <div className="adm-visibility-box">
+                        <div className="adm-vis-info">
+                          <label className="adm-vis-label">Website visibility</label>
+                          <p className="adm-vis-sub">
+                            {formIsActive
+                              ? "🟢 Live on website catalog & home page"
+                              : "🔒 Hidden from website (saved in database)"}
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          className={`adm-toggle-switch ${formIsActive ? "active" : ""}`}
+                          onClick={() => {
+                            setFormIsActive(!formIsActive);
+                            setDirty(true);
+                          }}
+                        >
+                          <span className="adm-toggle-handle" />
+                          <span className="adm-toggle-text">{formIsActive ? "LIVE" : "HIDDEN"}</span>
+                        </button>
+                      </div>
+
+                      {/* Form Fields */}
+                      <div className="adm-form-grid">
+                        <div className="adm-field">
+                          <label className="adm-label">
+                            Product ID slug <em>(URL path)</em> <span className="req">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            className="adm-input"
+                            value={formId}
+                            onChange={(e) => {
+                              setFormId(e.target.value.toLowerCase().replace(/[^a-z0-9-]/g, "-"));
+                              setDirty(true);
+                            }}
+                            disabled={editingId !== "__new__"}
+                            placeholder="e.g. flonix-relax"
+                          />
+                          <span className="adm-hint">
+                            {editingId === "__new__"
+                              ? "Lowercase letters, numbers, and hyphens only."
+                              : "ID cannot be changed after creation to maintain SEO links."}
+                          </span>
+                        </div>
+
+                        <div className="adm-field">
+                          <label className="adm-label">
+                            Category <span className="req">*</span>
+                          </label>
+                          <select
+                            className="adm-input select"
+                            value={formCat}
+                            onChange={(e) => {
+                              setFormCat(e.target.value);
+                              setDirty(true);
+                            }}
+                          >
+                            <option value="domestic">Domestic RO (Home & Kitchen)</option>
+                            <option value="commercial">Commercial & Industrial RO Plant</option>
+                            <option value="spares">Filters, Membranes & Spares</option>
+                          </select>
+                        </div>
+
+                        <div className="adm-field">
+                          <label className="adm-label">
+                            Product name <span className="req">*</span>
+                          </label>
+                          <input
+                            type="text"
+                            className="adm-input"
+                            value={formName}
+                            onChange={(e) => {
+                              setFormName(e.target.value);
+                              setDirty(true);
+                            }}
+                            placeholder="e.g. FLONIX RELAX"
+                          />
+                        </div>
+
+                        <div className="adm-field">
+                          <label className="adm-label">
+                            Badge <em>(optional)</em>
+                          </label>
+                          <input
+                            type="text"
+                            className="adm-input"
+                            value={formBadge}
+                            onChange={(e) => {
+                              setFormBadge(e.target.value);
+                              setDirty(true);
+                            }}
+                            placeholder="e.g. Triple Power, Best Seller"
+                          />
+                        </div>
+
+                        <div className="adm-field full-width">
+                          <label className="adm-label">Tagline / Catchphrase</label>
+                          <input
+                            type="text"
+                            className="adm-input"
+                            value={formTagline}
+                            onChange={(e) => {
+                              setFormTagline(e.target.value);
+                              setDirty(true);
+                            }}
+                            placeholder="e.g. Pure Protection in Every Drop."
+                          />
+                        </div>
+
+                        <div className="adm-field">
+                          <label className="adm-label">Storage capacity / Output</label>
+                          <input
+                            type="text"
+                            className="adm-input"
+                            value={formCapacity}
+                            onChange={(e) => {
+                              setFormCapacity(e.target.value);
+                              setDirty(true);
+                            }}
+                            placeholder="e.g. 10 - 12 Litres Storage"
+                          />
+                        </div>
+
+                        <div className="adm-field">
+                          <label className="adm-label">Warranty details</label>
+                          <input
+                            type="text"
+                            className="adm-input"
+                            value={formWarranty}
+                            onChange={(e) => {
+                              setFormWarranty(e.target.value);
+                              setDirty(true);
+                            }}
+                            placeholder="e.g. 1 Year Comprehensive Warranty"
+                          />
+                        </div>
+
+                        <div className="adm-field full-width">
+                          <label className="adm-label">Full product description</label>
+                          <textarea
+                            className="adm-input textarea"
+                            value={formDesc}
+                            onChange={(e) => {
+                              setFormDesc(e.target.value);
+                              setDirty(true);
+                            }}
+                            placeholder="Detailed product overview, purification stages, suitable water TDS levels, etc."
+                            rows={4}
+                          />
                         </div>
                       </div>
                     </div>
-                    {formId && (
-                      <div style={{ marginTop: "12px", display: "flex", gap: "8px" }}>
-                        <a
-                          href={`https://wa.me/?text=${encodeURIComponent(`Hi, check out the ${formName} RO Water Purifier from Shivam Water Solution: https://shivamwatersolution.in/products/${formId}`)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="adm-sb adm-sb-p"
-                          style={{ flex: 1, textDecoration: "none", textAlign: "center", fontSize: "0.75rem", padding: "6px 8px", background: "#25d366", borderColor: "#25d366" }}
-                        >
-                          📲 Send on WhatsApp
-                        </a>
+                  )}
+
+                  {/* TAB 2: IMAGES */}
+                  {activeTab === "images" && (
+                    <div className="adm-form-card">
+                      <div className="adm-card-header">
+                        <h4>Product image gallery</h4>
+                        <p>The first image is the main card photo. Upload multiple images to create a rich gallery.</p>
+                      </div>
+
+                      {/* Drop Zone */}
+                      <div
+                        className="adm-dropzone"
+                        onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("hover"); }}
+                        onDragLeave={(e) => e.currentTarget.classList.remove("hover")}
+                        onDrop={(e) => {
+                          e.preventDefault();
+                          e.currentTarget.classList.remove("hover");
+                          const files = Array.from(e.dataTransfer.files).filter((f) => f.type.startsWith("image/"));
+                          uploadFiles(files);
+                        }}
+                        onClick={() => fileInputRef.current?.click()}
+                      >
+                        <input
+                          ref={fileInputRef}
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          style={{ display: "none" }}
+                          onChange={(e) => {
+                            const files = Array.from(e.target.files || []);
+                            uploadFiles(files);
+                            e.target.value = "";
+                          }}
+                        />
+                        <ImageIcon size={36} className="text-primary" />
+                        <h5>Click or drag & drop images here</h5>
+                        <p>PNG, JPG, WebP — automatically optimized in Cloudflare R2</p>
+                      </div>
+
+                      {isUploading && (
+                        <div className="adm-upload-progress">
+                          <RefreshCw size={16} className="spin text-primary" />
+                          <span>{uploadMsg || "Uploading to Cloudflare..."}</span>
+                        </div>
+                      )}
+
+                      {/* Image Grid */}
+                      <div className="adm-image-gallery-grid">
+                        {editImages.map((url, i) => (
+                          <div key={`${url}-${i}`} className={`adm-image-item ${i === 0 ? "is-main" : ""}`}>
+                            {i === 0 && <span className="adm-main-badge">★ Main Photo</span>}
+                            <img
+                              src={url}
+                              alt={`Product image ${i + 1}`}
+                              className="adm-gallery-thumb"
+                              onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }}
+                            />
+                            <div className="adm-image-actions">
+                              {i > 0 && (
+                                <button
+                                  type="button"
+                                  className="adm-img-btn"
+                                  onClick={() => {
+                                    const arr = [...editImages];
+                                    const [target] = arr.splice(i, 1);
+                                    arr.unshift(target);
+                                    setEditImages(arr);
+                                    setDirty(true);
+                                  }}
+                                  title="Set as Main Card Photo"
+                                >
+                                  Make main
+                                </button>
+                              )}
+                              <button
+                                type="button"
+                                className="adm-img-btn danger"
+                                onClick={() => {
+                                  setEditImages((prev) => prev.filter((_, idx) => idx !== i));
+                                  setDirty(true);
+                                }}
+                                title="Remove Image"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* Manual URL Input */}
+                      <ManualUrlAdder
+                        onAdd={(url) => {
+                          setEditImages((prev) => [...prev, url]);
+                          setDirty(true);
+                        }}
+                      />
+                    </div>
+                  )}
+
+                  {/* TAB 3: FEATURES & SPECS */}
+                  {activeTab === "specs" && (
+                    <div className="adm-form-card">
+                      {/* One-Click Template Presets Header */}
+                      <div className="adm-presets-bar">
+                        <div className="adm-presets-label">
+                          <Wand2 size={15} className="text-primary" />
+                          <span>Quick Templates:</span>
+                        </div>
+                        <div className="adm-presets-btns">
+                          <button
+                            type="button"
+                            className="adm-preset-pill"
+                            onClick={() => applyPreset("domestic")}
+                          >
+                            + Domestic RO Preset
+                          </button>
+                          <button
+                            type="button"
+                            className="adm-preset-pill"
+                            onClick={() => applyPreset("commercial")}
+                          >
+                            + Commercial Plant Preset
+                          </button>
+                          <button
+                            type="button"
+                            className="adm-preset-pill"
+                            onClick={() => applyPreset("spares")}
+                          >
+                            + Spares Preset
+                          </button>
+                        </div>
+                      </div>
+
+                      <div className="adm-card-header">
+                        <h4>Key features & highlights</h4>
+                        <p>Displayed as checkmark highlight points on product pages.</p>
+                      </div>
+
+                      <div className="adm-dyn-list">
+                        {features.map((f, i) => (
+                          <div key={i} className="adm-dyn-item">
+                            <Check size={16} className="text-primary flex-shrink-0" />
+                            <input
+                              type="text"
+                              className="adm-input"
+                              value={f}
+                              onChange={(e) => {
+                                const arr = [...features];
+                                arr[i] = e.target.value;
+                                setFeatures(arr);
+                                setDirty(true);
+                              }}
+                              placeholder="e.g. Triple Power: Active Copper + Zinc + Bio-Alkaline B12"
+                            />
+                            <button
+                              type="button"
+                              className="adm-del-row-btn"
+                              onClick={() => {
+                                setFeatures((prev) => prev.filter((_, idx) => idx !== i));
+                                setDirty(true);
+                              }}
+                              title="Delete feature"
+                            >
+                              <X size={15} />
+                            </button>
+                          </div>
+                        ))}
+
                         <button
                           type="button"
-                          className="adm-sb adm-sb-o"
-                          style={{ fontSize: "0.75rem", padding: "6px 8px" }}
+                          className="adm-add-btn"
                           onClick={() => {
-                            navigator.clipboard.writeText(`https://shivamwatersolution.in/products/${formId}`);
-                            toast("Product link copied!", "ok");
+                            setFeatures((prev) => [...prev, ""]);
+                            setDirty(true);
                           }}
                         >
-                          📋 Copy Link
+                          <Plus size={14} />
+                          <span>Add feature bullet</span>
                         </button>
                       </div>
-                    )}
+
+                      <hr className="adm-divider" />
+
+                      <div className="adm-card-header">
+                        <h4>Technical specifications</h4>
+                        <p>Key-value pairs displayed in the technical specs table.</p>
+                      </div>
+
+                      <div className="adm-dyn-list">
+                        {specs.map((s, i) => (
+                          <div key={i} className="adm-dyn-spec-item">
+                            <input
+                              type="text"
+                              className="adm-input spec-key"
+                              value={s.key}
+                              onChange={(e) => {
+                                const arr = [...specs];
+                                arr[i] = { ...arr[i], key: e.target.value };
+                                setSpecs(arr);
+                                setDirty(true);
+                              }}
+                              placeholder="Spec name (e.g. Storage Capacity)"
+                            />
+                            <input
+                              type="text"
+                              className="adm-input spec-val"
+                              value={s.val}
+                              onChange={(e) => {
+                                const arr = [...specs];
+                                arr[i] = { ...arr[i], val: e.target.value };
+                                setSpecs(arr);
+                                setDirty(true);
+                              }}
+                              placeholder="Spec value (e.g. 10 - 12 Litres)"
+                            />
+                            <button
+                              type="button"
+                              className="adm-del-row-btn"
+                              onClick={() => {
+                                setSpecs((prev) => prev.filter((_, idx) => idx !== i));
+                                setDirty(true);
+                              }}
+                              title="Delete spec"
+                            >
+                              <X size={15} />
+                            </button>
+                          </div>
+                        ))}
+
+                        <button
+                          type="button"
+                          className="adm-add-btn"
+                          onClick={() => {
+                            setSpecs((prev) => [...prev, { key: "", val: "" }]);
+                            setDirty(true);
+                          }}
+                        >
+                          <Plus size={14} />
+                          <span>Add spec row</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* TAB 4: SEO & SHARING */}
+                  {activeTab === "seo" && (
+                    <div className="adm-form-card">
+                      <div className="adm-card-header">
+                        <h4>Search engine & social preview</h4>
+                        <p>Control what Google, WhatsApp, and social networks display when sharing this link.</p>
+                      </div>
+
+                      <div className="adm-form-grid">
+                        <div className="adm-field full-width">
+                          <label className="adm-label">
+                            Meta title <em>(~55-65 characters)</em>
+                          </label>
+                          <input
+                            type="text"
+                            className="adm-input"
+                            value={formMetaTitle}
+                            onChange={(e) => {
+                              setFormMetaTitle(e.target.value);
+                              setDirty(true);
+                            }}
+                            placeholder={`${formName || "Product"} RO Water Purifier | Shivam Water Solution Morbi`}
+                          />
+                        </div>
+
+                        <div className="adm-field full-width">
+                          <label className="adm-label">
+                            Meta description <em>(~140-160 characters)</em>
+                          </label>
+                          <textarea
+                            className="adm-input textarea"
+                            value={formMetaDesc}
+                            onChange={(e) => {
+                              setFormMetaDesc(e.target.value);
+                              setDirty(true);
+                            }}
+                            placeholder={`Buy ${formName || "this model"} in Morbi & Rajkot with RO + UV + TDS Controller. Free installation & warranty.`}
+                            rows={3}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Live Preview Column (Sticky Companion) */}
+                <div className="adm-preview-column">
+                  <div className="adm-preview-card-wrap">
+                    <div className="adm-preview-header">
+                      <Sparkles size={14} className="text-primary" />
+                      <span>Live website card</span>
+                    </div>
+
+                    {/* Product Card Simulator */}
+                    <div className="product-card glass-card preview-box">
+                      {formBadge && <div className="product-badge">{formBadge}</div>}
+                      <div className="product-img-wrap">
+                        <img
+                          src={editImages[0] || "/assets/product_domestic.webp"}
+                          alt="Preview"
+                          width="400"
+                          height="400"
+                          onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }}
+                        />
+                      </div>
+                      <div className="product-info">
+                        <h3 className="product-title">{formName || "Product Title"}</h3>
+                        <p className="product-desc">{formTagline || "Pure Protection in Every Drop"}</p>
+                        <div className="product-card-specs">
+                          <div className="spec-pill">
+                            <span>{formCapacity || "10L"}</span>
+                          </div>
+                          <div className="spec-pill">
+                            <span>{formWarranty || "1 Year"}</span>
+                          </div>
+                        </div>
+                        <div className="card-action-row" style={{ marginTop: "auto" }}>
+                          <span className="btn btn-outline btn-sm w-full text-center" style={{ pointerEvents: "none" }}>
+                            View Details
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* WhatsApp Chat Preview */}
+                    <div className="adm-wa-sim-wrap">
+                      <div className="adm-preview-header">
+                        <span className="text-wa">WhatsApp link preview</span>
+                      </div>
+                      <div className="adm-wa-bubble">
+                        <div className="adm-wa-msg-text">
+                          Hello Dilipbhai, I am interested in inquiring about the *{formName || "model"}*.
+                        </div>
+                        <div className="adm-wa-link-card">
+                          <img
+                            src={editImages[0] || "/assets/product_domestic.webp"}
+                            alt="WhatsApp Preview"
+                            className="adm-wa-img"
+                            onError={(e) => { (e.target as HTMLImageElement).src = "/assets/product_domestic.webp"; }}
+                          />
+                          <div className="adm-wa-card-text">
+                            <h6>{formName || "Product"} RO Purifier</h6>
+                            <p>{formCapacity || "10L"} • {formWarranty || "1 Year"} • Free Delivery</p>
+                            <span className="adm-wa-domain">shivamwatersolution.in</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {formId && (
+                        <div className="adm-wa-actions">
+                          <a
+                            href={`https://wa.me/?text=${encodeURIComponent(`Check out the ${formName} RO Purifier: https://shivamwatersolution.in/products/${formId}`)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="adm-btn adm-btn-wa"
+                          >
+                            Send on WhatsApp
+                          </a>
+                          <button
+                            type="button"
+                            className="adm-btn adm-btn-outline-sm"
+                            onClick={() => {
+                              navigator.clipboard.writeText(`https://shivamwatersolution.in/products/${formId}`);
+                              toast("Copied product URL to clipboard!", "ok");
+                            }}
+                          >
+                            Copy link
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              {/* Save Bar */}
-              <div className="save-bar">
-                <button className="adm-sb adm-sb-p" onClick={saveProduct}>✓ Save Product</button>
-                <button className="adm-sb adm-sb-d" onClick={exitEditor}>Discard</button>
+              {/* Floating Action Bar (Google Material 3 Bottom Bar Pattern) */}
+              <div className="adm-sticky-save-bar">
+                <div className="adm-save-bar-left">
+                  <button type="button" className="adm-btn adm-btn-primary btn-lg" onClick={saveProduct}>
+                    <Save size={16} />
+                    <span>Save changes</span>
+                  </button>
+                  <button type="button" className="adm-btn adm-btn-danger" onClick={exitEditor}>
+                    Discard
+                  </button>
+                </div>
+
                 {saveStatus.msg && (
-                  <span className="sb-status" style={{ marginLeft: "auto", fontSize: ".78rem", fontWeight: 600, color: saveStatus.color }}>
+                  <div className="adm-save-status-pill" style={{ color: saveStatus.color }}>
                     {saveStatus.msg}
-                  </span>
+                  </div>
                 )}
               </div>
             </div>
           )}
-        </div>
-      </div>
+        </section>
+      </main>
 
-      {/* Toast */}
-      <div className={`adm-toast ${toastType} ${showToast ? "show" : ""}`}>{toastMsg}</div>
+      {/* Material Design 3 SnackBar / Floating Toast */}
+      <div className={`adm-toast ${toastType} ${showToast ? "show" : ""}`}>
+        {toastType === "ok" && <Check size={16} />}
+        {toastType === "err" && <AlertCircle size={16} />}
+        <span>{toastMsg}</span>
+      </div>
     </div>
   );
 }
@@ -760,32 +1562,31 @@ function LoginScreen({ error, onLogin }: { error: string; onLogin: (pw: string) 
   const [pw, setPw] = useState("");
 
   return (
-    <>
+    <div className="al-wrap">
       <style>{loginStyles}</style>
-      <div className="al-wrap">
-        <div className="al-card">
-          <img src="/assets/logo.webp" alt="Shivam Water Solution Logo" width="64" height="64" />
-          <h1>Product Admin</h1>
-          <p>Shivam Water Solution — Morbi</p>
-          {error && <div className="al-err">{error}</div>}
-          <input
-            type="password"
-            className="al-inp"
-            placeholder="••••••••••"
-            value={pw}
-            onChange={(e) => setPw(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter") { onLogin(pw); setPw(""); } }}
-            autoComplete="current-password"
-          />
-          <button className="al-btn" onClick={() => { onLogin(pw); setPw(""); }}>
-            Login →
-          </button>
-          <div style={{ marginTop: "18px" }}>
-            <span className="sec-badge">🔒 Server-side Auth</span>
-          </div>
+      <div className="al-card">
+        <img src="/assets/logo.png" alt="Logo" width="56" height="56" onError={(e) => { (e.target as HTMLElement).style.display = "none"; }} />
+        <h1>Admin Console</h1>
+        <p>Shivam Water Solution — Morbi & Rajkot</p>
+        {error && <div className="al-err">{error}</div>}
+        <input
+          type="password"
+          className="al-inp"
+          placeholder="••••••••••"
+          value={pw}
+          onChange={(e) => setPw(e.target.value)}
+          onKeyDown={(e) => { if (e.key === "Enter") { onLogin(pw); setPw(""); } }}
+          autoComplete="current-password"
+          autoFocus
+        />
+        <button className="al-btn" onClick={() => { onLogin(pw); setPw(""); }}>
+          Unlock console →
+        </button>
+        <div style={{ marginTop: "18px" }}>
+          <span className="sec-badge">🔒 Cloudflare Edge Security</span>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -793,137 +1594,1473 @@ function LoginScreen({ error, onLogin }: { error: string; onLogin: (pw: string) 
 function ManualUrlAdder({ onAdd }: { onAdd: (url: string) => void }) {
   const [url, setUrl] = useState("");
   return (
-    <details>
-      <summary style={{ fontSize: ".78rem", fontWeight: 600, color: "var(--text-light-3, #888)", cursor: "pointer", marginBottom: "8px" }}>
-        Or enter URL manually
-      </summary>
-      <div className="url-manual">
-        <input className="fi" value={url} onChange={(e) => setUrl(e.target.value)} placeholder="assets/photo.png or https://..." />
-        <button onClick={() => { if (url.trim()) { onAdd(url.trim()); setUrl(""); } }}>Add</button>
+    <details className="adm-manual-url">
+      <summary>Or link an existing image URL manually</summary>
+      <div className="adm-manual-url-box">
+        <input
+          type="text"
+          className="adm-input"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          placeholder="/assets/photo.png or https://..."
+        />
+        <button
+          type="button"
+          className="adm-btn adm-btn-primary"
+          onClick={() => {
+            if (url.trim()) {
+              onAdd(url.trim());
+              setUrl("");
+            }
+          }}
+        >
+          Add image
+        </button>
       </div>
     </details>
   );
 }
 
-// ─── Styles ─────────────────────────────────────────────
+// ─── Google Material 3 Design Tokens & Styles ───────────
 const loginStyles = `
-  .al-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,hsl(220,60%,97%),hsl(200,50%,94%))}
-  .al-card{background:#fff;border-radius:20px;padding:48px 40px;width:100%;max-width:400px;box-shadow:0 24px 64px rgba(8,25,60,.1);border:1px solid rgba(0,150,255,.08);text-align:center}
-  .al-card img{height:60px;margin-bottom:20px}
-  .al-card h1{font-family:var(--font-display);font-size:1.7rem;color:var(--text-light-1);margin:0 0 6px}
-  .al-card p{font-size:.88rem;color:var(--text-light-3);margin:0 0 28px}
-  .al-err{background:rgba(220,0,0,.06);border:1px solid rgba(220,0,0,.15);border-radius:10px;padding:10px 14px;font-size:.84rem;color:hsl(0,80%,48%);margin-bottom:14px}
-  .al-inp{width:100%;padding:13px 20px;border:1.5px solid rgba(0,150,255,.15);border-radius:30px;font-size:1rem;font-family:var(--font-body);color:var(--text-light-1);background:hsl(220,30%,99%);outline:none;transition:all .3s;margin-bottom:14px;display:block;letter-spacing:3px;text-align:center}
-  .al-inp:focus{border-color:var(--color-primary);box-shadow:0 0 0 4px rgba(0,120,255,.08)}
-  .al-btn{width:100%;padding:14px 28px;background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-accent) 100%);color:#fff;border:none;border-radius:30px;font-size:1rem;font-weight:700;font-family:var(--font-display);cursor:pointer;transition:all .3s;box-shadow:0 4px 12px rgba(0,90,255,.18)}
-  .al-btn:hover{background:linear-gradient(135deg,var(--color-accent) 0%,var(--color-primary) 100%);transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,90,255,.28)}
-  .sec-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);color:hsl(142,60%,35%);font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:20px}
+  .al-wrap {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: #070d19;
+    color: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  .al-card {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 36px 24px;
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+  .al-card img {
+    height: 48px;
+    width: auto;
+    margin: 0 auto 14px;
+    display: block;
+  }
+  .al-card h1 {
+    font-size: 1.45rem;
+    font-weight: 800;
+    margin: 0 0 4px;
+    color: #f8fafc;
+  }
+  .al-card p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0 0 20px;
+  }
+  .al-err {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-size: 0.8rem;
+    color: #fca5a5;
+    margin-bottom: 14px;
+  }
+  .al-inp {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.25);
+    outline: none;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    margin-bottom: 14px;
+    text-align: center;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+  }
+  .al-inp:focus {
+    border-color: #0284c7;
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+  }
+  .al-btn {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #0284c7 0%, #06b6d4 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.2, 0, 0, 1);
+    box-sizing: border-box;
+  }
+  .al-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(6, 182, 212, 0.3);
+  }
+  .sec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.25);
+    color: #4ade80;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
 `;
 
 const adminStyles = `
-  .adm-dashboard{display:flex;flex-direction:column;height:100vh;height:100dvh;overflow:hidden;background:hsl(220,25%,96%);font-family:var(--font-body)}
-  .adm-topbar{background:#fff;border-bottom:1px solid rgba(0,150,255,.1);height:60px;display:flex;align-items:center;padding:0 20px;gap:14px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(8,25,60,.04)}
-  .adm-brand{display:flex;align-items:center;gap:10px;flex:1}
-  .adm-brand img{height:32px}
-  .adm-brand span{font-family:var(--font-display);font-weight:700;font-size:1rem;color:var(--text-light-1)}
-  .adm-brand small{font-size:.72rem;color:var(--text-light-3);font-weight:400;margin-left:8px}
-  .adm-body{display:flex;flex:1;min-height:0;height:calc(100vh - 60px);height:calc(100dvh - 60px);overflow:hidden}
-  .adm-sidebar{width:280px;min-width:240px;background:#fff;border-right:1px solid rgba(0,150,255,.08);display:flex;flex-direction:column;min-height:0;overflow:hidden}
-  .sidebar-head{padding:14px 16px;border-bottom:1px solid rgba(0,150,255,.08);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
-  .sidebar-head h3{font-family:var(--font-display);font-size:.88rem;font-weight:700;color:var(--text-light-1);margin:0}
-  .sidebar-list{flex:1;min-height:0;max-height:calc(100vh - 60px - 57px);max-height:calc(100dvh - 60px - 57px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:8px;scrollbar-width:thin;scrollbar-color:rgba(0,120,255,.25) transparent}
-  .sidebar-list::-webkit-scrollbar{width:7px}
-  .sidebar-list::-webkit-scrollbar-track{background:transparent}
-  .sidebar-list::-webkit-scrollbar-thumb{background:rgba(0,120,255,.2);border-radius:20px}
-  .sidebar-list::-webkit-scrollbar-thumb:hover{background:rgba(0,120,255,.35)}
-  .ap-item{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:11px;cursor:pointer;transition:all .2s;border:2px solid transparent;margin-bottom:3px}
-  .ap-item:hover{background:hsl(220,30%,97%)}
-  .ap-item.active{background:rgba(0,120,255,.06);border-color:rgba(0,120,255,.15);box-shadow:0 4px 12px rgba(8,25,60,0.03)}
-  .ap-thumb{width:42px;height:42px;border-radius:8px;object-fit:contain;background:#fff;border:1px solid rgba(0,150,255,.08);padding:4px;flex-shrink:0}
-  .ap-meta{flex:1;min-width:0}
-  .ap-meta h4{font-size:.82rem;font-weight:600;color:var(--text-light-1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0 0 2px}
-  .ap-meta p{font-size:.68rem;color:var(--text-light-3);margin:0}
-  .ap-del{opacity:0;background:none;border:none;cursor:pointer;color:hsl(0,70%,55%);font-size:.9rem;padding:4px 6px;border-radius:6px;transition:opacity .15s}
-  .ap-item:hover .ap-del{opacity:1}
-  .adm-editor{flex:1;overflow-y:auto;background:hsl(220,25%,96%);padding:24px;display:flex;flex-direction:column;gap:20px}
-  .editor-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;color:var(--text-light-3);gap:12px;min-height:60vh}
-  .editor-empty p{font-size:1rem;font-weight:600;margin:0}
-  .editor-empty small{font-size:.82rem}
-  .editor-panel{display:flex;flex-direction:column;gap:20px}
-  .e-card{background:#fff;border-radius:16px;border:1px solid rgba(0,150,255,.08);box-shadow:0 4px 24px rgba(8,25,60,.04);overflow:hidden}
-  .e-tabs{display:flex;gap:6px;padding:6px;background:hsl(220,25%,95%);border-radius:12px;margin:16px 16px 0 16px}
-  .etab{flex:1;text-align:center;padding:10px 16px;font-size:.82rem;font-weight:600;color:var(--text-light-2);cursor:pointer;border:none;background:none;border-radius:8px;transition:all .2s;font-family:var(--font-body)}
-  .etab:hover{background:rgba(0,150,255,.04);color:var(--color-primary)}
-  .etab.active{background:#fff;color:var(--color-primary);box-shadow:0 4px 12px rgba(8,25,60,.05)}
-  .tab-pane{padding:22px}
-  .frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
-  .frow.one{grid-template-columns:1fr}
-  .ff{display:flex;flex-direction:column;gap:6px}
-  .fl{font-size:.73rem;font-weight:700;color:var(--text-light-2);text-transform:uppercase;letter-spacing:.5px}
-  .fl em{font-style:normal;font-weight:400;text-transform:none;font-size:.69rem;color:var(--text-light-3);letter-spacing:0;margin-left:4px}
-  .fi{padding:11px 14px;border:1.5px solid rgba(0,150,255,.12);border-radius:10px;font-size:.88rem;font-family:var(--font-body);color:var(--text-light-1);background:#fff;outline:none;transition:border-color .2s,box-shadow .2s;width:100%}
-  .fi:focus{border-color:var(--color-primary);box-shadow:0 0 0 4px rgba(0,120,255,.08)}
-  textarea.fi{resize:vertical;min-height:90px;line-height:1.55}
-  select.fi{appearance:none;cursor:pointer}
-  .drop-zone{border:2px dashed rgba(0,120,255,.2);border-radius:14px;padding:36px 20px;text-align:center;cursor:pointer;transition:all .25s;background:linear-gradient(135deg,rgba(0,150,255,.01),rgba(0,120,255,.03));margin-bottom:16px}
-  .drop-zone:hover,.drop-zone.over{border-color:var(--color-primary);background:linear-gradient(135deg,rgba(0,150,255,.03),rgba(0,120,255,.07))}
-  .drop-zone p{font-size:.88rem;font-weight:600;color:var(--text-light-2);margin:8px 0 4px}
-  .drop-zone small{font-size:.75rem;color:var(--text-light-3)}
-  .upload-prog{background:rgba(0,150,255,.06);border-radius:10px;padding:11px 15px;font-size:.8rem;font-weight:600;color:var(--color-primary);margin-bottom:12px;display:flex;align-items:center;gap:10px}
-  .spin{width:15px;height:15px;border:2px solid rgba(0,150,255,.2);border-top-color:var(--color-primary);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
-  .img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:12px;margin-bottom:16px}
-  .img-cell{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;border:2px solid rgba(0,120,255,.08);background:#fff;box-shadow:0 4px 12px rgba(8,25,60,.02);transition:all .25s}
-  .img-cell:hover{transform:translateY(-2px);border-color:rgba(0,120,255,.2)}
-  .img-cell.primary{border-color:var(--color-primary);box-shadow:0 0 0 3px rgba(0,120,255,.15)}
-  .img-cell img{width:100%;height:100%;object-fit:contain;padding:8px}
-  .img-cell-ov{position:absolute;inset:0;background:rgba(8,25,60,.65);backdrop-filter:blur(2px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;opacity:0;transition:opacity .2s}
-  .img-cell:hover .img-cell-ov{opacity:1}
-  .icb{background:#fff;border:none;border-radius:20px;padding:5px 12px;font-size:.68rem;font-weight:700;cursor:pointer;width:84%;color:var(--text-light-1);font-family:var(--font-body)}
-  .icb.red{color:#ef4444}
-  .img-primary-lbl{position:absolute;top:6px;left:6px;background:var(--color-primary);color:#fff;font-size:.55rem;font-weight:800;padding:3px 8px;border-radius:20px;text-transform:uppercase;letter-spacing:.5px;z-index:2}
-  .url-manual{display:flex;gap:8px;align-items:center;margin-top:8px}
-  .url-manual .fi{flex:1}
-  .url-manual button{padding:10px 13px;background:rgba(0,120,255,.08);border:1.5px solid rgba(0,120,255,.15);border-radius:10px;font-size:.78rem;font-weight:600;color:var(--color-primary);cursor:pointer;white-space:nowrap;font-family:var(--font-body)}
-  .dyn-row{display:grid;gap:8px;align-items:center;margin-bottom:8px}
-  .dyn-row.feat{grid-template-columns:1fr auto}
-  .dyn-row.spec{grid-template-columns:1fr 1fr auto}
-  .del-btn{background:rgba(220,38,38,.04);border:1.5px solid rgba(220,38,38,.15);border-radius:50%;color:#dc2626;cursor:pointer;width:32px;height:32px;font-size:.85rem;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
-  .del-btn:hover{background:#dc2626;border-color:#dc2626;color:#fff}
-  .add-row-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(0,120,255,.05);border:1.5px dashed rgba(0,120,255,.2);border-radius:30px;font-size:.78rem;font-weight:700;color:var(--color-primary);cursor:pointer;transition:all .2s;margin-top:6px;font-family:var(--font-body)}
-  .add-row-btn:hover{background:var(--color-primary);border-color:var(--color-primary);color:#fff;border-style:solid}
-  .editor-main-split{display:flex;gap:30px;align-items:flex-start}
-  .editor-form{flex:1;min-width:0}
-  .preview-wrap{width:280px;flex-shrink:0;position:sticky;top:20px;align-self:flex-start}
-  .preview-wrap h4{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.75px;color:var(--text-light-3);margin:0 0 12px;display:flex;align-items:center;gap:6px}
-  .preview-wrap h4::before{content:'';display:inline-block;width:6px;height:6px;background:var(--color-success,#22c55e);border-radius:50%;animation:pulse 1.5s infinite}
-  .save-bar{background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-top:1px solid rgba(0,150,255,.08);padding:16px 24px;display:flex;align-items:center;gap:12px;position:sticky;bottom:0;z-index:50;box-shadow:0 -8px 32px rgba(8,25,60,.05);border-radius:0 0 16px 16px;flex-shrink:0}
-  .adm-sb{padding:10px 24px;border-radius:30px;font-size:.85rem;font-weight:700;font-family:var(--font-body);cursor:pointer;border:none;transition:all .3s;display:inline-flex;align-items:center;gap:7px;text-decoration:none}
-  .adm-sb-p{background:linear-gradient(135deg,var(--color-primary) 0%,var(--color-secondary,#3b82f6) 100%);color:#fff;box-shadow:0 3px 8px rgba(0,90,255,.15)}
-  .adm-sb-p:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,90,255,.25)}
-  .adm-sb-o{background:transparent;color:var(--color-primary);border:2px solid var(--color-primary)}
-  .adm-sb-o:hover{background:var(--color-primary);color:#fff}
-  .adm-sb-d{background:transparent;color:var(--color-danger,#dc2626);border:2px solid var(--color-danger,#dc2626)}
-  .adm-sb-d:hover{background:var(--color-danger,#dc2626);color:#fff}
-  .adm-toast{position:fixed;bottom:80px;left:50%;z-index:9999;transform:translateX(-50%) translateY(30px);opacity:0;background:hsl(222,30%,18%);color:#fff;padding:11px 22px;border-radius:50px;font-size:.84rem;font-weight:600;display:flex;align-items:center;gap:8px;transition:transform .3s cubic-bezier(.175,.885,.32,1.275),opacity .3s;pointer-events:none;white-space:nowrap}
-  .adm-toast.show{transform:translateX(-50%) translateY(0);opacity:1}
-  .adm-toast.ok{background:hsl(142,65%,38%)}
-  .adm-toast.err{background:hsl(0,75%,48%)}
-  .mobile-back-btn{display:none}
-  @keyframes spin{to{transform:rotate(360deg)}}
-  @keyframes pulse{0%{opacity:.3}50%{opacity:1}100%{opacity:.3}}
-  @media(max-width:1150px){.editor-main-split{flex-direction:column;align-items:stretch;gap:24px}.preview-wrap{width:100%;max-width:280px;margin:0 auto;position:static;order:2}}
-  @media(max-width:768px){
-    .adm-body{display:flex;flex-direction:row;height:calc(100vh - 60px);height:calc(100dvh - 60px);position:relative;overflow:hidden}
-    .adm-sidebar{width:100%;min-width:unset;height:100%;border-right:none;transition:transform .3s cubic-bezier(.4,0,.2,1);flex-shrink:0}
-    .adm-editor{position:absolute;top:0;left:0;width:100%;height:100%;z-index:10;transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);padding:16px;flex-shrink:0;box-sizing:border-box}
-    .editor-empty{display:none!important}
-    .adm-body.editing .adm-sidebar{transform:translateX(-100%)}
-    .adm-body.editing .adm-editor{transform:translateX(0)}
-    .mobile-back-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:rgba(0,120,255,.06);border:1.5px solid rgba(0,120,255,.15);color:var(--color-primary);font-weight:700;font-family:var(--font-display);font-size:.85rem;border-radius:30px;cursor:pointer;margin-bottom:14px;width:fit-content}
-    .frow{grid-template-columns:1fr;gap:12px;margin-bottom:12px}
-    .save-bar{padding:12px 16px;gap:8px}
-    .save-bar .adm-sb{flex:1;justify-content:center;padding:10px 12px;font-size:.8rem}
-    .save-bar .sb-status{display:none}
+  :root {
+    --adm-bg: #070d19;
+    --adm-surface: #0b1120;
+    --adm-surface-container: #0f172a;
+    --adm-surface-container-high: #1e293b;
+    --adm-border: rgba(255, 255, 255, 0.08);
+    --adm-border-active: #0284c7;
+    --adm-primary: #0284c7;
+    --adm-primary-hover: #0369a1;
+    --adm-text-1: #f8fafc;
+    --adm-text-2: #cbd5e1;
+    --adm-text-3: #94a3b8;
+    --adm-ease: cubic-bezier(0.2, 0, 0, 1);
   }
-  @media(max-width:600px){.adm-brand span{display:none}.dyn-row.feat,.dyn-row.spec{grid-template-columns:1fr!important;gap:6px}}
+
+  .adm-dashboard {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--adm-bg);
+    color: var(--adm-text-1);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  /* Top App Bar */
+  .adm-topbar {
+    height: 56px;
+    background: rgba(15, 23, 42, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--adm-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+    z-index: 100;
+    flex-shrink: 0;
+  }
+  .adm-topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .adm-top-logo {
+    height: 28px;
+    width: auto;
+    object-fit: contain;
+  }
+  .adm-top-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    white-space: nowrap;
+  }
+  .adm-brand-name {
+    color: #f8fafc;
+  }
+  .adm-top-breadcrumb {
+    color: var(--adm-primary);
+    font-weight: 600;
+    font-size: 0.85rem;
+  }
+  .adm-topbar-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .adm-unsaved-pill {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    padding: 3px 8px;
+    border-radius: 20px;
+    animation: pulse 1.5s infinite;
+  }
+  .adm-shortcut-pill {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--adm-text-3);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--adm-border);
+    padding: 3px 8px;
+    border-radius: 6px;
+  }
+
+  /* Body Container */
+  .adm-body-container {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  /* Sidebar Panel (Left) */
+  .adm-sidebar-panel {
+    width: 440px;
+    min-width: 360px;
+    background: var(--adm-surface);
+    border-right: 1px solid var(--adm-border);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+  }
+
+  /* Google M3 Metric Scorecards */
+  .adm-metrics-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding: 10px 12px;
+    background: rgba(15, 23, 42, 0.8);
+    border-bottom: 1px solid var(--adm-border);
+    flex-shrink: 0;
+  }
+  .adm-metric-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--adm-border);
+    border-radius: 10px;
+    padding: 6px 4px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s var(--adm-ease);
+  }
+  .adm-metric-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  .adm-metric-card.active {
+    background: rgba(2, 132, 199, 0.15);
+    border-color: var(--adm-primary);
+  }
+  .adm-metric-num {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+  }
+  .adm-metric-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--adm-text-3);
+    margin-top: 2px;
+    white-space: nowrap;
+  }
+
+  /* Controls Bar */
+  .adm-panel-head {
+    padding: 12px;
+    border-bottom: 1px solid var(--adm-border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(15, 23, 42, 0.5);
+    flex-shrink: 0;
+  }
+  .adm-panel-head-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .adm-head-title-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .adm-head-title-row h2 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0;
+  }
+  .adm-search-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+  .adm-search-icon {
+    position: absolute;
+    left: 12px;
+    color: var(--adm-text-3);
+    pointer-events: none;
+  }
+  .adm-search-input {
+    width: 100%;
+    padding: 8px 32px 8px 34px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--adm-border);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.84rem;
+    outline: none;
+    transition: all 0.2s var(--adm-ease);
+    box-sizing: border-box;
+  }
+  .adm-search-input:focus {
+    border-color: var(--adm-primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+  }
+  .adm-search-clear {
+    position: absolute;
+    right: 8px;
+    background: none;
+    border: none;
+    color: var(--adm-text-3);
+    cursor: pointer;
+    padding: 4px;
+  }
+  .adm-filters-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .adm-filter-group {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+  .adm-filter-group::-webkit-scrollbar {
+    display: none;
+  }
+  .adm-pill {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--adm-border);
+    color: var(--adm-text-2);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s var(--adm-ease);
+  }
+  .adm-pill:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+  .adm-pill.active {
+    background: var(--adm-primary);
+    border-color: var(--adm-primary);
+    color: #fff;
+  }
+  .adm-pill.green.active {
+    background: #16a34a;
+    border-color: #16a34a;
+  }
+  .adm-pill.gray.active {
+    background: #475569;
+    border-color: #475569;
+  }
+
+  /* Product List */
+  .adm-product-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+  }
+  .adm-product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--adm-surface-container);
+    border: 1px solid var(--adm-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s var(--adm-ease);
+    position: relative;
+    box-sizing: border-box;
+  }
+  .adm-product-card:hover {
+    background: var(--adm-surface-container-high);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+  }
+  .adm-product-card.selected {
+    background: rgba(2, 132, 199, 0.15);
+    border-color: var(--adm-primary);
+    box-shadow: 0 0 0 1px var(--adm-primary);
+  }
+  .adm-product-card.is-hidden {
+    opacity: 0.7;
+    background: rgba(15, 23, 42, 0.5);
+  }
+
+  /* Card Main Row */
+  .adm-card-main-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-width: 0;
+  }
+  .adm-rank-badge {
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--adm-text-3);
+    min-width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .adm-thumb-wrapper {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: #000;
+    border: 1px solid var(--adm-border);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .adm-thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 3px;
+  }
+  .adm-hidden-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f87171;
+  }
+  .adm-card-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .adm-card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .adm-card-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #fff;
+    max-width: 100%;
+  }
+  .adm-card-badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 8px;
+    background: rgba(6, 182, 212, 0.15);
+    color: #38bdf8;
+    white-space: nowrap;
+  }
+  .adm-card-sub {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.7rem;
+    color: var(--adm-text-3);
+    margin-top: 3px;
+  }
+  .adm-card-cat {
+    text-transform: capitalize;
+  }
+  .adm-card-dot {
+    opacity: 0.4;
+  }
+  .adm-status-tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 1px 5px;
+    border-radius: 4px;
+  }
+  .adm-status-tag.active {
+    background: rgba(34, 197, 94, 0.15);
+    color: #4ade80;
+  }
+  .adm-status-tag.hidden {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fca5a5;
+  }
+
+  /* Card Actions Toolbar */
+  .adm-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-top: 6px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .adm-icon-action {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--adm-border);
+    color: var(--adm-text-2);
+    height: 32px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+    transition: all 0.15s var(--adm-ease);
+    padding: 0 4px;
+  }
+  .adm-action-lbl {
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+  .adm-icon-action:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+  .adm-icon-action:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+  .adm-icon-action.active-eye {
+    color: #4ade80;
+  }
+  .adm-icon-action.hidden-eye {
+    color: #f87171;
+    background: rgba(239, 68, 68, 0.08);
+  }
+  .adm-icon-action.danger:hover {
+    background: #dc2626;
+    border-color: #dc2626;
+    color: #fff;
+  }
+
+  /* Presets Bar */
+  .adm-presets-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    background: rgba(2, 132, 199, 0.08);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+  .adm-presets-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: #38bdf8;
+  }
+  .adm-presets-btns {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .adm-preset-pill {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f8fafc;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s var(--adm-ease);
+  }
+  .adm-preset-pill:hover {
+    background: var(--adm-primary);
+    border-color: var(--adm-primary);
+    color: #fff;
+  }
+
+  /* Editor Panel (Right) */
+  .adm-editor-panel {
+    flex: 1;
+    background: var(--adm-bg);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .adm-editor-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--adm-text-3);
+  }
+  .adm-empty-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(2, 132, 199, 0.1);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+  .adm-editor-empty-state h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 6px;
+  }
+  .adm-editor-empty-state p {
+    max-width: 360px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0 0 18px;
+  }
+
+  /* Editor Form Wrapper */
+  .adm-editor-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Editor Header */
+  .adm-editor-header {
+    padding: 12px 20px;
+    background: var(--adm-surface);
+    border-bottom: 1px solid var(--adm-border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+  }
+  .adm-back-btn {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--adm-border);
+    border-radius: 8px;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .adm-editor-header-title {
+    flex: 1;
+    min-width: 0;
+  }
+  .adm-editor-header-title h3 {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .adm-editor-slug {
+    font-size: 0.7rem;
+    color: var(--adm-primary);
+    font-family: monospace;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .adm-editor-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  /* Tabs Bar */
+  .adm-editor-tabs-bar {
+    display: flex;
+    gap: 4px;
+    padding: 8px 16px;
+    background: rgba(15, 23, 42, 0.6);
+    border-bottom: 1px solid var(--adm-border);
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+  }
+  .adm-editor-tabs-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .adm-tab-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 12px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--adm-text-2);
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s var(--adm-ease);
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .adm-tab-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+  }
+  .adm-tab-btn.active {
+    background: var(--adm-surface-container);
+    border-color: var(--adm-border);
+    color: #38bdf8;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Body Split */
+  .adm-editor-body-split {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    align-items: flex-start;
+    flex: 1;
+  }
+  .adm-form-content {
+    flex: 1;
+    min-width: 0;
+  }
+  .adm-form-card {
+    background: var(--adm-surface-container);
+    border: 1px solid var(--adm-border);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+  .adm-card-header {
+    margin-bottom: 16px;
+  }
+  .adm-card-header h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin: 0 0 3px;
+    color: #fff;
+  }
+  .adm-card-header p {
+    font-size: 0.78rem;
+    color: var(--adm-text-3);
+    margin: 0;
+  }
+
+  /* Visibility Toggle Box */
+  .adm-visibility-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--adm-border);
+    margin-bottom: 20px;
+    gap: 12px;
+  }
+  .adm-vis-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .adm-vis-label {
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #fff;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .adm-vis-sub {
+    font-size: 0.74rem;
+    color: var(--adm-text-3);
+    margin: 0;
+    line-height: 1.35;
+  }
+  .adm-toggle-switch {
+    position: relative;
+    width: 82px;
+    height: 34px;
+    border-radius: 20px;
+    background: #334155;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.25s var(--adm-ease);
+    padding: 2px;
+    flex-shrink: 0;
+  }
+  .adm-toggle-switch.active {
+    background: #16a34a;
+    border-color: #22c55e;
+  }
+  .adm-toggle-handle {
+    position: absolute;
+    top: 3px;
+    left: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.25s var(--adm-ease);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  .adm-toggle-switch.active .adm-toggle-handle {
+    transform: translateX(46px);
+  }
+  .adm-toggle-text {
+    position: absolute;
+    font-size: 0.68rem;
+    font-weight: 800;
+    color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 8px;
+  }
+  .adm-toggle-switch.active .adm-toggle-text {
+    right: auto;
+    left: 8px;
+  }
+
+  /* Form Controls */
+  .adm-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .adm-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .adm-field.full-width {
+    grid-column: 1 / -1;
+  }
+  .adm-label {
+    font-size: 0.74rem;
+    font-weight: 700;
+    color: var(--adm-text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .adm-label em {
+    font-style: normal;
+    font-weight: 400;
+    color: var(--adm-text-3);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .adm-label .req {
+    color: #ef4444;
+  }
+  .adm-input {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--adm-border);
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff;
+    font-size: 0.88rem;
+    outline: none;
+    transition: all 0.2s var(--adm-ease);
+    box-sizing: border-box;
+  }
+  .adm-input:focus {
+    border-color: var(--adm-primary);
+    box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.25);
+    background: rgba(255, 255, 255, 0.07);
+  }
+  .adm-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .adm-input.select {
+    cursor: pointer;
+    background-color: #0f172a;
+  }
+  .adm-input.textarea {
+    resize: vertical;
+    min-height: 85px;
+    line-height: 1.5;
+  }
+  .adm-hint {
+    font-size: 0.7rem;
+    color: var(--adm-text-3);
+  }
+
+  /* Dropzone */
+  .adm-dropzone {
+    border: 2px dashed rgba(2, 132, 199, 0.35);
+    background: rgba(2, 132, 199, 0.03);
+    border-radius: 14px;
+    padding: 28px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s var(--adm-ease);
+    margin-bottom: 16px;
+  }
+  .adm-dropzone:hover, .adm-dropzone.hover {
+    border-color: var(--adm-primary);
+    background: rgba(2, 132, 199, 0.08);
+  }
+  .adm-dropzone h5 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin: 8px 0 3px;
+    color: #fff;
+  }
+  .adm-dropzone p {
+    font-size: 0.74rem;
+    color: var(--adm-text-3);
+    margin: 0;
+  }
+  .adm-upload-progress {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(2, 132, 199, 0.1);
+    border: 1px solid rgba(2, 132, 199, 0.2);
+    border-radius: 8px;
+    font-size: 0.78rem;
+    color: #38bdf8;
+    margin-bottom: 14px;
+  }
+  .adm-image-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .adm-image-item {
+    position: relative;
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background: #000;
+    border: 2px solid var(--adm-border);
+    overflow: hidden;
+  }
+  .adm-image-item.is-main {
+    border-color: var(--adm-primary);
+    box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.3);
+  }
+  .adm-main-badge {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    background: var(--adm-primary);
+    color: #fff;
+    font-size: 0.55rem;
+    font-weight: 800;
+    padding: 2px 5px;
+    border-radius: 4px;
+    z-index: 2;
+  }
+  .adm-gallery-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
+  }
+  .adm-image-actions {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    opacity: 0;
+    transition: opacity 0.2s var(--adm-ease);
+  }
+  .adm-image-item:hover .adm-image-actions {
+    opacity: 1;
+  }
+  .adm-img-btn {
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 0.68rem;
+    font-weight: 700;
+    border: none;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+  }
+  .adm-img-btn.danger {
+    background: #ef4444;
+    color: #fff;
+  }
+  .adm-manual-url {
+    margin-top: 10px;
+    font-size: 0.78rem;
+    color: var(--adm-text-3);
+  }
+  .adm-manual-url summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+  .adm-manual-url-box {
+    display: flex;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  /* Dynamic Spec & Feature rows */
+  .adm-dyn-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .adm-dyn-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .adm-dyn-spec-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 8px;
+    align-items: center;
+  }
+  .adm-del-row-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    color: #f87171;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: all 0.2s var(--adm-ease);
+  }
+  .adm-del-row-btn:hover {
+    background: #ef4444;
+    color: #fff;
+  }
+  .adm-add-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    background: rgba(2, 132, 199, 0.08);
+    border: 1.5px dashed rgba(2, 132, 199, 0.3);
+    border-radius: 8px;
+    color: #38bdf8;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: fit-content;
+    margin-top: 4px;
+    transition: all 0.2s var(--adm-ease);
+  }
+  .adm-add-btn:hover {
+    background: var(--adm-primary);
+    border-style: solid;
+    color: #fff;
+  }
+  .adm-divider {
+    border: none;
+    border-top: 1px solid var(--adm-border);
+    margin: 20px 0;
+  }
+
+  /* Preview Column (Right) */
+  .adm-preview-column {
+    width: 300px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 70px;
+  }
+  .adm-preview-card-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .adm-preview-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--adm-text-3);
+  }
+  .preview-box {
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* WhatsApp Simulator */
+  .adm-wa-sim-wrap {
+    background: var(--adm-surface-container);
+    border: 1px solid var(--adm-border);
+    border-radius: 14px;
+    padding: 14px;
+  }
+  .text-wa {
+    color: #25d366;
+  }
+  .adm-wa-bubble {
+    background: #005c4b;
+    border-radius: 10px 10px 0 10px;
+    padding: 10px 12px;
+    margin: 8px 0;
+  }
+  .adm-wa-msg-text {
+    font-size: 0.78rem;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+  .adm-wa-link-card {
+    background: #022c22;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .adm-wa-img {
+    width: 100%;
+    height: 110px;
+    object-fit: contain;
+    background: #000;
+  }
+  .adm-wa-card-text {
+    padding: 6px 8px;
+  }
+  .adm-wa-card-text h6 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    margin: 0 0 2px;
+    color: #fff;
+  }
+  .adm-wa-card-text p {
+    font-size: 0.7rem;
+    color: #94a3b8;
+    margin: 0 0 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .adm-wa-domain {
+    font-size: 0.65rem;
+    color: #25d366;
+    font-weight: 600;
+  }
+  .adm-wa-actions {
+    display: flex;
+    gap: 6px;
+  }
+  .adm-btn-wa {
+    background: #25d366;
+    color: #fff;
+    flex: 1;
+    justify-content: center;
+    padding: 7px 8px;
+    font-size: 0.74rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* Sticky Save Bar (M3 Floating Action Bar) */
+  .adm-sticky-save-bar {
+    position: sticky;
+    bottom: 0;
+    background: rgba(11, 17, 32, 0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--adm-border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 40;
+    margin-top: auto;
+  }
+  .adm-save-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .adm-save-status-pill {
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  /* General Buttons */
+  .adm-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s var(--adm-ease);
+    text-decoration: none;
+  }
+  .adm-btn.btn-lg {
+    padding: 10px 20px;
+    font-size: 0.88rem;
+  }
+  .adm-btn-primary {
+    background: #0284c7;
+    color: #fff;
+  }
+  .adm-btn-primary:hover {
+    background: #0369a1;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.35);
+  }
+  .adm-btn-outline-sm {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--adm-border);
+    color: var(--adm-text-2);
+  }
+  .adm-btn-outline-sm:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+  .adm-btn-danger {
+    background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    color: #f87171;
+  }
+  .adm-btn-danger:hover {
+    background: #ef4444;
+    color: #fff;
+  }
+
+  /* Toast (Material Design 3 SnackBar) */
+  .adm-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(40px);
+    opacity: 0;
+    background: #1e293b;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 40px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    z-index: 9999;
+  }
+  .adm-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  .adm-toast.ok {
+    background: #15803d;
+    border-color: #22c55e;
+  }
+  .adm-toast.err {
+    background: #b91c1c;
+    border-color: #ef4444;
+  }
+
+  .text-primary { color: #38bdf8; }
+  .text-success { color: #4ade80; }
+  .text-warning { color: #fbbf24; }
+  .text-cyan { color: #22d3ee; }
+  .spin { animation: spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes pulse { 0% { opacity: 0.4; } 50% { opacity: 1; } 100% { opacity: 0.4; } }
+
+  /* Responsive Mobile Breakpoints */
+  @media (max-width: 1100px) {
+    .adm-editor-body-split {
+      flex-direction: column;
+    }
+    .adm-preview-column {
+      width: 100%;
+      position: static;
+    }
+    .preview-box {
+      max-width: 320px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .adm-topbar {
+      padding: 0 10px;
+    }
+    .hide-mobile {
+      display: none !important;
+    }
+    .adm-sidebar-panel {
+      width: 100%;
+      min-width: unset;
+      border-right: none;
+    }
+    .adm-sidebar-panel.hide-on-mobile-when-editing {
+      display: none !important;
+    }
+    .adm-editor-panel.hide-on-mobile-when-empty {
+      display: none !important;
+    }
+    .adm-editor-panel {
+      width: 100%;
+      height: 100%;
+    }
+    .adm-back-btn {
+      display: inline-flex;
+    }
+    .adm-editor-header {
+      padding: 10px 12px;
+    }
+    .adm-editor-tabs-bar {
+      padding: 6px 10px;
+    }
+    .adm-editor-body-split {
+      padding: 12px;
+    }
+    .adm-form-card {
+      padding: 14px;
+      border-radius: 12px;
+    }
+    .adm-form-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .adm-sticky-save-bar {
+      padding: 10px 12px;
+      padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    }
+    .adm-save-bar-left {
+      width: 100%;
+      gap: 8px;
+    }
+    .adm-save-bar-left .adm-btn {
+      flex: 1;
+      justify-content: center;
+      padding: 9px 10px;
+      font-size: 0.82rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hide-360 {
+      display: none !important;
+    }
+    .adm-metrics-row {
+      padding: 8px;
+      gap: 4px;
+    }
+    .adm-metric-num {
+      font-size: 0.95rem;
+    }
+    .adm-metric-label {
+      font-size: 0.6rem;
+    }
+    .adm-panel-head {
+      padding: 10px;
+      gap: 8px;
+    }
+    .adm-product-list {
+      padding: 8px;
+      gap: 8px;
+    }
+    .adm-product-card {
+      padding: 10px;
+    }
+    .adm-card-main-row {
+      gap: 8px;
+    }
+    .adm-thumb-wrapper {
+      width: 40px;
+      height: 40px;
+    }
+    .adm-card-title {
+      font-size: 0.84rem;
+    }
+    .adm-card-actions {
+      gap: 4px;
+      padding-top: 6px;
+    }
+    .adm-icon-action {
+      height: 30px;
+      padding: 0 2px;
+    }
+    .adm-action-lbl {
+      font-size: 0.64rem;
+    }
+    .adm-dyn-spec-item {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid var(--adm-border);
+    }
+    .adm-dyn-spec-item .adm-del-row-btn {
+      width: 100%;
+      height: 30px;
+      border-radius: 6px;
+    }
+  }
 `;

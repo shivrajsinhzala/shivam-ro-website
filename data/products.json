@@ -2,12 +2,24 @@
   {
     "id": "dolphine-kool",
     "name": "Dolphine Kool",
+    "name_en": "Dolphine Kool",
+    "name_gu": "",
     "badge": "Compact",
+    "badge_en": "Compact",
+    "badge_gu": "",
     "category": "domestic",
     "tagline": "Enjoy the Taste of Purity with Dolphin Cabinets",
+    "tagline_en": "Enjoy the Taste of Purity with Dolphin Cabinets",
+    "tagline_gu": "",
     "capacity": "9 Ltrs Storage",
+    "capacity_en": "9 Ltrs Storage",
+    "capacity_gu": "",
     "warranty": "1 Year Pump Warranty",
+    "warranty_en": "1 Year Pump Warranty",
+    "warranty_gu": "",
     "description": "Enjoy the taste of Purity with Dolphine Kool. This wall-mounted water purifier features a 9-litre food-grade storage tank and multi-stage purification. Comes with a 1-year warranty on the pump, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Enjoy the taste of Purity with Dolphine Kool. This wall-mounted water purifier features a 9-litre food-grade storage tank and multi-stage purification. Comes with a 1-year warranty on the pump, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
     "features": [
       "Classic Dolphin Design",
       "9L Food Grade Storage Tank",
@@ -16,6 +28,15 @@
       "Free Installation",
       "Free Home Delivery"
     ],
+    "features_en": [
+      "Classic Dolphin Design",
+      "9L Food Grade Storage Tank",
+      "Multi-stage Alkaline Filtration",
+      "1 Year Warranty (Pump)",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_gu": [],
     "specs": {
       "Storage Capacity": "9 Litres",
       "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
@@ -23,22 +44,42 @@
       "Installation Type": "Wall Mounted",
       "Warranty": "1 Year (Pump)"
     },
+    "specs_en": {
+      "Storage Capacity": "9 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year (Pump)"
+    },
+    "specs_gu": {},
     "wa": "Hi Shivam Water Solution, I am interested in ordering the Dolphine Kool water purifier model.",
     "meta_title": "Dolphine Kool - Shivam Water Solution Morbi",
     "meta_desc": "Buy Dolphine Kool RO water purifier in Morbi & Rajkot. Classic and highly durable domestic RO cabinet. Sales, installation, and repair services by Shivam Water Solution.",
     "images": [
-      "/api/images/products/dolphine_kool.png"
+      "/api/images/products/1786373310225-image.webp"
     ]
   },
   {
     "id": "dolphine-gold",
     "name": "Dolphine Gold",
+    "name_en": "Dolphine Gold",
+    "name_gu": "",
     "badge": "Premium",
+    "badge_en": "Premium",
+    "badge_gu": "",
     "category": "domestic",
     "tagline": "A Quality Reverse Osmosis Pure Water System",
+    "tagline_en": "A Quality Reverse Osmosis Pure Water System",
+    "tagline_gu": "",
     "capacity": "9 Ltrs Storage",
+    "capacity_en": "9 Ltrs Storage",
+    "capacity_gu": "",
     "warranty": "1 Year Pump Warranty",
+    "warranty_en": "1 Year Pump Warranty",
+    "warranty_gu": "",
     "description": "Experience premium purity with Dolphine Gold. Featuring a high-efficiency Reverse Osmosis (RO) system with a 9-litre transparent storage tank, compact ergonomic cabinet design, and multi-stage purification. Comes with a 1-year warranty on the pump, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Experience premium purity with Dolphine Gold. Featuring a high-efficiency Reverse Osmosis (RO) system with a 9-litre transparent storage tank, compact ergonomic cabinet design, and multi-stage purification. Comes with a 1-year warranty on the pump, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
     "features": [
       "Compact Reverse Osmosis System",
       "9L Transparent Storage Tank",
@@ -48,6 +89,16 @@
       "Free Home Delivery",
       "RO + TDS Controller + Zinc + Copper + Alkaline B12"
     ],
+    "features_en": [
+      "Compact Reverse Osmosis System",
+      "9L Transparent Storage Tank",
+      "Multi-stage RO Purification",
+      "1 Year Warranty (Pump)",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
     "specs": {
       "Storage Capacity": "9 Litres",
       "Weight": "10 Kg (Approx)",
@@ -56,11 +107,2174 @@
       "Installation Type": "Wall Mounted",
       "Warranty": "1 Year (Pump)"
     },
+    "specs_en": {
+      "Storage Capacity": "9 Litres",
+      "Weight": "10 Kg (Approx)",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year (Pump)"
+    },
+    "specs_gu": {},
     "wa": "Hi Shivam Water Solution, I am interested in ordering the Dolphine Gold water purifier model.",
     "meta_title": "Dolphine Gold - Shivam Water Solution Morbi",
     "meta_desc": "Buy Dolphine Gold RO water purifier in Morbi & Rajkot. Premium compact Reverse Osmosis pure water system. Sales, installation, and repair services by Shivam Water Solution.",
     "images": [
-      "/api/images/products/dolphine_gold.png"
+      "/api/images/products/1786373411164-image--1-.webp"
+    ]
+  },
+  {
+    "id": "aqua-grand",
+    "name": "Aqua Grand",
+    "name_en": "Aqua Grand",
+    "name_gu": "",
+    "badge": "TDS Controller",
+    "badge_en": "TDS Controller",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Innovative Technology RO + UV + TDS Controller",
+    "tagline_en": "Innovative Technology RO + UV + TDS Controller",
+    "tagline_gu": "",
+    "capacity": "12 Ltrs Storage",
+    "capacity_en": "12 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Grand RO Water Purifier System features innovative RO + UV + TDS Controller technology for fresh and hygienic drinking water. Designed with a transparent upper chamber showing active carbon and UV filters, filter change alarm system, and food-grade 12-litre storage tank. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua Grand RO Water Purifier System features innovative RO + UV + TDS Controller technology for fresh and hygienic drinking water. Designed with a transparent upper chamber showing active carbon and UV filters, filter change alarm system, and food-grade 12-litre storage tank. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Innovative RO + UV + TDS Controller",
+      "Transparent Chamber with Activated Carbon",
+      "Automatic Filter Change Alarm",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_en": [
+      "Innovative RO + UV + TDS Controller",
+      "Transparent Chamber with Activated Carbon",
+      "Automatic Filter Change Alarm",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Grand water purifier model.",
+    "meta_title": "Aqua Grand - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Grand RO water purifier in Morbi & Rajkot. Innovative technology RO + UV + TDS controller with filter change alarm. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/aqua_grand.png"
+    ]
+  },
+  {
+    "id": "aqua-klick-pro",
+    "name": "Aqua Klick Pro",
+    "name_en": "Aqua Klick Pro",
+    "name_gu": "",
+    "badge": "Unbreakable Tank",
+    "badge_en": "Unbreakable Tank",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Purity in Every Drop with Compact Stylish Look",
+    "tagline_en": "Purity in Every Drop with Compact Stylish Look",
+    "tagline_gu": "",
+    "capacity": "09 Ltrs Storage",
+    "capacity_en": "09 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Klick Pro delivers purity in every drop with an exclusive design featuring an unbreakable storage tank, compact stylish matte finish cabinet, and advanced multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua Klick Pro delivers purity in every drop with an exclusive design featuring an unbreakable storage tank, compact stylish matte finish cabinet, and advanced multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Exclusive Design with Unbreakable Tank",
+      "Compact Stylish Black Finish",
+      "Multi-stage RO Filtration",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Exclusive Design with Unbreakable Tank",
+      "Compact Stylish Black Finish",
+      "Multi-stage RO Filtration",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Klick Pro water purifier model.",
+    "meta_title": "Aqua Klick Pro - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Klick Pro RO water purifier in Morbi & Rajkot. Compact stylish look with unbreakable tank. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786549899535-image--15-.webp"
+    ]
+  },
+  {
+    "id": "neptune-metallic",
+    "name": "Xzora",
+    "name_en": "Xzora",
+    "name_gu": "",
+    "badge": "Metallic Series",
+    "badge_en": "Metallic Series",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Multi-Stage Water Purification System with Metallic Cabinet",
+    "tagline_en": "Multi-Stage Water Purification System with Metallic Cabinet",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Neptune Metallic Water Purifier features a sleek dark gunmetal cabinet with transparent smoke storage tank and multi-stage RO filtration system. Built for contemporary homes seeking high durability and pure drinking water. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Neptune Metallic Water Purifier features a sleek dark gunmetal cabinet with transparent smoke storage tank and multi-stage RO filtration system. Built for contemporary homes seeking high durability and pure drinking water. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Sleek Metallic Dark Gunmetal Finish",
+      "Transparent Smoke Food-Grade Tank",
+      "Multi-stage RO Water Purification",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Sleek Metallic Dark Gunmetal Finish",
+      "Transparent Smoke Food-Grade Tank",
+      "Multi-stage RO Water Purification",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Metallic Finish",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Metallic Finish",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Neptune Metallic water purifier model.",
+    "meta_title": "Neptune Metallic - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Neptune Metallic RO water purifier in Morbi & Rajkot. Sleek metallic dark gunmetal cabinet water system. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786373685177-image--7-.webp"
+    ]
+  },
+  {
+    "id": "mr-aqua-mars",
+    "name": "Mr Aqua Mars",
+    "name_en": "Mr Aqua Mars",
+    "name_gu": "",
+    "badge": "Unbreakable Cabinet",
+    "badge_en": "Unbreakable Cabinet",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Unbreakable Heavy-Duty Reverse Osmosis System",
+    "tagline_en": "Unbreakable Heavy-Duty Reverse Osmosis System",
+    "tagline_gu": "",
+    "capacity": "09 Ltrs Storage",
+    "capacity_en": "09 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Mr Aqua Mars Reverse Osmosis System by Nile features a premium unbreakable cabinet in sleek dark finish, high-grade RO filtration, and LED operational indicators. Built for durability, quality, and high performance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Mr Aqua Mars Reverse Osmosis System by Nile features a premium unbreakable cabinet in sleek dark finish, high-grade RO filtration, and LED operational indicators. Built for durability, quality, and high performance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Quality Assured Unbreakable Cabinet",
+      "Sleek Dark Matte Finish",
+      "Multi-stage RO Water Purification",
+      "LED Operational Status Indicators",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Quality Assured Unbreakable Cabinet",
+      "Sleek Dark Matte Finish",
+      "Multi-stage RO Water Purification",
+      "LED Operational Status Indicators",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "Unbreakable ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "Unbreakable ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Mr Aqua Mars water purifier model.",
+    "meta_title": "Mr Aqua Mars - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Mr Aqua Mars RO water purifier in Morbi & Rajkot. Heavy-duty unbreakable cabinet RO water system by Nile. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786550376457-image--19-.webp"
+    ]
+  },
+  {
+    "id": "hiflo-metallic",
+    "name": "Hi-Flo Metallic Black",
+    "name_en": "Hi-Flo Metallic Black",
+    "name_gu": "",
+    "badge": "Metallic Black",
+    "badge_en": "Metallic Black",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Clean Water Hi-Flo Water Purification System",
+    "tagline_en": "Clean Water Hi-Flo Water Purification System",
+    "tagline_gu": "",
+    "capacity": "09 Ltrs Storage",
+    "capacity_en": "09 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Hi-Flo Metallic Black Water Purifier System by Clean Water features a metallic black cabinet with wave pattern front plate, vertical LED status lights, and multi-stage high-flow RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Hi-Flo Metallic Black Water Purifier System by Clean Water features a metallic black cabinet with wave pattern front plate, vertical LED status lights, and multi-stage high-flow RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Metallic Black Cabinet with Wave Graphics",
+      "Vertical LED Indicator Panel",
+      "High Flow Rate RO Pump",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Metallic Black Cabinet with Wave Graphics",
+      "Vertical LED Indicator Panel",
+      "High Flow Rate RO Pump",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Metallic Finish",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Metallic Finish",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Hi-Flo Metallic Black water purifier model.",
+    "meta_title": "Hi-Flo Metallic Black - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Hi-Flo Metallic Black RO water purifier in Morbi & Rajkot. Clean water high flow RO system. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791950805-image--36-.webp"
+    ]
+  },
+  {
+    "id": "aqua-jade",
+    "name": "Aqua Jade",
+    "name_en": "Aqua Jade",
+    "name_gu": "",
+    "badge": "Alkaline B12",
+    "badge_en": "Alkaline B12",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
+    "tagline_en": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Jade Water Purifier System by Shivam Water Solution features advanced RO + Alkaline B12 + Copper + Zinc + TDS Controller technology. Built with a 10-litre transparent smoke storage tank, LED operational status lights, and 100% pure water guarantee. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "description_en": "Aqua Jade Water Purifier System by Shivam Water Solution features advanced RO + Alkaline B12 + Copper + Zinc + TDS Controller technology. Built with a 10-litre transparent smoke storage tank, LED operational status lights, and 100% pure water guarantee. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "Alkaline B12 Enriched Filtration",
+      "Copper + Zinc + TDS Controller",
+      "Dark Smoke Food-Grade Storage Tank",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_en": [
+      "Alkaline B12 Enriched Filtration",
+      "Copper + Zinc + TDS Controller",
+      "Dark Smoke Food-Grade Storage Tank",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Jade water purifier model.",
+    "meta_title": "Aqua Jade - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Jade RO + Alkaline B12 water purifier in Morbi & Rajkot. Copper + Zinc + TDS Controller technology. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786373975748-image--10-.webp"
+    ]
+  },
+  {
+    "id": "aqua-v5",
+    "name": "Aqua V5",
+    "name_en": "Aqua V5",
+    "name_gu": "",
+    "badge": "Next Generation",
+    "badge_en": "Next Generation",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
+    "tagline_en": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua V5 Next Generation Water Purifier System features a dual-chamber transparent design with central rose-gold strip and smart LED touch indicators (ON/OFF, TANK FULL, PURIFYING). Equipped with RO + Alkaline B12 + Copper + Zinc + TDS Controller. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "description_en": "Aqua V5 Next Generation Water Purifier System features a dual-chamber transparent design with central rose-gold strip and smart LED touch indicators (ON/OFF, TANK FULL, PURIFYING). Equipped with RO + Alkaline B12 + Copper + Zinc + TDS Controller. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "Next Generation Dual Chamber Design",
+      "Smart Touch LED Indicators (ON/OFF, TANK FULL, PURIFYING)",
+      "Alkaline B12 + Copper + Zinc Technology",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_en": [
+      "Next Generation Dual Chamber Design",
+      "Smart Touch LED Indicators (ON/OFF, TANK FULL, PURIFYING)",
+      "Alkaline B12 + Copper + Zinc Technology",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua V5 water purifier model.",
+    "meta_title": "Aqua V5 - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua V5 Next Generation RO water purifier in Morbi & Rajkot. Smart touch LED indicators with RO + Alkaline B12 + Copper + Zinc. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786549676378-image--12-.webp"
+    ]
+  },
+  {
+    "id": "flonix-relax",
+    "name": "Flonix Relax",
+    "name_en": "Flonix Relax",
+    "name_gu": "",
+    "badge": "Triple Power",
+    "badge_en": "Triple Power",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Pure Protection in Every Drop",
+    "tagline_en": "Pure Protection in Every Drop",
+    "tagline_gu": "",
+    "capacity": "10-12 Ltrs Storage",
+    "capacity_en": "10-12 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Comprehensive Warranty",
+    "warranty_en": "1 Year Comprehensive Warranty",
+    "warranty_gu": "",
+    "description": "FLONIX RELAX delivers pure, mineral-rich drinking water with its advanced RO + UV + Triple Power Copper, Zinc & Bio-Alkaline B12 filtration with TDS Controller. Features an exquisite geometric matte textured cabinet with rose gold accents, multi-color LED status indicators, and food-grade high-capacity storage. Includes 1-year warranty, free doorstep delivery, and expert installation across Morbi and Rajkot.",
+    "description_en": "FLONIX RELAX delivers pure, mineral-rich drinking water with its advanced RO + UV + Triple Power Copper, Zinc & Bio-Alkaline B12 filtration with TDS Controller. Features an exquisite geometric matte textured cabinet with rose gold accents, multi-color LED status indicators, and food-grade high-capacity storage. Includes 1-year warranty, free doorstep delivery, and expert installation across Morbi and Rajkot.",
+    "description_gu": "",
+    "features": [
+      "Triple Power: Active Copper + Zinc + Bio-Alkaline B12",
+      "Advanced RO + UV + TDS Controller Multi-Stage Purification",
+      "Luxury Geometric Matte & Gloss Cabinet with Rose Gold Trims",
+      "Smart Multi-Color LED Indicator Strip (Power, Purifying, Tank Full)",
+      "Designer Rose Gold Metallic Faucet / Tap",
+      "10-12 Litre High-Capacity Food Grade Storage Tank",
+      "1 Year Comprehensive Warranty (Pump & SMPS)",
+      "Free Home Delivery & Professional Installation in Morbi / Rajkot"
+    ],
+    "features_en": [
+      "Triple Power: Active Copper + Zinc + Bio-Alkaline B12",
+      "Advanced RO + UV + TDS Controller Multi-Stage Purification",
+      "Luxury Geometric Matte & Gloss Cabinet with Rose Gold Trims",
+      "Smart Multi-Color LED Indicator Strip (Power, Purifying, Tank Full)",
+      "Designer Rose Gold Metallic Faucet / Tap",
+      "10-12 Litre High-Capacity Food Grade Storage Tank",
+      "1 Year Comprehensive Warranty (Pump & SMPS)",
+      "Free Home Delivery & Professional Installation in Morbi / Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Purification Technology": "RO + UV + Copper + Zinc + Alkaline B12 + TDS Controller",
+      "Storage Capacity": "10 - 12 Litres",
+      "Cabinet Design": "Geometric 3D Textured Matte Finish with Rose Gold Accents",
+      "LED Indicators": "Power (Green), Purification (Red), Tank Full (Blue)",
+      "Body Material": "ABS High Impact Food Grade Plastic",
+      "Mounting Type": "Wall Mounted / Table Top",
+      "Suitable Water Source": "Borewell, Tanker & Municipal Water (Up to 2500 TDS)",
+      "Warranty": "1 Year Comprehensive Warranty"
+    },
+    "specs_en": {
+      "Purification Technology": "RO + UV + Copper + Zinc + Alkaline B12 + TDS Controller",
+      "Storage Capacity": "10 - 12 Litres",
+      "Cabinet Design": "Geometric 3D Textured Matte Finish with Rose Gold Accents",
+      "LED Indicators": "Power (Green), Purification (Red), Tank Full (Blue)",
+      "Body Material": "ABS High Impact Food Grade Plastic",
+      "Mounting Type": "Wall Mounted / Table Top",
+      "Suitable Water Source": "Borewell, Tanker & Municipal Water (Up to 2500 TDS)",
+      "Warranty": "1 Year Comprehensive Warranty"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in inquiring about the FLONIX RELAX RO Water Purifier model.",
+    "meta_title": "FLONIX RELAX RO Water Purifier (Copper + Zinc + Alkaline) | Shivam Water Solution Morbi",
+    "meta_desc": "Buy FLONIX RELAX RO Water Purifier in Morbi & Rajkot. RO+UV+Copper+Zinc+Alkaline+TDS Controller with geometric cabinet & LED indicators. Free installation & 1 yr warranty.",
+    "images": [
+      "/api/images/products/flonix-relax.webp"
+    ]
+  },
+  {
+    "id": "olix-jade",
+    "name": "Olix Jade Black",
+    "name_en": "Olix Jade Black",
+    "name_gu": "",
+    "badge": "Clean Edition",
+    "badge_en": "Clean Edition",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Smart RO Cabinet - Refresh Yourself",
+    "tagline_en": "Smart RO Cabinet - Refresh Yourself",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Olix Jade Black Smart RO Cabinet Water Purifier features a patented sleek design (Patent No. 430436-001) with LED status display, leak-proof 10L food-grade tank, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Olix Jade Black Smart RO Cabinet Water Purifier features a patented sleek design (Patent No. 430436-001) with LED status display, leak-proof 10L food-grade tank, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Patented Smart RO Cabinet Design (430436-001)",
+      "Clean Editions Jade Black Finish",
+      "10L Leak-Proof Food Grade Tank",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Patented Smart RO Cabinet Design (430436-001)",
+      "Clean Editions Jade Black Finish",
+      "10L Leak-Proof Food Grade Tank",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade (Patented)",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade (Patented)",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Olix Jade Black water purifier model.",
+    "meta_title": "Olix Jade Black - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Olix Jade Black RO water purifier in Morbi & Rajkot. Patented smart RO cabinet design with LED display. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791734559-image--33-.webp"
+    ]
+  },
+  {
+    "id": "next-generation",
+    "name": "Water Pia",
+    "name_en": "Water Pia",
+    "name_gu": "",
+    "badge": "Best Seller",
+    "badge_en": "Best Seller",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "",
+    "tagline_en": "",
+    "tagline_gu": "",
+    "capacity": "10 Litres Storage",
+    "capacity_en": "10 Litres Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Comprehensive Warranty",
+    "warranty_en": "1 Year Comprehensive Warranty",
+    "warranty_gu": "",
+    "description": "",
+    "description_en": "",
+    "description_gu": "",
+    "features": [
+      "Multi-stage RO + UV + TDS Controller + Active Copper Filtration",
+      "Food-Grade High-Capacity Storage Tank (10-12L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot"
+    ],
+    "features_en": [
+      "Multi-stage RO + UV + TDS Controller + Active Copper Filtration",
+      "Food-Grade High-Capacity Storage Tank (10-12L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Purification Technology": "RO + UV + Alkaline + TDS Controller",
+      "Storage Capacity": "10 - 12 Litres",
+      "Purification Capacity": "Up to 15-20 Litres/Hour",
+      "Body Material": "Food-Grade ABS Engineered Cabinet",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Suitable Water TDS": "Up to 2000 ppm",
+      "Warranty": "1 Year Comprehensive Warranty"
+    },
+    "specs_en": {
+      "Purification Technology": "RO + UV + Alkaline + TDS Controller",
+      "Storage Capacity": "10 - 12 Litres",
+      "Purification Capacity": "Up to 15-20 Litres/Hour",
+      "Body Material": "Food-Grade ABS Engineered Cabinet",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Suitable Water TDS": "Up to 2000 ppm",
+      "Warranty": "1 Year Comprehensive Warranty"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in inquiring about the Water Pia RO Water Purifier model.",
+    "meta_title": "Water Pia - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Water Pia RO water purifier in Morbi & Rajkot. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1788086372323-image--1-.webp"
+    ]
+  },
+  {
+    "id": "aqua-era",
+    "name": "Aqua Era Charcoal Black",
+    "name_en": "Aqua Era Charcoal Black",
+    "name_gu": "",
+    "badge": "Core Series",
+    "badge_en": "Core Series",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Pure. Premium. Powerful. Core Series RO Purifier",
+    "tagline_en": "Pure. Premium. Powerful. Core Series RO Purifier",
+    "tagline_gu": "",
+    "capacity": "9 Ltrs Storage",
+    "capacity_en": "9 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Era Charcoal Black Water Purifier from the Core Series offers pure, premium, and powerful multi-stage water filtration. Designed with a ribbed front cover, silver dispenser tap, and 9-litre storage tank. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua Era Charcoal Black Water Purifier from the Core Series offers pure, premium, and powerful multi-stage water filtration. Designed with a ribbed front cover, silver dispenser tap, and 9-litre storage tank. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Core Series Ribbed Front Cover",
+      "Pure Premium Powerful Filtration",
+      "Drink On Time Smart Reminder",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Core Series Ribbed Front Cover",
+      "Pure Premium Powerful Filtration",
+      "Drink On Time Smart Reminder",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "9 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "9 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Era Charcoal Black water purifier model.",
+    "meta_title": "Aqua Era Charcoal Black - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Era Charcoal Black RO water purifier in Morbi & Rajkot. Core series premium design. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786790931183-image--23-.webp"
+    ]
+  },
+  {
+    "id": "aqua-2090",
+    "name": "Aqua 2090",
+    "name_en": "Aqua 2090",
+    "name_gu": "",
+    "badge": "Ribbed Metallic",
+    "badge_en": "Ribbed Metallic",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
+    "tagline_en": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
+    "tagline_gu": "",
+    "capacity": "12 Ltrs Storage",
+    "capacity_en": "12 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua 2090 NEXT Reverse Osmosis System features a premium solid black cabinet with vertical ribbed side column, modern silver lever tap dispenser, and RO + Alkaline B12 + Copper + Zinc + TDS Control. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "description_en": "Aqua 2090 NEXT Reverse Osmosis System features a premium solid black cabinet with vertical ribbed side column, modern silver lever tap dispenser, and RO + Alkaline B12 + Copper + Zinc + TDS Control. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "Solid Black Cabinet with Vertical Ribbed Column",
+      "RO + Alkaline B12 + Copper + Zinc + TDS Control",
+      "Modern Silver Lever Dispenser",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_en": [
+      "Solid Black Cabinet with Vertical Ribbed Column",
+      "RO + Alkaline B12 + Copper + Zinc + TDS Control",
+      "Modern Silver Lever Dispenser",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "12 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua 2090 water purifier model.",
+    "meta_title": "Aqua 2090 - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua 2090 NEXT RO water purifier in Morbi & Rajkot. Solid black cabinet with ribbed column and RO + Alkaline B12. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786549757373-image--13-.webp"
+    ]
+  },
+  {
+    "id": "cosmax-nova",
+    "name": "Cosmax Nova Black",
+    "name_en": "Cosmax Nova Black",
+    "name_gu": "",
+    "badge": "Sophisticated",
+    "badge_en": "Sophisticated",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Sophisticated. Confident. Trusted. Latest RO Tech",
+    "tagline_en": "Sophisticated. Confident. Trusted. Latest RO Tech",
+    "tagline_gu": "",
+    "capacity": "09 Ltrs Storage",
+    "capacity_en": "09 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Cosmax Nova Black Reverse Osmosis System features Cosmax L25 latest RO technology with 100% BPA-free food-grade storage, sleek black cabinet, and smart touch status icons. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Cosmax Nova Black Reverse Osmosis System features Cosmax L25 latest RO technology with 100% BPA-free food-grade storage, sleek black cabinet, and smart touch status icons. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Cosmax L25 Latest RO Technology",
+      "100% BPA Free Food Grade Housing",
+      "Sophisticated Matte Black Cabinet",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Cosmax L25 Latest RO Technology",
+      "100% BPA Free Food Grade Housing",
+      "Sophisticated Matte Black Cabinet",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "BPA Free ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "BPA Free ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Cosmax Nova Black water purifier model.",
+    "meta_title": "Cosmax Nova Black - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Cosmax Nova Black RO water purifier in Morbi & Rajkot. BPA free food grade cabinet with Cosmax L25 latest RO tech. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791624150-image--31-.webp"
+    ]
+  },
+  {
+    "id": "aqua-9090",
+    "name": "Aqua 9090",
+    "name_en": "Aqua 9090",
+    "name_gu": "",
+    "badge": "Smart LED",
+    "badge_en": "Smart LED",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Trendy & Classic Heavy Food Grade RO Purifier",
+    "tagline_en": "Trendy & Classic Heavy Food Grade RO Purifier",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua 9090 Water Purifier by Nile features a trendy and classic heavy food-grade cabinet, invisible screw design, smart LED indicators, and 10-litre storage tank. Built for easy installation and maintenance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua 9090 Water Purifier by Nile features a trendy and classic heavy food-grade cabinet, invisible screw design, smart LED indicators, and 10-litre storage tank. Built for easy installation and maintenance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Invisible Screw Sleek Cabinet Design",
+      "Smart LED Display Panel",
+      "Large 10L Storage Tank",
+      "Heavy Food Grade Cabinet",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Invisible Screw Sleek Cabinet Design",
+      "Smart LED Display Panel",
+      "Large 10L Storage Tank",
+      "Heavy Food Grade Cabinet",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "Heavy ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "Heavy ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua 9090 water purifier model.",
+    "meta_title": "Aqua 9090 - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua 9090 RO water purifier in Morbi & Rajkot. Invisible screw heavy food grade cabinet with smart LED by Nile. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786549839334-image--14-.webp"
+    ]
+  },
+  {
+    "id": "aqua-nine",
+    "name": "Aqua Nine",
+    "name_en": "Aqua Nine",
+    "name_gu": "",
+    "badge": "Modern Design",
+    "badge_en": "Modern Design",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Modern Design RO Water Purification System by Nile",
+    "tagline_en": "Modern Design RO Water Purification System by Nile",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Nine Water Purifier by Nile features a modern design black cabinet with golden accent curves, LED status indicators, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua Nine Water Purifier by Nile features a modern design black cabinet with golden accent curves, LED status indicators, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Sleek Black Cabinet with Gold Waves",
+      "Nile Brand Engineering",
+      "LED Operational Status Panel",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Sleek Black Cabinet with Gold Waves",
+      "Nile Brand Engineering",
+      "LED Operational Status Panel",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Nine water purifier model.",
+    "meta_title": "Aqua Nine - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Nine RO water purifier in Morbi & Rajkot. Modern design black cabinet with gold wave accents by Nile. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786550756187-image--21-.webp"
+    ]
+  },
+  {
+    "id": "aqua-innovica",
+    "name": "Aqua Innovica",
+    "name_en": "Aqua Innovica",
+    "name_gu": "",
+    "badge": "Immunity 3-in-1",
+    "badge_en": "Immunity 3-in-1",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
+    "tagline_en": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
+    "tagline_gu": "",
+    "capacity": "12 Ltrs Storage",
+    "capacity_en": "12 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Innovica Water Purifier System by Shivam Water Solution features 3-in-1 Zinc, Copper, and Alkaline technology to boost your immunity. Built with a 10-litre transparent smoke storage tank and smart LED indicators. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "description_en": "Aqua Innovica Water Purifier System by Shivam Water Solution features 3-in-1 Zinc, Copper, and Alkaline technology to boost your immunity. Built with a 10-litre transparent smoke storage tank and smart LED indicators. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "Zinc + Copper + Alkaline 3-in-1 Immunity Booster",
+      "RO + Alkaline B12 + TDS Controller",
+      "LED Touch Indicator Panel",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_en": [
+      "Zinc + Copper + Alkaline 3-in-1 Immunity Booster",
+      "RO + Alkaline B12 + TDS Controller",
+      "LED Touch Indicator Panel",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Innovica water purifier model.",
+    "meta_title": "Aqua Innovica - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Innovica RO + Alkaline B12 water purifier in Morbi & Rajkot. 3-in-1 Zinc + Copper immunity booster. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786550778491-image--22-.webp"
+    ]
+  },
+  {
+    "id": "aqua-flip",
+    "name": "Aqua Flip",
+    "name_en": "Aqua Flip",
+    "name_gu": "",
+    "badge": "Detachable Tank",
+    "badge_en": "Detachable Tank",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Elegance with Excellence - 15 LPH Flow Rate",
+    "tagline_en": "Elegance with Excellence - 15 LPH Flow Rate",
+    "tagline_gu": "",
+    "capacity": "13 Ltrs Storage",
+    "capacity_en": "13 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Flip Water Purifier by Nile combines elegance with excellence. Built with a high-capacity 13-litre detachable storage tank, 15 LPH fast filtration rate, and advanced bacterial/virus protection. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua Flip Water Purifier by Nile combines elegance with excellence. Built with a high-capacity 13-litre detachable storage tank, 15 LPH fast filtration rate, and advanced bacterial/virus protection. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "13L Detachable Storage Tank",
+      "15 LPH High Flow Rate",
+      "Removes Bacteria and Virus 100%",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "13L Detachable Storage Tank",
+      "15 LPH High Flow Rate",
+      "Removes Bacteria and Virus 100%",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "13 Litres",
+      "Purification Speed": "15 LPH",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade Detachable Tank",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "13 Litres",
+      "Purification Speed": "15 LPH",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade Detachable Tank",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Flip water purifier model.",
+    "meta_title": "Aqua Flip - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Flip RO water purifier in Morbi & Rajkot. 13L detachable tank with 15 LPH high flow by Nile. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791055234-image--24-.webp"
+    ]
+  },
+  {
+    "id": "aqua-strom",
+    "name": "Aqua Strom Black",
+    "name_en": "Aqua Strom Black",
+    "name_gu": "",
+    "badge": "Timeless Elegance",
+    "badge_en": "Timeless Elegance",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Timeless Elegance in Black by Cloud International",
+    "tagline_en": "Timeless Elegance in Black by Cloud International",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Strom Black Water Purifier by Cloud International features timeless elegance in black with digital LED display, copper essential minerals, and boost immunity technology. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua Strom Black Water Purifier by Cloud International features timeless elegance in black with digital LED display, copper essential minerals, and boost immunity technology. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Timeless Elegance Black Finish",
+      "Digital LED Display Panel",
+      "Copper Essential Minerals",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_en": [
+      "Timeless Elegance Black Finish",
+      "Digital LED Display Panel",
+      "Copper Essential Minerals",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Strom Black water purifier model.",
+    "meta_title": "Aqua Strom Black - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Strom Black RO water purifier in Morbi & Rajkot. Digital LED display with active copper minerals by Cloud International. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791397013-image--29-.webp"
+    ]
+  },
+  {
+    "id": "lx-one",
+    "name": "LX-ONE",
+    "name_en": "LX-ONE",
+    "name_gu": "",
+    "badge": "Unbreakable",
+    "badge_en": "Unbreakable",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Pure protection in every drop",
+    "tagline_en": "Pure protection in every drop",
+    "tagline_gu": "",
+    "capacity": "10 - 12 Litres Storage",
+    "capacity_en": "10 - 12 Litres Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Comprehensive Warranty",
+    "warranty_en": "1 Year Comprehensive Warranty",
+    "warranty_gu": "",
+    "description": "LX ONE Titanium Series Reverse Osmosis Water Purifier features a brushed titanium finish cabinet with transparent smoke storage tank and smart vertical LED indicator strip. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "LX ONE Titanium Series Reverse Osmosis Water Purifier features a brushed titanium finish cabinet with transparent smoke storage tank and smart vertical LED indicator strip. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Multi-stage RO + UV + TDS Controller + Active Copper Filtration",
+      "Food-Grade High-Capacity Storage Tank (10-12L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot"
+    ],
+    "features_en": [
+      "Multi-stage RO + UV + TDS Controller + Active Copper Filtration",
+      "Food-Grade High-Capacity Storage Tank (10-12L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Purification Technology": "RO + UV + Alkaline + TDS Controller",
+      "Storage Capacity": "10 - 12 Litres",
+      "Purification Capacity": "Up to 15-20 Litres/Hour",
+      "Body Material": "Food-Grade ABS Engineered Cabinet",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Suitable Water TDS": "Up to 2000 ppm",
+      "Warranty": "1 Year Comprehensive Warranty"
+    },
+    "specs_en": {
+      "Purification Technology": "RO + UV + Alkaline + TDS Controller",
+      "Storage Capacity": "10 - 12 Litres",
+      "Purification Capacity": "Up to 15-20 Litres/Hour",
+      "Body Material": "Food-Grade ABS Engineered Cabinet",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Suitable Water TDS": "Up to 2000 ppm",
+      "Warranty": "1 Year Comprehensive Warranty"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the LX ONE Titanium water purifier model.",
+    "meta_title": "LX ONE Titanium - Shivam Water Solution Morbi",
+    "meta_desc": "Buy LX ONE Titanium RO water purifier in Morbi & Rajkot. Titanium series brushed metallic cabinet. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1788077240687-1000231500.jpg"
+    ]
+  },
+  {
+    "id": "lx-two",
+    "name": "LX TWO Charcoal Black",
+    "name_en": "LX TWO Charcoal Black",
+    "name_gu": "",
+    "badge": "Glam Edition",
+    "badge_en": "Glam Edition",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Sleek Charcoal Black Glam Edition RO Purifier",
+    "tagline_en": "Sleek Charcoal Black Glam Edition RO Purifier",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "LX TWO Charcoal Black Glam Edition Reverse Osmosis Water Purifier features a sleek modern dark cabinet with silver metallic dispenser housing and soft touch LED indicators. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "LX TWO Charcoal Black Glam Edition Reverse Osmosis Water Purifier features a sleek modern dark cabinet with silver metallic dispenser housing and soft touch LED indicators. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Glam Edition Charcoal Black Design",
+      "Silver Metallic Dispenser Frame",
+      "Smart LED Status Indicators",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Glam Edition Charcoal Black Design",
+      "Silver Metallic Dispenser Frame",
+      "Smart LED Status Indicators",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Glam Finish",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Glam Finish",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the LX TWO Charcoal Black water purifier model.",
+    "meta_title": "LX TWO Charcoal Black - Shivam Water Solution Morbi",
+    "meta_desc": "Buy LX TWO Charcoal Black RO water purifier in Morbi & Rajkot. Glam edition sleek black cabinet. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791103355-image--25-.webp"
+    ]
+  },
+  {
+    "id": "purosis-white",
+    "name": "Purosis White",
+    "name_en": "Purosis White",
+    "name_gu": "",
+    "badge": "Purely Premium",
+    "badge_en": "Purely Premium",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Redefining Purity with Purely Premium Material",
+    "tagline_en": "Redefining Purity with Purely Premium Material",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Purosis White Water Purifier is engineered for maximum durability and purity. Built with pure, premium food-grade materials, sleek white ergonomic cabinet, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Purosis White Water Purifier is engineered for maximum durability and purity. Built with pure, premium food-grade materials, sleek white ergonomic cabinet, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Purely Premium Food Grade Material",
+      "Redefining Purity Architecture",
+      "Sleek White Ergonomic Body",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Purely Premium Food Grade Material",
+      "Redefining Purity Architecture",
+      "Sleek White Ergonomic Body",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "Premium ABS White",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "Premium ABS White",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Purosis White water purifier model.",
+    "meta_title": "Purosis White - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Purosis White RO water purifier in Morbi & Rajkot. Premium food grade material for redefining purity. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791121232-image--26-.webp"
+    ]
+  },
+  {
+    "id": "purosis-puroaqua",
+    "name": "Purosis PuroAqua Matt Black",
+    "name_en": "Purosis PuroAqua Matt Black",
+    "name_gu": "",
+    "badge": "Alkaline RO",
+    "badge_en": "Alkaline RO",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Sleek Sophistication of Black with PuroAqua",
+    "tagline_en": "Sleek Sophistication of Black with PuroAqua",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Purosis PuroAqua Matt Black Reverse Osmosis System features sleek matt black styling, high-efficiency RO + Alkaline technology, and LED operational status strip. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Purosis PuroAqua Matt Black Reverse Osmosis System features sleek matt black styling, high-efficiency RO + Alkaline technology, and LED operational status strip. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Sleek Matt Black Ergonomic Body",
+      "PuroAqua RO + Alkaline Technology",
+      "Horizontal LED Status Strip",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_en": [
+      "Sleek Matt Black Ergonomic Body",
+      "PuroAqua RO + Alkaline Technology",
+      "Horizontal LED Status Strip",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Matt Black",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Matt Black",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Purosis PuroAqua Matt Black water purifier model.",
+    "meta_title": "Purosis PuroAqua Matt Black - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Purosis PuroAqua Matt Black RO water purifier in Morbi & Rajkot. Sleek matt black body with RO + Alkaline tech. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791670831-image--32-.webp"
+    ]
+  },
+  {
+    "id": "finpure-ocean-blue",
+    "name": "Finpure Ocean Blue",
+    "name_en": "Finpure Ocean Blue",
+    "name_gu": "",
+    "badge": "Ocean Blue",
+    "badge_en": "Ocean Blue",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Dive into a Sea of Style with Ocean Blue by Purosis",
+    "tagline_en": "Dive into a Sea of Style with Ocean Blue by Purosis",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Finpure Ocean Blue Water Purifier by Purosis brings vibrant style to your kitchen. Designed with dual-tone ocean blue and black cabinet, smart LED status bar, and Drink Water reminder window. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Finpure Ocean Blue Water Purifier by Purosis brings vibrant style to your kitchen. Designed with dual-tone ocean blue and black cabinet, smart LED status bar, and Drink Water reminder window. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Dual-Tone Ocean Blue & Black Cabinet",
+      "Smart Drink Water Reminder Window",
+      "Purosis Finest Ever Engineering",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Alkaline B12 + UVC + UF"
+    ],
+    "features_en": [
+      "Dual-Tone Ocean Blue & Black Cabinet",
+      "Smart Drink Water Reminder Window",
+      "Purosis Finest Ever Engineering",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Alkaline B12 + UVC + UF"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ALKALINE B12 + UVC +UF",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ALKALINE B12 + UVC +UF",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Finpure Ocean Blue water purifier model.",
+    "meta_title": "Finpure Ocean Blue - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Finpure Ocean Blue RO water purifier in Morbi & Rajkot. Dual-tone ocean blue cabinet by Purosis. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791558283-image--30-.webp"
+    ]
+  },
+  {
+    "id": "purois-puroaqua",
+    "name": "PUROSIS - PUROAQUA",
+    "name_en": "PUROSIS - PUROAQUA",
+    "name_gu": "",
+    "badge": "BEST SELLING",
+    "badge_en": "BEST SELLING",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "RO + TDS + ALKLINE B12 + UVC + UF",
+    "tagline_en": "RO + TDS + ALKLINE B12 + UVC + UF",
+    "tagline_gu": "",
+    "capacity": "14 Litres Storage",
+    "capacity_en": "14 Litres Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Comprehensive Warranty",
+    "warranty_en": "1 Year Comprehensive Warranty",
+    "warranty_gu": "",
+    "description": "",
+    "description_en": "",
+    "description_gu": "",
+    "features": [
+      "Multi-stage RO + UV + TDS Controller + Active Copper Filtration",
+      "Food-Grade High-Capacity Storage Tank (14L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot"
+    ],
+    "features_en": [
+      "Multi-stage RO + UV + TDS Controller + Active Copper Filtration",
+      "Food-Grade High-Capacity Storage Tank (14L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Purification Technology": "RO + UV + Alkaline + TDS Controller",
+      "Storage Capacity": "14 Litres",
+      "Purification Capacity": "Up to 15-20 Litres/Hour",
+      "Body Material": "Food-Grade ABS Engineered Cabinet",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Suitable Water TDS": "Up to 2000 ppm",
+      "Warranty": "1 Year Comprehensive Warranty"
+    },
+    "specs_en": {
+      "Purification Technology": "RO + UV + Alkaline + TDS Controller",
+      "Storage Capacity": "14 Litres",
+      "Purification Capacity": "Up to 15-20 Litres/Hour",
+      "Body Material": "Food-Grade ABS Engineered Cabinet",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Suitable Water TDS": "Up to 2000 ppm",
+      "Warranty": "1 Year Comprehensive Warranty"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in inquiring about the PUROSIS - PUROAQUA RO Water Purifier model.",
+    "meta_title": "PUROSIS - PUROAQUA - Shivam Water Solution Morbi",
+    "meta_desc": "Buy PUROSIS - PUROAQUA RO water purifier in Morbi & Rajkot. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1788077589679-1000231501.jpg"
+    ]
+  },
+  {
+    "id": "remino-25lph",
+    "name": "Remino 25 LPH Commercial RO Plant (Double Membrane)",
+    "name_en": "Remino 25 LPH Commercial RO Plant (Double Membrane)",
+    "name_gu": "",
+    "badge": "Double Membrane",
+    "badge_en": "Double Membrane",
+    "badge_gu": "",
+    "category": "commercial",
+    "tagline": "25 LPH Stainless Steel Frame Double Membrane Commercial RO Plant",
+    "tagline_en": "25 LPH Stainless Steel Frame Double Membrane Commercial RO Plant",
+    "tagline_gu": "",
+    "capacity": "25 LPH Flow Rate",
+    "capacity_en": "25 LPH Flow Rate",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Remino 25 LPH Commercial RO Plant features a premium stainless steel open frame design with 3 heavy-duty 10\" blue filter housings, double high-rejection RO membranes, top-mounted booster pump, and ISO certified filtration components. Designed for offices, factories, restaurants, and schools across Morbi & Rajkot.",
+    "description_en": "Remino 25 LPH Commercial RO Plant features a premium stainless steel open frame design with 3 heavy-duty 10\" blue filter housings, double high-rejection RO membranes, top-mounted booster pump, and ISO certified filtration components. Designed for offices, factories, restaurants, and schools across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "25 Litres Per Hour High Production",
+      "Double High-Rejection RO Membranes",
+      "Heavy Duty Stainless Steel Open Frame",
+      "3x 10 Inch Blue Jumbo Filter Housings",
+      "1 Year Warranty",
+      "Free Commercial Installation & Home Delivery"
+    ],
+    "features_en": [
+      "25 Litres Per Hour High Production",
+      "Double High-Rejection RO Membranes",
+      "Heavy Duty Stainless Steel Open Frame",
+      "3x 10 Inch Blue Jumbo Filter Housings",
+      "1 Year Warranty",
+      "Free Commercial Installation & Home Delivery"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Purification Capacity": "25 LPH",
+      "Frame Material": "Stainless Steel Open Frame",
+      "Membranes": "Double RO Membrane Elements",
+      "Pre-Filter Housings": "3x 10 Blue Jumbo Housings",
+      "Booster Pump": "Heavy Duty Commercial Pump",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Purification Capacity": "25 LPH",
+      "Frame Material": "Stainless Steel Open Frame",
+      "Membranes": "Double RO Membrane Elements",
+      "Pre-Filter Housings": "3x 10 Blue Jumbo Housings",
+      "Booster Pump": "Heavy Duty Commercial Pump",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Remino 25 LPH Commercial RO Plant (Double Membrane).",
+    "meta_title": "Remino 25 LPH Commercial RO Plant - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Remino 25 LPH Double Membrane Commercial RO Plant in Morbi & Rajkot. Heavy duty stainless steel frame commercial purifier for offices & factories.",
+    "images": [
+      "/api/images/products/1786792210562-image--39-.webp"
+    ]
+  },
+  {
+    "id": "flonix-25lph",
+    "name": "Flonix 25 LPH Commercial RO Plant",
+    "name_en": "Flonix 25 LPH Commercial RO Plant",
+    "name_gu": "",
+    "badge": "25 LPH Commercial",
+    "badge_en": "25 LPH Commercial",
+    "badge_gu": "",
+    "category": "commercial",
+    "tagline": "ISI Certified Heavy-Duty Commercial RO Plant",
+    "tagline_en": "ISI Certified Heavy-Duty Commercial RO Plant",
+    "tagline_gu": "",
+    "capacity": "25 LPH Flow Rate",
+    "capacity_en": "25 LPH Flow Rate",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Flonix 25 LPH Commercial RO Plant is IS 16240 ISI certified for offices, schools, hotels, and commercial establishments. Built with heavy-duty metal stand, 10\" Spun, 10\" GAC, 10\" CTO, Post Carbon, dual 80 GPD RO membranes, and 150 GPD booster pump. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
+    "description_en": "Flonix 25 LPH Commercial RO Plant is IS 16240 ISI certified for offices, schools, hotels, and commercial establishments. Built with heavy-duty metal stand, 10\" Spun, 10\" GAC, 10\" CTO, Post Carbon, dual 80 GPD RO membranes, and 150 GPD booster pump. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "25 Litres Per Hour High Capacity",
+      "IS 16240 ISI Certified Quality",
+      "Heavy Duty Metallic Stand Frame",
+      "100% Food Grade Filter Housings",
+      "1 Year Warranty",
+      "Free Commercial Installation"
+    ],
+    "features_en": [
+      "25 Litres Per Hour High Capacity",
+      "IS 16240 ISI Certified Quality",
+      "Heavy Duty Metallic Stand Frame",
+      "100% Food Grade Filter Housings",
+      "1 Year Warranty",
+      "Free Commercial Installation"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Purification Capacity": "25 LPH",
+      "Pre-Filters": "10 Spun, 10 GAC, 10 CTO",
+      "Membrane": "80 GPD RO Membrane (2 Nos)",
+      "Booster Pump": "150 GPD RO Pump",
+      "Certification": "IS 16240 ISI",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Purification Capacity": "25 LPH",
+      "Pre-Filters": "10 Spun, 10 GAC, 10 CTO",
+      "Membrane": "80 GPD RO Membrane (2 Nos)",
+      "Booster Pump": "150 GPD RO Pump",
+      "Certification": "IS 16240 ISI",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Flonix 25 LPH Commercial RO Plant model.",
+    "meta_title": "Flonix 25 LPH Commercial RO Plant - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Flonix 25 LPH Commercial RO Plant in Morbi & Rajkot. ISI IS 16240 certified heavy duty commercial water purifier for offices & hotels. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786791331322-image--28-.webp"
+    ]
+  },
+  {
+    "id": "flonix-50lph",
+    "name": "Flonix 50 LPH Commercial RO Plant",
+    "name_en": "Flonix 50 LPH Commercial RO Plant",
+    "name_gu": "",
+    "badge": "50 LPH Commercial",
+    "badge_en": "50 LPH Commercial",
+    "badge_gu": "",
+    "category": "commercial",
+    "tagline": "Heavy Duty 50 LPH Commercial Reverse Osmosis Plant",
+    "tagline_en": "Heavy Duty 50 LPH Commercial Reverse Osmosis Plant",
+    "tagline_gu": "",
+    "capacity": "50 LPH Flow Rate",
+    "capacity_en": "50 LPH Flow Rate",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Flonix 50 LPH Commercial RO Plant is engineered for medium to large commercial spaces such as restaurants, factories, offices, and hospitals. Built with premium metallic stand, 20\" Spun, 20\" GAC, 20\" CTO, 4 high-performance 80 GPD RO membranes, and dual 150 GPD booster pumps. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
+    "description_en": "Flonix 50 LPH Commercial RO Plant is engineered for medium to large commercial spaces such as restaurants, factories, offices, and hospitals. Built with premium metallic stand, 20\" Spun, 20\" GAC, 20\" CTO, 4 high-performance 80 GPD RO membranes, and dual 150 GPD booster pumps. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "50 Litres Per Hour High Volume Purification",
+      "4x 80 GPD High Flow RO Membranes",
+      "Dual 150 GPD Booster Pumps",
+      "CE Certified Electric Components",
+      "1 Year Warranty",
+      "Free Commercial Installation"
+    ],
+    "features_en": [
+      "50 Litres Per Hour High Volume Purification",
+      "4x 80 GPD High Flow RO Membranes",
+      "Dual 150 GPD Booster Pumps",
+      "CE Certified Electric Components",
+      "1 Year Warranty",
+      "Free Commercial Installation"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Purification Capacity": "50 LPH",
+      "Pre-Filters": "20 Spun, 20 GAC, 20 CTO",
+      "Membrane": "80 GPD RO Membrane (4 Nos)",
+      "Booster Pump": "150 GPD RO Pump (2 Nos)",
+      "Post-Filter": "Post Carbon",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Purification Capacity": "50 LPH",
+      "Pre-Filters": "20 Spun, 20 GAC, 20 CTO",
+      "Membrane": "80 GPD RO Membrane (4 Nos)",
+      "Booster Pump": "150 GPD RO Pump (2 Nos)",
+      "Post-Filter": "Post Carbon",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Flonix 50 LPH Commercial RO Plant model.",
+    "meta_title": "Flonix 50 LPH Commercial RO Plant - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Flonix 50 LPH Commercial RO Plant in Morbi & Rajkot. High volume 50 LPH water purifier plant for factories & restaurants. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792055242-image--37-.webp"
+    ]
+  },
+  {
+    "id": "flonix-100lph",
+    "name": "Flonix 100 LPH Commercial RO Plant",
+    "name_en": "Flonix 100 LPH Commercial RO Plant",
+    "name_gu": "",
+    "badge": "100 LPH Commercial",
+    "badge_en": "100 LPH Commercial",
+    "badge_gu": "",
+    "category": "commercial",
+    "tagline": "High Capacity 100 LPH Commercial RO Plant with Pressure Gauges",
+    "tagline_en": "High Capacity 100 LPH Commercial RO Plant with Pressure Gauges",
+    "tagline_gu": "",
+    "capacity": "100 LPH Flow Rate",
+    "capacity_en": "100 LPH Flow Rate",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Flonix 100 LPH Commercial RO Plant is a high-capacity industrial water purification plant designed for industrial units, colleges, hostels, and large facilities. Built with dual pressure gauges, low pressure switch (LPS), 20\" Spun, 20\" GAC, 20\" CTO, 3x 300 GPD RO membranes, and 3x 300 GPD booster pumps. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
+    "description_en": "Flonix 100 LPH Commercial RO Plant is a high-capacity industrial water purification plant designed for industrial units, colleges, hostels, and large facilities. Built with dual pressure gauges, low pressure switch (LPS), 20\" Spun, 20\" GAC, 20\" CTO, 3x 300 GPD RO membranes, and 3x 300 GPD booster pumps. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "100 Litres Per Hour Heavy Industrial Capacity",
+      "Dual Stainless Pressure Gauges + LPS",
+      "3x 300 GPD Industrial RO Membranes",
+      "3x 300 GPD Heavy Booster Pumps",
+      "1 Year Warranty",
+      "Free Industrial Installation"
+    ],
+    "features_en": [
+      "100 Litres Per Hour Heavy Industrial Capacity",
+      "Dual Stainless Pressure Gauges + LPS",
+      "3x 300 GPD Industrial RO Membranes",
+      "3x 300 GPD Heavy Booster Pumps",
+      "1 Year Warranty",
+      "Free Industrial Installation"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Purification Capacity": "100 LPH",
+      "Pre-Filters": "20 Spun, 20 GAC, 20 CTO",
+      "Membrane": "300 GPD RO Membrane (3 Nos)",
+      "Booster Pump": "300 GPD RO Pump (3 Nos)",
+      "Gauges": "RO + Low Pressure Gauges",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Purification Capacity": "100 LPH",
+      "Pre-Filters": "20 Spun, 20 GAC, 20 CTO",
+      "Membrane": "300 GPD RO Membrane (3 Nos)",
+      "Booster Pump": "300 GPD RO Pump (3 Nos)",
+      "Gauges": "RO + Low Pressure Gauges",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Flonix 100 LPH Commercial RO Plant model.",
+    "meta_title": "Flonix 100 LPH Commercial RO Plant - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Flonix 100 LPH Commercial RO Plant in Morbi & Rajkot. 100 LPH heavy industrial water purification plant with pressure gauges. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792157948-image--38-.webp"
+    ]
+  },
+  {
+    "id": "spares-sediment-carbon",
+    "name": "RO Inline Sediment & Carbon Filter Set",
+    "name_en": "RO Inline Sediment & Carbon Filter Set",
+    "name_gu": "",
+    "badge": "Filter Replacement",
+    "badge_en": "Filter Replacement",
+    "badge_gu": "",
+    "category": "spares",
+    "tagline": "High-Efficiency 5 Micron Sediment & Activated Carbon Filter Combo",
+    "tagline_en": "High-Efficiency 5 Micron Sediment & Activated Carbon Filter Combo",
+    "tagline_gu": "",
+    "capacity": "Complete Filter Kit",
+    "capacity_en": "Complete Filter Kit",
+    "capacity_gu": "",
+    "warranty": "Genuine Spare Part",
+    "warranty_en": "Genuine Spare Part",
+    "warranty_gu": "",
+    "description": "Genuine RO filter replacement set featuring 5-micron PP sediment filter and premium activated carbon block filter cartridge. Removes dust, silt, rust, chlorine, bad odor, and organic impurities to restore 100% pure taste to your domestic RO purifier. Doorstep replacement service available in Morbi & Rajkot.",
+    "description_en": "Genuine RO filter replacement set featuring 5-micron PP sediment filter and premium activated carbon block filter cartridge. Removes dust, silt, rust, chlorine, bad odor, and organic impurities to restore 100% pure taste to your domestic RO purifier. Doorstep replacement service available in Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "5-Micron High Density Spun Polypropylene Sediment Filter",
+      "High Iodine Premium Activated Carbon Block",
+      "Universal Push-Fit 1/4 Inch Connectors",
+      "Restores Water Taste & Odor Free Quality",
+      "Extends RO Membrane Lifespan",
+      "Doorstep Technician Installation in Morbi & Rajkot"
+    ],
+    "features_en": [
+      "5-Micron High Density Spun Polypropylene Sediment Filter",
+      "High Iodine Premium Activated Carbon Block",
+      "Universal Push-Fit 1/4 Inch Connectors",
+      "Restores Water Taste & Odor Free Quality",
+      "Extends RO Membrane Lifespan",
+      "Doorstep Technician Installation in Morbi & Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Filter Type": "Sediment + Activated Carbon Set",
+      "Micron Rating": "5 Micron",
+      "Compatibility": "Universal Domestic RO Cabinets",
+      "Service Life": "6 to 12 Months",
+      "Service": "Doorstep Filter Replacement"
+    },
+    "specs_en": {
+      "Filter Type": "Sediment + Activated Carbon Set",
+      "Micron Rating": "5 Micron",
+      "Compatibility": "Universal Domestic RO Cabinets",
+      "Service Life": "6 to 12 Months",
+      "Service": "Doorstep Filter Replacement"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I need an RO filter replacement set (Sediment & Carbon filter kit) for my water purifier.",
+    "meta_title": "RO Sediment & Carbon Filter Replacement Set - Shivam Water Solution Morbi",
+    "meta_desc": "Buy genuine RO sediment and carbon filter replacement cartridges in Morbi & Rajkot. Doorstep RO filter replacement service by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792342586-image--40-.webp"
+    ]
+  },
+  {
+    "id": "spares-ro-membrane",
+    "name": "High-Flow 80 GPD / 100 GPD RO Membrane Element",
+    "name_en": "High-Flow 80 GPD / 100 GPD RO Membrane Element",
+    "name_gu": "",
+    "badge": "TDS Reduction",
+    "badge_en": "TDS Reduction",
+    "badge_gu": "",
+    "category": "spares",
+    "tagline": "High Rejection TFC Reverse Osmosis Membrane Filter",
+    "tagline_en": "High Rejection TFC Reverse Osmosis Membrane Filter",
+    "tagline_gu": "",
+    "capacity": "80 / 100 GPD Capacity",
+    "capacity_en": "80 / 100 GPD Capacity",
+    "capacity_gu": "",
+    "warranty": "Genuine Spare Part",
+    "warranty_en": "Genuine Spare Part",
+    "warranty_gu": "",
+    "description": "High-rejection Thin-Film Composite (TFC) RO Membrane Element suitable for high TDS water up to 2500 PPM in Morbi & Rajkot. Eliminates 95%+ of dissolved salts, heavy metals, fluoride, and microorganisms. Doorstep membrane replacement and TDS calibration by Shivam Water Solution.",
+    "description_en": "High-rejection Thin-Film Composite (TFC) RO Membrane Element suitable for high TDS water up to 2500 PPM in Morbi & Rajkot. Eliminates 95%+ of dissolved salts, heavy metals, fluoride, and microorganisms. Doorstep membrane replacement and TDS calibration by Shivam Water Solution.",
+    "description_gu": "",
+    "features": [
+      "High TDS Salt Rejection Rate (Up to 98%)",
+      "Handles High Hardness Water up to 2500 PPM",
+      "Long-Lasting TFC Spiral Wound Sheet",
+      "Universal 1812 Standard Size Fitting",
+      "Improves Water Clarity & Softness",
+      "Includes Doorstep TDS Testing & Installation"
+    ],
+    "features_en": [
+      "High TDS Salt Rejection Rate (Up to 98%)",
+      "Handles High Hardness Water up to 2500 PPM",
+      "Long-Lasting TFC Spiral Wound Sheet",
+      "Universal 1812 Standard Size Fitting",
+      "Improves Water Clarity & Softness",
+      "Includes Doorstep TDS Testing & Installation"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Membrane Type": "Thin-Film Composite (TFC)",
+      "Flow Capacity": "80 GPD / 100 GPD",
+      "TDS Tolerance": "Up to 2500 PPM",
+      "Rejection Rate": "95% - 98%",
+      "Service": "Doorstep Technician Fitting"
+    },
+    "specs_en": {
+      "Membrane Type": "Thin-Film Composite (TFC)",
+      "Flow Capacity": "80 GPD / 100 GPD",
+      "TDS Tolerance": "Up to 2500 PPM",
+      "Rejection Rate": "95% - 98%",
+      "Service": "Doorstep Technician Fitting"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I want to replace my RO membrane (80 GPD / 100 GPD) for high TDS water.",
+    "meta_title": "RO Membrane 80 GPD / 100 GPD Replacement - Shivam Water Solution Morbi",
+    "meta_desc": "Buy high TDS RO membrane element 80 GPD in Morbi & Rajkot. 95%+ salt rejection. Doorstep technician fitting by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792408855-image--41-.webp"
+    ]
+  },
+  {
+    "id": "spares-alkaline-copper",
+    "name": "3-in-1 Active Copper & Bio-Alkaline Cartridge",
+    "name_en": "3-in-1 Active Copper & Bio-Alkaline Cartridge",
+    "name_gu": "",
+    "badge": "Immunity Booster",
+    "badge_en": "Immunity Booster",
+    "badge_gu": "",
+    "category": "spares",
+    "tagline": "Enriches Water with Active Copper & Essential Alkaline Minerals",
+    "tagline_en": "Enriches Water with Active Copper & Essential Alkaline Minerals",
+    "tagline_gu": "",
+    "capacity": "Universal Fit",
+    "capacity_en": "Universal Fit",
+    "capacity_gu": "",
+    "warranty": "Genuine Spare Part",
+    "warranty_en": "Genuine Spare Part",
+    "warranty_gu": "",
+    "description": "Upgrade your existing RO purifier with our 3-in-1 Active Copper & Bio-Alkaline mineral cartridge. Infuses drinking water with essential Copper (Cu+) ions, Zinc, Calcium, and Magnesium while balancing pH to healthy alkaline 8.5+. Doorstep installation available across Morbi & Rajkot.",
+    "description_en": "Upgrade your existing RO purifier with our 3-in-1 Active Copper & Bio-Alkaline mineral cartridge. Infuses drinking water with essential Copper (Cu+) ions, Zinc, Calcium, and Magnesium while balancing pH to healthy alkaline 8.5+. Doorstep installation available across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "Active Copper Infusion for Immunity & Digestion",
+      "Balances pH to Healthy Alkaline 8.5+",
+      "Adds Essential Minerals (Calcium, Magnesium, Zinc)",
+      "Enhances Water Taste & Smoothness",
+      "Easy Push-Fit Inline Installation",
+      "Doorstep Upgrade Service in Morbi & Rajkot"
+    ],
+    "features_en": [
+      "Active Copper Infusion for Immunity & Digestion",
+      "Balances pH to Healthy Alkaline 8.5+",
+      "Adds Essential Minerals (Calcium, Magnesium, Zinc)",
+      "Enhances Water Taste & Smoothness",
+      "Easy Push-Fit Inline Installation",
+      "Doorstep Upgrade Service in Morbi & Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Cartridge Type": "3-in-1 Bio-Alkaline + Active Copper",
+      "pH Range": "8.0 - 9.5 Alkaline",
+      "Mineral Additions": "Copper, Zinc, Calcium, Magnesium",
+      "Lifespan": "3000 Litres / 1 Year",
+      "Service": "Doorstep Technician Upgrade"
+    },
+    "specs_en": {
+      "Cartridge Type": "3-in-1 Bio-Alkaline + Active Copper",
+      "pH Range": "8.0 - 9.5 Alkaline",
+      "Mineral Additions": "Copper, Zinc, Calcium, Magnesium",
+      "Lifespan": "3000 Litres / 1 Year",
+      "Service": "Doorstep Technician Upgrade"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I want to add an Active Copper & Bio-Alkaline mineral cartridge to my RO purifier.",
+    "meta_title": "Active Copper & Bio Alkaline Cartridge - Shivam Water Solution Morbi",
+    "meta_desc": "Upgrade your RO purifier with 3-in-1 Active Copper & Alkaline mineral filter cartridge in Morbi & Rajkot. Sales & doorstep installation by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792460265-image--42-.webp"
+    ]
+  },
+  {
+    "id": "spares-booster-pump",
+    "name": "Heavy Duty 100 GPD RO Booster Motor Pump",
+    "name_en": "Heavy Duty 100 GPD RO Booster Motor Pump",
+    "name_gu": "",
+    "badge": "Heavy Duty Pump",
+    "badge_en": "Heavy Duty Pump",
+    "badge_gu": "",
+    "category": "spares",
+    "tagline": "100% Copper Winding High Pressure RO Booster Pump",
+    "tagline_en": "100% Copper Winding High Pressure RO Booster Pump",
+    "tagline_gu": "",
+    "capacity": "100 GPD Heavy Motor",
+    "capacity_en": "100 GPD Heavy Motor",
+    "capacity_gu": "",
+    "warranty": "1 Year Pump Warranty",
+    "warranty_en": "1 Year Pump Warranty",
+    "warranty_gu": "",
+    "description": "High-performance 100 GPD RO Booster Pump motor with 100% pure copper winding and shock-proof diaphragm. Provides consistent high pressure (110+ PSI) to drive maximum water recovery through RO membranes. Comes with a 1-year pump warranty and doorstep replacement in Morbi & Rajkot.",
+    "description_en": "High-performance 100 GPD RO Booster Pump motor with 100% pure copper winding and shock-proof diaphragm. Provides consistent high pressure (110+ PSI) to drive maximum water recovery through RO membranes. Comes with a 1-year pump warranty and doorstep replacement in Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "100% Heavy Duty Copper Motor Winding",
+      "Provides High Pressure (110 - 130 PSI)",
+      "Silent Low Vibration Diaphragm Design",
+      "Energy Efficient 24V DC Operation",
+      "1 Year Pump Warranty",
+      "Doorstep Pump Replacement Service"
+    ],
+    "features_en": [
+      "100% Heavy Duty Copper Motor Winding",
+      "Provides High Pressure (110 - 130 PSI)",
+      "Silent Low Vibration Diaphragm Design",
+      "Energy Efficient 24V DC Operation",
+      "1 Year Pump Warranty",
+      "Doorstep Pump Replacement Service"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Voltage": "24V DC",
+      "Pressure Output": "110 - 130 PSI",
+      "Winding Material": "100% Pure Copper",
+      "Capacity": "100 GPD",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Voltage": "24V DC",
+      "Pressure Output": "110 - 130 PSI",
+      "Winding Material": "100% Pure Copper",
+      "Capacity": "100 GPD",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, my RO booster pump is not working. I need a new 100 GPD booster motor pump with 1 year warranty.",
+    "meta_title": "RO Booster Pump Motor 100 GPD Replacement - Shivam Water Solution Morbi",
+    "meta_desc": "Buy 100 GPD RO booster pump motor with 100% copper winding in Morbi & Rajkot. 1 year pump warranty. Repair & replacement by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792518797-image--43-.webp"
+    ]
+  },
+  {
+    "id": "spares-prefilter-kit",
+    "name": "10\" Pre-Filter Outer Housing Bowl & Spun Candle Kit",
+    "name_en": "10\" Pre-Filter Outer Housing Bowl & Spun Candle Kit",
+    "name_gu": "",
+    "badge": "Pre-Filter Kit",
+    "badge_en": "Pre-Filter Kit",
+    "badge_gu": "",
+    "category": "spares",
+    "tagline": "Heavy Duty Transparent Outer Pre-Filter Assembly with Spanner",
+    "tagline_en": "Heavy Duty Transparent Outer Pre-Filter Assembly with Spanner",
+    "tagline_gu": "",
+    "capacity": "Complete Pre-Filter Kit",
+    "capacity_en": "Complete Pre-Filter Kit",
+    "capacity_gu": "",
+    "warranty": "Genuine Spare Part",
+    "warranty_en": "Genuine Spare Part",
+    "warranty_gu": "",
+    "description": "Heavy-duty transparent 10-inch outer pre-filter housing bowl complete with 5-micron PP spun filter cartridge, Teflon tape, elbow connectors, wall bracket, and spanner wrench. Installed outside your RO unit to trap mud, sand, and heavy dust particles before water enters the purifier.",
+    "description_en": "Heavy-duty transparent 10-inch outer pre-filter housing bowl complete with 5-micron PP spun filter cartridge, Teflon tape, elbow connectors, wall bracket, and spanner wrench. Installed outside your RO unit to trap mud, sand, and heavy dust particles before water enters the purifier.",
+    "description_gu": "",
+    "features": [
+      "Heavy Duty Unbreakable Transparent Housing Bowl",
+      "Includes 10 Inch High Density 5 Micron Spun Candle",
+      "Includes Wall Mounting Bracket & Housing Wrench",
+      "Protects Main RO Filters & Pump from Mud/Sand",
+      "Clear Bowl for Easy Inspection of Filter Dirt",
+      "Doorstep Installation in Morbi & Rajkot"
+    ],
+    "features_en": [
+      "Heavy Duty Unbreakable Transparent Housing Bowl",
+      "Includes 10 Inch High Density 5 Micron Spun Candle",
+      "Includes Wall Mounting Bracket & Housing Wrench",
+      "Protects Main RO Filters & Pump from Mud/Sand",
+      "Clear Bowl for Easy Inspection of Filter Dirt",
+      "Doorstep Installation in Morbi & Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Bowl Type": "10 Inch Transparent Food Grade Housing",
+      "Included Accessories": "Spun Candle, Wrench, Wall Bracket, Elbow Fittings",
+      "Micron Rating": "5 Micron Spun",
+      "Service": "Doorstep Pre-Filter Installation"
+    },
+    "specs_en": {
+      "Bowl Type": "10 Inch Transparent Food Grade Housing",
+      "Included Accessories": "Spun Candle, Wrench, Wall Bracket, Elbow Fittings",
+      "Micron Rating": "5 Micron Spun",
+      "Service": "Doorstep Pre-Filter Installation"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I want to buy/install an outer Pre-Filter Bowl housing kit for my RO purifier.",
+    "meta_title": "RO Pre-Filter Outer Housing Bowl Kit - Shivam Water Solution Morbi",
+    "meta_desc": "Buy 10-inch transparent outer pre-filter housing bowl kit with spun candle in Morbi & Rajkot. Sales & doorstep service by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792575022-image--44-.webp"
+    ]
+  },
+  {
+    "id": "spares-uv-barrel",
+    "name": "Stainless Steel UV Sterilizer Chamber & Lamp Set",
+    "name_en": "Stainless Steel UV Sterilizer Chamber & Lamp Set",
+    "name_gu": "",
+    "badge": "UV Sterilizer",
+    "badge_en": "UV Sterilizer",
+    "badge_gu": "",
+    "category": "spares",
+    "tagline": "Grade 304 Stainless Steel UV Barrel with Philips UV-C Lamp",
+    "tagline_en": "Grade 304 Stainless Steel UV Barrel with Philips UV-C Lamp",
+    "tagline_gu": "",
+    "capacity": "Universal RO Fit",
+    "capacity_en": "Universal RO Fit",
+    "capacity_gu": "",
+    "warranty": "Genuine Spare Part",
+    "warranty_en": "Genuine Spare Part",
+    "warranty_gu": "",
+    "description": "Grade 304 Stainless Steel UV Sterilizer Barrel complete with genuine Philips 11W UV-C germicidal lamp tube and electronic ballast SMPS. Kills 99.99% of bacteria, viruses, and waterborne pathogens instantly without chemicals. Doorstep installation available across Morbi & Rajkot.",
+    "description_en": "Grade 304 Stainless Steel UV Sterilizer Barrel complete with genuine Philips 11W UV-C germicidal lamp tube and electronic ballast SMPS. Kills 99.99% of bacteria, viruses, and waterborne pathogens instantly without chemicals. Doorstep installation available across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "Grade 304 Corrosion-Resistant Stainless Steel Barrel",
+      "Original Philips 11W UV-C Germicidal Lamp Tube",
+      "Destroys 99.99% Bacteria & Viruses",
+      "High Output Electronic SMPS Ballast Driver",
+      "Maintains Pure Chemical-Free Water Sterilization",
+      "Doorstep Fitting Service in Morbi & Rajkot"
+    ],
+    "features_en": [
+      "Grade 304 Corrosion-Resistant Stainless Steel Barrel",
+      "Original Philips 11W UV-C Germicidal Lamp Tube",
+      "Destroys 99.99% Bacteria & Viruses",
+      "High Output Electronic SMPS Ballast Driver",
+      "Maintains Pure Chemical-Free Water Sterilization",
+      "Doorstep Fitting Service in Morbi & Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Chamber Material": "Grade 304 Stainless Steel",
+      "Lamp Brand": "Philips UV-C 11W",
+      "Ballast Voltage": "230V AC / SMPS Driver",
+      "Efficacy": "99.99% Microbial Disinfection",
+      "Service": "Doorstep Technician Fitting"
+    },
+    "specs_en": {
+      "Chamber Material": "Grade 304 Stainless Steel",
+      "Lamp Brand": "Philips UV-C 11W",
+      "Ballast Voltage": "230V AC / SMPS Driver",
+      "Efficacy": "99.99% Microbial Disinfection",
+      "Service": "Doorstep Technician Fitting"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I need a UV Sterilizer stainless steel barrel & lamp set for my RO water purifier.",
+    "meta_title": "Stainless Steel UV Barrel & Philips Lamp Set - Shivam Water Solution Morbi",
+    "meta_desc": "Buy stainless steel UV barrel with Philips UV-C lamp set for RO purifiers in Morbi & Rajkot. Sales & repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792642457-image--45-.webp"
+    ]
+  },
+  {
+    "id": "spares-biogreen-110gpd",
+    "name": "Biogreen 110 GPD 4G High TDS RO Membrane (Up to 4000 TDS)",
+    "name_en": "Biogreen 110 GPD 4G High TDS RO Membrane (Up to 4000 TDS)",
+    "name_gu": "",
+    "badge": "4000 TDS Max",
+    "badge_en": "4000 TDS Max",
+    "badge_gu": "",
+    "category": "spares",
+    "tagline": "Extreme High TDS 4000 PPM Reverse Osmosis Membrane Element",
+    "tagline_en": "Extreme High TDS 4000 PPM Reverse Osmosis Membrane Element",
+    "tagline_gu": "",
+    "capacity": "110 GPD 4G High Flow",
+    "capacity_en": "110 GPD 4G High Flow",
+    "capacity_gu": "",
+    "warranty": "Genuine Spare Part",
+    "warranty_en": "Genuine Spare Part",
+    "warranty_gu": "",
+    "description": "Biogreen 110 GPD 4G High TDS RO Membrane element specially engineered for extreme hard water and high TDS conditions up to 4000 PPM in Morbi & Rajkot. Features 110 GPD high flow rate, 4G technology, and 98%+ salt rejection. Ideal for high TDS borewell water. Doorstep installation and TDS calibration available across Morbi & Rajkot.",
+    "description_en": "Biogreen 110 GPD 4G High TDS RO Membrane element specially engineered for extreme hard water and high TDS conditions up to 4000 PPM in Morbi & Rajkot. Features 110 GPD high flow rate, 4G technology, and 98%+ salt rejection. Ideal for high TDS borewell water. Doorstep installation and TDS calibration available across Morbi & Rajkot.",
+    "description_gu": "",
+    "features": [
+      "Works in Extreme High TDS Water Up to 4000 PPM",
+      "110 GPD 4G High Flow Rate Capacity",
+      "High Salt Rejection Rate (Up to 98%)",
+      "Standard 2012 Industrial & Domestic Fit",
+      "Top Quality Guaranteed Membrane Sheet",
+      "Doorstep Technician Installation in Morbi & Rajkot"
+    ],
+    "features_en": [
+      "Works in Extreme High TDS Water Up to 4000 PPM",
+      "110 GPD 4G High Flow Rate Capacity",
+      "High Salt Rejection Rate (Up to 98%)",
+      "Standard 2012 Industrial & Domestic Fit",
+      "Top Quality Guaranteed Membrane Sheet",
+      "Doorstep Technician Installation in Morbi & Rajkot"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Membrane Model": "Biogreen 4G 2012-110 GPD",
+      "TDS Tolerance": "Up to 4000 PPM",
+      "Flow Capacity": "110 GPD",
+      "Technology": "4G High-Rejection TFC",
+      "Service": "Doorstep Filter Fitting"
+    },
+    "specs_en": {
+      "Membrane Model": "Biogreen 4G 2012-110 GPD",
+      "TDS Tolerance": "Up to 4000 PPM",
+      "Flow Capacity": "110 GPD",
+      "Technology": "4G High-Rejection TFC",
+      "Service": "Doorstep Filter Fitting"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in buying/replacing my RO membrane with the Biogreen 110 GPD 4G High TDS (4000 TDS) membrane.",
+    "meta_title": "Biogreen 110 GPD 4G High TDS RO Membrane (4000 TDS) - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Biogreen 110 GPD 4G High TDS RO membrane (4000 TDS max) in Morbi & Rajkot. 98%+ salt rejection. Doorstep technician fitting by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786792711675-image--46-.webp"
     ]
   },
   {
@@ -128,38 +2342,6 @@
     ]
   },
   {
-    "id": "neptune-metallic",
-    "name": "Neptune Metallic",
-    "badge": "Metallic Series",
-    "category": "domestic",
-    "tagline": "Multi-Stage Water Purification System with Metallic Cabinet",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Neptune Metallic Water Purifier features a sleek dark gunmetal cabinet with transparent smoke storage tank and multi-stage RO filtration system. Built for contemporary homes seeking high durability and pure drinking water. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Sleek Metallic Dark Gunmetal Finish",
-      "Transparent Smoke Food-Grade Tank",
-      "Multi-stage RO Water Purification",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Metallic Finish",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Neptune Metallic water purifier model.",
-    "meta_title": "Neptune Metallic - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Neptune Metallic RO water purifier in Morbi & Rajkot. Sleek metallic dark gunmetal cabinet water system. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/neptune_metallic.png"
-    ]
-  },
-  {
     "id": "aqua-xzora",
     "name": "Aqua Xzora",
     "badge": "Digital Display",
@@ -222,228 +2404,6 @@
     ]
   },
   {
-    "id": "aqua-jade",
-    "name": "Aqua Jade",
-    "badge": "Alkaline B12",
-    "category": "domestic",
-    "tagline": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Jade Water Purifier System by Shivam Water Solution features advanced RO + Alkaline B12 + Copper + Zinc + TDS Controller technology. Built with a 10-litre transparent smoke storage tank, LED operational status lights, and 100% pure water guarantee. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
-    "features": [
-      "Alkaline B12 Enriched Filtration",
-      "Copper + Zinc + TDS Controller",
-      "Dark Smoke Food-Grade Storage Tank",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Jade water purifier model.",
-    "meta_title": "Aqua Jade - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Jade RO + Alkaline B12 water purifier in Morbi & Rajkot. Copper + Zinc + TDS Controller technology. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_jade.jpg"
-    ]
-  },
-  {
-    "id": "aqua-v5",
-    "name": "Aqua V5",
-    "badge": "Next Generation",
-    "category": "domestic",
-    "tagline": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
-    "capacity": "12 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua V5 Next Generation Water Purifier System features a dual-chamber transparent design with central rose-gold strip and smart LED touch indicators (ON/OFF, TANK FULL, PURIFYING). Equipped with RO + Alkaline B12 + Copper + Zinc + TDS Controller. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
-    "features": [
-      "Next Generation Dual Chamber Design",
-      "Smart Touch LED Indicators (ON/OFF, TANK FULL, PURIFYING)",
-      "Alkaline B12 + Copper + Zinc Technology",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "12 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua V5 water purifier model.",
-    "meta_title": "Aqua V5 - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua V5 Next Generation RO water purifier in Morbi & Rajkot. Smart touch LED indicators with RO + Alkaline B12 + Copper + Zinc. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_v5.jpg"
-    ]
-  },
-  {
-    "id": "aqua-2090",
-    "name": "Aqua 2090",
-    "badge": "Ribbed Metallic",
-    "category": "domestic",
-    "tagline": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
-    "capacity": "12 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua 2090 NEXT Reverse Osmosis System features a premium solid black cabinet with vertical ribbed side column, modern silver lever tap dispenser, and RO + Alkaline B12 + Copper + Zinc + TDS Control. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
-    "features": [
-      "Solid Black Cabinet with Vertical Ribbed Column",
-      "RO + Alkaline B12 + Copper + Zinc + TDS Control",
-      "Modern Silver Lever Dispenser",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "12 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua 2090 water purifier model.",
-    "meta_title": "Aqua 2090 - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua 2090 NEXT RO water purifier in Morbi & Rajkot. Solid black cabinet with ribbed column and RO + Alkaline B12. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_2090.jpg"
-    ]
-  },
-  {
-    "id": "aqua-9090",
-    "name": "Aqua 9090",
-    "badge": "Smart LED",
-    "category": "domestic",
-    "tagline": "Trendy & Classic Heavy Food Grade RO Purifier",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua 9090 Water Purifier by Nile features a trendy and classic heavy food-grade cabinet, invisible screw design, smart LED indicators, and 10-litre storage tank. Built for easy installation and maintenance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Invisible Screw Sleek Cabinet Design",
-      "Smart LED Display Panel",
-      "Large 10L Storage Tank",
-      "Heavy Food Grade Cabinet",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "Heavy ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua 9090 water purifier model.",
-    "meta_title": "Aqua 9090 - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua 9090 RO water purifier in Morbi & Rajkot. Invisible screw heavy food grade cabinet with smart LED by Nile. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_9090.jpg"
-    ]
-  },
-  {
-    "id": "aqua-klick-pro",
-    "name": "Aqua Klick Pro",
-    "badge": "Unbreakable Tank",
-    "category": "domestic",
-    "tagline": "Purity in Every Drop with Compact Stylish Look",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Klick Pro delivers purity in every drop with an exclusive design featuring an unbreakable storage tank, compact stylish matte finish cabinet, and advanced multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Exclusive Design with Unbreakable Tank",
-      "Compact Stylish Black Finish",
-      "Multi-stage RO Filtration",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Klick Pro water purifier model.",
-    "meta_title": "Aqua Klick Pro - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Klick Pro RO water purifier in Morbi & Rajkot. Compact stylish look with unbreakable tank. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_klick_pro_v2.png"
-    ]
-  },
-  {
-    "id": "aqua-grand",
-    "name": "Aqua Grand",
-    "badge": "TDS Controller",
-    "category": "domestic",
-    "tagline": "Innovative Technology RO + UV + TDS Controller",
-    "capacity": "12 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Grand RO Water Purifier System features innovative RO + UV + TDS Controller technology for fresh and hygienic drinking water. Designed with a transparent upper chamber showing active carbon and UV filters, filter change alarm system, and food-grade 12-litre storage tank. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Innovative RO + UV + TDS Controller",
-      "Transparent Chamber with Activated Carbon",
-      "Automatic Filter Change Alarm",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "12 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Grand water purifier model.",
-    "meta_title": "Aqua Grand - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Grand RO water purifier in Morbi & Rajkot. Innovative technology RO + UV + TDS controller with filter change alarm. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_grand.png"
-    ]
-  },
-  {
-    "id": "mr-aqua-mars",
-    "name": "Mr Aqua Mars",
-    "badge": "Unbreakable Cabinet",
-    "category": "domestic",
-    "tagline": "Unbreakable Heavy-Duty Reverse Osmosis System",
-    "capacity": "12 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Mr Aqua Mars Reverse Osmosis System by Nile features a premium unbreakable cabinet in sleek dark finish, high-grade RO filtration, and LED operational indicators. Built for durability, quality, and high performance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Quality Assured Unbreakable Cabinet",
-      "Sleek Dark Matte Finish",
-      "Multi-stage RO Water Purification",
-      "LED Operational Status Indicators",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "12 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "Unbreakable ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Mr Aqua Mars water purifier model.",
-    "meta_title": "Mr Aqua Mars - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Mr Aqua Mars RO water purifier in Morbi & Rajkot. Heavy-duty unbreakable cabinet RO water system by Nile. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/mr_aqua_mars.jpg"
-    ]
-  },
-  {
     "id": "aqua-prima",
     "name": "Aqua Prima",
     "badge": "8 Stage RO",
@@ -473,764 +2433,6 @@
     "meta_desc": "Buy Aqua Prima 8-Stage RO water purifier in Morbi & Rajkot. Advance technology 100% pure water system. Sales, installation, and repair services by Shivam Water Solution.",
     "images": [
       "/api/images/products/aqua_prima.png"
-    ]
-  },
-  {
-    "id": "aqua-nine",
-    "name": "Aqua Nine",
-    "badge": "Modern Design",
-    "category": "domestic",
-    "tagline": "Modern Design RO Water Purification System by Nile",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Nine Water Purifier by Nile features a modern design black cabinet with golden accent curves, LED status indicators, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Sleek Black Cabinet with Gold Waves",
-      "Nile Brand Engineering",
-      "LED Operational Status Panel",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Nine water purifier model.",
-    "meta_title": "Aqua Nine - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Nine RO water purifier in Morbi & Rajkot. Modern design black cabinet with gold wave accents by Nile. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_nine.jpg"
-    ]
-  },
-  {
-    "id": "aqua-innovica",
-    "name": "Aqua Innovica",
-    "badge": "Immunity 3-in-1",
-    "category": "domestic",
-    "tagline": "RO + Alkaline B12 + Copper + Zinc + TDS Controller",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Innovica Water Purifier System by Shivam Water Solution features 3-in-1 Zinc, Copper, and Alkaline technology to boost your immunity. Built with a 10-litre transparent smoke storage tank and smart LED indicators. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot.",
-    "features": [
-      "Zinc + Copper + Alkaline 3-in-1 Immunity Booster",
-      "RO + Alkaline B12 + TDS Controller",
-      "LED Touch Indicator Panel",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Innovica water purifier model.",
-    "meta_title": "Aqua Innovica - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Innovica RO + Alkaline B12 water purifier in Morbi & Rajkot. 3-in-1 Zinc + Copper immunity booster. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_innovica.jpg"
-    ]
-  },
-  {
-    "id": "aqua-era",
-    "name": "Aqua Era Charcoal Black",
-    "badge": "Core Series",
-    "category": "domestic",
-    "tagline": "Pure. Premium. Powerful. Core Series RO Purifier",
-    "capacity": "9 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Era Charcoal Black Water Purifier from the Core Series offers pure, premium, and powerful multi-stage water filtration. Designed with a ribbed front cover, silver dispenser tap, and 9-litre storage tank. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Core Series Ribbed Front Cover",
-      "Pure Premium Powerful Filtration",
-      "Drink On Time Smart Reminder",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "9 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Era Charcoal Black water purifier model.",
-    "meta_title": "Aqua Era Charcoal Black - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Era Charcoal Black RO water purifier in Morbi & Rajkot. Core series premium design. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_era.jpg"
-    ]
-  },
-  {
-    "id": "aqua-flip",
-    "name": "Aqua Flip",
-    "badge": "Detachable Tank",
-    "category": "domestic",
-    "tagline": "Elegance with Excellence - 15 LPH Flow Rate",
-    "capacity": "13 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Flip Water Purifier by Nile combines elegance with excellence. Built with a high-capacity 13-litre detachable storage tank, 15 LPH fast filtration rate, and advanced bacterial/virus protection. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "13L Detachable Storage Tank",
-      "15 LPH High Flow Rate",
-      "Removes Bacteria and Virus 100%",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "13 Litres",
-      "Purification Speed": "15 LPH",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade Detachable Tank",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Flip water purifier model.",
-    "meta_title": "Aqua Flip - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Flip RO water purifier in Morbi & Rajkot. 13L detachable tank with 15 LPH high flow by Nile. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_flip.jpg"
-    ]
-  },
-  {
-    "id": "lx-two",
-    "name": "LX TWO Charcoal Black",
-    "badge": "Glam Edition",
-    "category": "domestic",
-    "tagline": "Sleek Charcoal Black Glam Edition RO Purifier",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "LX TWO Charcoal Black Glam Edition Reverse Osmosis Water Purifier features a sleek modern dark cabinet with silver metallic dispenser housing and soft touch LED indicators. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Glam Edition Charcoal Black Design",
-      "Silver Metallic Dispenser Frame",
-      "Smart LED Status Indicators",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Glam Finish",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the LX TWO Charcoal Black water purifier model.",
-    "meta_title": "LX TWO Charcoal Black - Shivam Water Solution Morbi",
-    "meta_desc": "Buy LX TWO Charcoal Black RO water purifier in Morbi & Rajkot. Glam edition sleek black cabinet. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/lx_two.jpg"
-    ]
-  },
-  {
-    "id": "purosis-white",
-    "name": "Purosis White",
-    "badge": "Purely Premium",
-    "category": "domestic",
-    "tagline": "Redefining Purity with Purely Premium Material",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Purosis White Water Purifier is engineered for maximum durability and purity. Built with pure, premium food-grade materials, sleek white ergonomic cabinet, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Purely Premium Food Grade Material",
-      "Redefining Purity Architecture",
-      "Sleek White Ergonomic Body",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "Premium ABS White",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Purosis White water purifier model.",
-    "meta_title": "Purosis White - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Purosis White RO water purifier in Morbi & Rajkot. Premium food grade material for redefining purity. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/purosis_white.jpg"
-    ]
-  },
-  {
-    "id": "lx-one",
-    "name": "LX ONE Titanium",
-    "badge": "Titanium Series",
-    "category": "domestic",
-    "tagline": "Titanium Series Modern RO Water Purifier",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "LX ONE Titanium Series Reverse Osmosis Water Purifier features a brushed titanium finish cabinet with transparent smoke storage tank and smart vertical LED indicator strip. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Titanium Series Brushed Metallic Cabinet",
-      "Vertical LED Smart Status Bar",
-      "High Flow Dispenser Tap",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Titanium Finish",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the LX ONE Titanium water purifier model.",
-    "meta_title": "LX ONE Titanium - Shivam Water Solution Morbi",
-    "meta_desc": "Buy LX ONE Titanium RO water purifier in Morbi & Rajkot. Titanium series brushed metallic cabinet. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/lx_one.jpg"
-    ]
-  },
-  {
-    "id": "flonix-25lph",
-    "name": "Flonix 25 LPH Commercial RO Plant",
-    "badge": "25 LPH Commercial",
-    "category": "commercial",
-    "tagline": "ISI Certified Heavy-Duty Commercial RO Plant",
-    "capacity": "25 LPH Flow Rate",
-    "warranty": "1 Year Warranty",
-    "description": "Flonix 25 LPH Commercial RO Plant is IS 16240 ISI certified for offices, schools, hotels, and commercial establishments. Built with heavy-duty metal stand, 10\" Spun, 10\" GAC, 10\" CTO, Post Carbon, dual 80 GPD RO membranes, and 150 GPD booster pump. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
-    "features": [
-      "25 Litres Per Hour High Capacity",
-      "IS 16240 ISI Certified Quality",
-      "Heavy Duty Metallic Stand Frame",
-      "100% Food Grade Filter Housings",
-      "1 Year Warranty",
-      "Free Commercial Installation"
-    ],
-    "specs": {
-      "Purification Capacity": "25 LPH",
-      "Pre-Filters": "10 Spun, 10 GAC, 10 CTO",
-      "Membrane": "80 GPD RO Membrane (2 Nos)",
-      "Booster Pump": "150 GPD RO Pump",
-      "Certification": "IS 16240 ISI",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Flonix 25 LPH Commercial RO Plant model.",
-    "meta_title": "Flonix 25 LPH Commercial RO Plant - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Flonix 25 LPH Commercial RO Plant in Morbi & Rajkot. ISI IS 16240 certified heavy duty commercial water purifier for offices & hotels. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/flonix_25lph.jpg"
-    ]
-  },
-  {
-    "id": "aqua-strom",
-    "name": "Aqua Strom Black",
-    "badge": "Timeless Elegance",
-    "category": "domestic",
-    "tagline": "Timeless Elegance in Black by Cloud International",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Aqua Strom Black Water Purifier by Cloud International features timeless elegance in black with digital LED display, copper essential minerals, and boost immunity technology. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Timeless Elegance Black Finish",
-      "Digital LED Display Panel",
-      "Copper Essential Minerals",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Strom Black water purifier model.",
-    "meta_title": "Aqua Strom Black - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Strom Black RO water purifier in Morbi & Rajkot. Digital LED display with active copper minerals by Cloud International. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/aqua_strom.jpg"
-    ]
-  },
-  {
-    "id": "finpure-ocean-blue",
-    "name": "Finpure Ocean Blue",
-    "badge": "Ocean Blue",
-    "category": "domestic",
-    "tagline": "Dive into a Sea of Style with Ocean Blue by Purosis",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Finpure Ocean Blue Water Purifier by Purosis brings vibrant style to your kitchen. Designed with dual-tone ocean blue and black cabinet, smart LED status bar, and Drink Water reminder window. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Dual-Tone Ocean Blue & Black Cabinet",
-      "Smart Drink Water Reminder Window",
-      "Purosis Finest Ever Engineering",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Finpure Ocean Blue water purifier model.",
-    "meta_title": "Finpure Ocean Blue - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Finpure Ocean Blue RO water purifier in Morbi & Rajkot. Dual-tone ocean blue cabinet by Purosis. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/finpure_ocean_blue.jpg"
-    ]
-  },
-  {
-    "id": "cosmax-nova",
-    "name": "Cosmax Nova Black",
-    "badge": "Sophisticated",
-    "category": "domestic",
-    "tagline": "Sophisticated. Confident. Trusted. Latest RO Tech",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Cosmax Nova Black Reverse Osmosis System features Cosmax L25 latest RO technology with 100% BPA-free food-grade storage, sleek black cabinet, and smart touch status icons. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Cosmax L25 Latest RO Technology",
-      "100% BPA Free Food Grade Housing",
-      "Sophisticated Matte Black Cabinet",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "BPA Free ABS Food Grade",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Cosmax Nova Black water purifier model.",
-    "meta_title": "Cosmax Nova Black - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Cosmax Nova Black RO water purifier in Morbi & Rajkot. BPA free food grade cabinet with Cosmax L25 latest RO tech. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/cosmax_nova.jpg"
-    ]
-  },
-  {
-    "id": "purosis-puroaqua",
-    "name": "Purosis PuroAqua Matt Black",
-    "badge": "Alkaline RO",
-    "category": "domestic",
-    "tagline": "Sleek Sophistication of Black with PuroAqua",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Purosis PuroAqua Matt Black Reverse Osmosis System features sleek matt black styling, high-efficiency RO + Alkaline technology, and LED operational status strip. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Sleek Matt Black Ergonomic Body",
-      "PuroAqua RO + Alkaline Technology",
-      "Horizontal LED Status Strip",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Matt Black",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Purosis PuroAqua Matt Black water purifier model.",
-    "meta_title": "Purosis PuroAqua Matt Black - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Purosis PuroAqua Matt Black RO water purifier in Morbi & Rajkot. Sleek matt black body with RO + Alkaline tech. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/purosis_puroaqua.jpg"
-    ]
-  },
-  {
-    "id": "olix-jade",
-    "name": "Olix Jade Black",
-    "badge": "Clean Edition",
-    "category": "domestic",
-    "tagline": "Smart RO Cabinet - Refresh Yourself",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Olix Jade Black Smart RO Cabinet Water Purifier features a patented sleek design (Patent No. 430436-001) with LED status display, leak-proof 10L food-grade tank, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Patented Smart RO Cabinet Design (430436-001)",
-      "Clean Editions Jade Black Finish",
-      "10L Leak-Proof Food Grade Tank",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade (Patented)",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Olix Jade Black water purifier model.",
-    "meta_title": "Olix Jade Black - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Olix Jade Black RO water purifier in Morbi & Rajkot. Patented smart RO cabinet design with LED display. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/olix_jade.jpg"
-    ]
-  },
-  {
-    "id": "hiflo-metallic",
-    "name": "Hi-Flo Metallic Black",
-    "badge": "Metallic Black",
-    "category": "domestic",
-    "tagline": "Clean Water Hi-Flo Water Purification System",
-    "capacity": "10 Ltrs Storage",
-    "warranty": "1 Year Warranty",
-    "description": "Hi-Flo Metallic Black Water Purifier System by Clean Water features a metallic black cabinet with wave pattern front plate, vertical LED status lights, and multi-stage high-flow RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "features": [
-      "Metallic Black Cabinet with Wave Graphics",
-      "Vertical LED Indicator Panel",
-      "High Flow Rate RO Pump",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Metallic Finish",
-      "Installation Type": "Wall Mounted",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Hi-Flo Metallic Black water purifier model.",
-    "meta_title": "Hi-Flo Metallic Black - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Hi-Flo Metallic Black RO water purifier in Morbi & Rajkot. Clean water high flow RO system. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/hiflo_metallic.jpg"
-    ]
-  },
-  {
-    "id": "flonix-50lph",
-    "name": "Flonix 50 LPH Commercial RO Plant",
-    "badge": "50 LPH Commercial",
-    "category": "commercial",
-    "tagline": "Heavy Duty 50 LPH Commercial Reverse Osmosis Plant",
-    "capacity": "50 LPH Flow Rate",
-    "warranty": "1 Year Warranty",
-    "description": "Flonix 50 LPH Commercial RO Plant is engineered for medium to large commercial spaces such as restaurants, factories, offices, and hospitals. Built with premium metallic stand, 20\" Spun, 20\" GAC, 20\" CTO, 4 high-performance 80 GPD RO membranes, and dual 150 GPD booster pumps. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
-    "features": [
-      "50 Litres Per Hour High Volume Purification",
-      "4x 80 GPD High Flow RO Membranes",
-      "Dual 150 GPD Booster Pumps",
-      "CE Certified Electric Components",
-      "1 Year Warranty",
-      "Free Commercial Installation"
-    ],
-    "specs": {
-      "Purification Capacity": "50 LPH",
-      "Pre-Filters": "20 Spun, 20 GAC, 20 CTO",
-      "Membrane": "80 GPD RO Membrane (4 Nos)",
-      "Booster Pump": "150 GPD RO Pump (2 Nos)",
-      "Post-Filter": "Post Carbon",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Flonix 50 LPH Commercial RO Plant model.",
-    "meta_title": "Flonix 50 LPH Commercial RO Plant - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Flonix 50 LPH Commercial RO Plant in Morbi & Rajkot. High volume 50 LPH water purifier plant for factories & restaurants. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/flonix_50lph.jpg"
-    ]
-  },
-  {
-    "id": "flonix-100lph",
-    "name": "Flonix 100 LPH Commercial RO Plant",
-    "badge": "100 LPH Commercial",
-    "category": "commercial",
-    "tagline": "High Capacity 100 LPH Commercial RO Plant with Pressure Gauges",
-    "capacity": "100 LPH Flow Rate",
-    "warranty": "1 Year Warranty",
-    "description": "Flonix 100 LPH Commercial RO Plant is a high-capacity industrial water purification plant designed for industrial units, colleges, hostels, and large facilities. Built with dual pressure gauges, low pressure switch (LPS), 20\" Spun, 20\" GAC, 20\" CTO, 3x 300 GPD RO membranes, and 3x 300 GPD booster pumps. Comes with a 1-year warranty, free installation, and free delivery across Morbi & Rajkot.",
-    "features": [
-      "100 Litres Per Hour Heavy Industrial Capacity",
-      "Dual Stainless Pressure Gauges + LPS",
-      "3x 300 GPD Industrial RO Membranes",
-      "3x 300 GPD Heavy Booster Pumps",
-      "1 Year Warranty",
-      "Free Industrial Installation"
-    ],
-    "specs": {
-      "Purification Capacity": "100 LPH",
-      "Pre-Filters": "20 Spun, 20 GAC, 20 CTO",
-      "Membrane": "300 GPD RO Membrane (3 Nos)",
-      "Booster Pump": "300 GPD RO Pump (3 Nos)",
-      "Gauges": "RO + Low Pressure Gauges",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Flonix 100 LPH Commercial RO Plant model.",
-    "meta_title": "Flonix 100 LPH Commercial RO Plant - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Flonix 100 LPH Commercial RO Plant in Morbi & Rajkot. 100 LPH heavy industrial water purification plant with pressure gauges. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/flonix_100lph.jpg"
-    ]
-  },
-  {
-    "id": "remino-25lph",
-    "name": "Remino 25 LPH Commercial RO Plant (Double Membrane)",
-    "badge": "Double Membrane",
-    "category": "commercial",
-    "tagline": "25 LPH Stainless Steel Frame Double Membrane Commercial RO Plant",
-    "capacity": "25 LPH Flow Rate",
-    "warranty": "1 Year Warranty",
-    "description": "Remino 25 LPH Commercial RO Plant features a premium stainless steel open frame design with 3 heavy-duty 10\" blue filter housings, double high-rejection RO membranes, top-mounted booster pump, and ISO certified filtration components. Designed for offices, factories, restaurants, and schools across Morbi & Rajkot.",
-    "features": [
-      "25 Litres Per Hour High Production",
-      "Double High-Rejection RO Membranes",
-      "Heavy Duty Stainless Steel Open Frame",
-      "3x 10 Inch Blue Jumbo Filter Housings",
-      "1 Year Warranty",
-      "Free Commercial Installation & Home Delivery"
-    ],
-    "specs": {
-      "Purification Capacity": "25 LPH",
-      "Frame Material": "Stainless Steel Open Frame",
-      "Membranes": "Double RO Membrane Elements",
-      "Pre-Filter Housings": "3x 10 Blue Jumbo Housings",
-      "Booster Pump": "Heavy Duty Commercial Pump",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Remino 25 LPH Commercial RO Plant (Double Membrane).",
-    "meta_title": "Remino 25 LPH Commercial RO Plant - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Remino 25 LPH Double Membrane Commercial RO Plant in Morbi & Rajkot. Heavy duty stainless steel frame commercial purifier for offices & factories.",
-    "images": [
-      "/api/images/products/remino_25lph.png"
-    ]
-  },
-  {
-    "id": "spares-sediment-carbon",
-    "name": "RO Inline Sediment & Carbon Filter Set",
-    "badge": "Filter Replacement",
-    "category": "spares",
-    "tagline": "High-Efficiency 5 Micron Sediment & Activated Carbon Filter Combo",
-    "capacity": "Complete Filter Kit",
-    "warranty": "Genuine Spare Part",
-    "description": "Genuine RO filter replacement set featuring 5-micron PP sediment filter and premium activated carbon block filter cartridge. Removes dust, silt, rust, chlorine, bad odor, and organic impurities to restore 100% pure taste to your domestic RO purifier. Doorstep replacement service available in Morbi & Rajkot.",
-    "features": [
-      "5-Micron High Density Spun Polypropylene Sediment Filter",
-      "High Iodine Premium Activated Carbon Block",
-      "Universal Push-Fit 1/4 Inch Connectors",
-      "Restores Water Taste & Odor Free Quality",
-      "Extends RO Membrane Lifespan",
-      "Doorstep Technician Installation in Morbi & Rajkot"
-    ],
-    "specs": {
-      "Filter Type": "Sediment + Activated Carbon Set",
-      "Micron Rating": "5 Micron",
-      "Compatibility": "Universal Domestic RO Cabinets",
-      "Service Life": "6 to 12 Months",
-      "Service": "Doorstep Filter Replacement"
-    },
-    "wa": "Hi Shivam Water Solution, I need an RO filter replacement set (Sediment & Carbon filter kit) for my water purifier.",
-    "meta_title": "RO Sediment & Carbon Filter Replacement Set - Shivam Water Solution Morbi",
-    "meta_desc": "Buy genuine RO sediment and carbon filter replacement cartridges in Morbi & Rajkot. Doorstep RO filter replacement service by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/spares_sediment_carbon.jpg"
-    ]
-  },
-  {
-    "id": "spares-ro-membrane",
-    "name": "High-Flow 80 GPD / 100 GPD RO Membrane Element",
-    "badge": "TDS Reduction",
-    "category": "spares",
-    "tagline": "High Rejection TFC Reverse Osmosis Membrane Filter",
-    "capacity": "80 / 100 GPD Capacity",
-    "warranty": "Genuine Spare Part",
-    "description": "High-rejection Thin-Film Composite (TFC) RO Membrane Element suitable for high TDS water up to 2500 PPM in Morbi & Rajkot. Eliminates 95%+ of dissolved salts, heavy metals, fluoride, and microorganisms. Doorstep membrane replacement and TDS calibration by Shivam Water Solution.",
-    "features": [
-      "High TDS Salt Rejection Rate (Up to 98%)",
-      "Handles High Hardness Water up to 2500 PPM",
-      "Long-Lasting TFC Spiral Wound Sheet",
-      "Universal 1812 Standard Size Fitting",
-      "Improves Water Clarity & Softness",
-      "Includes Doorstep TDS Testing & Installation"
-    ],
-    "specs": {
-      "Membrane Type": "Thin-Film Composite (TFC)",
-      "Flow Capacity": "80 GPD / 100 GPD",
-      "TDS Tolerance": "Up to 2500 PPM",
-      "Rejection Rate": "95% - 98%",
-      "Service": "Doorstep Technician Fitting"
-    },
-    "wa": "Hi Shivam Water Solution, I want to replace my RO membrane (80 GPD / 100 GPD) for high TDS water.",
-    "meta_title": "RO Membrane 80 GPD / 100 GPD Replacement - Shivam Water Solution Morbi",
-    "meta_desc": "Buy high TDS RO membrane element 80 GPD in Morbi & Rajkot. 95%+ salt rejection. Doorstep technician fitting by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/spares_ro_membrane.jpg"
-    ]
-  },
-  {
-    "id": "spares-alkaline-copper",
-    "name": "3-in-1 Active Copper & Bio-Alkaline Cartridge",
-    "badge": "Immunity Booster",
-    "category": "spares",
-    "tagline": "Enriches Water with Active Copper & Essential Alkaline Minerals",
-    "capacity": "Universal Fit",
-    "warranty": "Genuine Spare Part",
-    "description": "Upgrade your existing RO purifier with our 3-in-1 Active Copper & Bio-Alkaline mineral cartridge. Infuses drinking water with essential Copper (Cu+) ions, Zinc, Calcium, and Magnesium while balancing pH to healthy alkaline 8.5+. Doorstep installation available across Morbi & Rajkot.",
-    "features": [
-      "Active Copper Infusion for Immunity & Digestion",
-      "Balances pH to Healthy Alkaline 8.5+",
-      "Adds Essential Minerals (Calcium, Magnesium, Zinc)",
-      "Enhances Water Taste & Smoothness",
-      "Easy Push-Fit Inline Installation",
-      "Doorstep Upgrade Service in Morbi & Rajkot"
-    ],
-    "specs": {
-      "Cartridge Type": "3-in-1 Bio-Alkaline + Active Copper",
-      "pH Range": "8.0 - 9.5 Alkaline",
-      "Mineral Additions": "Copper, Zinc, Calcium, Magnesium",
-      "Lifespan": "3000 Litres / 1 Year",
-      "Service": "Doorstep Technician Upgrade"
-    },
-    "wa": "Hi Shivam Water Solution, I want to add an Active Copper & Bio-Alkaline mineral cartridge to my RO purifier.",
-    "meta_title": "Active Copper & Bio Alkaline Cartridge - Shivam Water Solution Morbi",
-    "meta_desc": "Upgrade your RO purifier with 3-in-1 Active Copper & Alkaline mineral filter cartridge in Morbi & Rajkot. Sales & doorstep installation by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/spares_alkaline_copper.jpg"
-    ]
-  },
-  {
-    "id": "spares-booster-pump",
-    "name": "Heavy Duty 100 GPD RO Booster Motor Pump",
-    "badge": "Heavy Duty Pump",
-    "category": "spares",
-    "tagline": "100% Copper Winding High Pressure RO Booster Pump",
-    "capacity": "100 GPD Heavy Motor",
-    "warranty": "1 Year Pump Warranty",
-    "description": "High-performance 100 GPD RO Booster Pump motor with 100% pure copper winding and shock-proof diaphragm. Provides consistent high pressure (110+ PSI) to drive maximum water recovery through RO membranes. Comes with a 1-year pump warranty and doorstep replacement in Morbi & Rajkot.",
-    "features": [
-      "100% Heavy Duty Copper Motor Winding",
-      "Provides High Pressure (110 - 130 PSI)",
-      "Silent Low Vibration Diaphragm Design",
-      "Energy Efficient 24V DC Operation",
-      "1 Year Pump Warranty",
-      "Doorstep Pump Replacement Service"
-    ],
-    "specs": {
-      "Voltage": "24V DC",
-      "Pressure Output": "110 - 130 PSI",
-      "Winding Material": "100% Pure Copper",
-      "Capacity": "100 GPD",
-      "Warranty": "1 Year"
-    },
-    "wa": "Hi Shivam Water Solution, my RO booster pump is not working. I need a new 100 GPD booster motor pump with 1 year warranty.",
-    "meta_title": "RO Booster Pump Motor 100 GPD Replacement - Shivam Water Solution Morbi",
-    "meta_desc": "Buy 100 GPD RO booster pump motor with 100% copper winding in Morbi & Rajkot. 1 year pump warranty. Repair & replacement by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/spares_booster_pump.jpg"
-    ]
-  },
-  {
-    "id": "spares-prefilter-kit",
-    "name": "10\" Pre-Filter Outer Housing Bowl & Spun Candle Kit",
-    "badge": "Pre-Filter Kit",
-    "category": "spares",
-    "tagline": "Heavy Duty Transparent Outer Pre-Filter Assembly with Spanner",
-    "capacity": "Complete Pre-Filter Kit",
-    "warranty": "Genuine Spare Part",
-    "description": "Heavy-duty transparent 10-inch outer pre-filter housing bowl complete with 5-micron PP spun filter cartridge, Teflon tape, elbow connectors, wall bracket, and spanner wrench. Installed outside your RO unit to trap mud, sand, and heavy dust particles before water enters the purifier.",
-    "features": [
-      "Heavy Duty Unbreakable Transparent Housing Bowl",
-      "Includes 10 Inch High Density 5 Micron Spun Candle",
-      "Includes Wall Mounting Bracket & Housing Wrench",
-      "Protects Main RO Filters & Pump from Mud/Sand",
-      "Clear Bowl for Easy Inspection of Filter Dirt",
-      "Doorstep Installation in Morbi & Rajkot"
-    ],
-    "specs": {
-      "Bowl Type": "10 Inch Transparent Food Grade Housing",
-      "Included Accessories": "Spun Candle, Wrench, Wall Bracket, Elbow Fittings",
-      "Micron Rating": "5 Micron Spun",
-      "Service": "Doorstep Pre-Filter Installation"
-    },
-    "wa": "Hi Shivam Water Solution, I want to buy/install an outer Pre-Filter Bowl housing kit for my RO purifier.",
-    "meta_title": "RO Pre-Filter Outer Housing Bowl Kit - Shivam Water Solution Morbi",
-    "meta_desc": "Buy 10-inch transparent outer pre-filter housing bowl kit with spun candle in Morbi & Rajkot. Sales & doorstep service by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/spares_prefilter_kit.jpg"
-    ]
-  },
-  {
-    "id": "spares-uv-barrel",
-    "name": "Stainless Steel UV Sterilizer Chamber & Lamp Set",
-    "badge": "UV Sterilizer",
-    "category": "spares",
-    "tagline": "Grade 304 Stainless Steel UV Barrel with Philips UV-C Lamp",
-    "capacity": "Universal RO Fit",
-    "warranty": "Genuine Spare Part",
-    "description": "Grade 304 Stainless Steel UV Sterilizer Barrel complete with genuine Philips 11W UV-C germicidal lamp tube and electronic ballast SMPS. Kills 99.99% of bacteria, viruses, and waterborne pathogens instantly without chemicals. Doorstep installation available across Morbi & Rajkot.",
-    "features": [
-      "Grade 304 Corrosion-Resistant Stainless Steel Barrel",
-      "Original Philips 11W UV-C Germicidal Lamp Tube",
-      "Destroys 99.99% Bacteria & Viruses",
-      "High Output Electronic SMPS Ballast Driver",
-      "Maintains Pure Chemical-Free Water Sterilization",
-      "Doorstep Fitting Service in Morbi & Rajkot"
-    ],
-    "specs": {
-      "Chamber Material": "Grade 304 Stainless Steel",
-      "Lamp Brand": "Philips UV-C 11W",
-      "Ballast Voltage": "230V AC / SMPS Driver",
-      "Efficacy": "99.99% Microbial Disinfection",
-      "Service": "Doorstep Technician Fitting"
-    },
-    "wa": "Hi Shivam Water Solution, I need a UV Sterilizer stainless steel barrel & lamp set for my RO water purifier.",
-    "meta_title": "Stainless Steel UV Barrel & Philips Lamp Set - Shivam Water Solution Morbi",
-    "meta_desc": "Buy stainless steel UV barrel with Philips UV-C lamp set for RO purifiers in Morbi & Rajkot. Sales & repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/spares_uv_barrel.jpg"
-    ]
-  },
-  {
-    "id": "spares-biogreen-110gpd",
-    "name": "Biogreen 110 GPD 4G High TDS RO Membrane (Up to 4000 TDS)",
-    "badge": "4000 TDS Max",
-    "category": "spares",
-    "tagline": "Extreme High TDS 4000 PPM Reverse Osmosis Membrane Element",
-    "capacity": "110 GPD 4G High Flow",
-    "warranty": "Genuine Spare Part",
-    "description": "Biogreen 110 GPD 4G High TDS RO Membrane element specially engineered for extreme hard water and high TDS conditions up to 4000 PPM in Morbi & Rajkot. Features 110 GPD high flow rate, 4G technology, and 98%+ salt rejection. Ideal for high TDS borewell water. Doorstep installation and TDS calibration available across Morbi & Rajkot.",
-    "features": [
-      "Works in Extreme High TDS Water Up to 4000 PPM",
-      "110 GPD 4G High Flow Rate Capacity",
-      "High Salt Rejection Rate (Up to 98%)",
-      "Standard 2012 Industrial & Domestic Fit",
-      "Top Quality Guaranteed Membrane Sheet",
-      "Doorstep Technician Installation in Morbi & Rajkot"
-    ],
-    "specs": {
-      "Membrane Model": "Biogreen 4G 2012-110 GPD",
-      "TDS Tolerance": "Up to 4000 PPM",
-      "Flow Capacity": "110 GPD",
-      "Technology": "4G High-Rejection TFC",
-      "Service": "Doorstep Filter Fitting"
-    },
-    "wa": "Hi Shivam Water Solution, I am interested in buying/replacing my RO membrane with the Biogreen 110 GPD 4G High TDS (4000 TDS) membrane.",
-    "meta_title": "Biogreen 110 GPD 4G High TDS RO Membrane (4000 TDS) - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Biogreen 110 GPD 4G High TDS RO membrane (4000 TDS max) in Morbi & Rajkot. 98%+ salt rejection. Doorstep technician fitting by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/spares_biogreen_110gpd.png"
     ]
   }
 ]

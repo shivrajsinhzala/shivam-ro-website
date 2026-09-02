@@ -11,7 +11,12 @@ export const CORS = {
 export function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
-    headers: { 'Content-Type': 'application/json', ...CORS },
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+      'Pragma': 'no-cache',
+      ...CORS,
+    },
   });
 }
 
@@ -104,7 +109,8 @@ export function parseProduct(row) {
     warranty:    row.warranty_en,
     description: row.description_en,
     features:    features_en,
-    specs:       specs_en
+    specs:       specs_en,
+    is_active:   (row.is_active === 0 || row.is_active === false || row.is_active === '0') ? 0 : 1,
   };
 }
 

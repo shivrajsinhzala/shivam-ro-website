@@ -19,10 +19,9 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 
   const baseUrl = "https://shivamwatersolution.in";
   let rawImg = product.images?.[0] || "/assets/product_domestic.webp";
-  let cleanAssetImg = rawImg.replace("/api/images/products/", "/assets/");
-  let absoluteImg = cleanAssetImg.startsWith("http") 
-    ? cleanAssetImg 
-    : `${baseUrl}${cleanAssetImg.startsWith("/") ? "" : "/"}${cleanAssetImg}`;
+  let absoluteImg = rawImg.startsWith("http") 
+    ? rawImg 
+    : `${baseUrl}${rawImg.startsWith("/") ? "" : "/"}${rawImg}`;
 
   const isJpg = absoluteImg.endsWith(".jpg") || absoluteImg.endsWith(".jpeg");
   const imgMimeType = isJpg ? "image/jpeg" : absoluteImg.endsWith(".webp") ? "image/webp" : "image/png";
@@ -88,10 +87,9 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
   const baseUrl = "https://shivamwatersolution.in";
   let rawImg = product.images?.[0] || "/assets/product_domestic.webp";
-  let cleanAssetImg = rawImg.replace("/api/images/products/", "/assets/");
-  let absoluteImg = cleanAssetImg.startsWith("http") 
-    ? cleanAssetImg 
-    : `${baseUrl}${cleanAssetImg.startsWith("/") ? "" : "/"}${cleanAssetImg}`;
+  let absoluteImg = rawImg.startsWith("http") 
+    ? rawImg 
+    : `${baseUrl}${rawImg.startsWith("/") ? "" : "/"}${rawImg}`;
 
   const productJsonLd = {
     "@context": "https://schema.org",

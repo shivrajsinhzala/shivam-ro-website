@@ -24,7 +24,7 @@ export default function FeaturedProducts() {
   const [products, setProducts] = useState<Product[]>(productsData);
 
   useEffect(() => {
-    fetch("/api/products")
+    fetch(`/api/products?t=${Date.now()}`, { cache: "no-store" })
       .then((res) => {
         if (!res.ok) throw new Error("API failed");
         return res.json();
