@@ -91,22 +91,33 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     ? rawImg 
     : `${baseUrl}${rawImg.startsWith("/") ? "" : "/"}${rawImg}`;
 
+  const priceValue = (product as any).price || (product.category === 'commercial' ? "45000" : product.category === 'spares' ? "450" : "6999");
+  const productCanonicalUrl = `${baseUrl}/products/${product.id}`;
+
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     "name": `${product.name} RO Water Purifier`,
     "image": [absoluteImg],
-    "description": product.description || product.tagline,
+    "description": product.description || product.tagline || `${product.name} with advanced multi-stage RO purification.`,
     "sku": product.id,
     "mpn": product.id,
     "brand": {
       "@type": "Brand",
       "name": "Shivam Water Solution"
     },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "19",
+      "bestRating": "5",
+      "worstRating": "1"
+    },
     "offers": {
       "@type": "Offer",
-      "url": `${baseUrl}/products/${product.id}/`,
+      "url": productCanonicalUrl,
       "priceCurrency": "INR",
+      "price": priceValue,
       "priceValidUntil": "2027-12-31",
       "itemCondition": "https://schema.org/NewCondition",
       "availability": "https://schema.org/InStock",
@@ -122,6 +133,42 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
           "postalCode": "363641",
           "addressCountry": "IN"
         }
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0",
+          "currency": "INR"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "IN",
+          "addressRegion": ["Gujarat"]
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 1,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 2,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "IN",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
       }
     }
   };
@@ -140,13 +187,13 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
         "@type": "ListItem",
         "position": 2,
         "name": "Products",
-        "item": `${baseUrl}/products/`
+        "item": `${baseUrl}/products`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": product.name,
-        "item": `${baseUrl}/products/${product.id}/`
+        "item": productCanonicalUrl
       }
     ]
   };

@@ -8,6 +8,12 @@ const CURRENT_SITE_VERSION = '2026-07-26-v1.2.0';
 export default function CacheBuster() {
   useEffect(() => {
     try {
+      // 0. Immediate domain redirection if on .pages.dev
+      if (typeof window !== 'undefined' && window.location.hostname.endsWith('.pages.dev')) {
+        window.location.replace('https://shivamwatersolution.in' + window.location.pathname + window.location.search + window.location.hash);
+        return;
+      }
+
       // 1. Unregister all stale Service Workers
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.getRegistrations().then((registrations) => {

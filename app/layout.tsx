@@ -73,6 +73,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              if (window.location.hostname.endsWith('.pages.dev')) {
+                window.location.replace('https://shivamwatersolution.in' + window.location.pathname + window.location.search + window.location.hash);
+              }
+            `,
+          }}
+        />
+      </head>
       <body>
         <CacheBuster />
         {children}

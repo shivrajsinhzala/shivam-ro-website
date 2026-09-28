@@ -746,129 +746,65 @@
     ]
   },
   {
-    "id": "aqua-9090",
-    "name": "Aqua 9090",
-    "name_en": "Aqua 9090",
+    "id": "aqua-4070",
+    "name": "AQUA 4070",
+    "name_en": "AQUA 4070",
     "name_gu": "",
-    "badge": "Smart LED",
-    "badge_en": "Smart LED",
+    "badge": "PREMIUM QUALITY",
+    "badge_en": "PREMIUM QUALITY",
     "badge_gu": "",
     "category": "domestic",
-    "tagline": "Trendy & Classic Heavy Food Grade RO Purifier",
-    "tagline_en": "Trendy & Classic Heavy Food Grade RO Purifier",
+    "tagline": "Pure protection in every drop",
+    "tagline_en": "Pure protection in every drop",
     "tagline_gu": "",
-    "capacity": "10 Ltrs Storage",
-    "capacity_en": "10 Ltrs Storage",
+    "capacity": "09 - 10 Litres Storage",
+    "capacity_en": "09 - 10 Litres Storage",
     "capacity_gu": "",
-    "warranty": "1 Year Warranty",
-    "warranty_en": "1 Year Warranty",
+    "warranty": "1 Year Comprehensive Warranty",
+    "warranty_en": "1 Year Comprehensive Warranty",
     "warranty_gu": "",
-    "description": "Aqua 9090 Water Purifier by Nile features a trendy and classic heavy food-grade cabinet, invisible screw design, smart LED indicators, and 10-litre storage tank. Built for easy installation and maintenance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "description_en": "Aqua 9090 Water Purifier by Nile features a trendy and classic heavy food-grade cabinet, invisible screw design, smart LED indicators, and 10-litre storage tank. Built for easy installation and maintenance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description": "",
+    "description_en": "",
     "description_gu": "",
     "features": [
-      "Invisible Screw Sleek Cabinet Design",
-      "Smart LED Display Panel",
-      "Large 10L Storage Tank",
-      "Heavy Food Grade Cabinet",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+      "Multi-stage RO + TDS Controller + Active Copper Filtration + Alkline B12",
+      "Food-Grade High-Capacity Storage Tank (10-12L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot"
     ],
     "features_en": [
-      "Invisible Screw Sleek Cabinet Design",
-      "Smart LED Display Panel",
-      "Large 10L Storage Tank",
-      "Heavy Food Grade Cabinet",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+      "Multi-stage RO + TDS Controller + Active Copper Filtration + Alkline B12",
+      "Food-Grade High-Capacity Storage Tank (10-12L)",
+      "Smart LED Status Indicators & Auto Shut-Off",
+      "1 Year Comprehensive Warranty on Electrical Components",
+      "Free Doorstep Delivery & Professional Installation in Morbi & Rajkot"
     ],
     "features_gu": [],
     "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "Heavy ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
+      "Purification Technology": "RO +TDS Controller + Alkaline B12 + zinc + copper",
+      "Storage Capacity": "09-10 Litres",
+      "Purification Capacity": "Up to 15-20 Litres/Hour",
+      "Body Material": "Food-Grade ABS Engineered Cabinet",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Suitable Water TDS": "Up to 2000 ppm",
+      "Warranty": "1 Year Comprehensive Warranty"
     },
     "specs_en": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "Heavy ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
+      "Purification Technology": "RO +TDS Controller + Alkaline B12 + zinc + copper",
+      "Storage Capacity": "09-10 Litres",
+      "Purification Capacity": "Up to 15-20 Litres/Hour",
+      "Body Material": "Food-Grade ABS Engineered Cabinet",
+      "Installation Type": "Wall Mounted / Table Top",
+      "Suitable Water TDS": "Up to 2000 ppm",
+      "Warranty": "1 Year Comprehensive Warranty"
     },
     "specs_gu": {},
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua 9090 water purifier model.",
-    "meta_title": "Aqua 9090 - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua 9090 RO water purifier in Morbi & Rajkot. Invisible screw heavy food grade cabinet with smart LED by Nile. Sales, installation, and repair services by Shivam Water Solution.",
+    "wa": "Hi Shivam Water Solution, I am interested in inquiring about the AQUA 4070 RO Water Purifier model.",
+    "meta_title": "AQUA 4070 - Shivam Water Solution Morbi",
+    "meta_desc": "Buy AQUA 4070 RO water purifier in Morbi & Rajkot. Sales, installation, and repair services by Shivam Water Solution.",
     "images": [
-      "/api/images/products/1786549839334-image--14-.webp"
-    ]
-  },
-  {
-    "id": "aqua-nine",
-    "name": "Aqua Nine",
-    "name_en": "Aqua Nine",
-    "name_gu": "",
-    "badge": "Modern Design",
-    "badge_en": "Modern Design",
-    "badge_gu": "",
-    "category": "domestic",
-    "tagline": "Modern Design RO Water Purification System by Nile",
-    "tagline_en": "Modern Design RO Water Purification System by Nile",
-    "tagline_gu": "",
-    "capacity": "10 Ltrs Storage",
-    "capacity_en": "10 Ltrs Storage",
-    "capacity_gu": "",
-    "warranty": "1 Year Warranty",
-    "warranty_en": "1 Year Warranty",
-    "warranty_gu": "",
-    "description": "Aqua Nine Water Purifier by Nile features a modern design black cabinet with golden accent curves, LED status indicators, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "description_en": "Aqua Nine Water Purifier by Nile features a modern design black cabinet with golden accent curves, LED status indicators, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
-    "description_gu": "",
-    "features": [
-      "Sleek Black Cabinet with Gold Waves",
-      "Nile Brand Engineering",
-      "LED Operational Status Panel",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "features_en": [
-      "Sleek Black Cabinet with Gold Waves",
-      "Nile Brand Engineering",
-      "LED Operational Status Panel",
-      "1 Year Warranty",
-      "Free Installation",
-      "Free Home Delivery",
-      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
-    ],
-    "features_gu": [],
-    "specs": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "specs_en": {
-      "Storage Capacity": "10 Litres",
-      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
-      "Cabinet Material": "ABS Food Grade",
-      "Installation Type": "Wall Mounted / Countertop",
-      "Warranty": "1 Year"
-    },
-    "specs_gu": {},
-    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Nine water purifier model.",
-    "meta_title": "Aqua Nine - Shivam Water Solution Morbi",
-    "meta_desc": "Buy Aqua Nine RO water purifier in Morbi & Rajkot. Modern design black cabinet with gold wave accents by Nile. Sales, installation, and repair services by Shivam Water Solution.",
-    "images": [
-      "/api/images/products/1786550756187-image--21-.webp"
+      "/api/images/products/1789990813647-1000254500.jpg"
     ]
   },
   {
@@ -1366,7 +1302,7 @@
     "meta_title": "Finpure Ocean Blue - Shivam Water Solution Morbi",
     "meta_desc": "Buy Finpure Ocean Blue RO water purifier in Morbi & Rajkot. Dual-tone ocean blue cabinet by Purosis. Sales, installation, and repair services by Shivam Water Solution.",
     "images": [
-      "/api/images/products/1786791558283-image--30-.webp"
+      "/api/images/products/1790083396434-1000255394.jpg"
     ]
   },
   {
@@ -1836,7 +1772,7 @@
     "meta_title": "NEWATER Industrial RO Plant 1000 LPH - Shivam Water Solution Morbi",
     "meta_desc": "Buy NEWATER Industrial RO Plant 1000 LPH in Morbi & Rajkot. 1000 LPH heavy commercial and industrial water purification plant with Willo pump and 4040 membranes. Sales, installation, and repair by Shivam Water Solution.",
     "images": [
-      "/api/images/products/newater-1000lph.jpeg"
+      "/api/images/products/1789898607201-3e6ee397-f6ba-47fa-b106-7f489d606e5d.webp"
     ]
   },
   {
@@ -1920,7 +1856,7 @@
     "meta_title": "NEWATER Industrial RO System 2000 LPH - Shivam Water Solution Morbi",
     "meta_desc": "Buy NEWATER Industrial RO System 2000 LPH in Morbi & Rajkot. 2000 LPH high-recovery industrial reverse osmosis system with Kirloskar pump and TFC-8040 membranes. Sales, installation, and AMC by Shivam Water Solution.",
     "images": [
-      "/api/images/products/newater-2000lph.jpeg"
+      "/api/images/products/1789898594401-1710a9a0-dfc8-4d7d-b695-3da320401bbc.webp"
     ]
   },
   {
@@ -2008,7 +1944,7 @@
     "meta_title": "NEWATER Industrial RO System 5000 LPH - Shivam Water Solution Morbi",
     "meta_desc": "Buy NEWATER Industrial RO System 5000 LPH in Morbi & Rajkot. Heavy-duty 5000 LPH fully automatic industrial water purification system for factories and commercial establishments. Sales, installation, and AMC by Shivam Water Solution.",
     "images": [
-      "/api/images/products/newater-5000lph.jpeg"
+      "/api/images/products/1789898581673-493ba106-3523-4e10-b690-3d395cd8f961.webp"
     ]
   },
   {
@@ -2121,6 +2057,132 @@
     "meta_desc": "Buy Biogreen 110 GPD 4G High TDS RO membrane (4000 TDS max) in Morbi & Rajkot. 98%+ salt rejection. Doorstep technician fitting by Shivam Water Solution.",
     "images": [
       "/api/images/products/1786792711675-image--46-.webp"
+    ]
+  },
+  {
+    "id": "aqua-9090",
+    "name": "Aqua 9090",
+    "name_en": "Aqua 9090",
+    "name_gu": "",
+    "badge": "Smart LED",
+    "badge_en": "Smart LED",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Trendy & Classic Heavy Food Grade RO Purifier",
+    "tagline_en": "Trendy & Classic Heavy Food Grade RO Purifier",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua 9090 Water Purifier by Nile features a trendy and classic heavy food-grade cabinet, invisible screw design, smart LED indicators, and 10-litre storage tank. Built for easy installation and maintenance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua 9090 Water Purifier by Nile features a trendy and classic heavy food-grade cabinet, invisible screw design, smart LED indicators, and 10-litre storage tank. Built for easy installation and maintenance. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Invisible Screw Sleek Cabinet Design",
+      "Smart LED Display Panel",
+      "Large 10L Storage Tank",
+      "Heavy Food Grade Cabinet",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Invisible Screw Sleek Cabinet Design",
+      "Smart LED Display Panel",
+      "Large 10L Storage Tank",
+      "Heavy Food Grade Cabinet",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "Heavy ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "Heavy ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua 9090 water purifier model.",
+    "meta_title": "Aqua 9090 - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua 9090 RO water purifier in Morbi & Rajkot. Invisible screw heavy food grade cabinet with smart LED by Nile. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786549839334-image--14-.webp"
+    ]
+  },
+  {
+    "id": "aqua-nine",
+    "name": "Aqua Nine",
+    "name_en": "Aqua Nine",
+    "name_gu": "",
+    "badge": "Modern Design",
+    "badge_en": "Modern Design",
+    "badge_gu": "",
+    "category": "domestic",
+    "tagline": "Modern Design RO Water Purification System by Nile",
+    "tagline_en": "Modern Design RO Water Purification System by Nile",
+    "tagline_gu": "",
+    "capacity": "10 Ltrs Storage",
+    "capacity_en": "10 Ltrs Storage",
+    "capacity_gu": "",
+    "warranty": "1 Year Warranty",
+    "warranty_en": "1 Year Warranty",
+    "warranty_gu": "",
+    "description": "Aqua Nine Water Purifier by Nile features a modern design black cabinet with golden accent curves, LED status indicators, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_en": "Aqua Nine Water Purifier by Nile features a modern design black cabinet with golden accent curves, LED status indicators, and multi-stage RO filtration. Comes with a 1-year warranty, free installation, and free home delivery across Morbi & Rajkot. Equipped with advanced RO + TDS Controller + Zinc + Copper + Alkaline B12 filtration technology.",
+    "description_gu": "",
+    "features": [
+      "Sleek Black Cabinet with Gold Waves",
+      "Nile Brand Engineering",
+      "LED Operational Status Panel",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_en": [
+      "Sleek Black Cabinet with Gold Waves",
+      "Nile Brand Engineering",
+      "LED Operational Status Panel",
+      "1 Year Warranty",
+      "Free Installation",
+      "Free Home Delivery",
+      "RO + TDS Controller + Zinc + Copper + Alkaline B12"
+    ],
+    "features_gu": [],
+    "specs": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_en": {
+      "Storage Capacity": "10 Litres",
+      "Purification Type": "RO + TDS CONTROLLER + ZINC + COPPER + ALKALINE B12",
+      "Cabinet Material": "ABS Food Grade",
+      "Installation Type": "Wall Mounted / Countertop",
+      "Warranty": "1 Year"
+    },
+    "specs_gu": {},
+    "wa": "Hi Shivam Water Solution, I am interested in ordering the Aqua Nine water purifier model.",
+    "meta_title": "Aqua Nine - Shivam Water Solution Morbi",
+    "meta_desc": "Buy Aqua Nine RO water purifier in Morbi & Rajkot. Modern design black cabinet with gold wave accents by Nile. Sales, installation, and repair services by Shivam Water Solution.",
+    "images": [
+      "/api/images/products/1786550756187-image--21-.webp"
     ]
   },
   {
