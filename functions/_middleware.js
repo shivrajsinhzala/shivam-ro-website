@@ -1,6 +1,6 @@
 // functions/_middleware.js
 // Cloudflare Pages Edge Middleware:
-// Redirects any *.pages.dev traffic and www subdomain to the official custom domain https://shivamwatersolution.in with a 301 Permanent Redirect.
+// Redirects any *.pages.dev traffic and www subdomain to the official custom domain https://shivamwatersolution.in using 308 (method-preserving redirect).
 
 export async function onRequest({ request, next }) {
   const url = new URL(request.url);
@@ -13,7 +13,8 @@ export async function onRequest({ request, next }) {
     targetUrl.hostname = 'shivamwatersolution.in';
     targetUrl.port = '';
 
-    return Response.redirect(targetUrl.toString(), 301);
+    // Use 308 to preserve HTTP method (POST/PUT/PATCH) and request payload
+    return Response.redirect(targetUrl.toString(), 308);
   }
 
   // 2. Redirect www.shivamwatersolution.in to apex shivamwatersolution.in
@@ -23,7 +24,7 @@ export async function onRequest({ request, next }) {
     targetUrl.hostname = 'shivamwatersolution.in';
     targetUrl.port = '';
 
-    return Response.redirect(targetUrl.toString(), 301);
+    return Response.redirect(targetUrl.toString(), 308);
   }
 
   // 3. Continue to the requested page or API handler

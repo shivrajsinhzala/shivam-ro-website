@@ -1,5 +1,5 @@
-// functions/api/products.js
-import { json, err, options, requireAuth, parseProduct } from '../_utils.js';
+// functions/api/products/index.js
+import { json, err, options, requireAuth, parseProduct } from '../../_utils.js';
 
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);

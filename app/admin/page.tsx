@@ -239,11 +239,12 @@ export default function AdminPage() {
       setLoginError("Please enter your password.");
       return;
     }
+    const cleanPw = pw.trim();
     try {
       const r = await fetch(`${API}/auth`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password: pw }),
+        body: JSON.stringify({ password: cleanPw }),
       });
       if (r.ok) {
         const { token: t } = await r.json();
@@ -254,7 +255,7 @@ export default function AdminPage() {
         localStorage.removeItem("adm-lockout-until");
         setLoginError("");
         setScreen("dashboard");
-      } else {
+      } else if (r.status === 401) {
         const newAttempts = loginAttempts + 1;
         setLoginAttempts(newAttempts);
         localStorage.setItem("adm-attempts", String(newAttempts));
@@ -266,6 +267,9 @@ export default function AdminPage() {
         } else {
           setLoginError(`Incorrect password. ${5 - newAttempts} attempts remaining.`);
         }
+      } else {
+        const errJson = await r.json().catch(() => null);
+        setLoginError(errJson?.error || `Server error (${r.status}). Please try again.`);
       }
     } catch {
       setLoginError("Unable to connect to server. Check your connection.");
@@ -620,9 +624,24 @@ export default function AdminPage() {
     return list;
   }, [products, searchQuery, catFilter, statusFilter, sortBy]);
 
+  function resetLockout() {
+    setLockoutUntil(0);
+    setLoginAttempts(0);
+    localStorage.removeItem("adm-lockout-until");
+    localStorage.setItem("adm-attempts", "0");
+    setLoginError("");
+  }
+
   // ─── LOGIN SCREEN ───────────────────────────────────
   if (screen === "login") {
-    return <LoginScreen error={loginError} onLogin={doLogin} />;
+    return (
+      <LoginScreen
+        error={loginError}
+        onLogin={doLogin}
+        isLocked={Date.now() < lockoutUntil}
+        onResetLockout={resetLockout}
+      />
+    );
   }
 
   // ─── DASHBOARD ──────────────────────────────────────
@@ -1558,7 +1577,17 @@ export default function AdminPage() {
 }
 
 // ─── Login Screen Component ─────────────────────────────
-function LoginScreen({ error, onLogin }: { error: string; onLogin: (pw: string) => void }) {
+function LoginScreen({
+  error,
+  onLogin,
+  isLocked,
+  onResetLockout,
+}: {
+  error: string;
+  onLogin: (pw: string) => void;
+  isLocked?: boolean;
+  onResetLockout?: () => void;
+}) {
   const [pw, setPw] = useState("");
 
   return (
@@ -1568,7 +1597,30 @@ function LoginScreen({ error, onLogin }: { error: string; onLogin: (pw: string) 
         <img src="/assets/logo.png" alt="Logo" width="56" height="56" onError={(e) => { (e.target as HTMLElement).style.display = "none"; }} />
         <h1>Admin Console</h1>
         <p>Shivam Water Solution — Morbi & Rajkot</p>
-        {error && <div className="al-err">{error}</div>}
+        {error && (
+          <div className="al-err">
+            <div>{error}</div>
+            {isLocked && onResetLockout && (
+              <button
+                type="button"
+                onClick={onResetLockout}
+                style={{
+                  marginTop: "8px",
+                  background: "transparent",
+                  border: "none",
+                  color: "#2563eb",
+                  fontWeight: 600,
+                  fontSize: "12px",
+                  textDecoration: "underline",
+                  cursor: "pointer",
+                  padding: "4px 0",
+                }}
+              >
+                Reset lockout & try now
+              </button>
+            )}
+          </div>
+        )}
         <input
           type="password"
           className="al-inp"
