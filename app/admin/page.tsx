@@ -269,7 +269,13 @@ export default function AdminPage() {
         }
       } else {
         const errJson = await r.json().catch(() => null);
-        setLoginError(errJson?.error || `Server error (${r.status}). Please try again.`);
+        if (r.status === 429) {
+          setLoginError("Cloudflare daily request limit reached for this account (Error 1046). Resets at 00:00 UTC (5:30 AM IST).");
+        } else if (r.status === 405) {
+          setLoginError("Edge functions temporarily rate-limited by Cloudflare. Please try again shortly or check Cloudflare limits.");
+        } else {
+          setLoginError(errJson?.error || `Server error (${r.status}). Please try again.`);
+        }
       }
     } catch {
       setLoginError("Unable to connect to server. Check your connection.");
