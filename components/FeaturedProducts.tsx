@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { Droplet, Shield } from "lucide-react";
 import productsData from "@/data/products.json";
+import ProductCardImageSlider from "@/components/ProductCardImageSlider";
 
 interface Product {
   id: string;
@@ -120,14 +121,12 @@ export default function FeaturedProducts() {
             
             return (
               <div key={p.id} className="product-card glass-card" style={{ display: "flex" }}>
-                {p.badge && (
-                  <div className="product-badge">
-                    <span>{p.badge}</span>
-                  </div>
-                )}
-                <Link href={`/products/${p.id}`} className="product-img-wrap" style={{ cursor: "pointer", display: "flex" }}>
-                  <img src={imgSrc} alt={p.name} loading="lazy" width="400" height="400" />
-                </Link>
+                <ProductCardImageSlider
+                  images={p.images}
+                  name={p.name}
+                  productId={p.id}
+                  badge={p.badge}
+                />
                 <div className="product-info">
                   <h3 className="product-title">
                     <Link href={`/products/${p.id}`} style={{ textDecoration: "none", color: "inherit" }}>

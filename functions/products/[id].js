@@ -192,11 +192,12 @@ export async function onRequestGet({ params, env, request }) {
       `
       : '';
 
-    const thumbnailsHtml = (p.images && p.images.length > 1)
+    const imgList = (p.images && p.images.length > 0) ? p.images : [rawImg];
+    const thumbnailsHtml = (imgList.length > 1)
       ? `
         <div class="product-thumbnails-grid">
-          ${p.images.map((img, idx) => `
-            <button type="button" class="product-thumbnail-btn glass-card ${idx === 0 ? 'active' : ''}" onclick="setMainImage('${escapeHtml(img)}', this)" aria-label="View product image ${idx + 1}">
+          ${imgList.map((img, idx) => `
+            <button type="button" class="product-thumbnail-btn glass-card ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx})" aria-label="View product image ${idx + 1}">
               <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name)} thumbnail ${idx + 1}" class="product-thumbnail-img" width="80" height="80" onerror="this.src='/assets/product_domestic.webp'" />
             </button>
           `).join('')}
@@ -470,12 +471,34 @@ export async function onRequestGet({ params, env, request }) {
       <div class="product-detail-grid">
         <!-- Gallery Section -->
         <div class="product-gallery-container">
-          <div class="product-image-section glass-card">
+          <div class="product-image-section glass-card product-slider-wrap" id="detail-slider-wrap" style="position: relative; overflow: hidden; cursor: ${imgList.length > 1 ? 'grab' : 'default'};">
             <button type="button" class="share-floating-btn" id="share-btn-top" onclick="triggerShare()" aria-label="Share product" title="Share product link">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
             </button>
 
-            <img id="main-img" src="${escapeHtml(rawImg)}" alt="${escapeHtml(p.name)}" class="main-detail-img" width="400" height="400" />
+            <!-- Slider Track -->
+            <div class="product-slider-track" id="detail-slider-track" style="transform: translateX(0%);">
+              ${imgList.map((img, idx) => `
+                <div class="product-slider-slide">
+                  <img src="${escapeHtml(img)}" alt="${escapeHtml(p.name)} - View ${idx + 1}" class="main-detail-img" width="400" height="400" onerror="this.src='/assets/product_domestic.webp'" />
+                </div>
+              `).join('')}
+            </div>
+
+            ${imgList.length > 1 ? `
+              <button type="button" class="slider-nav-btn slider-nav-prev" onclick="slideNav(-1)" aria-label="Previous image">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button type="button" class="slider-nav-btn slider-nav-next" onclick="slideNav(1)" aria-label="Next image">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+              <div class="slider-dots" id="detail-slider-dots">
+                ${imgList.map((_, idx) => `
+                  <button type="button" class="slider-dot ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx})" aria-label="Go to image ${idx + 1}"></button>
+                `).join('')}
+              </div>
+              <div class="slider-counter-badge" id="detail-counter-badge">1 / ${imgList.length}</div>
+            ` : ''}
           </div>
           ${thumbnailsHtml}
         </div>
@@ -624,10 +647,65 @@ export async function onRequestGet({ params, env, request }) {
   </footer>
 
   <script>
+    var currentSlide = 0;
+    var totalSlides = ${imgList.length};
+
+    function updateSlide(idx) {
+      if (totalSlides <= 1) return;
+      currentSlide = (idx + totalSlides) % totalSlides;
+      var track = document.getElementById('detail-slider-track');
+      if (track) track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+      var badge = document.getElementById('detail-counter-badge');
+      if (badge) badge.innerText = (currentSlide + 1) + ' / ' + totalSlides;
+      var dots = document.querySelectorAll('#detail-slider-dots .slider-dot');
+      dots.forEach(function(dot, i) {
+        if (i === currentSlide) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+      var thumbs = document.querySelectorAll('.product-thumbnail-btn');
+      thumbs.forEach(function(btn, i) {
+        if (i === currentSlide) btn.classList.add('active');
+        else btn.classList.remove('active');
+      });
+    }
+
+    function slideNav(dir) {
+      updateSlide(currentSlide + dir);
+    }
+
+    function goToSlide(idx) {
+      updateSlide(idx);
+    }
+
     function setMainImage(src, btn) {
-      document.getElementById('main-img').src = src;
-      document.querySelectorAll('.product-thumbnail-btn').forEach(b => b.classList.remove('active'));
-      if(btn) btn.classList.add('active');
+      var thumbs = Array.from(document.querySelectorAll('.product-thumbnail-btn'));
+      var idx = thumbs.indexOf(btn);
+      if (idx !== -1) {
+        goToSlide(idx);
+      }
+    }
+
+    // Touch swipe support on detail slider
+    var sliderWrap = document.getElementById('detail-slider-wrap');
+    if (sliderWrap && totalSlides > 1) {
+      var touchStartX = 0;
+      sliderWrap.addEventListener('touchstart', function(e) {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+
+      sliderWrap.addEventListener('touchend', function(e) {
+        var diffX = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(diffX) > 40) {
+          if (diffX < 0) slideNav(1);
+          else slideNav(-1);
+        }
+      }, { passive: true });
+
+      // Keyboard arrow navigation
+      window.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowLeft') slideNav(-1);
+        else if (e.key === 'ArrowRight') slideNav(1);
+      });
     }
 
     async function triggerShare() {

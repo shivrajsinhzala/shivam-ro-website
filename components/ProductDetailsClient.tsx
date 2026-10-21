@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { Check, Phone, Package, Shield, ArrowLeft, Share2 } from "lucide-react";
+import { Check, Phone, Package, Shield, ArrowLeft, Share2, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Product {
   id: string;
@@ -61,7 +61,90 @@ export default function ProductDetailsClient({ initialProduct }: { initialProduc
 
   const images = product.images && product.images.length > 0 ? product.images : ["/assets/product_domestic.webp"];
   const safeIndex = activeImageIndex >= 0 && activeImageIndex < images.length ? activeImageIndex : 0;
-  const imgSrc = images[safeIndex];
+  const hasMultiple = images.length > 1;
+
+  // Swipe & Drag refs
+  const touchStartX = useRef<number | null>(null);
+  const touchStartY = useRef<number | null>(null);
+  const mouseStartX = useRef<number | null>(null);
+  const isMouseDown = useRef(false);
+
+  // Keyboard navigation (Arrow keys)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!hasMultiple) return;
+      if (e.key === "ArrowLeft") {
+        setActiveImageIndex((prev) => (prev - 1 + images.length) % images.length);
+      } else if (e.key === "ArrowRight") {
+        setActiveImageIndex((prev) => (prev + 1) % images.length);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [hasMultiple, images.length]);
+
+  const handlePrev = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setActiveImageIndex((prev) => (prev - 1 + images.length) % images.length);
+  };
+
+  const handleNext = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    setActiveImageIndex((prev) => (prev + 1) % images.length);
+  };
+
+  // Touch Swipe Handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!hasMultiple) return;
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || !hasMultiple) return;
+    const diffX = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(diffX) > 40) {
+      if (diffX < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    touchStartX.current = null;
+    touchStartY.current = null;
+  };
+
+  // Mouse Drag Handlers (Desktop)
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!hasMultiple) return;
+    mouseStartX.current = e.clientX;
+    isMouseDown.current = true;
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    if (!isMouseDown.current || mouseStartX.current === null || !hasMultiple) return;
+    const diffX = e.clientX - mouseStartX.current;
+    if (Math.abs(diffX) > 45) {
+      if (diffX < 0) {
+        handleNext();
+      } else {
+        handlePrev();
+      }
+    }
+    isMouseDown.current = false;
+    mouseStartX.current = null;
+  };
+
+  const handleMouseLeave = () => {
+    isMouseDown.current = false;
+    mouseStartX.current = null;
+  };
 
   const productUrl = `https://shivamwatersolution.in/products/${product.id}`;
   const defaultWaText = `Hello Shivam Water Solution (Dilipbhai),\n\nI am interested in inquiring about the *${product.name}* ${product.category === 'commercial' ? 'Commercial RO Plant' : product.category === 'spares' ? 'Filter Spare Part' : 'RO Water Purifier'}.\n\n*Model Specs:* ${product.capacity || 'Standard Capacity'} | ${product.warranty || '1 Year Warranty'}\n*Services:* Free Delivery & Free Installation in Morbi / Rajkot\n\n*Product Details & Photo Link:* ${productUrl}`;
@@ -111,7 +194,15 @@ export default function ProductDetailsClient({ initialProduct }: { initialProduc
         <div className="product-detail-grid">
           {/* Left: Product Image & Gallery */}
           <div className="product-gallery-container">
-            <div className="product-image-section glass-card" style={{ position: "relative" }}>
+            <div 
+              className="product-image-section glass-card product-slider-wrap" 
+              style={{ position: "relative", cursor: hasMultiple ? "grab" : "default" }}
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseLeave}
+            >
               <button
                 type="button"
                 onClick={handleShare}
@@ -123,17 +214,80 @@ export default function ProductDetailsClient({ initialProduct }: { initialProduc
                 <span className="share-tooltip">{copied ? "Copied! ✓" : "Share"}</span>
               </button>
 
-              <img 
-                src={imgSrc} 
-                alt={product.name} 
-                className="main-detail-img" 
-                width="400" 
-                height="400" 
-                style={{ objectFit: "contain", display: "block", margin: "0 auto" }}
-                fetchPriority="high"
-              />
+              {/* Smooth Slide Track */}
+              <div 
+                className="product-slider-track"
+                style={{
+                  transform: `translateX(-${safeIndex * 100}%)`,
+                }}
+              >
+                {images.map((img, idx) => (
+                  <div key={idx} className="product-slider-slide">
+                    <img 
+                      src={img} 
+                      alt={`${product.name} - View ${idx + 1}`} 
+                      className="main-detail-img" 
+                      width="400" 
+                      height="400" 
+                      style={{ objectFit: "contain", display: "block", margin: "0 auto", pointerEvents: "none" }}
+                      fetchPriority={idx === 0 ? "high" : "auto"}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = "/assets/product_domestic.webp";
+                      }}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* Navigation Arrows for inner product page */}
+              {hasMultiple && (
+                <>
+                  <button
+                    type="button"
+                    className="slider-nav-btn slider-nav-prev"
+                    onClick={handlePrev}
+                    aria-label="Previous image"
+                    title="Previous image"
+                  >
+                    <ChevronLeft size={22} />
+                  </button>
+                  <button
+                    type="button"
+                    className="slider-nav-btn slider-nav-next"
+                    onClick={handleNext}
+                    aria-label="Next image"
+                    title="Next image"
+                  >
+                    <ChevronRight size={22} />
+                  </button>
+
+                  {/* Indicator Dots */}
+                  <div className="slider-dots">
+                    {images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        type="button"
+                        className={`slider-dot ${idx === safeIndex ? "active" : ""}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setActiveImageIndex(idx);
+                        }}
+                        aria-label={`Go to image ${idx + 1}`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Counter badge */}
+                  <div className="slider-counter-badge">
+                    {safeIndex + 1} / {images.length}
+                  </div>
+                </>
+              )}
             </div>
-            {images.length > 1 && (
+
+            {/* Thumbnails row */}
+            {hasMultiple && (
               <div className="product-thumbnails-grid">
                 {images.map((img, idx) => (
                   <button
